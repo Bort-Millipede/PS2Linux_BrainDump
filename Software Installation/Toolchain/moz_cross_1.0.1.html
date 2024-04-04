@@ -1,0 +1,470 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO</title>
+</head><body bgcolor="#ffffff"><div id="wm-ipp" style="display: none; position: relative; padding: 0pt 5px; min-height: 70px; min-width: 800px; z-index: 9000;">
+<div id="wm-ipp-inside" style="position: fixed; padding: 0pt ! important; margin: 0pt ! important; width: 97%; min-width: 780px; border-right: 5px solid rgb(0, 0, 0); border-width: medium 5px 5px; border-style: none solid solid; border-color: -moz-use-text-color rgb(0, 0, 0) rgb(0, 0, 0); background-image: url(&quot;http://staticweb.archive.org/images/toolbar/wm_tb_bk_trns.png&quot;); text-align: center; -moz-box-shadow: 1px 1px 3px rgb(51, 51, 51); font-size: 11px ! important; font-family: 'Lucida Grande','Arial',sans-serif ! important;">
+   <table style="border-collapse: collapse; margin: 0pt; padding: 0pt; width: 100%;"><tbody><tr>
+   <td style="padding: 10px; vertical-align: top; min-width: 110px;">
+   <a href="http://wayback.archive.org/web/" title="Wayback Machine home page" style="background-color: transparent; border: medium none;"><img src="moz_cross_1.0.1_files/wayback-toolbar-logo.png" alt="Wayback Machine" border="0" height="39" width="110"></a>
+   </td>
+   <td style="padding: 0pt ! important; text-align: center; vertical-align: top; width: 100%;">
+
+       <table style="border-collapse: collapse; margin: 0pt auto; padding: 0pt; width: 570px;"><tbody><tr>
+       <td style="padding: 3px 0pt;" colspan="2">
+       <form target="_top" method="get" action="http://wayback.archive.org/web/form-submit.jsp" name="wmtb" id="wmtb" style="margin: 0pt ! important; padding: 0pt ! important;"><input name="url" id="wmtbURL" value="http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" style="width: 400px; font-size: 11px; font-family: 'Lucida Grande','Arial',sans-serif;" onfocus="javascript:this.focus();this.select();" type="text"><input name="type" value="replay" type="hidden"><input name="date" value="20080820043411" type="hidden"><input value="Go" style="font-size: 11px; font-family: 'Lucida Grande','Arial',sans-serif; margin-left: 5px;" type="submit"><span id="wm_tb_options" style="display: block;"></span></form>
+       </td>
+       <td style="vertical-align: bottom; padding: 5px 0pt 0pt ! important;" rowspan="2">
+           <table style="border-collapse: collapse; width: 110px; color: rgb(153, 153, 170); font-family: 'Helvetica','Lucida Grande','Arial',sans-serif;"><tbody>
+			
+           <!-- NEXT/PREV MONTH NAV AND MONTH INDICATOR -->
+           <tr style="width: 110px; height: 16px; font-size: 10px ! important;">
+           	<td style="padding-right: 9px; font-size: 11px ! important; font-weight: bold; text-transform: uppercase; text-align: right; white-space: nowrap; overflow: visible;" nowrap="nowrap">
+               
+		                <a href="http://web.archive.org/web/20080327041458/http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" style="text-decoration: none; color: rgb(51, 51, 255); font-weight: bold; background-color: transparent; border: medium none;" title="27 Mar 2008"><strong>MAR</strong></a>
+		                
+               </td>
+               <td id="displayMonthEl" style="background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 0); font-size: 11px ! important; font-weight: bold; text-transform: uppercase; width: 34px; height: 15px; padding-top: 1px; text-align: center;" title="You are here: 4:34:11 Aug 20, 2008">Aug</td>
+				<td style="padding-left: 9px; font-size: 11px ! important; font-weight: bold; text-transform: uppercase; white-space: nowrap; overflow: visible;" nowrap="nowrap">
+               
+                       Sep
+                       
+               </td>
+           </tr>
+
+           <!-- NEXT/PREV CAPTURE NAV AND DAY OF MONTH INDICATOR -->
+           <tr>
+               <td style="padding-right: 9px; white-space: nowrap; overflow: visible; text-align: right ! important; vertical-align: middle ! important;" nowrap="nowrap">
+               
+		                <a href="http://web.archive.org/web/20080327041458/http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" title="4:14:58 Mar 27, 2008" style="background-color: transparent; border: medium none;"><img src="moz_cross_1.0.1_files/wm_tb_prv_on.png" alt="Previous capture" border="0" height="16" width="14"></a>
+		                
+               </td>
+               <td id="displayDayEl" style="background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 0); width: 34px; height: 24px; padding: 2px 0pt 0pt; text-align: center; font-size: 24px; font-weight: bold;" title="You are here: 4:34:11 Aug 20, 2008">20</td>
+				<td style="padding-left: 9px; white-space: nowrap; overflow: visible; text-align: left ! important; vertical-align: middle ! important;" nowrap="nowrap">
+               
+                       <img src="moz_cross_1.0.1_files/wm_tb_nxt_off.png" alt="Next capture" border="0" height="16" width="14">
+                       
+			    </td>
+           </tr>
+
+           <!-- NEXT/PREV YEAR NAV AND YEAR INDICATOR -->
+           <tr style="width: 110px; height: 13px; font-size: 9px ! important;">
+				<td style="padding-right: 9px; font-size: 11px ! important; font-weight: bold; text-align: right; white-space: nowrap; overflow: visible;" nowrap="nowrap">
+               
+		                <a href="http://web.archive.org/web/20070809143029/http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" style="text-decoration: none; color: rgb(51, 51, 255); font-weight: bold; background-color: transparent; border: medium none;" title="9 Aug 2007"><strong>2007</strong></a>
+		                
+               </td>
+               <td id="displayYearEl" style="background: none repeat scroll 0% 0% rgb(0, 0, 0); color: rgb(255, 255, 0); font-size: 11px ! important; font-weight: bold; padding-top: 1px; width: 34px; height: 13px; text-align: center;" title="You are here: 4:34:11 Aug 20, 2008">2008</td>
+				<td style="padding-left: 9px; font-size: 11px ! important; font-weight: bold; white-space: nowrap; overflow: visible;" nowrap="nowrap">
+               
+                       2009
+                       
+				</td>
+           </tr>
+           </tbody></table>
+       </td>
+
+       </tr>
+       <tr>
+       <td style="vertical-align: middle; padding: 0pt ! important;">
+           <a href="http://wayback.archive.org/web/20080820043411*/http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" style="color: rgb(51, 51, 255); font-size: 11px; font-weight: bold; background-color: transparent; border: medium none;" title="See a list of every capture for this URL"><strong>9 captures</strong></a>
+           <div style="margin: 0pt ! important; padding: 2px 0pt 0pt ! important; color: rgb(102, 102, 102); font-size: 9px; white-space: nowrap;" title="Timespan for captures of this URL">5 Mar 05 - 20 Aug 08</div>
+       </td>
+       <td style="padding: 0pt ! important;">
+       <a style="position: relative; white-space: nowrap; width: 400px; height: 27px;" href="http://web.archive.org/web/20090215000000/http://playstation2-linux.com/files/mozilla-ps2/moz_cross_1.0.1.html" id="wm-graph-anchor">
+       <div id="wm-ipp-sparkline" style="position: relative; white-space: nowrap; width: 400px; height: 27px; background-color: rgb(255, 255, 255); cursor: pointer; border-right: 1px solid rgb(204, 204, 204);" title="Explore captures for this URL">
+			<img id="sparklineImgId" style="position: absolute; z-index: 9012; top: 0px; left: 0px;" onmouseover="showTrackers('inline');" onmouseout="showTrackers('none');" onmousemove="trackMouseMove(event,this)" alt="sparklines" src="moz_cross_1.0.1_files/graph.png" border="0" height="27" width="400">
+			<img id="wbMouseTrackYearImg" style="display: none; position: absolute; z-index: 9010; left: 325px;" src="moz_cross_1.0.1_files/transp-yellow-pixel.png" border="0" height="27" width="25">
+			<img id="wbMouseTrackMonthImg" style="display: none; position: absolute; z-index: 9011; left: 328px;" src="moz_cross_1.0.1_files/transp-red-pixel.png" border="0" height="27" width="2">
+       </div>
+		</a>
+
+       </td>
+       </tr></tbody></table>
+   </td>
+   <td style="text-align: right; padding: 5px; width: 65px; font-size: 11px ! important;">
+       <a href="javascript:;" onclick="document.getElementById('wm-ipp').style.display='none';" style="display: block; padding-right: 18px; background: url(&quot;http://staticweb.archive.org/images/toolbar/wm_tb_close.png&quot;) no-repeat scroll 100% 0pt transparent; color: rgb(51, 51, 255); font-family: 'Lucida Grande','Arial',sans-serif; margin-bottom: 23px; border: medium none;" title="Close the toolbar">Close</a>
+       <a href="http://faq.web.archive.org/" style="display: block; padding-right: 18px; background: url(&quot;http://staticweb.archive.org/images/toolbar/wm_tb_help.png&quot;) no-repeat scroll 100% 0pt transparent; color: rgb(51, 51, 255); font-family: 'Lucida Grande','Arial',sans-serif; border: medium none;" title="Get some help using the Wayback Machine">Help</a>
+   </td>
+   </tr></tbody></table>
+
+</div>
+</div>
+<!-- BEGIN WAYBACK TOOLBAR INSERT -->
+
+<script type="text/javascript" src="moz_cross_1.0.1_files/disclaim-element.js"></script>
+<script type="text/javascript" src="moz_cross_1.0.1_files/graph-calc.js"></script>
+<script type="text/javascript" src="moz_cross_1.0.1_files/jquery.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+var firstDate = 820454400000;
+var lastDate = 1325375999999;
+var wbPrefix = "http://web.archive.org/web/";
+var wbCurrentUrl = "http:\/\/playstation2-linux.com\/files\/mozilla-ps2\/moz_cross_1.0.1.html";
+
+var curYear = -1;
+var curMonth = -1;
+var yearCount = 16;
+var firstYear = 1996;
+var imgWidth=400;
+var yearImgWidth = 25;
+var monthImgWidth = 2;
+var trackerVal = "none";
+var displayDay = "20";
+var displayMonth = "Aug";
+var displayYear = "2008";
+var prettyMonths = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function showTrackers(val) {
+	if(val == trackerVal) {
+		return;
+	}
+	if(val == "inline") {
+		document.getElementById("displayYearEl").style.color = "#ec008c";
+		document.getElementById("displayMonthEl").style.color = "#ec008c";
+		document.getElementById("displayDayEl").style.color = "#ec008c";		
+	} else {
+		document.getElementById("displayYearEl").innerHTML = displayYear;
+		document.getElementById("displayYearEl").style.color = "#ff0";
+		document.getElementById("displayMonthEl").innerHTML = displayMonth;
+		document.getElementById("displayMonthEl").style.color = "#ff0";
+		document.getElementById("displayDayEl").innerHTML = displayDay;
+		document.getElementById("displayDayEl").style.color = "#ff0";
+	}
+   document.getElementById("wbMouseTrackYearImg").style.display = val;
+   document.getElementById("wbMouseTrackMonthImg").style.display = val;
+   trackerVal = val;
+}
+function getElementX2(obj) {
+	var thing = jQuery(obj);
+	if((thing == undefined) 
+			|| (typeof thing == "undefined") 
+			|| (typeof thing.offset == "undefined")) {
+		return getElementX(obj);
+	}
+	return Math.round(thing.offset().left);
+}
+function trackMouseMove(event,element) {
+
+   var eventX = getEventX(event);
+   var elementX = getElementX2(element);
+   var xOff = eventX - elementX;
+	if(xOff < 0) {
+		xOff = 0;
+	} else if(xOff > imgWidth) {
+		xOff = imgWidth;
+	}
+   var monthOff = xOff % yearImgWidth;
+
+   var year = Math.floor(xOff / yearImgWidth);
+	var yearStart = year * yearImgWidth;
+   var monthOfYear = Math.floor(monthOff / monthImgWidth);
+   if(monthOfYear > 11) {
+       monthOfYear = 11;
+   }
+   // 1 extra border pixel at the left edge of the year:
+   var month = (year * 12) + monthOfYear;
+   var day = 1;
+	if(monthOff % 2 == 1) {
+		day = 15;
+	}
+	var dateString = 
+		zeroPad(year + firstYear) + 
+		zeroPad(monthOfYear+1,2) +
+		zeroPad(day,2) + "000000";
+
+	var monthString = prettyMonths[monthOfYear];
+	document.getElementById("displayYearEl").innerHTML = year + 1996;
+	document.getElementById("displayMonthEl").innerHTML = monthString;
+	// looks too jarring when it changes..
+	//document.getElementById("displayDayEl").innerHTML = zeroPad(day,2);
+
+	var url = wbPrefix + dateString + '/' +  wbCurrentUrl;
+	document.getElementById('wm-graph-anchor').href = url;
+
+   //document.getElementById("wmtbURL").value="evX("+eventX+") elX("+elementX+") xO("+xOff+") y("+year+") m("+month+") monthOff("+monthOff+") DS("+dateString+") Moy("+monthOfYear+") ms("+monthString+")";
+   if(curYear != year) {
+       var yrOff = year * yearImgWidth;
+       document.getElementById("wbMouseTrackYearImg").style.left = yrOff + "px";
+       curYear = year;
+   }
+   if(curMonth != month) {
+       var mtOff = year + (month * monthImgWidth) + 1;
+       document.getElementById("wbMouseTrackMonthImg").style.left = mtOff + "px";
+       curMonth = month;
+   }
+}
+//]]>
+</script>
+
+<style type="text/css">body{margin-top:0!important;padding-top:0!important;min-width:800px!important;}#wm-ipp a:hover{text-decoration:underline!important;}</style>
+
+<script type="text/javascript">
+ var wmDisclaimBanner = document.getElementById("wm-ipp");
+ if(wmDisclaimBanner != null) {
+   disclaimElement(wmDisclaimBanner);
+ }
+</script>
+<!-- END WAYBACK TOOLBAR INSERT -->
+
+<h1>Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO 1.0</h1>
+<h2>by Paul A. Pietromonaco <a href="mailto:ppietro@users.playstation2-linux.com">ppietro@users.playstation2-linux.com</a></h2>
+<h3>Created: February 16, 2003</h3>
+<h3>Last edited: November 10, 2004</h3>
+
+<hr>
+<p><b>OVERVIEW</b>:  There are occasions when you may not want to compile Mozilla on your 
+PlayStation 2 - especially because of the large size of the source tree (14,000+ source files!),
+or because your PlayStation 2 is not available (i.e. you want to finish your game!)
+This Mini-HOWTO will show you how to set up a cross compilation environment to allow you
+to build Mozilla for the PlayStation 2 in a Red Hat 8.0 Intel environment.
+
+
+</p><hr>
+<p><b>BEFORE YOU BEGIN</b>:  You will need to have your PlayStation 2 Linux disc 2 available,  
+and a DVD ROM drive on your Red Hat computer.  If you don't have a DVD ROM drive available, you will
+have to start NFSD on your PlayStation 2 and export disc 2.  (Don't worry - I'll explain this
+when we get there.) This means that you will have to have a network connection between your 
+PlayStation 2 and your Red Hat Linux box.
+
+</p><hr>
+<p><b>INSTRUCTIONS</b>:   The first thing to do is decide on the location of the cross
+compilation environment on your Red Hat Linux box.  I used the directory <b>/usr/mipsEEel-linux</b>
+for this walkthrough.  I strongly urge you to follow this as well - there are some scripts
+that depend on this structure.  
+</p><p>Regardless if you follow my advice or not, it's 
+important to decide the location early - it has to stay consistent during this whole process!
+
+</p><p>Then, follow these steps on your Red Hat Intel Linux system:
+
+</p><ol>
+<li>Log into your Red Hat Linux box as root.  This will make life a lot easier!  For the purposes
+of this Mini-HOWTO, I'll assume your login stays in the default /root directory. </li><br>
+
+<li>Open a terminal window, insert Disc 2 of the PlayStation 2 Linux distribution into your DVD-ROM drive,
+and mount the filesystem  with this command: <b>mount -t udf /dev/cdrom /mnt/cdrom</b></li>
+<br><ul>
+<li>If you don't have a DVD ROM drive, you will have to use NFS file sharing 
+from your PlayStation 2 to do this step.  Be careful with this - if you're on the 
+internet without a firewall, this will share your PlayStation2's drive with the world!
+See the APPENDIX for detailed instructions on how to make this work.</li></ul><br>
+
+<li>In your currently open terminal window, type the following command:  <br>
+<b>mkdir /usr/mipsEEel-linux</b><br>
+  This is the 
+location of your cross compilation directory.</li><br>
+
+<li>In your currently open terminal window, type the following command:  <br>
+<b>mkdir /usr/mipsEEel-linux/mipsEEel-linux</b><br>
+This directory is the target architecture. (aka the PlayStation 2!)<br><br>
+<b>NOTE</b>:  It <b>has</b> to be called 
+<b>mipsEEel-linux</b>, regardless of where you locate the cross compilation directory
+created in the previous step.</li><br>
+
+<li>Now you need to copy over the PlayStation 2 libraries and associated files so 
+that you can cross compile.  The easiest way to do this is to 
+create a file called <b>setup-xrpms.sh</b> with the following:
+<pre>#!/bin/sh
+PATH2RPMS=/mnt/cdrom/SCEI/RPMS
+xtarget_arch=mipsEEel-linux
+
+cd /usr/${xtarget_arch}/${xtarget_arch}
+for r in ${PATH2RPMS}/*.rpm; do
+        rpm2cpio $r | cpio -ivd
+done
+chmod -R 755 /usr/${xtarget_arch}/${xtarget_arch}
+ln -s usr/include sys-include
+(cd usr/src &amp;&amp; ln -sf linux-2.2.1_ps2 linux)
+(cd lib &amp;&amp; ln -s ../usr/lib/*.o .)
+
+# modify various build -config scripts
+perl -i.bak -pe "s/\/usr/\/usr\/${xtarget_arch}\/${xtarget_arch}\/usr/g" usr/bin/{glib,gtk,libIDL,orbit}-config usr/lib/libc.so
+perl -i.bak -pe "s/\/lib\/libc.so.6/\/usr\/${xtarget_arch}\/${xtarget_arch}\/lib\/libc.so.6/g" usr/lib/libc.so
+rm -f usr/bin/{glib,gtk,libIDL,orbit}-config.bak usr/lib/libc.so.bak
+</pre>
+<b>NOTE:</b> This script assumes that you created the  <b>/usr/mipsEEel-linux/mipsEEel-linux</b> 
+directory as outlined above.  If you've put the directory somewhere else, you'll have to change 
+the script (which is beyond the scope of this mini-HOWTO!) </li><br>
+ 
+<li>In your currently open terminal window, make <b>setup-xrpms.sh</b> executable by typing: <b>chmod 755 setup-xrpms.sh</b> and execute
+the script: <b>./setup-xrpms.sh</b></li><br>
+
+<li>Download this file from Mozilla.org before starting the next step: 
+<b><a href="http://web.archive.org/web/20080629162650/http://www.mozilla.org/build/binutils-cross-libpath.patch">
+binutils-cross-libpatch</a></b>.  This will help the cross compiler find library files.
+For this example, I'll place it in my <b>/root</b> directory.</li><br>
+
+<li>Next, you will need to compile and install <i>binutils</i> and apply the cross-libpath 
+patch from the previous step.  
+Luckily, the source is already present on your PlayStation 2.  Here's an easy way to make it from your
+currently open terminal window:<br><br>
+<ul><b>
+</b><li><b>cd</b></li>
+<li><b>mkdir scratch</b></li>
+<li><b>cd scratch</b></li>
+<li><b>rpm2cpio /mnt/cdrom/SRPMS/binutils-2.9EE-3a.src.rpm | cpio -ivd</b></li>
+<li><b>gzip -dc binutils-2.9EE.tar.gz |tar -xvf -</b></li>
+<li><b>cd binutils-2.9EE</b></li>
+<li><b>patch -p1 &lt; ../binutils-ps2linux-1.0.0.patch</b></li>
+<li><b>patch -p1 &lt; /root/binutils-cross-libpath.patch</b></li>
+<li><b>mkdir build-tmp</b></li>
+<li><b>cd build-tmp</b></li>
+<li><b>export&nbsp;CROSS_LIB_PATH=/usr/mipsEEel-linux/mipsEEel-linux/lib:/usr/mipsEEel-linux/mipsEEel-linux/usr/lib</b></li>
+<li><b>../configure --target=mipsEEel-linux --prefix=/usr/mipsEEel-linux </b></li>
+<li><b>make</b></li>
+<li><b>make install</b></li>
+<b></b></ul></li><br>
+
+<li>The next step will require you to have the new <i>binutils</i> in your path:  <br>
+<b>export PATH=$PATH:/usr/mipsEEel-linux/bin</b> 
+<br>in your currently open terminal window will do the trick.  After it's compiled, <i>gcc</i> will 
+also be in this directory.  Therefore, any time you want to use the cross complier, you will have to include 
+this directory in your path.     </li><br>
+
+<li>Now, you'll need to compile and install <i>gcc</i>.  Luckily, the source is already present on 
+your PlayStation 2 as well!  Here's an easy way to do it from your currently open terminal window:<br><br>
+(Don't forget - your current PATH must include <b>/usr/mipsEEel-linux/bin</b> - see the previous step!)<br><br>
+<ul><b>
+</b><li><b>cd</b></li>
+<li><b>mkdir scratch2</b></li>
+<li><b>cd scratch2</b></li>
+<li><b>rpm2cpio /mnt/cdrom/SRPMS/gcc-2.95.2-3a.src.rpm | cpio -ivd</b></li>
+<li><b>gzip -dc gcc-2.95.2.tar.gz |tar -xvf -</b></li>
+<li><b>cd gcc-2.95.2</b></li>
+<li><b>patch -p1 &lt; ../gcc-2.95.2-frankengcc-patches.patch</b></li>
+<li><b>patch -p1 &lt; ../gcc-2.95.2-single-float-const.patch</b></li>
+<li><b>patch -p1 &lt; ../gcc-ps2linux-1.0.0.patch</b></li>
+<li><b>mkdir build-tmp</b></li>
+<li><b>cd build-tmp</b></li>
+<li><b>../configure --target=mipsEEel-linux --prefix=/usr/mipsEEel-linux </b></li>
+<li><b>make cross</b></li>
+<li><b>make LANGUAGES="c c++" install</b></li>
+<b></b></ul></li><br>
+</ol>
+<p>At this point, your cross compiler should be working. You can try 
+building Mozilla if you'd like.  If you've never built Mozilla before, 
+there are instructions at their web page: <b><a href="http://web.archive.org/web/20080820043411/http://www.mozilla.org/build/">http://www.mozilla.org/build/</a></b>
+</p><p><b>Don't forget!</b> You will need to make sure <b>/usr/mipsEEel-linux/bin</b> is in your path
+before you do any cross compiling!!! (<b>export PATH=$PATH:/usr/mipsEEel-linux/bin</b>)
+</p><p>You will also have to pass some extra compiler directives to cross compile.  Generally, you pass 
+<b>--target=mipsEEel-linux</b> and <b>--prefix=/usr/mipsEEel-linux</b> to your <b>./configure</b> script,
+but you'll have to check with the documentation for the application you're cross compiling.
+
+</p><p>For cross-compiling Mozilla, the easiest way is by using .mozconfig.  .mozconfig is a simple script 
+file that is placed in your home directory. (i.e. <b>~/.mozconfig</b>)  
+
+</p><p>Here's an example .mozconfig
+that I've used:
+</p><pre># sh
+# Build configuration script
+#
+# See http://www.mozilla.org/build/unix.html for build instructions.
+#
+CROSS_COMPILE=1
+GLIB_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/glib-config
+GTK_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/gtk-config
+LIBIDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/libIDL-config
+HOST_LIBIDL_CONFIG=/usr/bin/libIDL-config
+LIBS=-lc
+
+ac_add_options --prefix=/usr/mipsEEel-linux
+ac_add_options --target=mipsEEel-linux
+ac_add_options --x-includes=/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/include
+ac_add_options --x-libraries=/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/lib
+
+# Options for 'configure' (same as command-line options).
+# all are listed so that one can manually tweak this config file.
+#ac_add_options --enable-mathml
+#ac_add_options --enable-svg
+#ac_add_options --enable-extensions
+#ac_add_options --enable-crypto
+#ac_add_options --enable-logrefcnt
+
+#ac_add_options --without-system-nspr
+#ac_add_options --without-system-zlib
+#ac_add_options --without-system-jpeg
+#ac_add_options --without-system-png
+#ac_add_options --without-system-mng
+
+# Paul's options
+ac_add_options --disable-tests
+ac_add_options --disable-debug
+ac_add_options --enable-optimize
+ac_add_options --without-system-nspr
+ac_add_options --without-system-zlib
+ac_add_options --without-system-jpeg
+ac_add_options --without-system-png
+ac_add_options --without-system-mng
+#ac_add_options --enable-crypto #comment to disable PSM/SSL support
+ac_add_options --disable-freetype2
+</pre>
+
+<hr>
+<p><b>THANKS</b>:  Much of this material was adapted from Christopher Seawood's 
+<a href="http://web.archive.org/web/20080820043411/http://www.mozilla.org/build/cross-compiling.html">Cross Compiling Mozilla</a> page.  
+Also, Tyler Daniel's
+<a href="http://web.archive.org/web/20080820043411/http://ps2stuff.playstation2-linux.com/">ps2stuff</a> page was invaluable in getting 
+this to work.  I'm deeply indebted to both of these authors.
+
+
+
+
+</p><hr>
+<p><b>APPENDIX</b>:  Using NFS on your PlayStation 2 to allow your PC to access Disc 2 of PlayStation 2 Linux 
+<br>
+</p><p>You will need to network the two boxes together.  Each box should have a unique IP address.  
+For the purpose of this example, we will use 10.0.0.1 for the PlayStation 2 and 10.0.0.2 
+for the Red Hat box.
+</p><ol>
+<p><u>Sharing the disc from your PlayStation 2:</u>
+</p><ol>
+<li>Log onto your PlayStation 2 as root</li><br>
+<li>Mount Disc 2 of the PlayStation 2 Linux distribution on your DVD-ROM drive with
+this command: <b>mount -t udf /dev/cdrom /mnt/cdrom</b></li><br>
+<li>Edit your <b>/etc/exports</b> file, (creating it if necessary) and add the following:
+<pre>/mnt/cdrom     (ro,insecure)</pre></li>
+<li>Start NFSD by typing: <b>service nfs start</b></li><br>
+<li>Type the following command: <b>exportfs -a</b></li><br>
+<li>You're now sharing your DVD-ROM</li>
+</ol>
+<p><u>Connecting your RedHat box to the PlayStation 2:</u>
+</p><ol>
+<li>Log onto your RedHat box as root</li><br>
+<li>Create a mount point in the /mnt directory: <b>mkdir /mnt/ps2</b></li><br>
+<li>Mount the PlayStation drive: <b>mount <i>10.0.0.1</i>:/mnt/cdrom /mnt/ps2</b></li>
+(where <i>10.0.0.1</i> is the IP address of your PlayStation 2.)<br>
+</ol>
+</ol>
+
+<p>Now, you should be able to follow the steps above, substituting /mnt/ps2 for /mnt/cdrom.
+</p><ol><p>Example
+</p><p><b>rpm2cpio /mnt/cdrom/SRPMS/binutils-2.9EE-3a.src.rpm | cpio -ivd</b>
+</p><p>becomes
+</p><p><b>rpm2cpio /mnt/ps2/SRPMS/binutils-2.9EE-3a.src.rpm | cpio -ivd</b>
+</p></ol>
+<p>When you're done, you'll need to basically perform the reverse of the steps outlined 
+above:
+</p><ol>
+<p><u>Disconnect the share on the PC:</u>
+</p><ol>
+<li>Log into the PC as root</li><br>
+<li>Type: <b>umount /mnt/ps2</b></li><br>
+</ol>
+
+<p><u>Stop NFS on the PlayStation 2:</u>
+</p><ol>
+<li>Log onto the PlayStation 2 as root</li><br>
+<li>remove the line you added to <b>exports</b> in the step above</li><br>
+<li>Type <b>exportfs -a</b></li><br>
+<li>Type <b>service nfs stop</b></li><br>
+</ol>
+</ol>
+
+<!--
+     FILE ARCHIVED ON 4:34:11 Aug 20, 2008 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 3:26:53 Sep 28, 2011.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+</body></html>
