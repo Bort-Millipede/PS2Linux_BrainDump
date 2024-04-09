@@ -1,0 +1,34 @@
+#! /bin/bash
+
+ABUSE_LOC=/usr/local/bin #location where abuse*.sdl files reside
+
+KV=`uname -r`
+if [ "$KV" != "2.2.1" ] && [ "$KV" != "2.2.19" ] #if running kernel is not 2.2.1 or 2.2.19: print warning and ask to proceed
+then
+	echo "Abuse may not run correctly (or at all) using the $KV kernel."
+	echo -e "For guaranteed results, switch to the 2.2.1 kernel."
+	echo -e "For likely results, switch to 2.2.19 kernel and perform proper configuration\n"
+	echo -n "Would you like to continue? (N/y): "
+	read -r YN
+	case $YN in	[Yy]);;
+		*) exit;;
+	esac
+fi
+
+if [ -d "$HOME/.abuse" ] #check if Abuse is installed for current user: install if not
+then
+	:
+else
+	echo "Abuse not installed for user $(whoami), installing..."
+	mkdir $HOME/.abuse
+	ln -s /usr/local/games/abuse/* $HOME/.abuse/.
+fi
+
+pushd $HOME/.abuse
+$ABUSE_LOC/abuse-$(echo $KV | cut -d"_" -f 1).sdl
+popd
+
+unset ABUSE_LOC
+unset KV
+unset YN
+exit
