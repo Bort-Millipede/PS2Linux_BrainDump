@@ -99,7 +99,7 @@ Install to current directory and create installation archive.
 rm -rf usr
 make DESTDIR=`pwd` install
 cp builds/unix/install.mk.bak builds/unix/install.mk
-tar czf ../freetype-2.1.2.mipsEEel-linux.tar.gz usr
+tar czf freetype-2.1.2.mipsEEel-linux.tar.gz usr
 ```
 
 ### (RECOMMENDED) Post-Build Cleanup
@@ -148,6 +148,7 @@ tar czf ft2demos-2.1.2.mipsEEel-linux.tar.gz ft2demos-2.1.2
 
 ## Installing on PS2 Linux (as root)
 
+Transfer **freetype-2.1.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/freetype-2.1.2.mipsEEel-linux.tar.gz
@@ -155,7 +156,9 @@ tar xzf /path/to/freetype-2.1.2.mipsEEel-linux.tar.gz
 ```
 
 &nbsp;  
-**OPTIONAL:** Install FreeType Demos and Free Kochi Mincho TrueType fonts.
+### **OPTIONAL:** Install FreeType Demos and Free Kochi Mincho TrueType fonts.
+
+Transfer **ft2demos-2.1.2.mipsEEel-linux.tar.gz** and **kochi-mincho-0.2.20020727.tar.bz2** archives to PS2 Linux and install.
 ```bash
 cd /usr/local/share
 tar xzf /path/to/ft2demos-2.1.2.mipsEEel-linux.tar.gz

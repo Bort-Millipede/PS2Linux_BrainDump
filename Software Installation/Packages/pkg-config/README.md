@@ -1,11 +1,11 @@
 # pkg-config 0.12.0
 
 [Source link](https://pkgconfig.freedesktop.org/releases/pkgconfig-0.12.0.tar.gz)  
-***Build type:*** native (directly on PS2 Linux)
+**Build type:** native (directly on PS2 Linux)
 
 ## Building/Installing on PS2 Linux
 
-Extract archive:
+Extract source archive:
 ```bash
 tar xzf pkgconfig-0.12.0.tar.gz
 cd pkgconfig-0.12.0

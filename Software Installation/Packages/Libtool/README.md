@@ -1,9 +1,9 @@
 # Libtool 1.4.2
 
 [Source link](https://ftp.gnu.org/gnu/libtool/libtool-1.4.2.tar.gz)  
-***Build type:*** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
+**Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
-## Building
+## Building for PS2 Linux
 
 Extract archive
 ```bash
@@ -51,7 +51,7 @@ tar czf libtool-1.4.2.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
-Transfer ***libtool-1.4.2.mipsEEel-linux.tar.gz*** archive to PS2 Linux and install
+Transfer **libtool-1.4.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/libtool-1.4.2.mipsEEel-linux.tar.gz

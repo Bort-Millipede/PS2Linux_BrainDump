@@ -34,6 +34,7 @@ tar czf mpg123-0.66.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
+Transfer **mpg123-0.66.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/mpg123-0.66.mipsEEel-linux.tar.gz

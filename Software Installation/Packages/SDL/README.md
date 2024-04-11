@@ -312,6 +312,7 @@ unset SDL_CONFIG
 
 ## Installing on PS2 Linux (as root)
 
+Transfer **SDL-1.2.5.mipsEEel-linux.tar.gz** and **SDL_net-1.2.2.mipsEEel-linux.tar.gz** archives to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/SDL-1.2.5.mipsEEel-linux.tar.gz
@@ -320,7 +321,9 @@ tar xzf /path/to/SDL_net-1.2.2.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
 
-**OPTIONAL:** Install SDL tests (as root).
+### **OPTIONAL:** Install SDL tests (as root).
+
+Transfer **SDL-tests-1.2.5.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /usr/local/share
 tar xzf /path/to/SDL-tests-1.2.5.mipsEEel-linux.tar.gz

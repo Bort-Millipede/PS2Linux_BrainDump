@@ -80,6 +80,7 @@ tar czf popt-1.7.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
+Transfer **popt-1.7.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/popt-1.7.mipsEEel-linux.tar.gz

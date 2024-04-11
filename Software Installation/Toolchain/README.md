@@ -56,7 +56,7 @@ The above items could also be accomplished in a shell using sed/perl commands, b
 
 ## Additional Cross-Compilers
 
-**NOTE:** All cross-compilers outlined below have only been used to compile simple "hello world" binaries. Results may vary attempting to compile more complex binaries.
+**NOTE:** All cross-compilers outlined below have only been used to compile simple "hello world" binaries. Results may vary when attempting to compile more complex binaries.
 
 Besides C and C++, additional cross-compilers can be built and installed with relative ease. This is accomplished by re-issuing the final GCC build/install command with additional option(s) for the LANGUAGES variable. 
  easily be built for the following languages:

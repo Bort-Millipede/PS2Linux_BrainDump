@@ -46,7 +46,7 @@ tar czf pv-0.6.4.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
-Transfer *pv-0.6.4.mipsEEel-linux.tar.gz* archive to PS2 Linux and install
+Transfer **pv-0.6.4.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/pv-0.6.4.mipsEEel-linux.tar.gz
