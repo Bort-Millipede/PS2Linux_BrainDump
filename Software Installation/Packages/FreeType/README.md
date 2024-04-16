@@ -4,7 +4,7 @@ Source links:
 * [freetype-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/freetype-2.1.2.tar.gz/download)
 * [ft2demos-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/ft2demos-2.1.2.tar.gz/download) **(OPTIONAL)**
 
-[Free Kochi Mincho TrueType fonts](https://web.archive.org/web/20020802093141/http://www.on.cs.keio.ac.jp/~yasu/linux/fonts/kochi-mincho-0.2.20020727.tar.bz2) **(OPTIONAL)**
+[Free Kochi Mincho TrueType fonts link](https://web.archive.org/web/20020802093141/http://www.on.cs.keio.ac.jp/~yasu/linux/fonts/kochi-mincho-0.2.20020727.tar.bz2) **(OPTIONAL)**
 
 **Build types:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 

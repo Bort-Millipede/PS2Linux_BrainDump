@@ -1,0 +1,118 @@
+# cdrtools
+
+Source links:  
+* [1.10](https://mirrors.dotsrc.org/schilytools/OLD/cdrecord/cdrtools-1.10.tar.gz)
+* [2.0](https://src.fedoraproject.org/repo/pkgs/cdrtools/cdrtools-2.0.tar.gz/2e94010d6f746c187352223b8ea50d64/cdrtools-2.0.tar.gz)
+* [2.01.01a36](https://mirror.sobukus.de/files/src/cdrtools/cdrtools-2.01.01a36.tar.gz)
+
+**Build type:** native (directly on PS2 Linux)
+
+## Prerequisites
+
+For any operations requiring the use of an optical drive, the built-in PS2 drive likely will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a USB-attached optical drive will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the following kernel modules loaded:
+* cdrom (may be built-in to 2.4.17_mvl21 by default)
+* sd_mod
+* sr_mod
+* usb-storage
+
+The above modules are available in kernel 2.2.1 but are VERY UNSTABLE (in the author's experience: loading these and trying to use a USB-attached optical drive completely freezes the system which then requires a hard reboot).
+
+For burning CDs/DVDs via ```cdrecord```, this appears to only be available under kernel 2.4.17_mvl21 with specific sub-modules of the usb-storage module enabled.
+
+Because of the reason outlined above, it is recommended that cdrtools be used under kernel 2.4.17_mvl21 (recommended) or 2.2.19. As such, the software should be built against one of these kernel versions by recreating the ```/usr/src/linux``` to reference one of the following:  
+* ```2.4.17_ps2-22```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1
+* ```2.4.17_ps2-26```: 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
+* ```2.2.19_ps2-5```: 2.2.19 kernel from Broadband Navigator 0.10
+
+### Dependencies
+
+* [smake](../smake)
+
+## Building/Installing on PS2 Linux
+
+### cdrtools 1.10
+
+Extract source archive
+```bash
+tar xzf cdrtools-1.10.tar.gz
+cd cdrtools-1.10
+```
+
+&nbsp;  
+Build source
+```bash
+smake
+```
+
+&nbsp;  
+Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+```bash
+smake INS_BASE=`pwd`/usr/local install
+tar czf cdrtools-1.10.mipsEEel-linux.tar.gz usr
+```
+
+&nbsp;  
+Install to PS2 Linux (as root or via sudo)
+```bash
+smake INS_BASE=/usr/local install
+```
+
+### cdrtools 2.0
+
+Extract source archive
+```bash
+tar xzf cdrtools-2.0.tar.gz
+cd cdrtools-2.0
+```
+
+&nbsp;  
+Build source
+```bash
+smake
+```
+
+&nbsp;  
+Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+```bash
+smake INS_BASE=`pwd`/usr/local install
+tar czf cdrtools-2.0.mipsEEel-linux.tar.gz usr
+```
+
+&nbsp;  
+Install to PS2 Linux (as root or via sudo)
+```bash
+smake INS_BASE=/usr/local install
+```
+
+### cdrtools 2.01.01a36
+
+Extract source archive
+```bash
+tar xzf cdrtools-2.01.01a36.tar.gz
+cd cdrtools-2.01.01
+```
+
+&nbsp;  
+Build source
+```bash
+smake
+```
+
+&nbsp;  
+Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+```bash
+smake INS_BASE=`pwd`/usr/local install
+tar czf cdrtools-2.01.01a36.mipsEEel-linux.tar.gz usr
+```
+
+&nbsp;  
+Install to PS2 Linux (as root or via sudo)
+```bash
+smake INS_BASE=/usr/local install
+```
+
+### (RECOMMENDED) Post-Build
+
+If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the source archive be retained in case cdrtools needs to be re-installed later (example: if [star](star) is installed after installing cdrtools).
+
+

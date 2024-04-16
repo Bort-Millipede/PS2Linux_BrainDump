@@ -9,7 +9,7 @@ It is recommended to set the ```/usr/src/linux``` symbolic link to reference the
 
 ### Dependencies
 
-* [smake](smake)
+* [smake](../smake)
 
 ## Building/Installing on PS2 Linux
 
@@ -20,9 +20,14 @@ cd star-1.4.3
 ```
 
 &nbsp;  
-Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+Build source
 ```bash
 smake
+```
+
+&nbsp;  
+Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+```bash
 rm -rf usr
 smake INS_BASE=`pwd`/usr/local install
 tar czf star-1.4.3.mipsEEel-linux.tar.gz usr
@@ -36,5 +41,5 @@ smake INS_BASE=/usr/local install
 
 ### (RECOMMENDED) Post-Build "cleanup"
 
-If [cdrtools-2.0 or cdrtools-2.01.01a36](cdrtools) was installed prior to building/installing star, it is recommended that cdrtools be re-installed from source (if the original source archive is still available) or via installation archive.
+If [cdrtools-2.0 or cdrtools-2.01.01a36](../cdrtools) was installed prior to building/installing star, it is recommended that cdrtools be re-installed from source (if the original source archive is still available) or via installation archive.
 

@@ -115,7 +115,7 @@ Configure source. Notes about passed options:
 ```
 
 &nbsp;  
-Build source and install to current directory, then create installation archive
+Build source and install to current directory, then create installation archive.
 ```bash
 make
 rm -rf usr
@@ -321,7 +321,7 @@ tar xzf /path/to/SDL_net-1.2.2.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
 
-### **OPTIONAL:** Install SDL tests (as root).
+### **OPTIONAL:** Install SDL tests (as root)
 
 Transfer **SDL-tests-1.2.5.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

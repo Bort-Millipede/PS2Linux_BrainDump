@@ -30,7 +30,7 @@ The section describes setting up a dedicated system for cross-compiling software
 * In keeping with generally-accepted [Linux directory conventions](https://www.linuxfromscratch.org/blfs/view/stable/introduction/position.html), it is recommended that any software compiled (either cross-compiled or natively-compiled) and installed on PS2 Linux be installed to the ```/usr/local``` directory and NOT to the ```/usr``` directory. Therefore, when configuring software for compiling via the included ```configure``` script, the ```--prefix=/usr/local``` command-line option should be passed.
 * Because of the above point, the ```/usr/local/lib``` directory needs to be added to the ```/etc/ld.so.conf``` file on PS2 Linux. This will ensure that all shared libraries installed to ```/usr/local/lib``` are properly linked and cached via the ```ldconfig``` command.
 * To natively compile (directly on PS2 Linux) against a specific kernel version, recreate the ```/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
-  * Examples of what the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` link can be set to:
+  * Examples of what the ```/usr/src/linux``` link can be set to:
     * ```2.2.1_ps2-6```: 2.2.1 kernel from Beta Release 1
     * ```2.2.1_ps2-7```: 2.2.1 kernel from Release 1.0
     * ```2.2.19_ps2-5```: 2.2.19 kernel from Broadband Navigator 0.10
@@ -68,13 +68,16 @@ The section describes setting up a dedicated system for cross-compiling software
 
 **NOTE:** To avoid any possible headaches conforming to specific license agreements and/or dealing with conflicting licensing agreements, prebuilt binaries for those listed below will not be distributed by the author. Thankfully the documentation SHOULD be detailed enough to allow readers to build their own binaries.
 
+* [cdrtools 1.10/2.0/2.01.01a36](Packages/cdrtools)
 * [FreeType 2.1.2](Packages/FreeType)
 * [Libtool 1.4.2](Packages/Libtool)
+* [Maelstrom 3.0.6](Packages/Maelstrom)
 * [mpg123 0.66](Packages/mpg123)
 * [Netcat 1.10](Packages/Netcat)
 * [pkg-config 0.12.0](Packages/pkg-config)
 * [Popt 1.7](Packages/Popt)
 * [pv (pipe viewer) 0.6.4](Packages/pv)
+* [Quake](Packages/Quake)
 * [Reiserfsprogs 3.x.0j](Packages/Reiserfsprogs)
 * [SDL 1.2.5/SDL_net 1.2.2](Packages/SDL)
 * [smake (schily-make) 1.2](Packages/smake)
