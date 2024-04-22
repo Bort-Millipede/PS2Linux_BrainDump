@@ -31,7 +31,7 @@ Run bootstrap script and modify autoconf files to include mipsEEel-linux host
 ```bash
 ./bootstrap
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  

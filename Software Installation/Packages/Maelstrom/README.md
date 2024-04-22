@@ -32,7 +32,7 @@ export SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config
 Modify autoconf files to include mipsEEel-linux host.
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  
@@ -68,7 +68,7 @@ tar xzf /path/to/Maelstrom-3.0.6.mipsEEel-linux.tar.gz
 ```
 
 &nbsp;  
-Transfer **maelstrom** helper script to PS2 Linux and install to /usr/local/bin. This will allow Maelstrom to be launched by any user from any directory.
+Transfer **[maelstrom](maelstrom)** helper script to PS2 Linux and install to /usr/local/bin. This will allow Maelstrom to be launched by any user from any directory.
 ```
 cp /path/to/maelstrom /usr/local/bin/maelstrom
 chmod 755 /usr/local/bin/maelstrom

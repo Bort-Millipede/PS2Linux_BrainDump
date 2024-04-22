@@ -30,21 +30,18 @@ export SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config
 ```
 
 &nbsp;  
-Modify ```bootstrap``` script to explicitly use automake-1.5, then execute.
+Modify ```bootstrap``` script to explicitly use automake-1.4 and to copy files
 ```bash
 perl -i.bak -pe "s/aclocal/aclocal-1.4/" bootstrap
-perl -i -pe "s/automake/automake-1.4/" bootstrap
-./bootstrap
+perl -i -pe "s/automake/automake-1.4 -c/" bootstrap
 ```
 
 &nbsp;  
-Copy system autoconf file to source directory, then modify to include mipsEEel-linux host.
+Execute ```bootstrap``` script, then modify autoconf files to include mipsEEel-linux host.
 ```bash
-export CONFIG_SUB=`ls -l config.sub | rev | cut -d" " -f 1 | rev`
-rm -f config.sub
-cp $CONFIG_SUB .
+./bootstrap
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  
@@ -100,4 +97,8 @@ Set permanent **quake** bash alias for current non-root user by placing the foll
 ```bash
 alias quake='nuq-sdl -noudp'
 ```
+
+## Usage Notes
+
+Unfortunately, for unspecified reasons the sound does not work in-game.
 

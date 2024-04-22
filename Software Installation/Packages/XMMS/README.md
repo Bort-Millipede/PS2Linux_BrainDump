@@ -5,18 +5,18 @@
 
 ## Preliminary Considerations
 
-* Another option for getting XMMS on PS2 Linux is to use the prebuilt XMMS binary packages [available on this page](http://ps2linux.no-ip.info/playstation2-linux.com/projects/cfyc.html).
+Another option for getting XMMS on PS2 Linux is to use the prebuilt XMMS binary packages [available on this page](http://ps2linux.no-ip.info/playstation2-linux.com/projects/cfyc.html).
 
 ## Building/Installing on PS2 Linux
 
-Extract source archive
+Extract source archive.
 ```bash
 tar xIf xmms-1.2.7.tar.bz2
 cd xmms-1.2.7
 ```
 
 &nbsp;  
-Set necessary environment variables
+Set necessary environment variables.
 ```bash
 export PREFIX=/usr/local
 ```
@@ -36,14 +36,14 @@ make
 ```
 
 &nbsp;  
-Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs)
+Install to current directory and create installation archive (for easy installation onto future PS2 Linux installs).
 ```bash
 make DESTDIR=`pwd` install
 tar czf xmms-1.2.7.mipsEEel-linux.tar.gz usr/
 ```
 
 &nbsp;  
-Install to PS2 Linux (as root or via sudo)
+Install to PS2 Linux (as root or via sudo).
 ```bash
 make install
 ```

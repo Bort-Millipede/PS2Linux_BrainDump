@@ -1,0 +1,44 @@
+# sh
+# Build configuration script
+#
+# See http://www.mozilla.org/build/unix.html for build instructions.
+#
+#CROSS_COMPILE=1
+GLIB_CONFIG=/usr/bin/glib-config
+GTK_CONFIG=/usr/bin/gtk-config
+LIBIDL_CONFIG=/usr/bin/libIDL-config
+HOST_LIBIDL_CONFIG=/usr/bin/libIDL-config
+FT2_CONFIG=/usr/local/bin/freetype-config
+LIBS=-lc
+
+ac_add_options --prefix=/usr/local
+#ac_add_options --target=mipsEEel-linux
+#ac_add_options --x-includes=/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/include
+#ac_add_options --x-libraries=/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/lib
+
+# Options for 'configure' (same as command-line options).
+# all are listed so that one can manually tweak this config file.
+#ac_add_options --enable-mathml
+#ac_add_options --enable-svg
+#ac_add_options --enable-extensions
+#ac_add_options --enable-crypto
+#ac_add_options --enable-logrefcnt
+#ac_add_options --without-system-nspr
+#ac_add_options --without-system-zlib
+#ac_add_options --without-system-jpeg
+#ac_add_options --without-system-png
+#ac_add_options --without-system-mng
+
+ac_add_options --enable-bootstrap
+ac_add_options --disable-tests
+ac_add_options --disable-debug
+ac_add_options --enable-optimize
+ac_add_options --without-system-nspr
+ac_add_options --without-system-zlib
+ac_add_options --without-system-jpeg
+ac_add_options --without-system-png
+ac_add_options --without-system-mng
+ac_add_options --enable-crypto #comment to disable PSM/SSL support
+ac_add_options --with-pthreads
+ac_add_options --disable-freetype2
+ac_add_options --enable-application=browser

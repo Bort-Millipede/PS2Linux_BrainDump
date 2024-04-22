@@ -40,7 +40,13 @@ After completing the tutorial, various ```mipsEEel-linux-*``` binaries (namely t
 
 ## Additional Recommended Steps For Setting Up Usable Environment
 
-* The [setup-xrpms.sh](setup-xrpms.sh) script created/used in the tutorial does not go far enough in editing the ```*-config``` scripts installed to /usr/mipsEEel-linux/mipsEEel-linux/usr/bin (for example: esd-config is not edited) to reference ```/usr/mipsEEel-linux/mipsEEel-linux/usr/*``` directories. These should be manually inspected and edited:
+* The 2.2.1 kernel source from Release 1.0 is installed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/2.2.1_ps2``` as part of the tutorial. It is recommended that additional kernel sources also be installed to this directory:
+  * 2.2.1 kernel source for Beta Release 1. Recommend renaming the directory to ```2.2.1_ps2-6```.
+  * 2.2.19 kernel source from Broadband Navigator 0.10. Recommend renaming the directory to ```2.2.19_ps2-5```.
+  * 2.4.17_mvl21 kernel source from Broadband Navigator 0.30 for Beta Release 1, or 2.4.17_mvl21 kernel source from Broadband Navigator 0.31 and 0.32 for Release 1.0.
+    * Recommend renaming the directory for Beta Release 1 to ```2.4.17_ps2-22``.
+    * Recommend renaming the directory for Release 1.0 to ```2.4.17_ps2-26``.
+* The [setup-xrpms.sh](setup-xrpms.sh) script created/used in the tutorial does not go far enough in editing the ```*-config``` scripts installed to /usr/mipsEEel-linux/mipsEEel-linux/usr/bin (for example: ```esd-config``` is not edited) to reference ```/usr/mipsEEel-linux/mipsEEel-linux/usr/*``` directories. These should be manually inspected and edited:
   * ```/usr/include``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/include```.
   * ```/usr/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/lib```.
   * ```/usr/X11R6/include``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/include```.

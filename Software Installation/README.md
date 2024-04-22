@@ -27,48 +27,49 @@ The section describes setting up a dedicated system for cross-compiling software
 
 ## General Tips & Tricks
 
-* In keeping with generally-accepted [Linux directory conventions](https://www.linuxfromscratch.org/blfs/view/stable/introduction/position.html), it is recommended that any software compiled (either cross-compiled or natively-compiled) and installed on PS2 Linux be installed to the ```/usr/local``` directory and NOT to the ```/usr``` directory. Therefore, when configuring software for compiling via the included ```configure``` script, the ```--prefix=/usr/local``` command-line option should be passed.
-* Because of the above point, the ```/usr/local/lib``` directory needs to be added to the ```/etc/ld.so.conf``` file on PS2 Linux. This will ensure that all shared libraries installed to ```/usr/local/lib``` are properly linked and cached via the ```ldconfig``` command.
-* To natively compile (directly on PS2 Linux) against a specific kernel version, recreate the ```/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
+* **Recommend installing software to /usr/local:** In keeping with generally-accepted [Linux directory conventions](https://www.linuxfromscratch.org/blfs/view/stable/introduction/position.html), it is recommended that any software compiled (either cross-compiled or natively-compiled) and installed on PS2 Linux be installed to the ```/usr/local``` directory and NOT to the ```/usr``` directory. Therefore, when configuring software for compiling via the included ```configure``` script, the ```--prefix=/usr/local``` command-line option should be passed.
+* **Add /usr/local to /etc/ld.so.conf file:** Because of the above point, the ```/usr/local/lib``` directory needs to be added to the ```/etc/ld.so.conf``` file on PS2 Linux. This will ensure that all shared libraries installed to ```/usr/local/lib``` are properly linked and cached via the ```ldconfig``` command.
+* **Build software as non-root user:** It is highly recommended that software be built using a non-root user before installing as a root user. This can help prevent necessary system files from being accidentally overwritten or corrupted due to a badly-typed command. This applies to:
+* **Natively compiling software against specific kernel versions:** To natively compile (directly on PS2 Linux) against a specific kernel version, recreate the ```/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
   * Examples of what the ```/usr/src/linux``` link can be set to:
-    * ```2.2.1_ps2-6```: 2.2.1 kernel from Beta Release 1
-    * ```2.2.1_ps2-7```: 2.2.1 kernel from Release 1.0
-    * ```2.2.19_ps2-5```: 2.2.19 kernel from Broadband Navigator 0.10
-    * ```2.4.17_ps2-22```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1
-    * ```2.4.17_ps2-26```: 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
+    * ```2.2.1_ps2```: 2.2.1 kernel from Beta Release 1, or 2.2.1 kernel from Release 1.0. 
+    * ```2.2.19_ps2```: 2.2.19 kernel from Broadband Navigator 0.10.
+    * ```2.4.17_ps2```: 2.4.17_mvl21 kernel from Broadband Navigator 0.30 for Beta Release 1, or 2.4.17_mvl21 kernel from Broadband Navigator 0.31 and 0.32 for Release 1.0.
   * Examples of software that may require recreating the ```/usr/src/linux``` symbolic link:
     * star
     * cdrtools
 
 ## Cross-Compiling Tips & Tricks
 
-* Shared libraries that have been cross-compiled and are intended to be linked to future software being cross-compiled will need to be installed to the cross-compiling environment as well as to PS2 Linux. This usually requires building/installing the software twice: once for the cross-compiling environment and once for PS2 Linux.
+* **Install shared libraries to cross-compiling environment:** Shared libraries that have been cross-compiled and are intended to be linked to future software being cross-compiled will need to be installed to the cross-compiling environment as well as to PS2 Linux. This usually requires building/installing the software twice: once for the cross-compiling environment and once for PS2 Linux.
   * This is clearly outlined in specific package build instructions below where building/installing twice is required.
-* Common options passed to included ```configure``` scripts to configure software for cross-compiling:
-  * ```--host=mipsEEel-linux```: configure software to be cross-compiled for PS2 Linux (MIPS Endian little system with an Emotion Engine processor). This host value is not included by default, but can be trivially added to the necessary ```config.sub``` file(s) via sed/perl commands (included in most specific package tutorials linked below).
+* **Common configure options:** Common options passed to included ```configure``` scripts to configure software for cross-compiling:
+  * ```--host=mipsEEel-linux```: configure software to be cross-compiled for PS2 Linux (MIPS Endian little system with an Emotion Engine processor). This host value is not included by default, but can be trivially added to the necessary ```config.sub``` file(s) via sed/perl commands (included in most package tutorials linked below).
   * ```--prefix=/usr/mipsEEel-linux/mipsEEel-linux/usr```: For building software to be installed to the cross-compiling environment.
   * ```--prefix=/usr/local```: For building software to be installed to PS2 Linux.
-* In cases where passing the ```--host=mipsEEel-linux``` option is insufficient to fully configure the software for cross-compiling (example: SDL/SDL_net), the individual compilation components (```mipsEEel-linux-gcc``` and ```mipsEEel-linux-ld```, for example) should be specified via environment variables before executing the ```configure``` scripts.
-* To cross-compile software against a specific kernel version, recreate the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
+* **Specifying cross-compiling tools individually:** In cases where passing the ```--host=mipsEEel-linux``` option is insufficient to fully configure the software for cross-compiling (example: SDL/SDL_net), the individual compilation components (```mipsEEel-linux-gcc``` and ```mipsEEel-linux-ld```, for example) should be specified via environment variables before executing the ```configure``` scripts.
+* **Cross-Compiling software against specific kernel versions:** To cross-compile software against a specific kernel version, recreate the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
   * Examples of what the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` link can be set to:
-    * ```2.2.1_ps2-6```: 2.2.1 kernel from Beta Release 1
-    * ```2.2.1_ps2-7```: 2.2.1 kernel from Release 1.0
-    * ```2.2.19_ps2-5```: 2.2.19 kernel from Broadband Navigator 0.10
-    * ```2.4.17_ps2-22```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1
-    * ```2.4.17_ps2-26```: 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
+    * ```2.2.1_ps2```: 2.2.1 kernel from Beta Release 1, or 2.2.1 kernel from Release 1.0. 
+    * ```2.2.19_ps2```: 2.2.19 kernel from Broadband Navigator 0.10.
+    * ```2.4.17_ps2```: 2.4.17_mvl21 kernel from Broadband Navigator 0.30 for Beta Release 1, or 2.4.17_mvl21 kernel from Broadband Navigator 0.31 and 0.32 for Release 1.0.
   * Examples of software that may require recreating the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link:
     * VLC (certain dependencies)
     * Abuse
     * akmem
     * ps2fs
-* *-config programs (such as sdl-config or esd-config) used to locate headers and libraries will often need to be reference via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
-* Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
+* **Reference correct *-config scripts when building:** *-config programs (such as sdl-config or esd-config) used to locate headers and libraries will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
+* **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
 
 ## Building Specific Packages
 
-**NOTE:** To avoid any possible headaches conforming to specific license agreements and/or dealing with conflicting licensing agreements, prebuilt binaries for those listed below will not be distributed by the author. Thankfully the documentation SHOULD be detailed enough to allow readers to build their own binaries.
+**NOTE:** To avoid any possible headaches conforming to specific license agreements and/or dealing with conflicting licensing agreements, prebuilt binaries for those listed below will not be distributed by the author at this time (this may change in the future). Thankfully the documentation SHOULD be detailed enough to allow readers to build their own binaries.
 
+* [Abuse](Packages/Abuse)
+* [Autoconf 2.53](Packages/Autoconf)
+* [Automake 1.5/1.6.3](Packages/Automake)
 * [cdrtools 1.10/2.0/2.01.01a36](Packages/cdrtools)
+* [Firefox 0.8](Packages/Firefox)
 * [FreeType 2.1.2](Packages/FreeType)
 * [Libtool 1.4.2](Packages/Libtool)
 * [Maelstrom 3.0.6](Packages/Maelstrom)
@@ -84,7 +85,4 @@ The section describes setting up a dedicated system for cross-compiling software
 * [star (schily-tar) 1.4.3](Packages/star)
 * [Stella 1.2](Packages/Stella)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
-
-
-
 

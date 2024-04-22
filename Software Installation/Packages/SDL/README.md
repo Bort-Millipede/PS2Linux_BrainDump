@@ -1,8 +1,8 @@
 # SDL and SDL_net
 
 Source links:  
-* [SDL 1.2.5](https://www.libsdl.org/release/SDL-1.2.5.tar.gz)
-* [SDL_net 1.2.2](https://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.2.tar.gz)
+* [SDL-1.2.5.tar.gz](https://www.libsdl.org/release/SDL-1.2.5.tar.gz)
+* [SDL_net-1.2.2.tar.gz](https://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.2.tar.gz)
 
 **Build types:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
@@ -45,7 +45,7 @@ export ESD_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/esd-config
 Modify autoconf files to include mipsEEel-linux host.
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| ${ARCH} /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-\* /" "$f"; done
 ```
 
 &nbsp;  
@@ -98,7 +98,7 @@ export ESD_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/esd-config
 Modify autoconf files to include mipsEEel-linux host (if using the same extracted directory as above, this should be skipped)
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| ${ARCH} /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-\* /" "$f"; done
 ```
 
 &nbsp;  
@@ -140,7 +140,7 @@ cd SDL-tests
 
 &nbsp;  
 Set necessary environment variables. SDL requires that the individual compilation components be specified via environment variables prior to executing ```configure```.  
-**NOTE**: ```esd-config``` referenced below must be editted prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
+**NOTE:** ```esd-config``` referenced below must be editted prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
 ```bash
 export PREFIX=/usr/local
 export ARCH=mipsEEel
@@ -216,7 +216,7 @@ export SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config
 Modify autoconf files to include mipsEEel-linux host.
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| ${ARCH} /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-\* /" "$f"; done
 ```
 
 &nbsp;  
@@ -267,7 +267,7 @@ export SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config
 Modify autoconf files to include mipsEEel-linux host (if using the same extracted directory as above, this should be skipped)
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| ${ARCH} /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | ${ARCH}-\* /" "$f"; done
 ```
 
 &nbsp;  

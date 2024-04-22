@@ -1,8 +1,8 @@
 # Stella 1.2
 
 Source links:
-* [Stella 1.2](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-1.2-src.tar.gz)
-* [Stella-ps2 1.2](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-ps2-1.2-src.tar.gz)
+* [stella-1.2-src.tar.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-1.2-src.tar.gz)
+* [stella-ps2-1.2-src.tar.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-ps2-1.2-src.tar.gz)
 
 [stella.pro file](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/.stella.pro)
 
@@ -80,4 +80,8 @@ alias stella="pushd /usr/local/games/roms/2600; stella.ps2; popd"
 
 &nbsp;  
 Place Atari 2600 ROMs in /usr/local/games/roms/2600 directory.
+
+## Usage Notes
+
+Stella only displays via the PS2 VGA cable, NOT via the normal A/V cable.
 
