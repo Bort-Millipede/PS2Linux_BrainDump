@@ -37,7 +37,7 @@ The above modules are available in kernel 2.2.1 but are VERY UNSTABLE (in the au
 Beyond this, the author's results with each format are as follows (your results may vary!):  
 * **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputed through the Analog audio port on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is not covered here.
 * **VCDs**: Overall, VLC on PS2 Linux appears to handle these fairly well.
-* **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or the process is terminated. Overall, this functionality should be considered novelty functionality.
+* **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or the process is terminated. Overall, this functionality should be considered a novelty.
 
 ### Dependencies
 
@@ -50,17 +50,17 @@ Beyond this, the author's results with each format are as follows (your results 
   * [autoconf 2.53](../Autoconf) (Installed to PS2 Linux)
   * [automake (1.6.3 or 1.5)](../Automake) (Installed to PS2 Linux)
 * [VLC-specific](Dependencies):
-  * libdvbpsi3
-  * mpeg2dec
-  * a52dec
-  * faad2
-  * lame
-  * ffmpeg
-  * libmad
-  * live
-  * libxml2
-  * libdvdread
-  * libdvdplay
+  * [libdvbpsi3](Dependencies/libdvbpsi3)
+  * [mpeg2dec](Dependencies/mpeg2dec)
+  * [a52dec](Dependencies/a52dec)
+  * [FAAD2](Dependencies/FAAD2)
+  * [LAME](Dependencies/LAME)
+  * [FFmpeg](Dependencies/FFmpeg)
+  * [libMAD](Dependencies/libMAD)
+  * [LIVE555](Dependencies/LIVE555)
+  * [libxml2](Dependencies/libxml2)
+  * [libdvdread](Dependencies/libdvdread)
+  * [libdvdplay](Dependencies/libdvdplay)
   * libdvdcss
   * libdvdnav
   * libcdio
@@ -127,7 +127,7 @@ make DESTDIR=`pwd` install
 ```
 
 &nbsp;  
-Modify installed ```vlc-config``` script to reference correct headers/libraries on PS2 Linux.
+Modify generated ```vlc-config``` script to reference correct headers/libraries on PS2 Linux.
 ```bash
 perl -i -pe "s/\/usr\/mipsEEel-linux\/mipsEEel-linux\/usr\/X11R6\/include/\/usr\/X11R6\/include/g" usr/local/bin/vlc-config
 perl -i -pe "s/\/usr\/mipsEEel-linux\/mipsEEel-linux\/usr\/X11R6\/lib/\/usr\/X11R6\/lib/g" usr/local/bin/vlc-config

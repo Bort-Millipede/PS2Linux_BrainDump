@@ -58,7 +58,7 @@ The section describes setting up a dedicated system for cross-compiling software
     * Abuse
     * akmem
     * ps2fs
-* **Reference correct *-config scripts when building:** *-config programs (such as sdl-config or esd-config) used to locate headers and libraries will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
+* **Reference correct *-config scripts when building:** ```*-config``` scripts (such as ```sdl-config``` or ```esd-config```) used to locate headers and libraries will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
 * **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
 
 ## Building Specific Packages
@@ -84,5 +84,17 @@ The section describes setting up a dedicated system for cross-compiling software
 * [smake (schily-make) 1.2](Packages/smake)
 * [star (schily-tar) 1.4.3](Packages/star)
 * [Stella 1.2](Packages/Stella)
+* [VLC 0.7.2](Packages/VLC)
+  * [a52dec 0.7.4](Packages/VLC/Dependencies/a52dec)
+  * [FAAD2 2.0](Packages/VLC/Dependencies/FAAD2)
+  * [FFmpeg 20040520](Packages/VLC/Dependencies/FFmpeg)
+  * [LAME 3.96](Packages/VLC/Dependencies/LAME)
+  * [libdvbpsi3 0.1.4](Packages/VLC/Dependencies/libdvbpsi3)
+  * [libdvdplay 1.0.1](Packages/VLC/Dependencies/libdvdplay)
+  * [libdvdread (20030812)](Packages/VLC/Dependencies/libdvdread)
+  * [libMAD 0.15.1b](Packages/VLC/Dependencies/libMAD)
+  * [libxml2 2.6.4](Packages/VLC/Dependencies/libxml2)
+  * [LIVE555 (2004.04.23)](Packages/VLC/Dependencies/LIVE555)
+  * [mpeg2dec 0.4.0](Packages/VLC/Dependencies/mpeg2dec)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
 

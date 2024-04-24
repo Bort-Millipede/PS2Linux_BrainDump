@@ -7,7 +7,7 @@
 
 ## Recommendations
 
-Per the author's experience getting VLC working, the dependencies described here should be built and installed in the following order:  
+Per the author's experience getting VLC working, the dependencies described here should be built and installed in exactly the following order:  
 * libdvbpsi3
 * mpeg2dec
 * a52dec
@@ -23,4 +23,5 @@ Per the author's experience getting VLC working, the dependencies described here
 * libdvdnav
 * libcdio
 * vcdimager
+* libcdio (rebuilt to enable VCD functionality from vcdimager)
 
