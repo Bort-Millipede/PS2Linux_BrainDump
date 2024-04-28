@@ -5,7 +5,7 @@
 
 ## Building
 
-Extract archive
+Extract source archive and rename source directory.
 ```bash
 unzip nc110.zip
 mv nc110-git-* nc110

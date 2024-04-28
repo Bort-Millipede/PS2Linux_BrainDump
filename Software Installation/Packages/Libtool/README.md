@@ -5,7 +5,7 @@
 
 ## Building for PS2 Linux
 
-Extract archive
+Extract source archive
 ```bash
 tar xzf libtool-1.4.2.tar.gz
 cd libtool-1.4.2

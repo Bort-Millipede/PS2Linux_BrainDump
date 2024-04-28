@@ -5,7 +5,7 @@
 
 ## Building for PS2 Linux
 
-Extract archive
+Extract source archive
 ```bash
 tar xzf pv-0.6.4.tar.gz
 cd pv-0.6.4
@@ -42,6 +42,14 @@ Install to current directory and create installation archive
 rm -rf usr
 make DESTDIR=`pwd` install
 tar czf pv-0.6.4.mipsEEel-linux.tar.gz usr
+```
+
+## (RECOMMENDED) Post-Build Cleanup
+
+Unset build-related environment variables, in case other software are conducted subsequently in the same shell session
+```bash
+unset PREFIX
+unset LD
 ```
 
 ## Installing on PS2 Linux (as root)

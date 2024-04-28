@@ -41,7 +41,7 @@ make install
 
 ## Building for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf libdvbpsi3-0.1.4.tar.gz
 cd libdvbpsi3-0.1.4

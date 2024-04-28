@@ -5,7 +5,7 @@
 
 ## Building
 
-Extract archive
+Extract source archive
 ```bash
 tar xzf mpg123-0.66.tar.gz
 cd mpg123-0.66

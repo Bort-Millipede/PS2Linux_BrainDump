@@ -69,7 +69,7 @@ make install
 
 ### Building for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf SDL-1.2.5.tar.gz
 cd SDL-1.2.5
@@ -125,7 +125,7 @@ tar czf SDL-1.2.5.mipsEEel-linux.tar.gz usr
 
 ### (OPTIONAL) Building SDL Tests for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf SDL-1.2.5.tar.gz
 cd SDL-1.2.5
@@ -239,7 +239,7 @@ make install
 
 ### Building for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf SDL_net-1.2.2.tar.gz
 cd SDL_net-1.2.2

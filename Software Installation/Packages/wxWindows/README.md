@@ -1,6 +1,6 @@
 # wxWindows 2.5.1 (20031222)
 
-[Source link](https://web.archive.org/web/20040803125519/http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/wxWindows-20031222.tar.gz)  
+[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/wxWindows-20031222.tar.gz)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ### Building/Installing for Cross-Compiling Environment
@@ -40,7 +40,7 @@ make install
 
 ### Building for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf wxWindows-20031222.tar.gz
 cd wxWindows-20031222

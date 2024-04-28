@@ -16,7 +16,7 @@
 
 ## Building for PS2 Linux
 
-Extract archive
+Extract source archive
 ```bash
 tar xzf abuse_sdl-0.5.0.tar.gz
 cd abuse_sdl-0.5.0

@@ -5,7 +5,7 @@
 
 ## Building/Installing for Cross-Compiling Environment
 
-Extract archive
+Extract source archive
 ```bash
 tar xzf popt-1.7.tar.gz
 cd popt-1.7
@@ -38,7 +38,7 @@ make install
 
 ## Building for PS2 Linux
 
-Extract archive (if using the same extracted directory as above, this should be skipped)
+Extract source archive (if using the same extracted directory as above, this should be skipped)
 ```bash
 tar xzf popt-1.7.tar.gz
 cd popt-1.7
