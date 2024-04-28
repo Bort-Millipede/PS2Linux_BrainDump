@@ -1,0 +1,66 @@
+#! /bin/bash
+
+if [ $# -eq 0 ]
+then
+	echo "Usage: $0 PARTITION_NAME"
+	echo -e "\nCommon values for PARTITION_NAME are:"
+	echo -e "__common\n__net\n__sysconf\n__system"
+	echo -e "\nPartitions are mounted using the following command:"
+	echo "mount -t ps2fs -o ro,partition=\"PARTITION_NAME\" /dev/hda /mnt/psf2s"
+	exit 1
+fi
+
+#check for root privileges
+ADM="root"
+if [ "$(whoami)" != "root" ]
+then
+	echo -e "$0 must be run as root!\n"
+	exit 2
+fi
+
+KV=`uname -r`
+if [ "$KV" = "2.2.1" ]
+then
+	echo "ps2fs module may not work correctly (or at all) using the $KV kernel."
+	echo -e "For guaranteed results, switch to the 2.2.19 or 2.4.17_mvl21 kernel."
+	echo -n "Would you like to continue? (N/y): "
+	read -r YN
+	case $YN in	[Yy]);;
+		*) exit 0;;
+	esac
+fi
+
+#load ps2fs module if not already loaded
+lsmod | grep -E "^ps2fs" >/dev/null 2>&1
+if [ $? -eq 1 ]
+then
+	/sbin/insmod ps2fs >/dev/null 2>&1
+fi
+
+PART=""
+DIR="/mnt/ps2fs"
+case $1 in
+	"__common")
+		PART="__common"
+		DIR="/mnt/__common";;
+	"__net")
+		PART="__net"
+		DIR="/mnt/__net";;
+	"__sysconf")
+		PART="__sysconf"
+		DIR="/mnt/__sysconf";;
+	"__system")
+		PART="__system"
+		DIR="/mnt/__system";;
+	*)
+		PART=$1;;
+esac
+
+mkdir -p "$DIR"
+mount -t ps2fs -o ro,partition="$PART" /dev/hda "$DIR"
+if [ $? -eq 0 ]
+then
+	echo -e "\n$PART partition successfully mounted at $DIR!"
+else
+	echo -e "\nError mounting $PART partition!"
+fi

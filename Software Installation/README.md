@@ -61,9 +61,11 @@ The section describes setting up a dedicated system for cross-compiling software
 * **Reference correct *-config scripts when building:** ```*-config``` scripts (such as ```sdl-config``` or ```esd-config```) used to locate headers and libraries will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
 * **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
 
-## Building Specific Packages
+## Building Specific Software
 
 **NOTE:** To avoid any possible headaches conforming to specific license agreements and/or dealing with conflicting licensing agreements, prebuilt binaries for those listed below will not be distributed by the author at this time (this may change in the future). Thankfully the documentation SHOULD be detailed enough to allow readers to build their own binaries.
+
+### Software Packages
 
 * [Abuse](Packages/Abuse)
 * [Autoconf 2.53](Packages/Autoconf)
@@ -77,6 +79,7 @@ The section describes setting up a dedicated system for cross-compiling software
 * [Netcat 1.10](Packages/Netcat)
 * [pkg-config 0.12.0](Packages/pkg-config)
 * [Popt 1.7](Packages/Popt)
+* [ps2fs](Packages/ps2fs)
 * [pv (pipe viewer) 0.6.4](Packages/pv)
 * [Quake](Packages/Quake)
 * [Reiserfsprogs 3.x.0j](Packages/Reiserfsprogs)
@@ -97,4 +100,8 @@ The section describes setting up a dedicated system for cross-compiling software
   * [LIVE555 (2004.04.23)](Packages/VLC/Dependencies/LIVE555)
   * [mpeg2dec 0.4.0](Packages/VLC/Dependencies/mpeg2dec)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
+
+### Linux Kernels
+
+* [2.2.1_ps2-6](Kernels/2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
 
