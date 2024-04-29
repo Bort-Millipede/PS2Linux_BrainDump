@@ -31,7 +31,7 @@ Umount the DVD
 umount /mnt/cdrom
 ```
 
-## Installing Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.2.1 Kernel Source to Cross-Compiling Environment (as root)
 
 Rename directory where Linux Kit Release 1.0 kernel source code is currently stored. (This assumes that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/))
 ```bash
@@ -40,13 +40,14 @@ mv usr/src/linux-2.2.1_ps2 usr/src/linux-2.2.1_ps2-7
 ```
 
 &nbsp;  
-Extract RPMs into cross-compiling environment
+Extract RPMs into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
 rpm2cpio /path/to/kernel-headers-2.2.1_ps2-6.mipsel.rpm | cpio -ivd
 rpm2cpio /path/to/kernel-source-2.2.1_ps2-6.mipsel.rpm | cpio -ivd
 cd usr/src
 mv linux-2.2.1_ps2 linux-2.2.1_ps2-6
+cd linux-2.2.1_ps2-6
 ```
 
 &nbsp;  
@@ -64,7 +65,7 @@ make mrproper
 ```
 
 &nbsp;  
-Copy usable kernel configuration file into kernel source directory.
+Copy usable kernel configuration file (such as [this one](config-2.2.1_ps2-6)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -174,6 +175,9 @@ mount /mnt/mc00
 cp /path/to/vmlinux /mnt/mc00/vmlinux.gz
 chmod 755 /mnt/mc00/vmlinux
 ```
+
+&nbsp;  
+Reboot to use newly-installed kernel.
 
 ### (RECOMMENDED) Post-Build "cleanup"
 
