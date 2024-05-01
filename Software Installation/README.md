@@ -104,4 +104,6 @@ The section describes setting up a dedicated system for cross-compiling software
 ### Linux Kernels
 
 * [2.2.1_ps2-6](Kernels/2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
+* [2.2.19_ps2-5](Kernels/2.2.19_ps2-5) (for PS2 Linux Beta Release 1 and PS2 Linux Release 1.0)
+* [2.4.17_ps2-22](Kernels/2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
 

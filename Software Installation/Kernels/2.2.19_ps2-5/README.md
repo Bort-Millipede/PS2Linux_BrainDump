@@ -4,7 +4,7 @@ Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive
 * kernel-2.2.19_ps2-5.src.rpm (in ```source.tgz``` file under ```source/kernel```)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
-## Resources
+## References
 
 * [http://www.geocities.jp/ps2linux_net/make_install/kernel-2.2.19.html](https://web.archive.org/web/20181105102816/http://www.geocities.jp/ps2linux_net/make_install/kernel-2.2.19.html)
 * [http://www.geocities.jp/ps2linux_net/bn/mount.html](https://web.archive.org/web/20181105102759/http://www.geocities.jp/ps2linux_net/bn/mount.html)
@@ -81,7 +81,7 @@ cd ../..
 * **are installed alongside BB Navigator, or**
 * **need to mount BB Navigator partitions**
 
-Modify APA partitioning support using [this patch]().
+Modify APA partitioning support: enable support for legacy APA partitions using [this patch](kernel-2.2.19_ps2-5_bbn-partitions.patch).
 ```bash
 drivers/block
 patch -p1 < /path/to/kernel-2.2.19_ps2-5_bbn-partitions.patch
@@ -91,13 +91,13 @@ cd ../..
 &nbsp;  
 **Finally: if planning on booting PS2 Linux from BB Navigator:**
 
-Edit ```drivers/char/console.c``` change line 2827 to:
+Edit ```drivers/char/console.c```: change line 2827 to:
 ```
 //graphics_boot = 1;
 ```
 
 &nbsp;  
-Modify included kernel configuration file to:  
+Modify included kernel configuration file to:
 * Specify that the kernel is being cross-compiled
 * Enable built-in ext2 filesystem support.
 * Enable devpts filesystem support.
@@ -122,7 +122,7 @@ make mrproper
 
 &nbsp;  
 Copy included kernel configuration into correct location in kernel source directory.
-```
+```bash
 cp config_ps2 .config
 ```
 
@@ -147,6 +147,7 @@ The kernel can be built in the directory that was created/prepared above, or it 
 * If building in the above directory, building must be done as root.
 * If building in a separate directory, building should be done as a non-root user. To create this directory, follow the directions in the previous section but substitute the ```cd /usr/mipsEEel-linux/mipsEEel-linux/usr/src``` command for a different base directory where the source directory should be created.
 
+&nbsp;  
 If needed, reconfigure the kernel (if not needed, this should be skipped).
 ```bash
 make menuconfig
@@ -173,7 +174,7 @@ make modules_install
 ```
 
 &nbsp;  
-Create installation archive for "installed" kernel modules.
+Create installation archive for kernel modules.
 ```
 cd /lib/modules
 mv 2.2.19 2.2.19_ps2
@@ -182,7 +183,7 @@ tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19_ps2
 
 ## Installing on PS2 Linux (as root)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
 
 &nbsp;  
 Install kernel modules and create necessary ```/lib/modules/2.2.19``` symbolic link.
@@ -221,7 +222,7 @@ Alternatively: install raw uncompressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
 cp /path/to/vmlinux /mnt/mc00/vmlinux-2.2.19
-chmod 755 /mnt/mc00/vmlinux-2.2.19s 
+chmod 755 /mnt/mc00/vmlinux-2.2.19
 ```
 
 &nbsp;  
@@ -238,9 +239,6 @@ mknod /dev/usbmouse0-2.2.19 c 13 32
 ```
 
 &nbsp;  
-
-
-&nbsp;  
 Add a new entry in the ```/etc/modules.conf``` file to correctly load the USB mouse under Kernel 2.2.19.  
 Add the following entry to the ```/etc/modules.conf``` file:
 ```
@@ -248,13 +246,13 @@ alias	char-major-13-32	mousedev
 ```
 
 &nbsp;  
+(Recommended) With the exception of the entry above, diable all ```mousedev``` entries by prepending them with ```#``` characters.
+
+&nbsp;  
 Recreate the ```/dev/usbmouse``` symoblic link to reference the correct USB mouse node.
 ```bash
 ln -s usbmouse0-2.2.19 /dev/usbmouse
 ```
-
-&nbsp;  
-(Recommended) With the exception of the entry above, diable all ```mousedev``` entries by prepending them with ```#``` characters.
 
 &nbsp;  
 Reboot PS2 Linux and select the ```2.2.19``` boot entry to use the 2.2.19 Kernel.

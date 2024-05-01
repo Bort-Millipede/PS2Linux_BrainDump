@@ -9,9 +9,9 @@ Required files (present on [PS2 Linux Beta Release 1 DVD](https://archive.org/do
 
 ### Limitations
 
-The 2.2.1 kernel that comes installed on the Playstation 2 Linux Kit Beta is 2.2.1_ps2-6. It seems that a fair amount of the kernel source (especially items compiled as kernel modules by default) was deliberately ommitted from the available source RPMs. As such, installing a cross-compiled kernel/modules for this version requires the originally-installed modules to be copied and then overwritten.
+The 2.2.1 kernel that comes installed on the Playstation 2 Linux Kit Beta is 2.2.1_ps2-6. It seems that a fair amount of the kernel source (especially items compiled as kernel modules by default, such as PS2-specific devices) was deliberately ommitted from the available source RPMs. As such, installing a cross-compiled kernel/modules for this version requires the originally-installed modules to be copied and then overwritten.
 
-This kernel version expects an HDD partitioned with the proprietary APA format. The Linux Kit Beta uses an earlier rendition of APA partitioning, which is not recognized by the Linux Kit Release 1.0. Additionally, the Linux Kit Release 1.0 does not support APA by default (this is achievable relatively easily but is not covered here), and even when this support is enabled it is only for the newer rendition of APA that is not supported by the Linux Kit Beta. For all of these reasons among others, it is not recommended to attempt to install this exact kernel version onto an installation of PS2 Linux Release 1.0. While it is possible to backport the newer APA partitioning files into this 2.2.1 kernel, doing so is not covered here.
+This kernel version expects an HDD partitioned with the proprietary APA format. The Linux Kit Beta uses a legacy version of APA partitioning, which is not recognized by the Linux Kit Release 1.0. Additionally, the Linux Kit Release 1.0 does not support APA by default (this is achievable relatively easily but is not covered here), and even when this support is enabled it is only for the newer rendition of APA that is not supported by the Linux Kit Beta. For all of these reasons among others, it is not recommended to attempt to install this exact kernel version onto an installation of PS2 Linux Release 1.0. While it is possible to backport the newer APA partitioning files into this 2.2.1 kernel, doing so is not covered here.
 
 ### Kernel Configuration File
 
@@ -31,7 +31,7 @@ Umount the DVD
 umount /mnt/cdrom
 ```
 
-## Installing 2.2.1 Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.2.1_ps2-6 Kernel Source to Cross-Compiling Environment (as root)
 
 Rename directory where Linux Kit Release 1.0 kernel source code is currently stored. (This assumes that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/))
 ```bash
