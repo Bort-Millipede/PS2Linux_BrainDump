@@ -47,7 +47,7 @@ The section describes setting up a dedicated system for cross-compiling software
   * ```--host=mipsEEel-linux```: configure software to be cross-compiled for PS2 Linux (MIPS Endian little system with an Emotion Engine processor). This host value is not included by default, but can be trivially added to the necessary ```config.sub``` file(s) via sed/perl commands (included in most package tutorials linked below).
   * ```--prefix=/usr/mipsEEel-linux/mipsEEel-linux/usr```: For building software to be installed to the cross-compiling environment.
   * ```--prefix=/usr/local```: For building software to be installed to PS2 Linux.
-* **Specifying cross-compiling tools individually:** In cases where passing the ```--host=mipsEEel-linux``` option is insufficient to fully configure the software for cross-compiling (example: SDL/SDL_net), the individual compilation components (```mipsEEel-linux-gcc``` and ```mipsEEel-linux-ld```, for example) should be specified via environment variables before executing the ```configure``` scripts.
+* **Specifying cross-compiling tools individually:** In cases where passing the ```--host=mipsEEel-linux``` option is insufficient to fully configure the software for cross-compiling (example: SDL/SDL_net), the individual compilation components (```mipsEEel-linux-gcc``` and ```mipsEEel-linux-ld```, for example) should be specified via environment variables before executing the ```configure``` scripts. In other cases, the ```configure``` script will allow individual compilation components to be specified via command-line options.
 * **Cross-Compiling software against specific kernel versions:** To cross-compile software against a specific kernel version, recreate the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
   * Examples of what the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` link can be set to:
     * ```2.2.1_ps2```: 2.2.1 kernel from Beta Release 1, or 2.2.1 kernel from Release 1.0. 
@@ -58,7 +58,7 @@ The section describes setting up a dedicated system for cross-compiling software
     * Abuse
     * akmem
     * ps2fs
-* **Reference correct *-config scripts when building:** ```*-config``` scripts (such as ```sdl-config``` or ```esd-config```) used to locate headers and libraries will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
+* **Reference correct ```*-config``` scripts when building:** ```*-config``` scripts (such as ```sdl-config``` or ```esd-config```) are used to locate headers and libraries. These will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
 * **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
 
 ## Building Specific Software
@@ -93,6 +93,8 @@ The section describes setting up a dedicated system for cross-compiling software
   * [FFmpeg 20040520](Packages/VLC/Dependencies/FFmpeg)
   * [LAME 3.96](Packages/VLC/Dependencies/LAME)
   * [libdvbpsi3 0.1.4](Packages/VLC/Dependencies/libdvbpsi3)
+  * [libdvdcss 1.2.8](Packages/VLC/Dependencies/libdvdcss)
+  * [libdvdnav 0.1.10](Packages/VLC/Dependencies/libdvdnav)
   * [libdvdplay 1.0.1](Packages/VLC/Dependencies/libdvdplay)
   * [libdvdread (20030812)](Packages/VLC/Dependencies/libdvdread)
   * [libMAD 0.15.1b](Packages/VLC/Dependencies/libMAD)

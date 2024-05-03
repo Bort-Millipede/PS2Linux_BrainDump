@@ -61,8 +61,8 @@ Beyond this, the author's results with each format are as follows (your results 
   * [libxml2](Dependencies/libxml2)
   * [libdvdread](Dependencies/libdvdread)
   * [libdvdplay](Dependencies/libdvdplay)
-  * libdvdcss
-  * libdvdnav
+  * [libdvdcss](Dependencies/libdvdcss)
+  * [libdvdnav](Dependencies/libdvdnav)
   * libcdio
   * vcdimager
 

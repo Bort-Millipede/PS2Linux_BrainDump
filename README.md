@@ -17,7 +17,7 @@ Digest and use this at your own risk!!!
 
 ## References
 
-* [playstation2-linux.com site backup](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/kernel-2.4.17-mini-howto.html)
+* [playstation2-linux.com site backup](http://ps2linux.no-ip.info/playstation2-linux.com/)
 * [http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)
 * [http://hp.vector.co.jp/authors/VA008536/ps2linux/](http://hp.vector.co.jp/authors/VA008536/ps2linux/)
 * [http://achurch.org/ps2/](http://achurch.org/ps2/)

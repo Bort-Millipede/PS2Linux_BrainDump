@@ -56,7 +56,7 @@ export GTK_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/gtk-config
 Modify autoconf files to include mipsEEel-linux host. (If using the same extracted directory as above, this should be skipped)
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  

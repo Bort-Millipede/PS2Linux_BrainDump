@@ -65,12 +65,12 @@ export PREFIX=/usr/local
 Modify autoconf files to include mipsEEel-linux host.
 ```bash
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
-for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-* /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  
 Configure source and patch indentation errors in Makefile. Notes about passed options:  
-* ```--without-xmms```: Do not build XMMS plugins, as this is likely not installed into the cross-compiling environment.
+* ```--without-xmms```: Do not build XMMS plugins, as XMMS is likely not installed into the cross-compiling environment.
 ```bash
 ./configure --prefix=$PREFIX --host=mipsEEel-linux --enable-shared --without-xmms
 perl -i.bak -pe "s/^       m/\tm/" Makefile

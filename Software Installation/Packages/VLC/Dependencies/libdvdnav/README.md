@@ -1,14 +1,14 @@
-# libdvdread (20030812)
+# libdvdnav 0.1.10
 
-[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/libdvdread-20030812.tar.bz2)  
+[Source link](https://sourceforge.net/projects/dvd/files/libdvdnav/0.1.10/libdvdnav-0.1.10.tar.gz/download)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Building/Installing for Cross-Compiling Environment
 
 Extract source archive.
 ```bash
-tar xjf libdvdread-20030812.tar.bz2
-cd libdvdread-20030812
+tar xzf libdvdnav-0.1.10.tar.gz
+cd libdvdnav-0.1.10
 ```
 
 &nbsp;  
@@ -18,9 +18,10 @@ export PREFIX=/usr/mipsEEel-linux/mipsEEel-linux/usr
 ```
 
 &nbsp;  
-Execute ```bootstrap``` script and modify autoconf files to include mipsEEel-linux host.
-```bash
-./bootstrap
+Generate initial Makefiles using ```autogen.sh``` and clear any prior build information, then modify autoconf files to include mipsEEel-linux host.
+```
+./autogen.sh
+make distclean
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
 for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
@@ -42,8 +43,8 @@ make install
 
 Extract source archive. (if using the same extracted directory as above, this should be skipped)
 ```bash
-tar xjf libdvdread-20030812.tar.bz2
-cd libdvdread-20030812
+tar xzf libdvdnav-0.1.10.tar.gz
+cd libdvdnav-0.1.10
 ```
 
 &nbsp;  
@@ -53,15 +54,17 @@ export PREFIX=/usr/local
 ```
 
 &nbsp;  
-Execute ```bootstrap``` script and modify autoconf files to include mipsEEel-linux host. (if using the same extracted directory as above, this should be skipped)
+Generate initial Makefiles using ```autogen.sh``` and clear any prior build information, then modify autoconf files to include mipsEEel-linux host. (if using the same extracted directory as above, these should be skipped)
 ```bash
+./autogen.sh
+make distclean
 for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
 for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
 ```
 
 &nbsp;  
 Completely clear previous build (if using a new extracted directory and not the same one as used above, this can be skipped)
-```
+```bash
 make distclean
 ```
 
@@ -77,15 +80,15 @@ Install to current directory, then create installation archive.
 ```bash
 rm -rf usr
 make DESTDIR=`pwd` install
-tar czf libdvdread-20030812.mipsEEel-linux.tar.gz usr
+tar czf libdvdnav-0.1.10.mipsEEel-linux.tar.gz usr
 ```
 
 ## Installing on PS2 Linux (as root)
 
-Transfer **libdvdread-20030812.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+Transfer **libdvdnav-0.1.10.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
-tar xzf /path/to/libdvdread-20030812.mipsEEel-linux.tar.gz
+tar xzf /path/to/libdvdnav-0.1.10.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
 
