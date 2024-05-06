@@ -8,20 +8,20 @@
 ## Recommendations
 
 Per the author's experience getting VLC working, the dependencies described here should be built and installed in exactly the following order:  
-* libdvbpsi3
-* mpeg2dec
-* a52dec
-* faad2
-* lame
-* ffmpeg
-* libmad
-* live
-* libxml2
-* libdvdread
-* libdvdplay
-* libdvdcss
-* libdvdnav
-* libcdio
-* vcdimager
-* libcdio (rebuilt to enable VCD functionality from vcdimager)
+* [libdvbpsi3](libdvbpsi3)
+* [mpeg2dec](mpeg2dec)
+* [a52dec](a52dec)
+* [FAAD2](FAAD2)
+* [LAME](LAME)
+* [FFmpeg](FFmpeg)
+* [libMAD](libMAD)
+* [LIVE555](LIVE555)
+* [libxml2](libxml2)
+* [libdvdread](libdvdread)
+* [libdvdplay](libdvdplay)
+* [libdvdcss](libdvdcss)
+* [libdvdnav](libdvdnav)
+* [libcdio](libcdio)
+* [vcdimager](vcdimager)
+* [libcdio](vcdimager) (rebuilt to enable VCD functionality from vcdimager)
 

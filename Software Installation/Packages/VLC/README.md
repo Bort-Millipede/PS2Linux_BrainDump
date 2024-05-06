@@ -1,5 +1,7 @@
 # VLC 0.7.2
 
+![](VLC_version.png?raw=true)
+
 Source links:  
 * 0.7.2: [http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz)
 * 0.8.0 (required for working VCD player): [http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz)
@@ -12,9 +14,9 @@ Source links:
 
 ## Preliminary Considerations
 
-VLC is heavily dependent upon shared libraries (plugins) to provide support for different media formats. As such, there are many dependencies that need to be built and installed (both to the cross-compiling environment and to PS2 Linux) before VLC can be successfully built and installed to PS2 Linux in a useful functional way.
+Getting VLC built and working on PS2 Linux can be a very long and complicated process. VLC is heavily dependent upon shared libraries (plugins) to provide support for different media formats. As such, there are many dependencies that need to be built and installed (both to the cross-compiling environment and to PS2 Linux) before VLC can be successfully built and installed to PS2 Linux in a useful functional way. This involves building software in the cross-compiling environment as well as natively on PS2 Linux.
 
-If following this page and all subpages exactly, the VLC installed onto PS2 Linux SHOULD (no promises) be able to handle the following media formats:  
+If following this page and all subpages exactly, the build of VLC that will be installed onto PS2 Linux SHOULD (no promises) be able to handle the following media formats:  
 * MP3
 * A52/AC3
 * MP4
@@ -37,7 +39,7 @@ The above modules are available in kernel 2.2.1 but are VERY UNSTABLE (in the au
 Beyond this, the author's results with each format are as follows (your results may vary!):  
 * **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputed through the Analog audio port on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is not covered here.
 * **VCDs**: Overall, VLC on PS2 Linux appears to handle these fairly well.
-* **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or the process is terminated. Overall, this functionality should be considered a novelty.
+* **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or a Segmentation Fault occurs (necessitating that the process be forcefully terminated). Overall, this functionality should be considered a novelty.
 
 ### Dependencies
 
@@ -63,8 +65,10 @@ Beyond this, the author's results with each format are as follows (your results 
   * [libdvdplay](Dependencies/libdvdplay)
   * [libdvdcss](Dependencies/libdvdcss)
   * [libdvdnav](Dependencies/libdvdnav)
-  * libcdio
-  * vcdimager
+  * [libcdio](Dependencies/libcdio)
+  * [vcdimager](Dependencies/vcdimager)
+
+Refer to [this page](Dependencies) for recommendations on the exact order in which all VLC-specific dependencies should be built and installed.
 
 ## Building for PS2 Linux
 
@@ -98,7 +102,7 @@ for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\*
 &nbsp;  
 Configure source. Notes about passed options:  
 * ```--with-*-config-path```: Reference correct ```*-config``` scripts to ensure VLC is cross-compiled against correct headers/libraries.
-* ```--disable-ogg```/```--disable-vorbis```: Build VLC without Vorbis and Ogg support. If this is needed, these options can be omitted. However, the required shared libraries will need to be built/installed first (not covered here or anywhere else in this repository: refer to References link(s)).
+* ```--disable-ogg```/```--disable-vorbis```: Build VLC without Vorbis and Ogg support. If this is needed, these options can be omitted. However, the required shared libraries will need to be built/installed first (not covered here or anywhere else in this repository: refer to References link).
 * ```--disable-mkv```: Build VLC without Matroska support. If this is needed, these options can be omitted. However, the required shared libraries will need to be built/installed first (not covered here or anywhere else in this repository: refer to References link(s)).
 * ```--disable-arts```: The "Analog Realtime Synthesizer" is not available for PS2 Linux by default, so this needs to be disabled in VLC.
 * ```--disable-skins```/```--disable-skins2```/```--disable-wxwindows```: Disable Skins and wxWindows interfaces, as issues were encountered attempting to build these.
@@ -147,5 +151,34 @@ Create installation archive.
 tar czf vlc-0.7.2.mipsEEel-linux.tar.gz usr
 ```
 
+## Installing on PS2 Linux (as root)
 
+Ensure that all dependencies listed above have already been installed to PS2 Linux.
+
+Transfer **vlc-0.7.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.tar.gz
+/sbin/ldconfig
+```
+
+## Usage Examples
+
+![](MP3.png?raw=true)
+*VLC playing MP3 file on PS2 Linux*
+
+![](MPG.png?raw=true)
+*VLC playing MPEG video file on PS2 Linux*
+
+![](Audio_CD.png?raw=true)
+*VLC playing Audio CD on PS2 Linux*
+
+![](VCD.png?raw=true)
+*VLC playing Video CD (VCD) on PS2 Linux*
+
+![](DVD_Menu.png?raw=true)
+*VLC loading DVD main menu on PS2 Linux*
+
+![](DVD.png?raw=true)
+*VLC playing DVD on PS2 Linux*
 

@@ -92,6 +92,7 @@ The section describes setting up a dedicated system for cross-compiling software
   * [FAAD2 2.0](Packages/VLC/Dependencies/FAAD2)
   * [FFmpeg 20040520](Packages/VLC/Dependencies/FFmpeg)
   * [LAME 3.96](Packages/VLC/Dependencies/LAME)
+  * [libcdio 0.71](Packages/VLC/Dependencies/libcdio)
   * [libdvbpsi3 0.1.4](Packages/VLC/Dependencies/libdvbpsi3)
   * [libdvdcss 1.2.8](Packages/VLC/Dependencies/libdvdcss)
   * [libdvdnav 0.1.10](Packages/VLC/Dependencies/libdvdnav)
@@ -101,6 +102,7 @@ The section describes setting up a dedicated system for cross-compiling software
   * [libxml2 2.6.4](Packages/VLC/Dependencies/libxml2)
   * [LIVE555 (2004.04.23)](Packages/VLC/Dependencies/LIVE555)
   * [mpeg2dec 0.4.0](Packages/VLC/Dependencies/mpeg2dec)
+  * [vcdimager 0.7.21](Packages/VLC/Dependencies/vcdimager)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
 
 ### Linux Kernels
