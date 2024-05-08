@@ -1,5 +1,7 @@
 # VLC Dependencies
 
+**Note:** Some (or all) of software packages listed below likely have uses outside of being leveraged by VLC. However, the author only used the below items for getting VLC working with various media formats. As such, these are only described here in the context of being leveraged as VLC dependencies.
+
 **Build types:**  
 * All except libcdio and vcdimager: cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 * libcdio and vcdimager: native (directly on PS2 Linux)

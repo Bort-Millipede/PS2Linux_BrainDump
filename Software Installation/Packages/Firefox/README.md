@@ -16,6 +16,10 @@
 
 Successfully building Firefox for PS2 Linux can be a very complicated task and can take very long time (especially if building with SSL/TLS support enabled, which requires building directly on PS2 Linux). Luckily, prebuilt Firefox binary packages (including new versions than what is described here, as well as various configurations) are [available on this page](https://ps2linux.no-ip.info/playstation2-linux.com/projects/mozilla-ps2.html).
 
+### Dependencies
+
+* [FreeType](../FreeType)
+
 ## Building for PS2 Linux
 
 ### Without SSL/TLS support (cross-compiling)
@@ -45,6 +49,8 @@ tar czf firefox-0.8-nossl.mipsEEel-linux.tar.gz usr
 ```
 
 ### With SSL/TLS support (on PS2 Linux)
+
+**IMPORTANT NOTE:** It is HIGHLY recommended that the commands below be executed in a local session directly on PS2 Linux, and NOT within an SSH remote session. This is because the build below will take a VERY Long time to complete, and all progress will be lost if the SSH session disconnects prematurely.
 
 Save [mozconfig file with SSL/TLS enabled](mozconfig-ssl) to home directory of current user as ```.mozconfig```
 

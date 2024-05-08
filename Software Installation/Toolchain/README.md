@@ -69,7 +69,7 @@ Besides C and C++, additional cross-compilers can be built and installed with re
 * **Fortran 77**: ```make LANGUAGES="f77" install```
 * **[CHILL](https://en.wikipedia.org/wiki/CHILL)**: ```make LANGUAGES="CHILL" install```
 
-A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```, but this compiler does not actually work due to a ```libgcj.spec: No such file or directory``` error. The compiler relies on libgcj, and building this for successful cross-compiling is being researched.
+A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```, but this compiler does not actually work due to a ```libgcj.spec: No such file or directory``` error. The compiler relies on libgcj, and building this for successful cross-compiling has not been completed at time of writing.
 
 An Objective-C cross-compiler appears to be available using ```make LANGUAGES="objc" install```, but this has not been fully tested.
 

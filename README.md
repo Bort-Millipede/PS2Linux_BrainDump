@@ -4,7 +4,7 @@ A compilation of info, notes, and scripts put together during recent stints tink
 
 ## Disclaimer
 
-This is not intended to be an all-inconclusive document, but the utmost effort has been made to provide as much information as possible. The author makes no promises that it contains all information required.
+The author assumes that the reader has a baseline knowledge of Linux. This is not intended to be an all-inconclusive document, but the utmost effort has been made to provide as much information as possible. The author makes no promises that all required information is contained within.
 
 Additionally, the author provides all information for free without warranty, and assumes no responsibility for any damage caused to any systems by leveraging the information. It is the responsibility of the reader to abide by all local, state and federal laws while digesting and using the information.
 
@@ -17,7 +17,7 @@ Digest and use this at your own risk!!!
 
 ## References
 
-* [playstation2-linux.com site backup](http://ps2linux.no-ip.info/playstation2-linux.com/)
+* [playstation2-linux.com](http://ps2linux.no-ip.info/playstation2-linux.com/) (site backup)
 * [http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)
 * [http://hp.vector.co.jp/authors/VA008536/ps2linux/](http://hp.vector.co.jp/authors/VA008536/ps2linux/)
 * [http://achurch.org/ps2/](http://achurch.org/ps2/)
