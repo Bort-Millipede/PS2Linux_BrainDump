@@ -1,5 +1,7 @@
 # Kernel 2.4.17_mvl21 (for PS2 Linux Beta Release 1)
 
+!()[2.4.17_beta_login.png?raw=true]
+
 Required files:  
 * [kernel-headers-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-22.mipsel.rpm)
 * [kernel-source-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-22.mipsel.rpm)
@@ -17,7 +19,7 @@ While this kernel provides many improved functionalities absent from the 2.2.x k
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5).
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-22).
 
 ## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root)
 
@@ -132,7 +134,7 @@ tar czvf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
 
 ## Installing on PS2 Linux Beta (as root)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-22.tar.gz** files to PS2 Linux.
 
 &nbsp;  
 Install kernel modules
@@ -179,7 +181,7 @@ mknod /dev/input/mice c 13 63
 ```
 
 &nbsp;  
-Add a new entry in the ```/etc/modules.conf``` file to correctly load the USB mouse under Kernel 2.2.19.  
+Add a new entry in the ```/etc/modules.conf``` file to correctly load the USB mouse under Kernel 2.4.17_mvl21.  
 Add the following entry to the ```/etc/modules.conf``` file:
 ```
 alias	char-major-13-63	mousedev
@@ -195,5 +197,5 @@ ln -s input/mice /dev/usbmouse
 ```
 
 &nbsp;  
-Reboot PS2 Linux and select the ```2.2.19``` boot entry to use the 2.2.19 Kernel.
+Reboot PS2 Linux and select the ```2.4.17_mvl21``` boot entry to use the 2.4.17_mvl21 Kernel.
 

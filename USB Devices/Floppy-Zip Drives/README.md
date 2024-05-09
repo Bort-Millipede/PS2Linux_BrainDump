@@ -16,29 +16,29 @@ USB Floppy and Zip drives work with all available Linux Kernels (2.2.1, 2.2.19, 
 
 These can be set by invoking the ```make menuconfig``` command in the kernel source directory and navigating to the appropriate menus.
 
-![](../2.2.1-sd_mod.png?raw=true)
-![](../2.2.1_usb-storage.png?raw=true)
+![](../2.2.1-sd_mod.png?raw=true)  
+![](../2.2.1_usb-storage.png?raw=true)  
 *Enabling necessary options as modules in Kernel 2.2.1*
 
-![](../2.2.19-sd_mod.png?raw=true)
-![](../2.2.19_usb-storage.png?raw=true)
+![](../2.2.19-sd_mod.png?raw=true)  
+![](../2.2.19_usb-storage.png?raw=true)  
 *Enabling necessary options as modules in Kernel 2.2.19*
 
-![](../2.4.17-sd_mod.png?raw=true)
-![](../2.4.17_usb-storage.png?raw=true)
+![](../2.4.17-sd_mod.png?raw=true)  
+![](../2.4.17_usb-storage.png?raw=true)  
 *Enabling necessary options as modules in Kernel 2.4.17*
 
 ## Using Floppy and Zip Drives in PS2 Linux
 
-Before plugging in the device, the following linux kernel modules need to be loaded within PS2 Linux:  
+Before plugging in the device, the following linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
 * sd_mod
 * usb-storage
 ```bash
 /sbin/insmod sd_mod
-/sbin/usb-storage
+/sbin/insmod usb-storage
 ```
 
-From here, PS2 Linux will recognize the device(s) correctly. These devices show up as ```/dev/sdX``` devices and can be formatted with fdisk and/or mounted as normal disks. The drives themselves can also usually be ejected via the following command:
+From here, PS2 Linux will recognize the device(s) correctly. These devices show up as ```/dev/sdX``` devices and can (as root or via sudo) be partitioned with ```fdisk```, formatted with ```mkdosfs```, and mounted as normal disks via ```mount```. The drives themselves can also usually be ejected (as root or via sudo) via the following command (with ```sdX``` replaced with the correct device):
 ```bash
 eject /dev/sdX
 ```
@@ -48,8 +48,13 @@ eject /dev/sdX
 * Floppy Drive: [VST FDUSB-M](https://www.amazon.com/External-Floppy-1-44MB-FDUSB-M-V1/dp/B00U5Z8A48)
 * Zip Drive: [iOmega Z100USB](https://www.amazon.com/iOmega-Portable-External-Z100USB-V1/dp/B00V24ZL0C)
 
-![]()
+## Usage Examples
 
-![]()
+![](USB_floppy.png?raw=true)  
+![](floppy_fdisk.png?raw=true)  
+*USB Floppy Drive recognized by PS2 Linux under Kernel 2.2.1, and floppy disk partition listed via fdisk*
 
+![](USB_zip.png?raw=true)  
+![](zip_fdisk.png?raw=true)  
+*USB Zip Drive recognized by PS2 Linux under Kernel 2.2.1, and zip disk partition listed via fdisk*
 

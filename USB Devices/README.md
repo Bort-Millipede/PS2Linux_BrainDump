@@ -6,13 +6,13 @@ Beyond the standard USB keyboard and mouse devices, other USB devices can be use
 
 For all devices listed below and for all kernel versions, the ```Prompt for development and/or incomplete code/drivers``` option must be enabled in order to use additional USB devices (this is an option that should probably be enabled anyway). This can be set by invoking the ```make menuconfig``` command in the kernel source directory and navigating to the ```Code maturity level options``` menu.
 
-![](2.2.1_dev_code-drivers.png?raw=true)
+![](2.2.1_dev_code-drivers.png?raw=true)  
 *"Code maturity level options" menu for Kernel 2.2.1*
 
-![](2.2.19_dev_code-drivers.png?raw=true)
+![](2.2.19_dev_code-drivers.png?raw=true)  
 *"Code maturity level options" menu for Kernel 2.2.19*
 
-![](2.4.17_dev_code-drivers.png?raw=true)
+![](2.4.17_dev_code-drivers.png?raw=true)  
 *"Code maturity level options" menu for Kernel 2.4.17_mvl21*
 
 Alternative, This can be enabled from within the ```.config``` file by setting the following value:
@@ -34,6 +34,6 @@ The instructions for each device type are intended to be generic and support a w
 
 ## References
 
-[http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)
+[http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)  
 &nbsp;&nbsp;This contains information for using additional USB devices with PS2 Linux.
 

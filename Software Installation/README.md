@@ -5,12 +5,12 @@ In order to install new software (such as shared libraries or newer Linux kernel
 * Compile and install directly on PS2 Linux itself using included tools (such as gcc and g++).
 * Install prebuilt binaries from the defunct playstation2-linux.com community
 
-### Advantages/Disadvantages of cross-compiling software
+### Advantages/Disadvantages of Cross-Compiling Software
 
 * Advantage: Building software takes significantly less time
 * Disadvantage: Properly configuring software for cross-compiling can be complex, and in some cases is not even possible.
 
-### Advantages/Disadvantages of building/installing directly on PS2 Linux:
+### Advantages/Disadvantages of Building/Installing Directly on PS2 Linux:
 
 * Advantage: Configuring source code for building is simple and straightforward.
 * Disadvantage: Building large codebases (such as the Linux Kernel or Mozilla Firefox) takes a LONG time.
