@@ -20,17 +20,17 @@ Alternative, This can be enabled from within the ```.config``` file by setting t
 CONFIG_EXPERIMENTAL=y
 ```
 
-## Enabling Additional Devices
+## Enabling USB Devices
 
-Below is the list of USB devices successfully enabled in PS2 Linux by the author. Information on additional USB device can be found [here](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/) or on the [playstation2-linux.com](http://ps2linux.no-ip.info/playstation2-linux.com/) site backup.
+Below is the list of USB devices successfully enabled in PS2 Linux by the author. Information on enabling additional USB devices not covered here can be found [on this page](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/) or on the [playstation2-linux.com site backup](http://ps2linux.no-ip.info/playstation2-linux.com/).
 
 The instructions for each device type are intended to be generic and support a wide array of devices. However, the author did not perform extensive testing using multiple devices of each type. The actual devices used by the author are clearly indicated in each page. Results may vary.
 
 ### Specific Devices
 
 * [Floppy and Zip Drives](Floppy-Zip&#32;Drives)
-* [Optical Drives](Optical&#32;Drive)
-* [Dial-Up Modems](Modem)
+* [Optical Drives](Optical&#32;Drives)
+* [Dial-Up Modems](Modems)
 
 ## References
 

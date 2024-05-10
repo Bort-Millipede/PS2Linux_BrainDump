@@ -28,13 +28,15 @@ If following this page and all subpages exactly, the build of VLC that will be i
 
 ### Audio CDs, VCDs, and DVDs
 
-For these players to be used, the built-in PS2 drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a USB-attached optical drive will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the following kernel modules loaded:  
-* cdrom (may be built-in to 2.4.17_mvl21 by default)
-* sd_mod
-* sr_mod
-* usb-storage
+For these players to be used, the built-in PS2 drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the necessary kernel modules loaded (as root or via sudo): 
+```bash
+/sbin/insmod cdrom
+/sbin/insmod sd_mod
+/sbin/insmod sr_mod
+/sbin/insmod usb-storage
+```
 
-The above modules are available in kernel 2.2.1 but are VERY UNSTABLE (in the author's experience: loading these and trying to use a USB-attached optical drive completely freezes the system which then requires a hard reboot).
+**NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded.
 
 Beyond this, the author's results with each format are as follows (your results may vary!):  
 * **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputed through the Analog audio port on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is currently covered here.
