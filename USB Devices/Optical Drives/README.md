@@ -55,3 +55,6 @@ eject /dev/scd0
 ![](USB_DVD-RW.png?raw=true)  
 *USB DVD-RW Drive recognized by PS2 Linux under Kernel 2.2.19*
 
+![](ubuntu_livedvd_mounted.png?raw=true)  
+*Ubuntu LiveDVD inserted into USB DVD-RW Drive and mounted in PS2 Linux*
+

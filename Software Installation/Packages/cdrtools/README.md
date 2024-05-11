@@ -114,5 +114,5 @@ smake INS_BASE=/usr/local install
 
 ### (RECOMMENDED) Post-Build
 
-If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the build directory be retained in case cdrtools needs to be re-installed later (example: if [star](../star) is installed after first installing cdrtools).
+If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the build directory be retained in case cdrtools needs to be re-installed later (example: if [star](../star) is installed after first installing cdrtools). If this is not available, the installation archive created above can be used for re-installation instead.
 
