@@ -4,7 +4,8 @@
 
 Required files (present on [PS2 Linux Beta Release 1 DVD](https://archive.org/download/sony_playstation2_p/PS2%20Linux%20Beta%20Release%201%20%28Japan%29%20%28En%2CJa%29.zip) under ```SCEI/RPMS```):  
 * kernel-headers-2.2.1_ps2-6.mipsel.rpm
-* kernel-source-2.2.1_ps2-6.mipsel.rpm  
+* kernel-source-2.2.1_ps2-6.mipsel.rpm
+
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Preliminary Considerations

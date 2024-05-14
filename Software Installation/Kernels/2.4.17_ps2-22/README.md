@@ -1,10 +1,12 @@
 # Kernel 2.4.17_mvl21 (for PS2 Linux Beta Release 1)
 
-!()[2.4.17_beta_login.png?raw=true]
+![](2.4.17_beta_login.png?raw=true)
 
 Required files:  
 * [kernel-headers-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-22.mipsel.rpm)
 * [kernel-source-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-22.mipsel.rpm)
+
+**Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## References
 
