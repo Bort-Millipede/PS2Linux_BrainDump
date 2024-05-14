@@ -1,6 +1,6 @@
 # USB Dial-Up Modems
 
-**NOTE:** This page does NOT describe (nor does anywhere else in this repository) how to get PS2 Linux online via dial-up networking. This was not something that was tested by the author.
+**NOTE:** This page does NOT describe (nor does anywhere else in this repository) how to get internet connectivity for PS2 Linux via dial-up networking. This was not something that was tested by the author, as getting these USB devices working in PS2 Linux mostly served other purposes.
 
 ## Kernel Configuration
 
@@ -27,7 +27,7 @@ Before plugging in the device, the ```acm``` linux kernel module needs to be loa
 /sbin/insmod acm
 ```
 
-The device can then be plugged in. From here, PS2 Linux should recognize the device correctly. USB optical drives usually show up as ```/dev/scd0``` devices (viewing the output of the ```dmesg``` command should confirm this).
+The device can then be plugged in. From here, PS2 Linux should recognize the device correctly. USB modems should show up as the ```/dev/ttyACMX``` device (viewing the output of the ```dmesg``` command should confirm this).
 
 ## Specific Devices Tested
 

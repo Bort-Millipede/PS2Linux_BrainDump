@@ -15,7 +15,7 @@ For all devices listed below and for all kernel versions, the ```Prompt for deve
 ![](2.4.17_dev_code-drivers.png?raw=true)  
 *"Code maturity level options" menu for Kernel 2.4.17_mvl21*
 
-Alternative, This can be enabled from within the ```.config``` file by setting the following value:
+Alternatively, This can be enabled from within the ```.config``` file by setting the following value:
 ```
 CONFIG_EXPERIMENTAL=y
 ```
@@ -35,5 +35,5 @@ The instructions for each device type are intended to be generic and support a w
 ## References
 
 [http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)  
-&nbsp;&nbsp;This contains information for using additional USB devices with PS2 Linux.
+&nbsp;&nbsp;This page contains information for using additional USB devices with PS2 Linux.
 
