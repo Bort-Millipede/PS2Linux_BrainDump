@@ -3,6 +3,10 @@
 [Source link](http://kernel.nic.funet.fi/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.x.0j/reiserfsprogs-3.x.0j.tar.gz)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
+## Preliminary Considerations
+
+Reiserfsprogs should build against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, the 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions.
+
 ## Building for PS2 Linux
 
 Extract source archive
@@ -73,4 +77,8 @@ Transfer **reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz** archive to PS2 Linux and
 cd /
 tar xzf reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz
 ```
+
+## Usage Notes
+
+The 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions. Therefore it is recommended to only use this package with Kernels 2.2.19 or 2.4.17_mvl21.
 

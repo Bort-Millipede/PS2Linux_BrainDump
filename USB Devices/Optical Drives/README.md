@@ -8,7 +8,7 @@ While the PS2's built-in DVD-ROM drive is available for use within PS2 Linux, th
 
 ## Kernel Configuration
 
-USB optical drives only work under the 2.2.19 and 2.4.17_mvl21 kernels (see below about kernel 2.2.1). For all kernel versions, the following options need to be enabled as modules (with *M*):
+USB optical drives only work under the 2.2.19 and 2.4.17_mvl21 kernels (see below about kernel 2.2.1). For these kernel versions, the following options need to be enabled as modules (with *M*):
 * ```SCSI support``` -> ```SCSI disk support```
 * ```SCSI support``` -> ```SCSI CD-ROM support```
 * ```USB support``` -> ```USB Mass Storage support```
@@ -51,6 +51,11 @@ Before plugging in the device, the following linux kernel modules need to be loa
 /sbin/insmod sd_mod
 /sbin/insmod sr_mod
 /sbin/insmod usb-storage
+```
+
+The above modules can also be automatically loaded using the [load-usb-modules script](../../Scripts/load-usb-modules) (as root or via sudo) as follows:
+```bash
+load-usb-modules cdrom
 ```
 
 The device can then be plugged in. From here, PS2 Linux should recognize the device correctly. USB optical drives usually show up as ```/dev/scd0``` devices (viewing the output of the ```dmesg``` command should confirm this). The drive itself can usually be ejected (as root or via sudo) via the following command:

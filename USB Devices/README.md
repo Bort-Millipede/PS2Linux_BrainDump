@@ -29,6 +29,7 @@ The instructions for each device type are intended to be generic and support a w
 ### Specific Devices
 
 * [Floppy and Zip Drives](Floppy-Zip&#32;Drives)
+* [Flash Drives](Flash&#32;Drives)
 * [Optical Drives](Optical&#32;Drives)
 * [Dial-Up Modems](Modems)
 

@@ -1,6 +1,6 @@
 # USB Floppy and Zip Drives
 
-Using USB Floppy or Zip drives with PS2 Linux provides another avenue for file transfers to/from PS2 Linux, similar to how a USB thumb drive would function.
+Using USB Floppy or Zip drives with PS2 Linux provides another avenue for file transfers to/from PS2 Linux, similar to how a USB flash drive would function.
 
 USB Floppy and USB Zip drives are recognized by PS2 Linux as the same device type. Therefore, the information provided on this page is interchangable for both device types.
 
@@ -38,6 +38,17 @@ Before plugging in the device, the following linux kernel modules need to be loa
 /sbin/insmod usb-storage
 ```
 
+The above modules can also be automatically loaded using the [load-usb-modules script](../../Scripts/load-usb-modules) (as root or via sudo) as follows:
+* floppy drives
+```bash
+load-usb-modules floppy
+```
+* zip drives
+```bash
+load-usb-modules zip
+```
+
+&nbsp;  
 From here, PS2 Linux should recognize the device(s) correctly. These devices show up as ```/dev/sdX``` devices and can (as root or via sudo) be mounted as normal disks via ```mount```. The disks themselves can (as root or via sudo) be partitioned with ```fdisk``` and formatted with ```mkdosfs```. However, it is highly recommended that any partitioning/formatting be performed on a Windows-based system instead, as the most ideal formats to be used for floppy and zip disks are FAT or FAT32.
 
 The drives themselves can also usually be ejected (as root or via sudo) via the following command (with ```sdX``` replaced with the correct device):

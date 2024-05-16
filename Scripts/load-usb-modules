@@ -39,8 +39,15 @@ case $1 in
 	"flash")
 		/sbin/insmod sd_mod
 		/sbin/insmod usb-storage
-		echo -e "\nUSB Flash Drives should now be recognized, most likely as device /dev/sda (check dmesg output for certain)"
-		echo -e "Recommend mounting device via: mount /mnt/flash\n";;
+		if [ "`uname -r `" != "2.2.1" ]
+		then
+			echo -e "\nUSB Flash Drives should now be recognized, most likely as device /dev/sda (check dmesg output for certain)"
+			echo -e "Recommend mounting device via: mount /mnt/flash\n"
+		else
+			echo -e "\nUSB Flash Drives may not actually work under Kernel 2.2.1!"
+			echo "For guaranteed results, switch to the 2.2.19 or 2.4.17_mvl21 kernel."
+			echo -e "\nIf USB Flash Drives are actually recognized (most likely as device /dev/sda; check dmesg output for certain), recommend mounting device via: mount /mnt/flash\n"
+		fi;;
 	"cdrom")
 		if [ "`uname -r`" = "2.2.1" ]
 		then

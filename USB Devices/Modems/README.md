@@ -27,6 +27,11 @@ Before plugging in the device, the ```acm``` linux kernel module needs to be loa
 /sbin/insmod acm
 ```
 
+The above module can also be automatically loaded using the [load-usb-modules script](../../Scripts/load-usb-modules) (as root or via sudo) as follows:
+```bash
+load-usb-modules modem
+```
+
 The device can then be plugged in. From here, PS2 Linux should recognize the device correctly. USB modems should show up as the ```/dev/ttyACMX``` device (viewing the output of the ```dmesg``` command should confirm this).
 
 ## Specific Devices Tested
