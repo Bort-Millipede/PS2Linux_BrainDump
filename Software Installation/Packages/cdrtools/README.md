@@ -19,7 +19,7 @@ In general for any operations requiring the use of an optical drive, the built-i
 
 **NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded.
 
-For burning CDs/DVDs via ```cdrecord```, this appears to only be available under kernel 2.4.17_mvl21 with specific sub-modules of the usb-storage module enabled.
+For burning CDs/DVDs via ```cdrecord```, this appears to only be available under kernel 2.4.17_mvl21 with specific sub-modules of the usb-storage module enabled (outlined on the [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) page).
 
 Because of the reason outlined above, cdrtools can only be used under kernel 2.4.17_mvl21 (recommended) or 2.2.19. As such, the software should be built against one of these kernel versions by recreating the ```/usr/src/linux``` to reference one of the following:  
 * ```2.4.17_ps2```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1; or 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0

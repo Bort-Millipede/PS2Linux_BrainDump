@@ -21,7 +21,7 @@ While this kernel provides many improved functionalities absent from the 2.2.x k
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-22).
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-22). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
 
 ## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root)
 

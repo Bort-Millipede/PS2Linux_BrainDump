@@ -22,7 +22,7 @@ The sound module included with this kernel version does not work. This is a know
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5).
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
 
 ## Extracting Necessary File From Playstation BB Navigator 0.10 Disc 2
 

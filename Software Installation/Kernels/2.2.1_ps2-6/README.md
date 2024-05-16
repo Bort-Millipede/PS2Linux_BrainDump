@@ -18,7 +18,7 @@ This kernel version expects an HDD partitioned with the proprietary APA format. 
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-6).
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-6). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
 
 ## Extracting Necessary Files From PS2 Linux Beta Release 1 DVD
 

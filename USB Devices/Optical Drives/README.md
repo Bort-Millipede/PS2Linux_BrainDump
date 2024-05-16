@@ -27,6 +27,18 @@ These can be set by invoking the ```make menuconfig``` command in the kernel sou
 
 The above options are available in kernel 2.2.1. However, the ```SCSI CD-ROM support``` option is VERY UNSTABLE. In the author's experience: plugging in a USB optical drive completely freezes PS2 Linux, which then necessitates a hard reboot. Therefore, using USB optical drives with kernel 2.2.1 is not recommended.
 
+### CD-RW/DVD-RW Specific Configuration
+
+To specifically use CD-RW/DVD-RW drives, the following sub-modules of ```USB Mass Storage support``` must be enabled:
+* ```USB support``` -> ```USB Mass Storage support``` -> ```Freecom USB/ATAPI Bridge support```
+* ```USB support``` -> ```USB Mass Storage support``` -> ```ISD-200 USB/ATA Bridge support```
+* ```USB support``` -> ```USB Mass Storage support``` -> ```HP CD-Writer 82xx support```
+
+![](2.4.17_usb-storage_sub-module_freecom.png?raw=true)  
+![](2.4.17_usb-storage_sub-module_isd-200.png?raw=true)  
+![](2.4.17_usb-storage_sub-module_hp-cdwriter.png?raw=true)  
+*Enabling necessary sub-module options for CD-RW/DVD-RW drives in Kernel 2.4.17*
+
 ## Using USB Optical Drives in PS2 Linux
 
 Before plugging in the device, the following linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
