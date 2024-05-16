@@ -59,7 +59,7 @@ The section describes setting up a dedicated system for cross-compiling software
     * akmem
     * ps2fs
 * **Reference correct ```*-config``` scripts when building:** ```*-config``` scripts (such as ```sdl-config``` or ```esd-config```) are used to locate headers and libraries. These will often need to be referenced via command-line options or environment variables for ```configure``` scripts to ensure that software is cross-compiled against the correct headers/libraries (example: ```SDL_CONFIG=/usr/mipsEEel-linux/mipsEEel-linux/usr/bin/sdl-config```)
-* **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox specifically configured with SSL/TLS support, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
+* **Not all software can be successfully cross-compiled:** Some software, unfortunately, refuses to be cross-compiled (examples are Mozilla Firefox configured with SSL/TLS support enabled, or the XMMS media player). Furthermore, this can only be definitively determined on a case-by-case basis.
 
 ## Building Specific Software
 
@@ -105,7 +105,7 @@ The section describes setting up a dedicated system for cross-compiling software
   * [vcdimager 0.7.21](Packages/VLC/Dependencies/vcdimager)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
 
-### Linux Kernels
+### [Linux Kernels](Kernels)
 
 * [2.2.1_ps2-6](Kernels/2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
 * [2.2.19_ps2-5](Kernels/2.2.19_ps2-5) (for PS2 Linux Beta Release 1 and PS2 Linux Release 1.0)

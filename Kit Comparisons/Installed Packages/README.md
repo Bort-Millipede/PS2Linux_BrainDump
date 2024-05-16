@@ -1,6 +1,6 @@
 # Full Installed Packages Comparison
 
-Below is a table of the packages installed by the respective Linux Kit installers when all packages are selected.
+Below is a table of the packages installed by the respective Linux Kit installers when all packages are selected. These are the actual RPM files included on the respective installer discs under ```SCEI/RPMS```.
 
 | Beta Release 1                               | Release 1.0                                  |
 | -------------------------------------------- | -------------------------------------------- |

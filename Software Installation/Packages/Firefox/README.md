@@ -92,3 +92,7 @@ Execute from the earlier source directory:
 make install
 ```
 
+## Usage Notes
+
+The actual command for launching firefox is ```mozilla```. This command must be executed from within an X session.
+

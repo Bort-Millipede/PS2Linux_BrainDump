@@ -2,7 +2,9 @@
 
 ## General Differences
 
-The Beta kit was only released in Japan. It was intended to be installed and used only on the original Playstation 2 v0 hardware revisions (SCPH-10000, SCPH-15000, SCPH-18000). Because these units contain a PCMCIA bay instead of an Expansion Bay, the Beta kit was only intended to be used in conjunction with the PC card network adapter (SCPH-10190) and external harddrive unit (SCPH-20400 with SCPH-10200 AC adapter).
+The Beta kit was only released in Japan. It was intended to be installed and used only on the original Playstation 2 v0 hardware revisions (SCPH-10000, SCPH-15000, SCPH-18000). Because these units contain a PCMCIA bay instead of an Expansion Bay, the Beta kit was only intended to be used in conjunction with the PC card network adapter (SCPH-10190) and 40GB external harddrive unit (SCPH-20400 with SCPH-10200 AC adapter). These items all came packaged together (SCPH-10210 or SCPH-10270K).
+
+The Release kit was released in Japan, USA, and Europe. It was intended to be installed on the Playstaton 2 v1-v8 hardware revisions (SCPH-3000X, SCPH-3000XR, SCPH-3500X, SCPH-3700X, SCPH-3900X), although it could also be installed on the v9-v10 hardware revisions with some modifications. The kit required the use of an Expansion Bay network adapter and an internal harddrive (SCPH-20401). Despite Sony claiming that the Release kit could only be used with an official PS2 harddrive, OEM IDE drives (40GB and larger) work seemlessly with the Release kit without any additional required configurations/modifications.
 
 ## Installed Package Comparison
 
@@ -27,4 +29,8 @@ When installing either the PS2 Linux Beta or Release kits and selecting all avai
 ### Kernel Differences
 
 Both the Beta kit and the Release kit ship with Kernel 2.2.1. The kernel that comes installed on the Beta kit is 2.2.1_ps2-6, whereas the kernel that comes installed on the Release kit is 2.2.1_ps2-7. It seems that a fair amount of the kernel source (especially items compiled as kernel modules by default, such as PS2-specific devices) was deliberately ommitted from the available 2.2.1_ps2-6 kernel source RPMs.
+
+## References
+
+* [https://www.psdevwiki.com/ps2/Hard_Drive](https://www.psdevwiki.com/ps2/Hard_Drive)
 

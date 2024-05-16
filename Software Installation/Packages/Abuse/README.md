@@ -132,7 +132,9 @@ chown root.root /usr/local/bin/abuse
 
 ## Usage Notes
 
-Abuse does not work with the 2.4.17_mvl21 kernel. This is likely due to the requirement that SDL and SDL_net be built/linked against the 2.4.17_mvl21 kernel, which is not entirely realistic for PS2 Linux.
+Abuse may not work with the 2.4.17_mvl21 kernel. This is likely due to the requirement that SDL and SDL_net be built/linked against the 2.4.17_mvl21 kernel, which is not entirely realistic for PS2 Linux.
 
-Additionally, Abuse requires that the ```/dev/usbmouse``` symbolic link reference the correct usbmouse file. This link can be automatically recreated via the [kernel-switch](../../../Scripts/FIXME) script or manually recreated (kernel 2.2.1 should reference ```usbmouse0```; kernel 2.2.19 should reference ```usbmouse0-2.2.19```)
+Additionally, Abuse requires that the ```/dev/usbmouse``` symbolic link reference the correct mouse device. This link can be automatically recreated via the [kernel-switch](../../../Scripts/kernel-switch) script or manually recreated (kernel 2.2.1 should reference ```usbmouse0```; kernel 2.2.19 should reference ```usbmouse0-2.2.19```)
+
+Abuse should be launched from a console session (NOT an X session) using the ```abuse``` command.
 

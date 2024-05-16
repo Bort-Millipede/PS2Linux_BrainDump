@@ -75,3 +75,9 @@ chmod 755 /usr/local/bin/maelstrom
 chown root.root /usr/local/bin/maelstrom
 ```
 
+## Usage Notes
+
+Maelstrom may not work with the 2.4.17_mvl21 kernel. This is likely due to the requirement that SDL and SDL_net be built/linked against the 2.4.17_mvl21 kernel, which is not entirely realistic for PS2 Linux.
+
+Maelstrom should be launched from a console session (NOT an X session) using the ```maelstrom``` command (note that the command is lower-case).
+

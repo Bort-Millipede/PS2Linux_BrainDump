@@ -100,5 +100,7 @@ alias quake='nuq-sdl -noudp'
 
 ## Usage Notes
 
-Unfortunately, for unspecified reasons the sound does not work in-game.
+Unfortunately, for unspecified reasons the sound does not work in-game. Additionally, Quake may not work with the 2.4.17_mvl21 kernel. This is likely due to the requirement that SDL and SDL_net be built/linked against the 2.4.17_mvl21 kernel, which is not entirely realistic for PS2 Linux.
+
+Quake should be launched from a console session (NOT an X session) using the ```quake``` command (set via alias earlier).
 
