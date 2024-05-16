@@ -1,0 +1,80 @@
+#! /bin/bash
+
+#function: print usage information
+function usage {
+	echo "Usage: $1 DEVICE"
+	echo -e "\nDEVICE values:"
+	echo "zip: USB Zip Drives"
+	echo "floppy: USB Floppy Drives"
+	echo "flash: USB Flash Drives"
+	echo "cdrom: USB CD-ROM Drives"
+	echo -e "modem: USB 56K Modems\n"
+}
+
+if [ $# -eq 0 ]
+then
+	usage $0
+	exit 2
+fi
+
+#check for root privileges
+ADM="root"
+if [ "$(whoami)" != "root" ]
+then
+	echo -e "$0 must be run as root!\n"
+	exit 1
+fi
+
+case $1 in
+	"zip")
+		/sbin/insmod sd_mod
+		/sbin/insmod usb-storage
+		echo -e "\nUSB Zip Drives should now be recognized, most likely as device /dev/sda (check dmesg output for certain)"
+		echo -e "Recommend mounting device via: mount /mnt/zip\n";;
+	"floppy")
+		/sbin/insmod sd_mod
+		/sbin/insmod usb-storage
+		echo -e "\nUSB Floppy Drives should now be recognized, most likely as device /dev/sda (check dmesg output for certain)"
+		echo -e "Recommend mounting device via: mount /mnt/floppy\n";;
+	"flash")
+		/sbin/insmod sd_mod
+		/sbin/insmod usb-storage
+		echo -e "\nUSB Flash Drives should now be recognized, most likely as device /dev/sda (check dmesg output for certain)"
+		echo -e "Recommend mounting device via: mount /mnt/flash\n";;
+	"cdrom")
+		if [ "`uname -r`" = "2.2.1" ]
+		then
+			echo "USB CD-ROM Drives are known to cause serious system instability when used under Kernel 2.2.1!"
+			echo "For guaranteed results, switch to the 2.2.19 or 2.4.17_mvl21 kernel."
+			echo "Loading modules for these devices under Kernel 2.2.1 is disallowed by $0 without confirmation!"
+			echo -n "Would you like to load the modules anyway? (N/y): "
+			read -r YN
+			case $YN in	[Yy]);;
+				*) exit 0;;
+			esac
+			echo ""
+		fi
+		if [ "`uname -r`" != "2.4.17_mvl21" ]
+		then
+			/sbin/insmod cdrom
+		fi
+		/sbin/insmod sr_mod
+		/sbin/insmod sd_mod
+		/sbin/insmod usb-storage
+		echo -en "\nUSB CD-ROM Drives "
+		if [ "`uname -r`" = "2.4.17_mvl21" ]
+		then
+			echo -n "(including CD-RW Drives) "
+		fi
+		echo "should now be recognized, most likely as device /dev/scd0 (check dmesg output for certain)"
+		echo -e "Recommend mounting device via: mount /dev/scd0 /mnt/usbcd\n";;
+	"modem")
+		/sbin/insmod acm
+		echo -e "\nUSB 56K Modems should now be recognized, most likely as device /dev/ttyACM0 (check dmesg output for certain)\n";;
+	*)
+		echo -e "$1: Unrecognized device!\n"
+		usage $0
+		exit 3
+esac
+
+exit 0

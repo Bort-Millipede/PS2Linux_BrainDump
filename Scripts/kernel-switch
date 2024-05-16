@@ -1,0 +1,744 @@
+#! /bin/bash
+
+#function: check currently installed kernel(s) in specified location (/boot or /mnt/mc00)
+function check_installed_kernels {
+	if [ -z $1 ]
+	then
+		echo "Kernel location missing!"
+		return 1
+	fi
+	
+	LOC=""
+	if [ "$1" = "boot" ]
+	then
+		LOC="/boot"
+	elif [ "$1" = "mc00" ]
+	then
+		LOC="/mnt/mc00"
+	else
+		echo "Invalid Kernel location!"
+		return 2
+	fi
+	
+	if [ "$LOC" = "/mnt/mc00" ] && [ -z "$MOUNTED" ]
+	then
+		echo " Memory Card 0 not mounted!"
+		return 3
+	fi
+	
+	KERNELS=""
+	for f in `find "$LOC" -type f 2>/dev/null`
+	do
+		VER=""
+		F_TYPE=`file -b "$f" | cut -d"," -f 1`
+		if [ "$F_TYPE" = "ELF 32-bit LSB executable" ] #raw kernel files
+		then
+			VER=`strings "$f" | grep -E "Linux version [a-zA-Z0-9\-_\.]{1,} \(" | cut -d" " -f 3`
+			if [ ! -z "$VER" ]
+			then
+				KERNELS="$KERNELS $VER,"
+			fi
+		elif [ "$F_TYPE" = "gzip compressed data" ] && [ "$LOC" = "/mnt/mc00" ] #gzipped kernel files on mc00
+		then
+			VER=`gzip -dc "$f" | strings | grep -E "Linux version [a-zA-Z0-9\-_\.]{1,} \(" | cut -d" " -f 3`
+			if [ ! -z "$VER" ]
+			then
+				KERNELS="$KERNELS $VER (gzipped),"
+			fi
+		fi
+		unset F_TYPE
+		unset VER
+	done
+	
+	if [ ! -z "$KERNELS" ]
+	then
+		echo "$KERNELS" | tr "," "\n" | tr -d " " | sort -n | sort -u | perl -pe "s/\(/ \(/" | perl -pe "s/\n/, /" | cut -d"," -f 2- | rev | cut -d"," -f 2- | rev
+	else
+		echo -n " None"
+		if [ "$LOC" = "/mnt/mc00" ]
+		then
+			echo " (or not root)"
+		else
+			echo ""
+		fi
+	fi
+	unset LOC
+	unset KERNELS
+	
+	return 0
+}
+
+#function: check running PS2 Linux version
+function check_linux_version {
+	export LINUXVER=""
+	if [ -f /etc/ps2-release ]
+	then
+		VER=`head -n 1 /etc/ps2-release | perl -pe "s/ $//" | rev | cut -d" " -f 1 | rev`
+		if [ "$VER" = "1.0beta" ]
+		then
+			LINUXVER="Beta"
+		elif [ "$VER" = "1.0" ]
+		then
+			LINUXVER="Release"
+		else
+			LINUXVER="UNKNOWN"
+		fi
+		unset VER
+	else
+		LINUXVER="UNKNOWN"
+	fi
+}
+
+#function: print usage information
+function usage {
+	echo "Usage: $1 [OPTIONS] [KERNEL_VERSION]"
+	echo -e "\nOptions:"
+	echo "-t: Check links/config files and print which Kernel is currently configured (does not require a KERNEL_VERSION argument)"
+	echo "-c: Configure system for requested Kernel, but do not install Kernel on Memory Card 0"
+	echo "-k: Install Kernel file on Memory Card 0, but do not configure system for installed kernel"
+	echo "-r: Install requested Kernel without gzip compression"  
+	echo "-s: Do not set newly-installed Kernel as default boot option"
+	echo -e "\nKERNEL_VERSION values:"
+	echo "2.2.1: Kernel 2.2.1"
+	echo "2.2.19: Kernel 2.2.19"
+	echo "2.4.17: Kernel 2.4.17_mvl21"
+	echo "2.4.17_mvl21: Kernel 2.4.17_mvl21"
+}
+
+#BEGIN kernel-switch
+
+#check for root privileges
+ADM="root"
+if [ "$(whoami)" != "root" ]
+then
+	echo -e "$0 must be run as root!\n"
+	ADM=""
+fi
+
+#declare vars for command line options
+CHECK_CONFIGURATION=""
+CONFIGURE_ONLY=""
+INSTALL_ONLY=""
+RAW_KERNEL=""
+NO_DEFAULT_BOOT=""
+
+#check for command line arguments
+VERSION=""
+check_linux_version
+export MOUNTED=`mount | grep mc00`
+if [ $# -eq 0 ] #if none, print usage information, current PS2 Linux version, currently installed kernel(s), and currently running kernel, then exit
+then
+	usage $0
+	echo -en "\nRunning PS2 Linux Version: "
+	if [ "$LINUXVER" = "Beta" ]
+	then
+		echo "Beta Release 1"
+	elif [ "$LINUXVER" = "Release" ]
+	then
+		echo "Release 1.0"
+	else
+		echo "$LINUXVER"
+	fi
+	echo "Running Kernel: `uname -r`"
+	echo -n "Kernel(s) installed in /boot:"
+	check_installed_kernels boot
+	echo -n "Kernel(s) installed on memory card:"
+	check_installed_kernels mc00
+	
+	unset LINUXVER
+	unset MOUNTED
+	exit 4
+else
+	i=1
+	for ARG in "$@"
+	do
+		case $ARG in
+			"-t") CHECK_CONFIGURATION="check";;
+			"-r")
+				if [ $i -ne $# ]
+				then
+					RAW_KERNEL="raw"
+				else
+					echo -e "$ARG option requires KERNEL_VERSION argument!\n"
+					usage $0
+					exit 1
+				fi;;
+			"-s")
+				if [ $i -ne $# ]
+				then
+					NO_DEFAULT_BOOT="skip"
+				else
+					echo -e "$ARG option requires KERNEL_VERSION argument!\n"
+					usage $0
+					exit 1
+				fi;;
+			"-c")
+				if [ $i -ne $# ]
+				then
+					CONFIGURE_ONLY="configure"
+				else
+					echo -e "$ARG option requires KERNEL_VERSION argument!\n"
+					usage $0
+					exit 1
+				fi;;
+			"-k")
+				if [ $i -ne $# ]
+				then
+					INSTALL_ONLY="install"
+				else
+					echo -e "$ARG option requires KERNEL_VERSION argument!\n"
+					usage $0
+					exit 1
+				fi;;
+			"2.2.1")
+				if [ $i -eq $# ]
+				then
+					VERSION="2.2.1"
+				else
+					echo -e "$ARG: invalid option!\n"
+					usage $0
+					exit 1
+				fi;;
+			"2.2.19")
+				if [ $i -eq $# ]
+				then
+					VERSION="2.2.19"
+				else
+					echo -e "$ARG: invalid option!\n"
+					usage $0
+					exit 1
+				fi;;
+			"2.4.17")
+				if [ $i -eq $# ]
+				then
+					VERSION="2.4.17_mvl21"
+				else
+					echo -e "$ARG: invalid option!\n"
+					usage $0
+					exit 1
+				fi;;
+			"2.4.17_mvl21")
+				if [ $i -eq $# ]
+				then
+					VERSION="2.4.17_mvl21"
+				else
+					echo -e "$ARG: invalid option!\n"
+					usage $0
+					exit 1
+				fi;;
+			*)
+				if [ $i -eq $# ]
+				then
+					echo -e "$ARG: invalid requested Kernel version!\n"
+				else
+					echo -e "$ARG: invalid option!\n"
+				fi
+				usage $0
+				exit 1;;
+		esac
+		i=$((i+1))
+	done
+	unset i
+fi
+
+#detect conflicting arguments
+if [ ! -z "$CHECK_CONFIGURATION" ]
+then
+	if [ ! -z "$RAW_KERNEL" ] || [ ! -z "$NO_DEFAULT_BOOT" ] || [ ! -z "$CONFIGURE_ONLY" ] || [ ! -z "$INSTALL_ONLY" ]
+	then
+		echo -e "-t argument cannot be used in conjunction with any other options!\n"
+		exit 1
+	fi
+fi
+if [ ! -z "$CONFIGURE_ONLY" ]
+then
+	if [ ! -z "$RAW_KERNEL" ] || [ ! -z "$NO_DEFAULT_BOOT" ]
+	then
+		echo -e "-c argument cannot be used in conjunction with any other options!\n"
+		exit 1
+	fi
+fi
+if [ ! -z "$CONFIGURE_ONLY" ] && [ ! -z "$INSTALL_ONLY" ]
+then
+	echo -e "-c argument and -k argument cannot be used in conjunction with one another!\n"
+	exit 1
+fi
+
+#abort execution if not running as root
+if [ -z "$ADM" ]
+then
+	unset LINUXVER
+	exit 3
+fi
+unset ADM
+
+#abort execution of Memory Card 0 is not mounted (unless -c option is set)
+if [ -z "$MOUNTED" ] && [ -z "$CONFIGURE_ONLY" ]
+then
+	echo "Memory Card 0 not mounted! Mount Memory Card 0 and try again!"
+	exit 2
+fi
+
+#if -t option is set: print current system configuration and exit
+if [ ! -z "$CHECK_CONFIGURATION" ]
+then
+	echo -e "\nChecking current system configuration"
+	
+	#check default boot entry in /mnt/mc00/p2lboot.opt
+	echo -n "Default boot entry (in p2lboot.opt): "
+	grep -E "^prevent=" /mnt/mc00/p2lboot.opt > /dev/null 2>&1
+	if [ $? -eq 0 ]
+	then
+		grep -E "^prevent=" /mnt/mc00/p2lboot.opt | cut -d"%" -f 1 | cut -d"=" -f 2-
+	else
+		echo "None (no \"prevent\" entry in p2lboot.opt file)"
+	fi
+	
+	#check /boot links for Release 1.0
+	if [ "$LINUXVER" != "Beta" ]
+	then
+		echo -n "/boot/vmlinux link: "
+		VER=""
+		if [ -L "/boot/vmlinux" ]
+		then
+			BOOT_LN=`ls -l /boot/vmlinux | rev | cut -d" " -f 1 | rev`
+			case $BOOT_LN in
+				"linux-2.2.1_ps2") echo "2.2.1 (set to $BOOT_LN)";;
+				"linux-2.2.19_ps2") echo "2.2.19 (set to $BOOT_LN)";;
+				"linux-2.4.17_mvl21") echo "2.4.17_mvl21 (set to $BOOT_LN)";;
+				*) echo "Unknown Kernel! (set to $BOOT_LN)"
+			esac
+		else
+			echo "Not set! Recommend creating it manually, or automatically by installing kernel with $0"
+		fi
+		
+		echo -n "/boot/System.map link: "
+		if [ -L "/boot/System.map" ]
+		then
+			BOOT_LN=`ls -l /boot/System.map | rev | cut -d" " -f 1 | rev`
+			case $BOOT_LN in
+				"System.map-2.2.1_ps2") echo "2.2.1 (set to $BOOT_LN)";;
+				"System.map-2.2.19_ps2") echo "2.2.19 (set to $BOOT_LN)";;
+				"System.map-2.4.17_mvl21") echo "2.4.17_mvl21 (set to $BOOT_LN)";;
+				*) echo "Unknown Kernel! (set to $BOOT_LN)"
+			esac
+		else
+			echo "Not set! Recommend creating it manually, or automatically by installing kernel with $0"
+		fi
+		
+		ln -s "$KERNEL" /boot/vmlinux
+		ln -s "System.map-`echo $KERNEL | cut -d'-' -f 2-`" /boot/System.map
+	fi
+	
+	#check /usr/src/linux link
+	echo -n "/usr/src/linux link: "
+	if [ -L /usr/src/linux ]
+	then
+		SRC_LN=`ls -l /usr/src/linux | rev | cut -d" " -f 1 | rev`
+		case $SRC_LN in
+			"linux-2.2.1_ps2") echo "2.2.1 Kernel (set to $SRC_LN)";;
+			"linux-2.2.19_ps2") echo "2.2.19 Kernel (set to $SRC_LN)";;
+			"linux-2.4.17_ps2") echo "2.4.17_mvl21 Kernel (set to $SRC_LN)";;
+			*) echo "Unknown Kernel! ($SRC_LN)";;
+		esac
+	else
+		echo "Not set! Recommend creating it manually, or automatically with $0 using the -c option"
+	fi
+	
+	#check /dev/mouse and /dev/usbmouse links
+	echo -n "/dev/mouse link: Set to "
+	if [ -L /dev/mouse ]
+	then
+		MOUSE=`ls -l /dev/mouse | rev | cut -d" " -f 1 | rev`
+		if [ "$MOUSE" = "usbmouse" ]
+		then
+			echo "$MOUSE (recommended)"
+		else
+			echo "$MOUSE. Recommend manually setting target to /dev/usbmouse, or automatically re-creating with $0 using the -c option"
+		fi
+	else
+		echo "Not set! Recommend creating it manually with target set to /dev/usbmouse, or automatically with $0 using the -c option"
+	fi
+	echo -n "/dev/usbmouse link: "
+	if [ -L /dev/usbmouse ]
+	then
+		USBMOUSE=`ls -l /dev/usbmouse | rev | cut -d" " -f 1 | rev`
+		case $USBMOUSE in
+			"usbmouse0")
+				echo "2.2.1 Kernel (set to $USBMOUSE)";;
+			"usbmouse0-2.2.19")
+				echo "2.2.19 Kernel (set to $USBMOUSE)";;
+			"input/mice")
+				echo "2.4.17_mvl21 Kernel (set to $USBMOUSE)";;
+			*)
+				echo "Unknown Kernel! (set to $USBMOUSE)";;
+		esac
+		unset USBMOUSE
+	else
+		echo "Not set! Recommend creating it manually, or automatically with $0 using the -c option"
+	fi
+	
+	#check /etc/modules.conf file
+	echo -n "/etc/modules.conf file: "
+	MODULES_CONF=""
+	MODULES_2_1=`grep "char-major-10-32" /etc/modules.conf | grep -v "#"`
+	MODULES_2_19=`grep "char-major-13-32" /etc/modules.conf | grep -v "#"`
+	MODULES_4_17=`grep "char-major-13-63" /etc/modules.conf | grep -v "#"`
+	if [ ! -z "$MODULES_2_1" ] || [ ! -z "$MODULES_2_19" ] || [ ! -z "$MODULES_4_17" ]
+	then
+		if [ ! -z "$MODULES_2_1" ]
+		then
+			MODULES_CONF="2.2.1"
+		fi
+		if [ ! -z "$MODULES_2_19" ]
+		then
+			if [ -z "$MODULES_CONF" ]
+			then
+				MODULES_CONF="2.2.19"
+			else
+				MODULES_CONF="$MODULES_CONF 2.2.19"
+			fi
+		fi
+		if [ ! -z "$MODULES_4_17" ]
+		then
+			if [ -z "$MODULES_CONF" ]
+			then
+				MODULES_CONF="2.4.17_mvl21"
+			else
+				MODULES_CONF="$MODULES_CONF 2.4.17_mvl21"
+			fi
+		fi
+		
+		echo $MODULES_CONF | grep " " >/dev/null 2>&1
+		if [ $? -eq 0 ]
+		then
+			echo -e "$MODULES_CONF Kernels\n\tWarning: multiple Kernels observed configured in /etc/modules.conf. Recommend manually editing file to set single mousedev line, or set automatically with $0 using -c option"
+		else
+			echo "$MODULES_CONF Kernel"
+		fi
+		
+	else
+		grep mousedev /etc/modules.conf | grep -vE "^#" >/dev/null 2>&1
+		if [ $? -ne 0 ]
+		then
+			echo "None! No uncommented mousedev line present in file. Recommend creating this manually, or automatically with $0 using -c option"
+		else
+			echo "Unknown Kernel! Unrecognized mousedev line present in file."
+		fi
+	fi
+	unset MODULES_CONF
+	unset MODULES_2_1
+	unset MODULES_2_19
+	unset MODULES_4_17
+	
+	echo -e "\nTo check Kernel files installed in /boot and on Memory Card 0, execute $0 without arguments"
+	exit 0
+fi
+
+# if -c option is not set: perform necessary preliminary operations to install kernel
+OUTFILE=""
+if [ -z "$CONFIGURE_ONLY" ]
+then
+	#set kernel destination filename on mc00
+	case $VERSION in
+		"2.2.1") OUTFILE="vmlinux";; #if 2.2.1 kernel should be copied as vmlinux-2.2.1 or vmlinux-2.2.1.gz, comment this line out
+		*) OUTFILE="vmlinux-$VERSION";;
+	esac
+	if [ -z "$RAW_KERNEL" ]
+	then
+		OUTFILE="${OUTFILE}.gz"
+	fi
+
+	#confirm that requested kernel version is available for install. If multiple files of same version found, prompt for desired file
+	echo "Locating Kernel $VERSION file(s) in /boot"
+	KERNEL=""
+	for f in `find /boot -type f 2>/dev/null`
+	do
+		F_TYPE=`file -b "$f" | cut -d"," -f 1`
+		if [ "$F_TYPE" = "ELF 32-bit LSB executable" ]
+		then
+			VER=`strings "$f" | grep -E "Linux version $VERSION \(" | cut -d" " -f 3`
+			if [ ! -z "$VER" ]
+			then
+				KERNEL="$KERNEL $f"
+			fi
+			unset VER
+		fi
+		unset F_TYPE
+	done
+	KERNEL=`echo "$KERNEL" | cut -d" " -f 2-`
+	if [ -z "$KERNEL" ]
+	then
+		echo "Kernel $VERSION not found in /boot! Ensure Kernel file is in /boot directory before attempting to install to Memory Card"
+		exit 5
+	else
+		echo "$KERNEL" | grep " " > /dev/null 2>&1
+		if [ $? -eq 0 ]
+		then
+			echo -e "\nMultiple $VERSION Kernel files found! Select which Kernel file to install:"
+			i=1
+			for k in `echo $KERNEL | tr " " "\n"`
+			do
+				echo "$i) $k"
+				i=$((i+1))
+			done
+			i=$((i-1))
+			echo -en "\n(`seq 1 $i | tr "\n" "/" | rev | cut -d"/" -f 2- | rev`): "
+			read -r CHOICE
+			case $CHOICE in
+				[`seq 1 $i`])
+					KERNEL=`echo -n $KERNEL | cut -d" " -f $CHOICE`;;
+				*)
+					echo "Invalid Kernel file specified, aborting!"
+					exit 6;;
+			esac
+			unset k
+			unset i
+			unset CHOICE
+		fi
+	fi
+
+	#confirm enough freespace on mc00
+	echo -en "\nConfirming sufficient free space on Memory Card 0 to install Kernel $VERSION: "
+	MC_SPACE=`df --block-size=1 /mnt/mc00 | tr -s " " | grep mc00 | cut -d" " -f 4`
+	KERNEL_SIZE=`ls -l "$KERNEL" | tr -s " " | grep "$KERNEL" | cut -d" " -f 5`
+	if [ -z "$RAW_KERNEL" ]
+	then
+		gzip -c9 "$KERNEL" > "/tmp/${OUTFILE}"
+		chmod 700 "/tmp/${OUTFILE}"
+		KERNEL_SIZE=`ls -l "/tmp/${OUTFILE}" | tr -s " " | grep "/tmp/${OUTFILE}" | cut -d" " -f 5`
+	fi
+	if [ -f "/mnt/mc00/${OUTFILE}" ]
+	then
+		OLD_KERNEL_SIZE=`ls -l "/mnt/mc00/${OUTFILE}" | tr -s " " | grep "/mnt/mc00/${OUTFILE}" | cut -d" " -f 5`
+		KERNEL_SIZE=$((KERNEL_SIZE-OLD_KERNEL_SIZE))
+		unset OLD_KERNEL_SIZE
+	fi
+	if [ $MC_SPACE -lt $KERNEL_SIZE ] #not enough freespace on memory card 
+	then
+		echo "Not enough free space , aborting!"
+		rm -f "/tmp/${OUTFILE}"
+		exit 7
+	else
+		echo "Done"
+	fi
+	unset MC_SPACE
+	unset KERNEL_SIZE
+fi
+
+#begin installation
+if [ ! -z "$CONFIGURE_ONLY" ]
+then
+	echo -e "\nConfiguring Kernel $VERSION"
+elif [ ! -z "$INSTALL_ONLY" ]
+then
+	echo -e "\nInstalling Kernel $VERSION"
+else
+	echo -e "\nInstalling and configuring Kernel $VERSION"
+fi
+
+# if -c option is not set: install requested kernel to memory card and perform additional necessary operations (if request)
+ENTRY=""
+if [ -z "$CONFIGURE_ONLY" ]
+then
+
+	#copy kernel to memory card (gzipped if requested)
+	if [ -f "/mnt/mc00/${OUTFILE}" ]
+	then
+		echo "Warning: Overwriting existing $OUTFILE Kernel file present on Memory Card 0"
+	fi
+	if [ -z "$RAW_KERNEL" ]
+	then
+		cp -f "/tmp/${OUTFILE}" "/mnt/mc00/${OUTFILE}"
+		rm -f "/tmp/${OUTFILE}"
+	else
+		cp -f "$KERNEL" "/mnt/mc00/${OUTFILE}"
+	fi
+	chmod 700 "/mnt/mc00/${OUTFILE}"
+
+	#check for boot entry in /mnt/mc00/p2lboot.cnf, create one if not present
+	grep "$OUTFILE \"\"" /mnt/mc00/p2lboot.cnf >/dev/null 2>&1
+	if [ "$?" -eq 0 ]
+	then
+		ENTRY=`grep "$OUTFILE \"\"" /mnt/mc00/p2lboot.cnf | cut -d"\"" -f 2`
+	else #copy p2lboot.cnf to /tmp for editing, as ps2mcfs does not appear to allow in-place editing of files
+		ENTRY="$VERSION"
+		PART=`grep " / " /etc/fstab | cut -d" " -f 1`
+		cp /mnt/mc00/p2lboot.cnf /tmp/p2lboot.cnf
+		chmod 700 /tmp/p2lboot.cnf
+		echo -e "\"$VERSION\"\t$OUTFILE \"\"\t203 $PART \"\" $VERSION Kernel" >> /tmp/p2lboot.cnf
+		cp /tmp/p2lboot.cnf /mnt/mc00/p2lboot.cnf
+		rm -f /tmp/p2lboot.cnf
+		chmod 700 /mnt/mc00/p2lboot.cnf
+		echo "Warning: pre-existing boot entry for $VERSION Kernel not found in /mnt/mc00/p2lboot.cnf, so new \"$ENTRY\" entry was created."
+	fi
+
+	#set default boot entry in /mnt/mc00/p2lboot.opt to newly-installed kernel (unless -s option is specified); copy p2lboot.opt to /tmp for editing, as ps2mcfs does not appear to allow in-place editing of files
+	if [ -z "$NO_DEFAULT_BOOT" ]
+	then
+		cp /mnt/mc00/p2lboot.opt /tmp/p2lboot.opt
+		chmod 700 /tmp/p2lboot.opt
+		grep -E "^prevent=" /mnt/mc00/p2lboot.opt > /dev/null 2>&1
+		if [ $? -ne 0 ]
+		then
+			echo "prevent=${ENTRY}%mc0:/BWLINUX/${OUTFILE}%" >> /tmp/p2lboot.opt
+		else
+			perl -i -pe "s/prevent=.*/prevent=${ENTRY}\%mc0:\/BWLINUX\/${OUTFILE}\%/" /tmp/p2lboot.opt
+		fi
+		cp /tmp/p2lboot.opt /mnt/mc00/p2lboot.opt
+		rm -f /tmp/p2lboot.opt
+		chmod 700 /mnt/mc00/p2lboot.opt
+	fi
+
+	#if -k option is not set: set /boot/System.map and /boot/vmlinux links if on PS2 Linux Release 1.0
+	if [ -z "$INSTALL_ONLY" ]
+	then
+		if [ "$LINUXVER" != "Beta" ]
+		then
+			if [ -L "/boot/vmlinux" ]
+			then
+				rm -f /boot/vmlinux
+			fi
+			if [ -L "/boot/System.map" ]
+			then
+				rm -f /boot/System.map
+			fi
+			
+			ln -s "$KERNEL" /boot/vmlinux
+			ln -s "System.map-`echo $KERNEL | cut -d'-' -f 2-`" /boot/System.map
+		fi
+	fi
+fi
+
+#if -k option is not set: perform configuration operations
+if [ -z "$INSTALL_ONLY" ]
+then
+	#set kernel source link
+	SRC_LN=$(ls -d /usr/src/linux-`echo $VERSION | cut -d"_" -f 1`_ps2 2>/dev/null | rev | cut -d"/" -f 1 | rev)
+	if [ ! -z "$SRC_LN" ]
+	then
+		if [ -L /usr/src/linux ]
+		then
+			rm -f /usr/src/linux
+		fi
+		ln -s "$SRC_LN" /usr/src/linux
+	else
+		echo "Warning: /usr/src/linux symbolic link could not be created because Kernel $VERSION source directory was not detected by name (expected \"linux-${VERSION}_ps2\" directory in /usr/src). Recommend manually creating link."
+	fi
+
+	#set mouse link
+	OUTFILE=""
+	rm -f /dev/usbmouse
+	case $VERSION in
+		"2.2.1")
+			OUTFILE="usbmouse0"
+			if [ ! -c "/dev/usbmouse0" ]
+			then
+				mknod /dev/usbmouse0 c 10 32
+			fi;;
+		"2.2.19")
+			OUTFILE="usbmouse0-2.2.19"
+			if [ ! -c "/dev/usbmouse0-2.2.19" ]
+			then
+				mknod /dev/usbmouse0-2.2.19 c 13 32
+			fi;;
+		"2.4.17_mvl21")
+			OUTFILE="input/mice"
+			if [ ! -c "/dev/input/mice" ]
+			then
+				mkdir -p /dev/input
+				mknod /dev/input/mice c 13 63
+			fi;;
+	esac
+	ln -s "$OUTFILE" /dev/usbmouse
+	if [ -L /dev/mouse ]
+	then
+		if [ "`ls -l /dev/mouse | rev | cut -d" " -f 1 | rev`" != "usbmouse" ]
+		then
+			echo "Warning: /dev/mouse symbolic link target is not /dev/usbmouse. Recommend manually setting /dev/mouse target to /dev/usbmouse"
+		fi
+	else
+		ln -s usbmouse /dev/mouse
+	fi
+
+	#edit /etc/modules.conf with correct "mousedev" line enabled
+	case $VERSION in
+		"2.2.1")
+			perl -i -pe "s/^alias[ \t]{1,}char-major-13-32[ \t]{1,}mousedev$/#alias\tchar-major-13-32\tmousedev/" /etc/modules.conf
+			perl -i -pe "s/^alias[ \t]{1,}char-major-13-63[ \t]{1,}mousedev$/#alias\tchar-major-13-63\tmousedev/" /etc/modules.conf
+			grep "char-major-10-32" /etc/modules.conf >/dev/null 2>&1
+			if [ $? -eq 0 ]
+			then
+				perl -i -pe "s/^#alias[ \t]{1,}char-major-10-32[ \t]{1,}mousedev$/alias\tchar-major-10-32\tmousedev/" /etc/modules.conf
+			else
+				touch /tmp/modules.conf
+				chmod 600 /tmp/modules.conf
+				( echo -e "alias\tchar-major-10-32\tmousedev" && cat /etc/modules.conf ) > /tmp/modules.conf
+				cp /tmp/modules.conf /etc/modules.conf
+				chmod 644 /etc/modules.conf
+				rm /tmp/modules.conf
+			fi;;
+		"2.2.19")
+			perl -i -pe "s/^alias[ \t]{1,}char-major-10-32[ \t]{1,}mousedev$/#alias\tchar-major-10-32\tmousedev/" /etc/modules.conf
+			perl -i -pe "s/^alias[ \t]{1,}char-major-13-63[ \t]{1,}mousedev$/#alias\tchar-major-13-63\tmousedev/" /etc/modules.conf
+			grep "char-major-13-32" /etc/modules.conf >/dev/null 2>&1
+			if [ $? -eq 0 ]
+			then
+				perl -i -pe "s/^#alias[ \t]{1,}char-major-13-32[ \t]{1,}mousedev$/alias\tchar-major-13-32\tmousedev/" /etc/modules.conf
+			else
+				touch /tmp/modules.conf
+				chmod 600 /tmp/modules.conf
+				( echo -e "alias\tchar-major-13-32\tmousedev" && cat /etc/modules.conf ) > /tmp/modules.conf
+				cp /tmp/modules.conf /etc/modules.conf
+				chmod 644 /etc/modules.conf
+				rm /tmp/modules.conf
+			fi;;
+		"2.4.17_mvl21")
+			perl -i -pe "s/^alias[ \t]{1,}char-major-10-32[ \t]{1,}mousedev$/#alias\tchar-major-10-32\tmousedev/" /etc/modules.conf
+			perl -i -pe "s/^alias[ \t]{1,}char-major-13-32[ \t]{1,}mousedev$/#alias\tchar-major-13-32\tmousedev/" /etc/modules.conf
+			grep "char-major-13-63" /etc/modules.conf >/dev/null 2>&1
+			if [ $? -eq 0 ]
+			then
+				perl -i -pe "s/^#alias[ \t]{1,}char-major-13-63[ \t]{1,}mousedev$/alias\tchar-major-13-63\tmousedev/" /etc/modules.conf
+			else
+				touch /tmp/modules.conf
+				chmod 600 /tmp/modules.conf
+				( echo -e "alias\tchar-major-13-63\tmousedev" && cat /etc/modules.conf ) > /tmp/modules.conf
+				cp /tmp/modules.conf /etc/modules.conf
+				chmod 644 /etc/modules.conf
+				rm /tmp/modules.conf
+			fi;;
+	esac
+fi
+
+if [ ! -z "$CONFIGURE_ONLY" ]
+then
+	echo -e "\nSystem configured for Kernel $VERSION. Recommend immediate reboot into newly configured Kernel $VERSION.\n"
+elif [ ! -z "$INSTALL_ONLY" ]
+then
+	echo -e "\nKernel $VERSION installed. Recommend reconfiguring system for newly installed Kernel before rebooting into Kernel."
+else
+	echo -e "\nReboot and select \"$ENTRY\" boot entry to use newly installed and configured Kernel $VERSION."
+	if [ "`uname -r`" != "2.2.1" ]
+	then
+		echo -e "Alternatively, boot the newly installed kernel via Akmem.\n"
+	else
+		echo -en "\n"
+	fi
+fi
+
+if [ "$VERSION" = "2.4.17_mvl21" ] && [ "$LINUXVER" = "Beta" ]
+then
+	echo -e "\nWarning: Kernel $VERSION will not boot directly from the PS2 Linux Beta Release 1 DVD-ROM! This Kernel can instead be booted from:"
+	echo -e "\t* The PS2 Linux Release 1.0 DVD-ROM\n\t* Another Kernel with Akmem support (such as 2.2.19) via Akmem\n\t* BB Navigator via Akmem\n"
+fi
+
+unset MOUNTED
+unset VERSION
+unset KERNEL
+unset LINUXVER
+unset ENTRY
+unset OUTFILE
+unset SRC_LN
+exit 0
+#END kernel-switch
