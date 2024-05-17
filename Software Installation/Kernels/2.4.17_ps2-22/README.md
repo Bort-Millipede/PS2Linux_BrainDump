@@ -198,6 +198,9 @@ Recreate the ```/dev/usbmouse``` symoblic link to reference the correct USB mous
 ln -s input/mice /dev/usbmouse
 ```
 
-&nbsp;  
-Reboot PS2 Linux and select the ```2.4.17_mvl21``` boot entry to use the 2.4.17_mvl21 Kernel.
+## Booting Kernel 2.4.17_mvl21
+
+The PS2 Linux Beta Release 1 DVD does not appear to boot the 2.4.17_mvl21 kernel correctly (the kernel boots to a blank screen). Therefore, this kernel can only be booted via the following means:
+* via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem))
+* via BB Navigator (not currently outlined in this repository)
 

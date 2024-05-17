@@ -97,8 +97,7 @@ cp 2.4.17_mvl21/kernel/drivers/ps2/ps2fs.o /lib/modules/2.4.17_mvl21/kernel/driv
 
 ### (OPTIONAL) Install [helper script](mount-ps2fs) for easily mounting partitions with ps2fs (as root)
 
-Install **mount-ps2fs** script to ```/usr/local/bin```.
-
+Install **[mount-ps2fs script](mount-ps2fs)** to ```/usr/local/bin```.
 ```bash
 cp /path/to/mount-ps2fs /usr/local/sbin
 chmod 755 /usr/local/sbin/mount-ps2fs

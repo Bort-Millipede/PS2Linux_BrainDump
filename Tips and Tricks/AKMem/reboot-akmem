@@ -1,0 +1,41 @@
+#! /bin/bash
+
+if [ $(whoami) != "root" ]
+then
+	echo "$0: must be root"
+	exit 1
+fi
+
+KV=`uname -r`
+if [ "$KV" = "2.2.1" ] #if running kernel is 2.2.1: print warning and ask to proceed
+then
+	echo -e "akmem will not run correctly using the $KV kernel, and must instead be run from the 2.2.19 kernel or the 2.4.17_mvl21 kernel\n"
+	echo -n "Would you like to continue? (N/y): "
+	read -r YN
+	case $YN in	[Yy]);;
+		*) exit;;
+	esac
+fi
+
+if [ -z "$1" ]
+then
+	if [ -f /boot/vmlinux-${KV}_ps2 ]
+	then
+		/usr/local/sbin/akload -r /boot/vmlinux-${KV}_ps2
+	else
+		/usr/local/sbin/akload -r /boot/vmlinux-${KV}
+	fi
+else
+	if [ $1 = "2.2.1" ]
+	then
+		/usr/local/sbin/akload -r /boot/vmlinux-2.2.1_ps2
+	elif [ $1 = "2.2.19" ]
+	then
+		/usr/local/sbin/akload -r /boot/vmlinux-2.2.19_ps2
+	elif [ $1 = "2.4.17" ] || [ $1 = "2.4.17_mvl21" ]
+	then
+		/usr/local/sbin/akload -r /boot/vmlinux-2.4.17_mvl21
+	else
+		/usr/local/sbin/akload -r $1
+	fi
+fi

@@ -30,6 +30,14 @@ When installing either the PS2 Linux Beta or Release kits and selecting all avai
 
 Both the Beta kit and the Release kit ship with Kernel 2.2.1. The kernel that comes installed on the Beta kit is 2.2.1_ps2-6, whereas the kernel that comes installed on the Release kit is 2.2.1_ps2-7. It seems that a fair amount of the kernel source (especially items compiled as kernel modules by default, such as PS2-specific devices) was deliberately ommitted from the available 2.2.1_ps2-6 kernel source RPMs.
 
+## Other Differences
+
+The OpenSSH Server that ships with the Beta kit is much less stable than the OpenSSH Server that ships with the Release kit.
+
+Sessions established on the Beta kit often timeout after a while, with the console session suddenly no longer accepting input which necessitates establishing a new session. Additionally, SFTP sessions established cannot seem to retrieve remote folder (on PS2 Linux) contents correctly.
+
+The issues outlined above do not appear to be present in the Release kit OpenSSH server.
+
 ## References
 
 * [https://www.psdevwiki.com/ps2/Hard_Drive](https://www.psdevwiki.com/ps2/Hard_Drive)
