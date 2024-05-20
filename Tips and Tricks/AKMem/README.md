@@ -100,10 +100,8 @@ To reboot into a specific kernel vmlinux file, execute ```reboot-akmem``` with t
 reboot-akmem /path/to/kernel/vmlinux
 ```
 
-AKMem can be utilized to boot into Kernel 2.2.1 from either Kernel 2.2.19 or 2.4.17_mvl21 using the following command:
+AKMem can be utilized to boot into Kernel 2.2.1 from either Kernel 2.2.19 or 2.4.17_mvl21. However, once PS2 Linux has been booted using Kernel 2.2.1, AKMem cannot be used again without hard rebooting the console and booting into Kernel 2.2.19 or 2.4.17_mvl21. The following command can be used:
 ```bash
 reboot-akmem 2.2.1
 ```
-
-However once PS2 Linux has been booted using Kernel 2.2.1, AKMem cannot be used again without hard rebooting the console and booting into Kernel 2.2.19 or 2.4.17_mvl21.
 

@@ -1,0 +1,8 @@
+debug
+login
+default-asyncmap
+require-pap
+ms-dns X.X.X.X
+proxyarp
+ktune
+
