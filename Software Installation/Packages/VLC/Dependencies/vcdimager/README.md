@@ -20,6 +20,7 @@ Because vcdimager is being built to enable features in VLC that require the use 
 * [Libtool](../../../Libtool)
 * [Autoconf](../../../Autoconf)
 * [Automake (1.6.3 or 1.5)](../../../Automake)
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../../../Kernel&#32;Source)
 * [libcdio](../libcdio)
 
 ## Building for Cross-Compiling Environment (Without vcdimager)

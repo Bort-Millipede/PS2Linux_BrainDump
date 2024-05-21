@@ -7,6 +7,11 @@ Source links:
 
 **Build type:** native (directly on PS2 Linux)
 
+### Dependencies
+
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../Kernel&#32;Source)
+* [smake](../smake)
+
 ## Prerequisites
 
 In general for any operations requiring the use of an optical drive, the built-in PS2 drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the necessary kernel modules loaded (as root or via sudo): 
@@ -25,9 +30,7 @@ Because of the reason outlined above, cdrtools can only be used under kernel 2.4
 * ```2.4.17_ps2```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1; or 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
 * ```2.2.19_ps2```: 2.2.19 kernel from Broadband Navigator 0.10
 
-### Dependencies
 
-* [smake](../smake)
 
 ## Building/Installing on PS2 Linux
 

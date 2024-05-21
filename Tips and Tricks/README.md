@@ -2,17 +2,19 @@
 
 A vast amount of tips and tricks beyond the scope of this repository can be found [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/faq.html).
 
+## Recommended Items To Be Completed Immediately After Installation
+
+**Ethernet Driver Update:** If the ethernet connection on PS2 Linux is very unstable and drops very easily (this is more likely to be experienced with newer Playstation 2 consoles), the likely issue is the buggy stock SMAP (ethernet) driver. An updated driver that fixes these issues is available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/ps2linux.html), with directions for installation available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotesaca2.html?release_id=68).
+
 ## General Tips
 
 Using a dedicated Memory Card for PS2 Linux is recommended. This will allow multiple kernels and the initfs.gz ramdisk to be installed to the Memory Card, all without being concerned about remaining storage space.
 
+When performing command-line operations on PS2 Linux, the author recommends performing these via SSH as much as possible. Operations requiring GUI elements should be performed via the USB keyboard and mouse plugged into the Playstaton 2 console. For connecting to PS2 Linux via SSH from a Windows system, the author recommends using [BitVise](https://www.bitvise.com/ssh-client-download).
+
 Although the root password is set during installation of PS2 Linux, the author recommends resetting this password via ```passwd``` (as root or via sudo) after installation. This is because the installer appears to store the root password via a shorter (and likely weaker) hashing algorithm. Resetting the password to the same value here is fine, as the password will now be stored using the better hashing algorithm.
 
-When performing command-line operations on PS2 Linux, the author recommends performing these via SSH as much as possible. Operations requiring GUI elements should be performed via the USB keyboard and mouse plugged into the Playstaton 2 console.
-
-For connecting to PS2 Linux via SSH from a Windows system, the author recommends using [BitVise](https://www.bitvise.com/ssh-client-download).
-
-Although the VGA adapter only officially supports sync-on-green monitors, modern monitors with VGA inputs MAY work with the VGA adapter. The following monitor has been used successfully with PS2 Linux and the VGA adapter by the author:  
+Although the VGA adapter only officially supports sync-on-green monitors, modern monitors with VGA inputs MAY work with the VGA adapter. The following monitor has been successfully used by the author with PS2 Linux and the VGA adapter:  
 * [ASUS VS247H](https://www.asus.com/us/commercial-monitors/vs247hp/)
 
 ### X Windows

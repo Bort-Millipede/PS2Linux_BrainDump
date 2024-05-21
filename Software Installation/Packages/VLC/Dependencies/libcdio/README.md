@@ -20,6 +20,7 @@ Because libcdio is being built to enable features in VLC that require the use of
 * [Libtool](../../../Libtool)
 * [Autoconf](../../../Autoconf)
 * [Automake (1.6.3 or 1.5)](../../../Automake)
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../../../Kernel&#32;Source)
 * [vcdimager](../vcdimager) (Requires libcdio to be built once prior: outlined below)
 
 ## First Build (without vcdimager)

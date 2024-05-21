@@ -2,8 +2,8 @@
 
 ![](2.2.19_beta_login.png?raw=true)
 
-Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip) under ```SCEI/RPMS```):  
-* kernel-2.2.19_ps2-5.src.rpm (in ```source.tgz``` file under ```source/kernel```)
+Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip)):  
+* kernel-2.2.19_ps2-5.src.rpm (within ```source.tgz``` file under ```source/kernel```)
 
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
@@ -45,14 +45,15 @@ umount /mnt/cdrom
 
 ## Installing 2.2.19 Kernel Source to Cross-Compiling Environment (as root)
 
-&nbsp;  
 Extract RPM into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux/usr/src
-rpm2cpio kernel-2.2.19_ps2-5.src.rpm | cpio -ivd
+mv linux linux.bak
+rpm2cpio /path/to/kernel-2.2.19_ps2-5.src.rpm | cpio -ivd
 tar xzf linux-2.2.19.tar.gz
 mv linux linux-2.2.19_ps2-5
 rm installkernel linux-2.2.19-5.spec linux-2.2.19.tar.gz module-info
+mv linux.bak linux
 ```
 
 &nbsp;  
@@ -184,7 +185,7 @@ mv 2.2.19 2.2.19_ps2
 tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19_ps2
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing Kernel on PS2 Linux (as root)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
 
@@ -269,7 +270,7 @@ The easiest way to get sound working under kernel 2.2.19 is to force-load the ke
 insmod -f /lib/modules/2.2.1/misc/ps2sd.o
 ```
 
-To automatically force-load the 2.2.1 and boot, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod ps2sd``` line with:  
+To automatically force-load the 2.2.1 at boot time, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod ps2sd``` line with:  
 ```
 if [ "`uname -r`" = "2.2.19" ]
 then

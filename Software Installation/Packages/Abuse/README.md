@@ -12,7 +12,8 @@
 
 ### Dependencies
 
-[SDL/SDL_net](../SDL)
+* [SDL/SDL_net](../SDL)
+* [2.2.19 and 2.4.17_mvl21 Kernel Source](../Kernel&#32;Source)
 
 ## Building for PS2 Linux
 

@@ -25,12 +25,11 @@ It is recommended that a known-working kernel configuration file be used when bu
 
 ## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root)
 
-&nbsp;  
 Extract RPMs into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
-rpm2cpio kernel-headers-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
-rpm2cpio kernel-source-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-headers-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-source-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
 cd usr/src
 mv linux-2.4.17_ps2 linux-2.4.17_ps2-22
 cd linux-2.4.17_ps2-22

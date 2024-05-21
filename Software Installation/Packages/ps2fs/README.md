@@ -7,7 +7,11 @@
 
 ps2fs allows partitions on the PS2 HDD that were NOT created by PS2 Linux to be accessed. The software is compiled as a loadable kernel module. Therefore, it will need to be built separately for every kernel version under which it is intended to be used.
 
-In the author's experience, ps2fs works under all kernel versions EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with the Linux Kit Beta). The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded which subsequently fails. Conversely, ps2fs works fine under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the Linux Kit Release 1.0).
+In the author's experience, ps2fs works under all kernel versions EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with the Linux Kit Beta). The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded, which subsequently fails. Conversely, ps2fs works fine under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the Linux Kit Release 1.0).
+
+## Dependencies
+
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../Kernel&#32;Source): This is only required if building for Kernel 2.2.19 and/or Kernel 2.4.17_mvl21.
 
 ## Building for PS2 Linux
 

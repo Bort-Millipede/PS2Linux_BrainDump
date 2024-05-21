@@ -6,6 +6,8 @@ When rebooting PS2 Linux via the ```shutdown``` or ```reboot``` commands, the us
 
 AKMem ("Another Kernel Memory") is a feature present in the 2.2.19 and 2.4.17_mvl21 kernels. This feature can be leveraged to perform a "soft reboot" of PS2 Linux without requiring the Reset button to be pressed. Additionally, soft rebooting via AKMem enables the user to boot into a different kernel without needing to perform a hard reboot of the Playstation 2 console.
 
+AKMem can be utilized to boot into Kernel 2.2.1 from either Kernel 2.2.19 or 2.4.17_mvl21. However, once PS2 Linux has been booted using Kernel 2.2.1, AKMem cannot be used again without hard rebooting the console and booting into Kernel 2.2.19 or 2.4.17_mvl21.
+
 [Required source link](http://hp.vector.co.jp/authors/VA008536/ps2linux/akmem_ps2.tar.gz)  
 **Build type:** native (directly on PS2 Linux)
 
@@ -13,6 +15,10 @@ AKMem ("Another Kernel Memory") is a feature present in the 2.2.19 and 2.4.17_mv
 
 * [http://www.geocities.jp/ps2linux_net/make_install/akmem.html](https://web.archive.org/web/20181105102756/http://www.geocities.jp/ps2linux_net/make_install/akmem.html)
 * [http://hp.vector.co.jp/authors/VA008536/ps2linux/akmem.html](http://hp.vector.co.jp/authors/VA008536/ps2linux/akmem.html)
+
+## Dependencies
+
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../../Software&#32;Installation/Packages/Kernel&#32;Source)
 
 ## Kernel Configuration
 
@@ -100,7 +106,7 @@ To reboot into a specific kernel vmlinux file, execute ```reboot-akmem``` with t
 reboot-akmem /path/to/kernel/vmlinux
 ```
 
-AKMem can be utilized to boot into Kernel 2.2.1 from either Kernel 2.2.19 or 2.4.17_mvl21. However, once PS2 Linux has been booted using Kernel 2.2.1, AKMem cannot be used again without hard rebooting the console and booting into Kernel 2.2.19 or 2.4.17_mvl21. The following command can be used:
+To reboot into Kernel 2.2.1 (and be unable to use AKMem again without performing a hard reboot), the following command can be used:
 ```bash
 reboot-akmem 2.2.1
 ```
