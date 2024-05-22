@@ -3,6 +3,10 @@
 [Source link](http://download.nust.na/pub2/openpkg1/sources/DST/pv/pv-0.6.4.tar.gz)  
 **Build type:** cross-compiling (on system with mipsEEel-linux-* toolchain installed)
 
+## Prerequisites
+
+It is recommended to set the ```/usr/src/linux``` symbolic link to reference the kernel 2.2.1 source directory. This is so the star binary can be used when booting the initfs.gz ramdisk.
+
 ## Building for PS2 Linux
 
 Extract source archive

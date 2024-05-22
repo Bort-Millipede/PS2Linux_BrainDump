@@ -6,6 +6,14 @@ A vast amount of tips and tricks beyond the scope of this repository can be foun
 
 **Ethernet Driver Update:** If the ethernet connection on PS2 Linux is very unstable and drops very easily (this is more likely to be experienced with newer Playstation 2 consoles), the likely issue is the buggy stock SMAP (ethernet) driver. An updated driver that fixes these issues is available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/ps2linux.html), with directions for installation available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotesaca2.html?release_id=68).
 
+**Kernel Source Installation:** Numerous procedures outlined in this repository require the 2.2.19 Kernel source and/or the 2.4.17_mvl21 Kernel source to be installed on PS2 Linux. Installing these is outlined [HERE](../Software&#32;Installation/Packages/Kernel&#32;Source).
+
+**RPM Upgrade:** The required packages needed for the upgrade can be found [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/apt.html). The actual upgrade procedure is [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apt/rpm-upgrade.pdf), with some revisions being outlined in bug reports [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/bug/apt.html).
+
+**Create Backup Partition:** If PS2 Linux was not installed using the full PS2 HD (hopefully not), the author recommends creating a 5GB backup partition for backing up files.
+
+**Create Full Backup of PS2 Linux installation:** A full backup of the PS2 Linux installation should be created. This backup can be leveraged at a later time to restore a working PS2 Linux installation without the need to re-run the original PS2 Linux installer.
+
 ## General Tips
 
 Using a dedicated Memory Card for PS2 Linux is recommended. This will allow multiple kernels and the initfs.gz ramdisk to be installed to the Memory Card, all without being concerned about remaining storage space.
@@ -21,7 +29,7 @@ Although the VGA adapter only officially supports sync-on-green monitors, modern
 
 It is highly recommended that the mouse wheel be enabled for X Windows. Accomplishing this is outlined [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/ps2mousewheel.html).
 
-The command for starting X Windows displayed over an NTSC connection is: ```startx -- -screen 0 NTSC```
+The command for starting X Windows anddisplayed over an NTSC connection is: ```startx -- -screen 0 NTSC```
 
 The screen resolution used by the X Server seems to only be customizable (via edits made to the ```/etc/X11/XGSConfig``` file, under the "Screen" section) for VGA output. The screen resolution used for NTSC and PAL outputs appears to be hardcoded and is very low.
 

@@ -244,3 +244,15 @@ make oldconfig
 make menuconfig
 ```
 
+## Configuring PS2 Linux to Build Software Against Different Kernel Version
+
+The kernel source directory that PS2 Linux will build sofware against is referenced by the ```/usr/src/linux``` symlink. To reconfigure this, the symlink must be recreated to reference a different source directory.
+
+### Example (as root)
+
+Configuring PS2 Linux to build against the 2.2.19 Kernel.
+```bash
+rm /usr/src/linux
+ln -s linux-2.2.19_ps2-5 /usr/src/linux
+```
+
