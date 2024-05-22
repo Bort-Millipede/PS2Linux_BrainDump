@@ -38,6 +38,6 @@ PS2 Linux ships with various window managers besides the default Window Maker. T
 ## Specific Tips and Tricks
 
 * [Soft-Rebooting PS2 Linux with akmem](AKMem)
-* Backing Up and Restoring PS2 Linux
+* [Backing Up and Restoring PS2 Linux](Backup-Restore)
 * [PC-DC Server for Sega Dreamcast](PC-DC&#32;Server)
 
