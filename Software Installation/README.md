@@ -25,11 +25,11 @@ On top of those included in the Linux kits, some prebuilt software packages for 
 
 The section describes setting up a dedicated system for cross-compiling software to be installed and run on PS2 Linux.
 
-## General Tips & Tricks
+## General Building Tips & Tricks
 
 * **Recommend installing software to /usr/local:** In keeping with generally-accepted [Linux directory conventions](https://www.linuxfromscratch.org/blfs/view/stable/introduction/position.html), it is recommended that any software compiled (either cross-compiled or natively-compiled) and installed on PS2 Linux be installed to the ```/usr/local``` directory and NOT to the ```/usr``` directory. Therefore, when configuring software for compiling via the included ```configure``` script, the ```--prefix=/usr/local``` command-line option should be passed.
 * **Add /usr/local to /etc/ld.so.conf file:** Because of the above point, the ```/usr/local/lib``` directory needs to be added to the ```/etc/ld.so.conf``` file on PS2 Linux. This will ensure that all shared libraries installed to ```/usr/local/lib``` are properly linked and cached via the ```ldconfig``` command.
-* **Build software as non-root user:** It is highly recommended that software be built using a non-root user before installing as a root user. This can help prevent necessary system files from being accidentally overwritten or corrupted due to a badly-typed command. This applies to:
+* **Build software as non-root user:** It is highly recommended that software be built using a non-root user before installing as a root user. This can help prevent necessary system files from being accidentally overwritten or corrupted due to a badly-typed command.
 * **Natively compiling software against specific kernel versions:** To natively compile (directly on PS2 Linux) against a specific kernel version, recreate the ```/usr/src/linux``` symbolic link to reference the kernel source directory for the desired version.
   * Examples of what the ```/usr/src/linux``` link can be set to:
     * ```2.2.1_ps2```: 2.2.1 kernel from Beta Release 1, or 2.2.1 kernel from Release 1.0. 
