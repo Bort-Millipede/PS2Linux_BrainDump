@@ -2,7 +2,7 @@
 
 Using USB Floppy or Zip drives with PS2 Linux provides another avenue for file transfers to/from PS2 Linux, similar to how a USB flash drive would function.
 
-USB Floppy and USB Zip drives are recognized by PS2 Linux as the same device type. Therefore, the information provided on this page is interchangable for both device types.
+USB Floppy and USB Zip drives are recognized by PS2 Linux as the same device type. Therefore, the information provided on this page is interchangeable for both device types.
 
 ## References
 
@@ -10,7 +10,7 @@ USB Floppy and USB Zip drives are recognized by PS2 Linux as the same device typ
 
 ## Kernel Configuration
 
-USB Floppy and Zip drives work with all available Linux Kernels (2.2.1, 2.2.19, 2.4.17_mvl21). For all kernel versions, the following options need to be enabled as modules (with *M*):
+USB Floppy and Zip drives work with all available Linux Kernels (2.2.1, 2.2.19, 2.4.17_mvl21). For all kernel versions, the following options need to be enabled as modules (with ```M```):
 * ```SCSI support``` -> ```SCSI disk support```
 * ```USB support``` -> ```USB Mass Storage support```
 
@@ -30,7 +30,7 @@ These can be set by invoking the ```make menuconfig``` command in the kernel sou
 
 ## Using Floppy and Zip Drives in PS2 Linux
 
-Before plugging in the device, the following linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
+Before plugging in the device, the following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
 * sd_mod
 * usb-storage
 ```bash

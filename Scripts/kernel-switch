@@ -721,7 +721,7 @@ else
 	echo -e "\nReboot and select \"$ENTRY\" boot entry to use newly installed and configured Kernel $VERSION."
 	if [ "`uname -r`" != "2.2.1" ]
 	then
-		echo -e "Alternatively, boot the newly installed kernel via Akmem.\n"
+		echo -e "Alternatively, boot the newly installed kernel via AKMem.\n"
 	else
 		echo -en "\n"
 	fi
@@ -730,7 +730,7 @@ fi
 if [ "$VERSION" = "2.4.17_mvl21" ] && [ "$LINUXVER" = "Beta" ]
 then
 	echo -e "\nWarning: Kernel $VERSION will not boot directly from the PS2 Linux Beta Release 1 DVD-ROM! This Kernel can instead be booted from:"
-	echo -e "\t* The PS2 Linux Release 1.0 DVD-ROM\n\t* Another Kernel with Akmem support (such as 2.2.19) via Akmem\n\t* BB Navigator via Akmem\n"
+	echo -e "\t* The PS2 Linux Release 1.0 DVD-ROM\n\t* Another Kernel with AKMem support (such as 2.2.19) via AKMem\n\t* BB Navigator via AKMem\n"
 fi
 
 unset MOUNTED

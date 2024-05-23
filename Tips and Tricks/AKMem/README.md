@@ -1,4 +1,4 @@
-# akmem for Soft-Rebooting PS2 Linux
+# AKMem for Soft-Rebooting PS2 Linux
 
 When rebooting PS2 Linux via the ```shutdown``` or ```reboot``` commands, the user must physically press the Reset button on the Playstation 2 console to perform the reboot.
 
@@ -52,7 +52,7 @@ ln -sf linux-2.2.19_ps2 /usr/src/linux
 ```
 
 &nbsp;  
-Build soure and create ```akmem``` device file.
+Build source and create ```akmem``` device file.
 ```
 make
 make mknod

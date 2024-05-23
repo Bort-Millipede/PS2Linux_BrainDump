@@ -38,7 +38,7 @@ mv source/kernel/kernel-2.2.19_ps2-5.src.rpm .
 rm -rf source
 ```
 
-Umount the DVD
+Unmount the DVD
 ```bash
 umount /mnt/cdrom
 ```
@@ -250,10 +250,10 @@ alias	char-major-13-32	mousedev
 ```
 
 &nbsp;  
-(Recommended) With the exception of the entry above, diable all ```mousedev``` entries by prepending them with ```#``` characters.
+(Recommended) With the exception of the entry above, disable all ```mousedev``` entries by prepending them with ```#``` characters.
 
 &nbsp;  
-Recreate the ```/dev/usbmouse``` symoblic link to reference the correct USB mouse node.
+Recreate the ```/dev/usbmouse``` symbolic link to reference the correct USB mouse node.
 ```bash
 ln -s usbmouse0-2.2.19 /dev/usbmouse
 ```

@@ -13,6 +13,8 @@ Some software that is built natively on PS2 Linux requires being built against n
 * [kernel-headers-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-26.mipsel.rpm)
 * [kernel-source-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-26.mipsel.rpm)
 
+**Build type:** N/A
+
 ## Installing on PS2 Linux (as root)
 
 ### 2.2.19 Kernel
@@ -230,7 +232,7 @@ cp config .config
 ```
 
 &nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one (FIXME)](../../Kernels/2.4.17_ps2-22/FIXME)) into correct location in kernel source directory.
+Alternatively: copy usable kernel configuration file (such as [this one (FIXME)](../../Kernels/2.4.17_ps2-26/FIXME)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -246,7 +248,7 @@ make menuconfig
 
 ## Configuring PS2 Linux to Build Software Against Different Kernel Version
 
-The kernel source directory that PS2 Linux will build sofware against is referenced by the ```/usr/src/linux``` symlink. To reconfigure this, the symlink must be recreated to reference a different source directory.
+The kernel source directory that PS2 Linux will build software against is referenced by the ```/usr/src/linux``` symlink. To reconfigure this, the symlink must be recreated to reference a different source directory.
 
 ### Example (as root)
 

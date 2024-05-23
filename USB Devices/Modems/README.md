@@ -6,7 +6,7 @@
 
 **NOTE:** In the 2.2.1 kernel that ships with PS2 Linux Beta Release 1, the necessary kernel module outlined below actually comes pre-installed.
 
-USB dial-up modems work with all available Linux Kernels (2.2.1, 2.2.19, 2.4.17_mvl21). For all kernel versions, the following option needs to be enabled as a module (with *M*):
+USB dial-up modems work with all available Linux Kernels (2.2.1, 2.2.19, 2.4.17_mvl21). For all kernel versions, the following option needs to be enabled as a module (with ```M```):
 * ```USB support``` -> ```USB Modem (CDC ACM) support```
 
 This can be set by invoking the ```make menuconfig``` command in the kernel source directory and navigating to the appropriate menu.
@@ -22,7 +22,7 @@ This can be set by invoking the ```make menuconfig``` command in the kernel sour
 
 ## Using USB Optical Drives in PS2 Linux
 
-Before plugging in the device, the ```acm``` linux kernel module needs to be loaded (as root or via sudo) within PS2 Linux:  
+Before plugging in the device, the ```acm``` Linux kernel module needs to be loaded (as root or via sudo) within PS2 Linux:  
 ```bash
 /sbin/insmod acm
 ```

@@ -5,7 +5,7 @@
 
 ## Preliminary Considerations
 
-Reiserfsprogs should build against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, the 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions.
+Reiserfsprogs should build successfully against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, the 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions.
 
 ## Building for PS2 Linux
 

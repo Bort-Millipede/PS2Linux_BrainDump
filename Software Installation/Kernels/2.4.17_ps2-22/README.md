@@ -17,7 +17,7 @@ Required files:
 
 ### Limitations
 
-While this kernel provides many improved functionalities absent from the 2.2.x kernels, not all software that comes pre-installed with PS2 Linux seems to work with this kernel (as the pre-installed software was originally built against the 2.2.1 kernel). Therefore, certain software and features that work seemlessly under 2.2.x kernels does not work under the 2.4.17 kernel.
+While this kernel provides many improved functionalities absent from the 2.2.x kernels, not all software that comes pre-installed with PS2 Linux seems to work with this kernel (as the pre-installed software was originally built against the 2.2.1 kernel). Therefore, certain software and features that work seamlessly under 2.2.x kernels does not work under the 2.4.17 kernel.
 
 ### Kernel Configuration File
 
@@ -189,10 +189,10 @@ alias	char-major-13-63	mousedev
 ```
 
 &nbsp;  
-(Recommended) With the exception of the entry above, diable all ```mousedev``` entries by prepending them with ```#``` characters.
+(Recommended) With the exception of the entry above, disable all ```mousedev``` entries by prepending them with ```#``` characters.
 
 &nbsp;  
-Recreate the ```/dev/usbmouse``` symoblic link to reference the correct USB mouse node.
+Recreate the ```/dev/usbmouse``` symbolic link to reference the correct USB mouse node.
 ```bash
 ln -s input/mice /dev/usbmouse
 ```

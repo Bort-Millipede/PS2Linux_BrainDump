@@ -8,7 +8,7 @@ While the PS2's built-in DVD-ROM drive is available for use within PS2 Linux, th
 
 ## Kernel Configuration
 
-USB optical drives only work under the 2.2.19 and 2.4.17_mvl21 kernels (see below about kernel 2.2.1). For these kernel versions, the following options need to be enabled as modules (with *M*):
+USB optical drives only work under the 2.2.19 and 2.4.17_mvl21 kernels (see below about kernel 2.2.1). For these kernel versions, the following options need to be enabled as modules (with ```M```):
 * ```SCSI support``` -> ```SCSI disk support```
 * ```SCSI support``` -> ```SCSI CD-ROM support```
 * ```USB support``` -> ```USB Mass Storage support```
@@ -41,7 +41,7 @@ To specifically use CD-RW/DVD-RW drives, the following sub-modules of ```USB Mas
 
 ## Using USB Optical Drives in PS2 Linux
 
-Before plugging in the device, the following linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
+Before plugging in the device, the following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
 * cdrom (on Kernel 2.4.17_mvl21, this is usually built in to the kernel by default and therefore does not need to be loaded)
 * sd_mod
 * sr_mod
@@ -74,4 +74,6 @@ eject /dev/scd0
 
 ![](ubuntu_livedvd_mounted.png?raw=true)  
 *Ubuntu LiveDVD inserted into USB DVD-RW Drive and mounted in PS2 Linux*
+
+USB Optical drives can be used to play audio CDs using VLC, XMMS, or the pre-installed kscd package. However, kscd and XMMS only output audio via the analog audio port and/or the headphone jack located on the drive itself. This may require custom cables and additional troubleshooting, none of which is currently covered anywhere in this repository.
 

@@ -35,7 +35,7 @@ for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\*
 ```
 
 &nbsp;  
-Configure and build source. Create *libtool* symbolic link to prevent build failure
+Configure and build source. Create ```libtool``` symbolic link to prevent build failure
 ```bash
 ./configure --prefix=$PREFIX --host=mipsEEel-linux
 ln -s ../libtool libltdl/libtool

@@ -9,7 +9,7 @@ The primary reason for incorporating vcdimager into VLC is to support VCDs.
 
 vcdimager cannot seem to be cross-compiled, so it must be built directly on PS2 Linux. However, it still needs to be built once in a manner so that it can be subsequently installed to the cross-compiling environment.
 
-Because vcdimager is being built to enable features in VLC that require the use of a USB optical drive, the software needs to be built against kernel 2.2.19 (recommended) or kernel 2.4.17_mvl21. As such, the ```/usr/src/linux``` symbolic link must be recreated to reference one of teh following:
+Because vcdimager is being built to enable features in VLC that require the use of a USB optical drive, the software needs to be built against kernel 2.2.19 (recommended) or kernel 2.4.17_mvl21. As such, the ```/usr/src/linux``` symbolic link must be recreated to reference one of the following:
 * ```2.4.17_ps2```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1; or 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
 * ```2.2.19_ps2```: 2.2.19 kernel from Broadband Navigator 0.10
 

@@ -8,7 +8,7 @@
 
 ## References
 
-* *Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO*
+* **Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO**
   * Local backup [here](moz_cross_1.0.1.html) or rendered [here](https://html-preview.github.io/?url=https://github.com/Bort-Millipede/PS2Linux_BrainDump/blob/main/Software%20Installation/Toolchain/moz_cross_1.0.1.html)
   * [Backup site](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/moz_cross_1.0.1.html)
 
@@ -22,7 +22,7 @@ Successfully building Firefox for PS2 Linux can be a very complicated task and c
 
 ## Building for PS2 Linux
 
-### Without SSL/TLS support (cross-compiling)
+### Without SSL/TLS Support (cross-compiling)
 
 Save [mozconfig file with SSL/TLS disabled](mozconfig-nossl) to home directory of current user as ```.mozconfig```
 
@@ -48,7 +48,7 @@ ln -s mozilla usr/local/bin/firefox
 tar czf firefox-0.8-nossl.mipsEEel-linux.tar.gz usr
 ```
 
-### With SSL/TLS support (on PS2 Linux)
+### With SSL/TLS Support (on PS2 Linux)
 
 **IMPORTANT NOTE:** It is HIGHLY recommended that the commands below be executed in a local session directly on PS2 Linux, and NOT within an SSH remote session. This is because the build below will take a VERY Long time to complete, and all progress will be lost if the SSH session disconnects prematurely.
 
@@ -77,7 +77,7 @@ tar czf firefox-0.8.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
-### Without SSL/TLS support
+### Without SSL/TLS Support
 
 Transfer **firefox-0.8-nossl.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
@@ -85,7 +85,7 @@ cd /
 tar xzf /path/to/firefox-0.8-nossl.mipsEEel-linux.tar.gz
 ```
 
-### With SSL/TLS support
+### With SSL/TLS Support
 
 Execute from the earlier source directory:
 ```bash

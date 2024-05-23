@@ -67,7 +67,7 @@ Edit the pppd [pap-secrets](pap-secrets) configuration file. Replace ```USERHERE
 Edit the [options.ttyACM0](options.ttyACM0) configuration file. Replace ```M.M.M.M``` with the subnet mask used by the network that PS2 Linux is connected to (usually ```255.255.255.0```). Replace ```X.X.X.X``` with the start of the range of IP addresses to be allocated by the PC-DC Server (such as ```192.168.1.100```), and replace ```Y.Y.Y.Y``` with the end of the range (such as ```192.168.1.101```).
 
 &nbsp;  
-Install the editted configuration files for pppd
+Install the edited configuration files for pppd
 ```bash
 cp /path/to/options /path/to/options.ttyACM0 /path/to/pap-secrets /etc/ppp/.
 chmod 600 /etc/ppp/options

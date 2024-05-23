@@ -51,10 +51,10 @@ After completing the tutorial, various ```mipsEEel-linux-*``` binaries (namely t
   * ```/usr/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/lib```.
   * ```/usr/X11R6/include``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/include```.
   * ```/usr/X11R6/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/lib```.
-* Various *Conf.sh files in /usr/mipsEEel-linux/mipsEEel-linux/usr/lib reference ```/usr/lib``` and ```/usr/X11R6/lib```. These should be manually inspected and edited:
+* Various ```*Conf.sh``` files in /usr/mipsEEel-linux/mipsEEel-linux/usr/lib reference ```/usr/lib``` and ```/usr/X11R6/lib```. These should be manually inspected and edited:
   * ```/usr/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/lib```.
   * ```/usr/X11R6/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/lib```.
-* Various *.la files in /usr/mipsEEel-linux/mipsEEel-linux/usr/lib reference ```/usr/lib``` and ```/usr/X11R6/lib```. These should be manually inspected and edited:
+* Various ```*.la``` files in /usr/mipsEEel-linux/mipsEEel-linux/usr/lib reference ```/usr/lib``` and ```/usr/X11R6/lib```. These should be manually inspected and edited:
   * ```/usr/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/lib```.
   * ```/usr/X11R6/lib``` should be changed to ```/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6/lib```.
 

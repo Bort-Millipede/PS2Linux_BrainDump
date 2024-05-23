@@ -26,7 +26,7 @@ cd stella-1.2/src/build/
 ```
 
 &nbsp;  
-Modify source so that Stella can be lanuched from any directory.
+Modify source so that Stella can be launched from any directory.
 ```bash
 perl -i.bak -pe "s/background.bmp/\/usr\/local\/games\/stella\/background.bmp/" ../../src/ui/ps2/mainPS2.cxx
 perl -i -pe "s/courier8.bmp/\/usr\/local\/games\/stella\/courier8.bmp/" ../../src/ui/ps2/mainPS2.cxx

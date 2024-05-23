@@ -24,7 +24,7 @@ cd SDL-1.2.5
 
 &nbsp;  
 Set necessary environment variables. SDL requires that the individual compilation components be specified via environment variables prior to executing ```configure```.  
-**NOTE**: ```esd-config``` referenced below must be editted prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
+**NOTE**: ```esd-config``` referenced below must be edited prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
 ```bash
 export PREFIX=/usr/mipsEEel-linux/mipsEEel-linux/usr
 export ARCH=mipsEEel
@@ -77,7 +77,7 @@ cd SDL-1.2.5
 
 &nbsp;  
 Set necessary environment variables. SDL requires that the individual compilation components be specified via environment variables prior to executing ```configure```.  
-**NOTE**: ```esd-config``` referenced below must be editted prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
+**NOTE**: ```esd-config``` referenced below must be edited prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
 ```bash
 export PREFIX=/usr/local
 export ARCH=mipsEEel
@@ -140,7 +140,7 @@ cd SDL-tests
 
 &nbsp;  
 Set necessary environment variables. SDL requires that the individual compilation components be specified via environment variables prior to executing ```configure```.  
-**NOTE:** ```esd-config``` referenced below must be editted prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
+**NOTE:** ```esd-config``` referenced below must be edited prior to building SDL per [these instructions](https://github.com/Bort-Millipede/PS2Linux_BrainDump/tree/main/Software%20Installation/Toolchain#additional-recommended-steps-for-setting-up-usable-environment)
 ```bash
 export PREFIX=/usr/local
 export ARCH=mipsEEel

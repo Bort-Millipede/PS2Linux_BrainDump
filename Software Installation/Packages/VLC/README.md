@@ -39,7 +39,7 @@ For these players to be used, the built-in PS2 drive will not work (due to the "
 **NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded.
 
 Beyond this, the author's results with each format are as follows (your results may vary!):  
-* **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputed through the Analog audio port on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is currently covered here.
+* **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputted through the Analog audio port and/or the headphone jack located on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is currently covered anywhere in this repository.
 * **VCDs**: Overall, VLC on PS2 Linux appears to handle these fairly well.
 * **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or a Segmentation Fault occurs (necessitating that the process be forcefully terminated). Overall, this functionality should be considered a novelty.
 

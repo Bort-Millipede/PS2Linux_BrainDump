@@ -2,7 +2,7 @@
 
 This page outlines how to create a full backup of a PS2 Linux installation, as well as how to restore from a backup at a later time. This involves booting into a ramdisk. The procedure below is preferred by the author, but is by no means the only method for backing up/restoring a PS2 Linux installation. The reference link listed below provides another (and possibly simpler) procedure for this.
 
-Partitioning/re-partitioning the hard drive is not covered here or anywhere else in this repository. The reference link listed below may provide sufficient information for this.
+Partitioning/re-partitioning the HDD is not covered here or anywhere else in this repository. The reference link listed below may provide sufficient information for this.
 
 The directions below assume that PS2 Linux is installed to ```/dev/hda1``` and the backup partition is installed to ```/dev/hda3```. If this does not match the PS2 Linux installation being backed up or restored, the appropriate steps below must be modified accordingly.
 
@@ -21,7 +21,7 @@ Required file: [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/dow
 
 ### Backup Partition Setup
 
-A backup partition will need to be created on the PS2 HD to store the backup files. The author recommends 5GB for this, although a smaller partition may also suffice.
+A backup partition will need to be created on the PS2 HDD to store the backup files. The author recommends 5GB for this, although a smaller partition may also suffice.
 
 The following directories should be created on the root of the backup partition:
 * ```bin```: For storing executables that can be helpful during the backup/restore process
@@ -32,7 +32,7 @@ It is recommended that the following executables be copied to the ```bin``` dire
 * ```pv```: ```cp /usr/local/bin/pv /mnt/backup/bin/pv```
 * ```star```: ```cp /usr/local/bin/star /mnt/backup/bin/pv```
 * ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz)
-* ```ps2fdisk_scei```: (For PS2 Linux Beta Release 1 installations) For partitioning drivers using teh legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
+* ```ps2fdisk_scei```: (For PS2 Linux Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
 
 ## Installing the Ramdisk (as root).
 
@@ -75,11 +75,11 @@ cd /mnt/mc00
 /mnt/backup/bin/star -c -H=gnutar * | gzip -c > /mnt/backup/install-images/mc00.tar.gz
 ```
 
-## Transfering Files To/From PS2 Linux While in the Ramdisk
+## Transferring Files To/From PS2 Linux While in the Ramdisk
 
 The ramdisk does establish the network connection by default. Additionally, the ramdisk cannot establish a network connection via DHCP. Therefore, the network connection must be manually setup. It is recommended that the most recent leased DHCP-leased IP address be used for this.
 
-If the most recent IP address leased to PS2 linux was 192.168.1.10 with a subnet mask of 255.255.255.0, then the network connection can be manually setup using the following command:
+If the most recent IP address leased to PS2 Linux was 192.168.1.10 with a subnet mask of 255.255.255.0, then the network connection can be manually setup using the following command:
 ```bash
 ifconfig eth0 192.168.1.10 netmask 255.255.255.0 bcast 192.168.1.255
 ```
