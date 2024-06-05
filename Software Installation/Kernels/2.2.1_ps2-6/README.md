@@ -46,8 +46,8 @@ mv usr/src/linux-2.2.1_ps2 usr/src/linux-2.2.1_ps2-7
 Extract RPMs into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
-rpm2cpio /path/to/kernel-headers-2.2.1_ps2-6.mipsel.rpm | cpio -ivd
-rpm2cpio /path/to/kernel-source-2.2.1_ps2-6.mipsel.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-headers-2.2.1_ps2-6.mipsel.rpm | cpio -id
+rpm2cpio /path/to/kernel-source-2.2.1_ps2-6.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.2.1_ps2 linux-2.2.1_ps2-6
 cd linux-2.2.1_ps2-6

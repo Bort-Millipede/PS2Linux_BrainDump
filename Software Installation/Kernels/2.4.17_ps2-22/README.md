@@ -28,8 +28,8 @@ It is recommended that a known-working kernel configuration file be used when bu
 Extract RPMs into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
-rpm2cpio /path/to/kernel-headers-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
-rpm2cpio /path/to/kernel-source-2.4.17_ps2-22.mipsel.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-headers-2.4.17_ps2-22.mipsel.rpm | cpio -id
+rpm2cpio /path/to/kernel-source-2.4.17_ps2-22.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.4.17_ps2 linux-2.4.17_ps2-22
 cd linux-2.4.17_ps2-22

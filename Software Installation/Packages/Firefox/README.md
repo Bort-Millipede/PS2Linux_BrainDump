@@ -87,9 +87,19 @@ tar xzf /path/to/firefox-0.8-nossl.mipsEEel-linux.tar.gz
 
 ### With SSL/TLS Support
 
+#### From Source
+
 Execute from the earlier source directory:
 ```bash
 make install
+```
+
+#### From Installation Archive
+
+Transfer **firefox-0.8.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/firefox-0.8.mipsEEel-linux.tar.gz
 ```
 
 ## Usage Notes

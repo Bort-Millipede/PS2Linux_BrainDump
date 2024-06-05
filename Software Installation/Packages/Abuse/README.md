@@ -126,7 +126,7 @@ tar xzf /path/to/abuse_datafiles.tar.gz
 &nbsp;  
 Transfer **[abuse](abuse)** helper script to PS2 Linux and install to /usr/local/bin. This will allow Abuse to be launched by any user from any directory.
 ```
-cp /path/to/abuse /usr/local/bin
+cp /path/to/abuse /usr/local/bin/abuse
 chmod 755 /usr/local/bin/abuse
 chown root.root /usr/local/bin/abuse
 ```

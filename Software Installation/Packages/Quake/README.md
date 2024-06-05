@@ -93,7 +93,7 @@ cp -r quake-shareware-1.06/id1 /usr/local/games/nuq
 ```
 
 &nbsp;  
-Set permanent **quake** bash alias for current non-root user by placing the following alias in user's .bashrc file.
+Set permanent **quake** bash alias for current non-root user by placing the following alias in user's ```.bashrc``` file.
 ```bash
 alias quake='nuq-sdl -noudp'
 ```

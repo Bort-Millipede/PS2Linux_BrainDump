@@ -5,7 +5,7 @@
 
 ## Prerequisites
 
-libdvdcss must be built against kernel 2.2.19 (recommended) or 2.4.17_mvl21. It CANNOT be built against kernel 2.2.1. As such, the 2.2.19 kernel source and/or 2.4.17_mvl21 kernel source will need to be installed to the cross-compiling environment (2.2.19 [outlined here](../../../../Kernels/2.2.19_ps2-5); 2.4.17_mvl21 for PS2 Linux Beta Release 1 [outlined here](../../../../Kernels/2.4.17_ps2-22); 2.4.17_mvl21 for PS2 Linux Release 1.0 [outlined here](../../../../Kernels/2.4.17_ps2-22)).
+libdvdcss must be built against kernel 2.2.19 (recommended) or 2.4.17_mvl21. It CANNOT be built against kernel 2.2.1. As such, the 2.2.19 kernel source and/or 2.4.17_mvl21 kernel source will need to be installed to the cross-compiling environment (2.2.19 [outlined here](../../../../Kernels/2.2.19_ps2-5); 2.4.17_mvl21 for PS2 Linux Beta Release 1 [outlined here](../../../../Kernels/2.4.17_ps2-22); 2.4.17_mvl21 for PS2 Linux Release 1.0 [outlined here](../../../../Kernels/2.4.17_ps2-26)).
 
 Additionally, the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link will need to be recreated to reference one of the above kernels:
 * ```2.2.19_ps2-5```: Kernel 2.2.19

@@ -21,5 +21,9 @@ make generic
 
 ## Installing on PS2 Linux (as root)
 
-transfer **nc** binary to PS2 Linux and copy to /usr/local/bin.
+transfer **nc** binary to PS2 Linux and install
+```bash
+cp /path/to/nc /usr/local/bin/nc
+chmod 755 /usr/local/bin/nc
+```
 

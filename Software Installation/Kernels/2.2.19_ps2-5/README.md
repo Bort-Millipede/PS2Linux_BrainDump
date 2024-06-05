@@ -49,10 +49,10 @@ Extract RPM into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux/usr/src
 mv linux linux.bak
-rpm2cpio /path/to/kernel-2.2.19_ps2-5.src.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-2.2.19_ps2-5.src.rpm | cpio -id
 tar xzf linux-2.2.19.tar.gz
 mv linux linux-2.2.19_ps2-5
-rm installkernel linux-2.2.19-5.spec linux-2.2.19.tar.gz module-info
+rm -f installkernel linux-2.2.19-5.spec linux-2.2.19.tar.gz module-info
 mv linux.bak linux
 ```
 
@@ -72,7 +72,7 @@ cd ..
 * **are not installed alongside BB Navigator, or**
 * **do not need to mount BB Navigator partitions**
 
-Modify APA partitioning support: use APA partitioning support from 2.2.1 Kernel.
+Modify APA partitioning support: use APA partitioning support from 2.2.1 Beta Kernel.
 ```bash
 cd drivers/block
 mv genhd.c genhd-2.2.19_ps2.c
@@ -81,9 +81,8 @@ cd ../..
 ```
 
 &nbsp;  
-**Otherwise, do this for PS2 Linux installations (Beta Release 1 and Release 1.0) that:**  
-* **are installed alongside BB Navigator, or**
-* **need to mount BB Navigator partitions**
+**Otherwise, do this ONLY FOR PS2 Linux Beta Release 1 installations that:**  
+* **are installed alongside BB Navigator AND need to mount BB Navigator partitions**
 
 Modify APA partitioning support: enable support for legacy APA partitions using [this patch](kernel-2.2.19_ps2-5_bbn-partitions.patch).
 ```bash
@@ -115,7 +114,7 @@ perl -i -pe "s/# CONFIG_DEVPTS_FS\ is\ not\ set/CONFIG_DEVPTS_FS=y/" config_ps2
 perl -i -pe "s/# CONFIG_UNIX98_PTYS\ is\ not\ set/CONFIG_UNIX98_PTYS=y/" config_ps2
 perl -i -pe "s/# CONFIG_PS2_DEBUGLOG\ is\ not\ set/CONFIG_PS2_DEBUGLOG=m/" config_ps2
 perl -i -pe "s/CONFIG_SCSI=m/CONFIG_SCSI=y/" config_ps2
-cp config_ps2 arch/mips/defconfig
+cp -f config_ps2 arch/mips/defconfig
 ```
 
 &nbsp;  

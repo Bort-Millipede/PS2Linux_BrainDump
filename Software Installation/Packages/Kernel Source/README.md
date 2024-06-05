@@ -19,14 +19,13 @@ Some software that is built natively on PS2 Linux requires being built against n
 
 ### 2.2.19 Kernel
 
-&nbsp;  
 Extract RPM.
 ```bash
 cd /usr/src
 mv linux linux.bak
-rpm2cpio /path/to/kernel-2.2.19_ps2-5.src.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-2.2.19_ps2-5.src.rpm | cpio -id
 tar xzf linux-2.2.19.tar.gz
-mv linux linux-2.2.19_ps2-5
+mv linux linux-2.2.19_ps2
 rm installkernel linux-2.2.19-5.spec linux-2.2.19.tar.gz module-info
 mv linux.bak linux
 ```
@@ -34,7 +33,7 @@ mv linux.bak linux
 &nbsp;  
 Remove unnecessary files and create necessary symbolic link in kernel source directory
 ```bash
-cd linux-2.2.19_ps2-5
+cd linux-2.2.19_ps2
 rm -rf include/config/t10000.h
 rm -rf drivers/ps2/t10000
 cd include
@@ -56,9 +55,8 @@ cd ../..
 ```
 
 &nbsp;  
-**Otherwise, do this for PS2 Linux installations (Beta Release 1 and Release 1.0) that:**  
-* **are installed alongside BB Navigator, or**
-* **need to mount BB Navigator partitions**
+**Otherwise, do this ONLY FOR PS2 Linux Beta Release 1 installations that:**  
+* **are installed alongside BB Navigator AND need to mount BB Navigator partitions**
 
 Modify APA partitioning support: enable support for legacy APA partitions using [this patch](../../Kernels/2.2.19_ps2-5/kernel-2.2.19_ps2-5_bbn-partitions.patch).
 ```bash
@@ -77,14 +75,14 @@ Edit ```drivers/char/console.c```: change line 2827 to:
 
 &nbsp;  
 Modify included kernel configuration file to:
-* Specify that the kernel is being cross-compiled
+* Specify that the kernel is NOT being cross-compiled
 * Enable built-in ext2 filesystem support.
 * Enable devpts filesystem support.
 * Enable UNIX 98 PTY support.
 * Enable PS2 debug log facility.
 * Enable built-in SCSI device support.
 ```bash
-perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" config_ps2
+perl -i.bak -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config_ps2
 perl -i -pe "s/CONFIG_EXT2_FS=m/CONFIG_EXT2_FS=y/" config_ps2
 perl -i -pe "s/# CONFIG_DEVPTS_FS\ is\ not\ set/CONFIG_DEVPTS_FS=y/" config_ps2
 perl -i -pe "s/# CONFIG_UNIX98_PTYS\ is\ not\ set/CONFIG_UNIX98_PTYS=y/" config_ps2
@@ -127,8 +125,7 @@ Install RPMs.
 rpm -i /path/to/kernel-headers-2.4.17_ps2-22.mipsel.rpm
 rpm -i /path/to/kernel-source-2.4.17_ps2-22.mipsel.rpm
 cd /usr/src
-mv linux-2.4.17_ps2 linux-2.4.17_ps2-22
-cd linux-2.4.17_ps2-22
+cd linux-2.4.17_ps2
 ```
 
 &nbsp;  
@@ -149,6 +146,7 @@ Edit ```drivers/char/console.c```: Change line 1723 to:
 
 &nbsp;  
 Run ```setup-ps2``` script and modify included kernel configuration file to:
+* Specify that the kernel is NOT being cross-compiled
 * Enable built-in ext2 filesystem support.
 * Enable devpts filesystem support.
 * Enable UNIX 98 PTY support.
@@ -156,6 +154,7 @@ Run ```setup-ps2``` script and modify included kernel configuration file to:
 * Enable built-in SCSI device support.
 ```bash
 ./setup-ps2
+perl -i.bak -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" .config
 perl -i -pe "s/CONFIG_EXT2_FS=m/CONFIG_EXT2_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_DEVPTS_FS\ is\ not\ set/CONFIG_DEVPTS_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_UNIX98_PTYS\ is\ not\ set/CONFIG_UNIX98_PTYS=y/" .config
@@ -198,12 +197,12 @@ Install RPMs.
 rpm -i /path/to/kernel-headers-2.4.17_ps2-26.mipsel.rpm
 rpm -i /path/to/kernel-source-2.4.17_ps2-26.mipsel.rpm
 cd /usr/src
-mv linux-2.4.17_ps2 linux-2.4.17_ps2-26
-cd linux-2.4.17_ps2-26
+cd linux-2.4.17_ps2
 ```
 
 &nbsp;  
 Run ```setup-ps2``` script and modify included kernel configuration file to:
+* Specify that the kernel is NOT being cross-compiled
 * Enable built-in ext2 filesystem support.
 * Enable devpts filesystem support.
 * Enable UNIX 98 PTY support.
@@ -211,6 +210,7 @@ Run ```setup-ps2``` script and modify included kernel configuration file to:
 * Enable built-in SCSI device support.
 ```bash
 ./setup-ps2
+perl -i.bak -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" .config
 perl -i -pe "s/CONFIG_EXT2_FS=m/CONFIG_EXT2_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_DEVPTS_FS\ is\ not\ set/CONFIG_DEVPTS_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_UNIX98_PTYS\ is\ not\ set/CONFIG_UNIX98_PTYS=y/" .config

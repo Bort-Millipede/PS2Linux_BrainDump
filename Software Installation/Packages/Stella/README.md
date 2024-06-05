@@ -33,7 +33,7 @@ perl -i -pe "s/courier8.bmp/\/usr\/local\/games\/stella\/courier8.bmp/" ../../sr
 ```
 
 &nbsp;  
-Modify Makefile to reference cross-compiled sdl-config.
+Modify Makefile to reference cross-compiled ```sdl-config```.
 ```bash
 perl -i.bak -pe "s/\`sdl-config/\`\/usr\/mipsEEel-linux\/mipsEEel-linux\/usr\/bin\/sdl-config/" makefile
 ```
@@ -75,11 +75,11 @@ cp /path/to/.stella.pro /path/to/user/home/.stella.pro
 &nbsp;  
 Set permanent **stella** bash alias for current non-root user by placing the following alias in user's .bashrc file.
 ```
-alias stella="pushd /usr/local/games/roms/2600; stella.ps2; popd"
+alias stella='pushd /usr/local/games/roms/2600; stella.ps2; popd'
 ```
 
 &nbsp;  
-Place Atari 2600 ROMs in /usr/local/games/roms/2600 directory.
+Place Atari 2600 ROMs in ```/usr/local/games/roms/2600``` directory.
 
 ## Usage Notes
 
