@@ -30,7 +30,9 @@ These can be set by invoking the ```make menuconfig``` command in the kernel sou
 
 ## Using Floppy and Zip Drives in PS2 Linux
 
-Before plugging in the device, the following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
+It is very important to NOT have the device plugged in when booting PS2 Linux, or before the necessary kernel modules have been loaded. Additionally, it is recommended that the disk not be inserted into the device itself until after the device has been properly loaded in PS2 Linux.
+
+The following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
 * sd_mod
 * usb-storage
 ```bash
@@ -55,6 +57,8 @@ The drives themselves can also usually be ejected (as root or via sudo) via the 
 ```bash
 eject /dev/sdX
 ```
+
+The author encountered some stability issues using floppy drives with Kernel 2.2.1 in PS2 Linux Release 1.0 for unknown reasons. Therefore, for those devices specifically: results may vary.
 
 ## Specific Devices Tested
 

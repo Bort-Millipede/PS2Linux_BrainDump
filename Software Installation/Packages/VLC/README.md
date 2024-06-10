@@ -28,7 +28,7 @@ If following this page and all subpages exactly, the build of VLC that will be i
 
 ### Audio CDs, VCDs, and DVDs
 
-For these players to be used, the built-in PS2 drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the necessary kernel modules loaded (as root or via sudo): 
+For these players to be used, the built-in PS2 DVD-ROM drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the necessary kernel modules loaded (as root or via sudo): 
 ```bash
 /sbin/insmod cdrom
 /sbin/insmod sd_mod
@@ -36,7 +36,7 @@ For these players to be used, the built-in PS2 drive will not work (due to the "
 /sbin/insmod usb-storage
 ```
 
-**NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded.
+**NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore most likely does not need to be loaded. However, executing the ```/sbin/insmod cdrom``` command anyway will not have any negative effect.
 
 Beyond this, the author's results with each format are as follows (your results may vary!):  
 * **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputted through the Analog audio port and/or the headphone jack located on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is currently covered anywhere in this repository.
@@ -163,6 +163,10 @@ cd /
 tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
+
+## Usage Notes
+
+For Audio CDs, VCDs, and DVDs, the "Device Name" option will need to be changed to either ```/dev/sr0``` or ```/dev/scd0```. This will instruct VLC to use the USB optical drive, rather than the built-in DVD-ROM drive.
 
 ## Usage Examples
 

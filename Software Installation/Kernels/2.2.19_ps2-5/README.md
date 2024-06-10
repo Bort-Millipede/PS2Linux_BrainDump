@@ -1,6 +1,8 @@
 # Kernel 2.2.19
 
-![](2.2.19_beta_login.png?raw=true)
+![](2.2.19_beta_login.png?raw=true)  
+
+![](2.2.19_release_login.png?raw=true)  
 
 Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip)):  
 * kernel-2.2.19_ps2-5.src.rpm (within ```source.tgz``` file under ```source/kernel```)

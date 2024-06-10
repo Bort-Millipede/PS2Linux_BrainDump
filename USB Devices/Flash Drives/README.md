@@ -22,7 +22,7 @@ These can be set by invoking the ```make menuconfig``` command in the kernel sou
 
 The author recommends using smaller capacity flash drives if available. Additionally, older flash drives seem to work better with PS2 Linux.
 
-Before plugging in the device, the following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
+It is very important to NOT have the device plugged in when booting PS2 Linux, or before the necessary kernel modules have been loaded. The following Linux kernel modules need to be loaded (as root or via sudo) within PS2 Linux:  
 * sd_mod
 * usb-storage
 ```bash
