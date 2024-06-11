@@ -67,7 +67,13 @@ This script loads the necessary kernel modules required for using certain USB de
 * USB CD-ROM Drives
 * USB 56K Modems
 
-**NOTE:** These devices must be properly setup first: [USB Floppy/Zip Drives](../USB&#32;Devices/Floppy-Zip&#32;Drives); [USB Optical Drives](../USB&#32;Devices/Optical&#32;Drives); [USB Modems](../USB&#32;Devices/Modems)
+**NOTE:** These devices must be properly setup first: [USB Floppy/Zip Drives](../USB&#32;Devices/Floppy-Zip&#32;Drives); [USB Flash Drives](../USB&#32;Devices/Flash&#32;Drives); [USB Optical Drives](../USB&#32;Devices/Optical&#32;Drives); [USB Modems](../USB&#32;Devices/Modems)
+
+It is recommended that the script be installed to the ```/usr/local/sbin``` directory (as root or via sudo):
+```bash
+cp /path/to/load-usb-modules /usr/local/sbin/load-usb-modules
+chmod 755 /usr/local/sbin/load-usb-modules
+```
 
 ### Usage Examples
 

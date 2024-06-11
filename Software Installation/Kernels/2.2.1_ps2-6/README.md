@@ -14,7 +14,7 @@ Required files (present on [PS2 Linux Beta Release 1 DVD](https://archive.org/do
 
 The 2.2.1 kernel that comes installed on the Playstation 2 Linux Kit Beta is 2.2.1_ps2-6. It seems that a fair amount of the kernel source (especially items compiled as kernel modules by default, such as PS2-specific devices) was deliberately omitted from the available source RPMs. As such, installing a cross-compiled kernel/modules for this version requires the originally-installed modules to be copied and then overwritten.
 
-This kernel version expects an HDD partitioned with the proprietary APA format. The Linux Kit Beta uses a legacy version of APA partitioning, which is not recognized by the Linux Kit Release 1.0. Additionally, the Linux Kit Release 1.0 does not support APA by default (this is achievable relatively easily but is not covered here), and even when this support is enabled it is only for the newer rendition of APA that is not supported by the Linux Kit Beta. For all of these reasons among others, it is not recommended to attempt to install this exact kernel version onto an installation of PS2 Linux Release 1.0. While it is possible to backport the newer APA partitioning files into this 2.2.1 kernel, doing so is not covered here.
+This kernel version expects an HDD partitioned with the proprietary APA format. The Linux Kit Beta uses a legacy version of APA partitioning, which is not recognized by the Linux Kit Release 1.0. Additionally, the Linux Kit Release 1.0 does not support APA by default (this is achievable relatively easily but is not covered here), and even when this support is enabled it is only for the newer rendition of APA that is not supported by the Linux Kit Beta. For all of these reasons among others, it is not recommended to attempt to install this exact kernel version onto an installation of PS2 Linux Release 1.0. While it is possible (and relatively simple) to backport the newer APA partitioning files into this 2.2.1 kernel, doing so is not covered here.
 
 ### Kernel Configuration File
 
@@ -22,14 +22,14 @@ It is recommended that a known-working kernel configuration file be used when bu
 
 ## Extracting Necessary Files From PS2 Linux Beta Release 1 DVD
 
-Attach PS2 Linux Beta Release 1 DVD to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF.
+Attach **PS2 Linux Beta Release 1 DVD** to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
 ```bash
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
 
 Copy the **kernel-headers-2.2.1_ps2-6.mipsel.rpm** and **kernel-source-2.2.1_ps2-6.mipsel.rpm** files from the ```/mnt/cdrom/SCEI/RPMS/``` directory onto the system.
 
-Unmount the DVD
+Unmount the DVD (as root or via sudo)
 ```bash
 umount /mnt/cdrom
 ```
@@ -184,5 +184,5 @@ Reboot to use newly-installed kernel.
 
 ### (RECOMMENDED) Post-Build "cleanup"
 
-If [ps2fs](../../Packages/ps2fs) was installed prior to building and installing kernel, ps2fs must be re-installed to the /lib/modules/2.2.1_ps2 directory.
+If [ps2fs](../../Packages/ps2fs) was installed prior to building and installing the kernel above, ps2fs must be re-installed to the /lib/modules/2.2.1_ps2 directory.
 
