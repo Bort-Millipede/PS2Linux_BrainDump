@@ -25,6 +25,11 @@ Although the root password is set during installation of PS2 Linux, the author r
 Although the VGA adapter only officially supports sync-on-green monitors, modern monitors with VGA inputs MAY work with the VGA adapter. The following monitor has been successfully used by the author with PS2 Linux and the VGA adapter:  
 * [ASUS VS247H](https://www.asus.com/us/commercial-monitors/vs247hp/)
 
+To use system audio from commands/processes executed as non-root users, permissions for the default ```/dev/dsp``` sound device may need to be set to world-readable and world-writeable (as root or via sudo):
+```bash
+chmod 666 /dev/dsp
+```
+
 ### X Windows
 
 It is highly recommended that the mouse wheel be enabled for X Windows. Accomplishing this is outlined [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/ps2mousewheel.html).
@@ -34,6 +39,14 @@ The command for starting X Windows and displaying it over an NTSC connection is:
 The screen resolution used by the X Server seems to only be customizable (via edits made to the ```/etc/X11/XGSConfig``` file, under the "Screen" section) for VGA output. The screen resolution used for NTSC and PAL outputs appears to be hardcoded and is very low quality.
 
 PS2 Linux ships with various window managers besides the default Window Maker. These can be configured using the ```sdr``` command.
+
+### APA Partitioning
+
+PS2 Linux Beta Release 1 uses legacy APA partitioning (proprietary partitioning format used by Playstation 2 and other Sony devices) by default. Because of this, PS2 Linux Beta Release 1 can be installed alongside other Playstation 2 data residing on the HDD relatively easily. [Broadband Navigator](https://en.wikipedia.org/wiki/PlayStation_Broadband_Navigator) uses a newer rendition of APA partitioning not supported by PS2 Linux Beta Release 1 by default, but the Linux kernel(s) used by PS2 Linux can be patched (covered in this repository) to support having both PS2 Linux Beta Release 1 and Broadband Navigator installed on the same HDD.
+
+PS2 Linux Release 1.0 partitions the HDD like a normal Linux drive, and the included 2.2.1 Kernel does not support APA partitions by default. As such, PS2 Linux Release 1.0 cannot be installed alongside other Playstation 2 data on the HDD in its default setup. However, APA partitioning support can be added to the 2.2.1 Kernel (covered in this repository), which allows PS2 Linux Release 1.0 to be installed alongside other Playstation 2 data on the same HDD.
+
+The tutorial for converting a default PS2 Linux Release 1.0 installation to an installation installed on an APA-partitioned HDD is covered [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/apa_2.2.1.html).
 
 ## Specific Tips and Tricks
 

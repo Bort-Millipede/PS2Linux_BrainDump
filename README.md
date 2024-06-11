@@ -73,7 +73,8 @@ Digest and use this at your own risk!!!
 * [playstation2-linux.com](http://ps2linux.no-ip.info/playstation2-linux.com/) (site backup)
 * [http://achurch.org/ps2/](http://achurch.org/ps2/)
 * [http://www.geocities.jp/ps2linux_net/](https://web.archive.org/web/20181105024308/http://www.geocities.jp/ps2linux_net/)
-* [http://hp.vector.co.jp/authors/VA008536/ps2linux/](http://hp.vector.co.jp/authors/VA008536/ps2linux/)
+* [http://hp.vector.co.jp/authors/VA008536/ps2linux/](https://web.archive.org/web/20210613000210/http://hp.vector.co.jp/authors/VA008536/ps2linux/)
+* [http://www.peanuts.gr.jp/2005/03/pslinux/index.html.ja](https://web.archive.org/web/20190114054744/http://www.peanuts.gr.jp/2005/03/pslinux/index.html.ja)
 
 ## Linux References
 

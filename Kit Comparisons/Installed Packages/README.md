@@ -2,7 +2,7 @@
 
 Below is a table of the packages installed by the respective Linux Kit installers when all packages are selected. These are the actual RPM files included on the respective installer discs under ```SCEI/RPMS```.
 
-| Beta Release 1                               | Release 1.0                                  |
+| Beta Release 1                               | Release 1.0 NTSC-US                          |
 | -------------------------------------------- | -------------------------------------------- |
 | adjtimex-1.9-4.mipsel.rpm                    | adjtimex-1.9-5.mipsel.rpm                    |
 | alien-6.44-2.mipsel.rpm                      | alien-6.44-3.mipsel.rpm                      |
