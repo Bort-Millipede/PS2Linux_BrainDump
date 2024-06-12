@@ -22,9 +22,9 @@ If following this page and all subpages exactly, the build of VLC that will be i
 * MP4
 * AAC
 * RTSP
-* DVD (read below)
-* VCD (read below)
 * Audio CD (read below)
+* VCD (read below)
+* DVD (read below)
 
 ### Audio CDs, VCDs, and DVDs
 
@@ -40,7 +40,7 @@ For these players to be used, the built-in PS2 DVD-ROM drive will not work (due 
 
 Beyond this, the author's results with each format are as follows (your results may vary!):  
 * **Audio CDs**: VLC on PS2 Linux will play these, but if using digital audio (piped through USB) then before long the audio will start to lag/skip. Audio CDs can also be played and outputted through the Analog audio port and/or the headphone jack located on the USB optical drive. However, getting this working may require custom cables and additional troubleshooting, none of which is currently covered anywhere in this repository.
-* **VCDs**: Overall, VLC on PS2 Linux appears to handle these fairly well.
+* **VCDs**: Overall, VLC on PS2 Linux appears to handle these fairly well. However, VLC does appear to have issues identifying some discs as VCDs for unknown reasons.
 * **DVDs**: Despite best efforts, playing DVDs with VLC on PS2 Linux hardly works. Decryption of most DVDs seems to fail almost immediately. For those that can be decrypted and played, the sound does not seem to work. Finally, the picture will load and a few frames will be displayed, but then VLC seems to mostly lock up after this until either the stop button is pressed or a Segmentation Fault occurs (necessitating that the process be forcefully terminated). Overall, this functionality should be considered a novelty.
 
 ### Dependencies
@@ -166,7 +166,11 @@ tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.tar.gz
 
 ## Usage Notes
 
-For Audio CDs, VCDs, and DVDs, the "Device Name" option will need to be changed to either ```/dev/sr0``` or ```/dev/scd0```. This will instruct VLC to use the USB optical drive, rather than the built-in DVD-ROM drive.
+### Audio CDs, VCDs, and DVDs
+
+These seem to work best under kernel 2.4.17_mvl21. They may work fine under kernel 2.2.19, but in the author's experience there is a much higher likelihood of stability issues. For unknown reasons, VLC seems to work better overall with PS2 Linux Beta Release 1 (example: 2.2.19 kernel seems to work for these media types fine) than with PS2 Linux Release 1.0 (example: 2.2.19 kernel does not seem to work for these media types). Results may vary.
+
+The "Device Name" option will need to be changed to either ```/dev/sr0``` or ```/dev/scd0```. This will instruct VLC to use the USB optical drive, rather than the built-in DVD-ROM drive.
 
 ## Usage Examples
 
