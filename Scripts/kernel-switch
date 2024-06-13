@@ -89,6 +89,56 @@ function check_linux_version {
 	fi
 }
 
+#function: find requested kernel version file in /boot. If multiple files of same version found, prompt for desired file.
+function select_kernel_in_boot {
+	export KERNEL=""
+	for f in `find /boot -type f 2>/dev/null`
+	do
+		F_TYPE=`file -b "$f" | cut -d"," -f 1`
+		if [ "$F_TYPE" = "ELF 32-bit LSB executable" ]
+		then
+			VER=`strings "$f" | grep -E "Linux version $VERSION \(" | cut -d" " -f 3`
+			if [ ! -z "$VER" ]
+			then
+				KERNEL="$KERNEL $f"
+			fi
+			unset VER
+		fi
+		unset F_TYPE
+	done
+	KERNEL=`echo "$KERNEL" | cut -d" " -f 2-`
+	if [ -z "$KERNEL" ] #requested kernel version not installed in /boot
+	then
+		return 5
+	else
+		echo "$KERNEL" | grep " " > /dev/null 2>&1
+		if [ $? -eq 0 ]
+		then
+			echo -e "\nMultiple $VERSION Kernel files found! Select correct Kernel file:"
+			i=1
+			for k in `echo $KERNEL | tr " " "\n"`
+			do
+				echo "$i) $k"
+				i=$((i+1))
+			done
+			i=$((i-1))
+			echo -en "\n(`seq 1 $i | tr "\n" "/" | rev | cut -d"/" -f 2- | rev`): "
+			read -r CHOICE
+			case $CHOICE in
+				[`seq 1 $i`])
+					KERNEL=`echo -n $KERNEL | cut -d" " -f $CHOICE`;;
+				*)
+					echo -n "Invalid Kernel file specified"
+					return 6;;
+			esac
+			unset k
+			unset i
+			unset CHOICE
+		fi
+	fi
+	return 0
+}
+
 #function: print usage information
 function usage {
 	echo "Usage: $1 [OPTIONS] [KERNEL_VERSION]"
@@ -123,7 +173,7 @@ RAW_KERNEL=""
 NO_DEFAULT_BOOT=""
 
 #check for command line arguments
-VERSION=""
+export VERSION=""
 check_linux_version
 export MOUNTED=`mount | grep mc00`
 if [ $# -eq 0 ] #if none, print usage information, current PS2 Linux version, currently installed kernel(s), and currently running kernel, then exit
@@ -144,6 +194,7 @@ then
 	check_installed_kernels boot
 	echo -n "Kernel(s) installed on memory card:"
 	check_installed_kernels mc00
+	echo ""
 	
 	unset LINUXVER
 	unset MOUNTED
@@ -303,13 +354,13 @@ then
 		then
 			BOOT_LN=`ls -l /boot/vmlinux | rev | cut -d" " -f 1 | rev`
 			case $BOOT_LN in
-				"linux-2.2.1_ps2") echo "2.2.1 (set to $BOOT_LN)";;
-				"linux-2.2.19_ps2") echo "2.2.19 (set to $BOOT_LN)";;
-				"linux-2.4.17_mvl21") echo "2.4.17_mvl21 (set to $BOOT_LN)";;
+				"vmlinux-2.2.1_ps2") echo "2.2.1 (set to $BOOT_LN)";;
+				"vmlinux-2.2.19_ps2") echo "2.2.19 (set to $BOOT_LN)";;
+				"vmlinux-2.4.17_mvl21") echo "2.4.17_mvl21 (set to $BOOT_LN)";;
 				*) echo "Unknown Kernel! (set to $BOOT_LN)"
 			esac
 		else
-			echo "Not set! Recommend creating it manually, or automatically by installing kernel with $0"
+			echo "Not set! Recommend creating it manually, or automatically by installing/configuring kernel with $0"
 		fi
 		
 		echo -n "/boot/System.map link: "
@@ -323,11 +374,8 @@ then
 				*) echo "Unknown Kernel! (set to $BOOT_LN)"
 			esac
 		else
-			echo "Not set! Recommend creating it manually, or automatically by installing kernel with $0"
+			echo "Not set! Recommend creating it manually, or automatically by installing/configuring kernel with $0"
 		fi
-		
-		ln -s "$KERNEL" /boot/vmlinux
-		ln -s "System.map-`echo $KERNEL | cut -d'-' -f 2-`" /boot/System.map
 	fi
 	
 	#check /usr/src/linux link
@@ -448,56 +496,22 @@ then
 	then
 		OUTFILE="${OUTFILE}.gz"
 	fi
-
-	#confirm that requested kernel version is available for install. If multiple files of same version found, prompt for desired file
+	
 	echo "Locating Kernel $VERSION file(s) in /boot"
-	KERNEL=""
-	for f in `find /boot -type f 2>/dev/null`
-	do
-		F_TYPE=`file -b "$f" | cut -d"," -f 1`
-		if [ "$F_TYPE" = "ELF 32-bit LSB executable" ]
-		then
-			VER=`strings "$f" | grep -E "Linux version $VERSION \(" | cut -d" " -f 3`
-			if [ ! -z "$VER" ]
-			then
-				KERNEL="$KERNEL $f"
-			fi
-			unset VER
-		fi
-		unset F_TYPE
-	done
-	KERNEL=`echo "$KERNEL" | cut -d" " -f 2-`
-	if [ -z "$KERNEL" ]
+	select_kernel_in_boot
+	RES=$?
+	if [ $RES -eq 5 ]
 	then
-		echo "Kernel $VERSION not found in /boot! Ensure Kernel file is in /boot directory before attempting to install to Memory Card"
+		echo "Kernel $VERSION not found in /boot! Ensure Kernel file is in /boot directory before attempting to install to Memory Card!"
+		unset KERNEL
 		exit 5
-	else
-		echo "$KERNEL" | grep " " > /dev/null 2>&1
-		if [ $? -eq 0 ]
-		then
-			echo -e "\nMultiple $VERSION Kernel files found! Select which Kernel file to install:"
-			i=1
-			for k in `echo $KERNEL | tr " " "\n"`
-			do
-				echo "$i) $k"
-				i=$((i+1))
-			done
-			i=$((i-1))
-			echo -en "\n(`seq 1 $i | tr "\n" "/" | rev | cut -d"/" -f 2- | rev`): "
-			read -r CHOICE
-			case $CHOICE in
-				[`seq 1 $i`])
-					KERNEL=`echo -n $KERNEL | cut -d" " -f $CHOICE`;;
-				*)
-					echo "Invalid Kernel file specified, aborting!"
-					exit 6;;
-			esac
-			unset k
-			unset i
-			unset CHOICE
-		fi
+	elif [ $RES -eq 6 ]
+	then
+		echo ", aborting!"
+		unset KERNEL
+		exit 6
 	fi
-
+	
 	#confirm enough freespace on mc00
 	echo -en "\nConfirming sufficient free space on Memory Card 0 to install Kernel $VERSION: "
 	MC_SPACE=`df --block-size=1 /mnt/mc00 | tr -s " " | grep mc00 | cut -d" " -f 4`
@@ -537,11 +551,11 @@ else
 	echo -e "\nInstalling and configuring Kernel $VERSION"
 fi
 
-# if -c option is not set: install requested kernel to memory card and perform additional necessary operations (if request)
+# if -c option is not set: install requested kernel to memory card and perform additional necessary operations (if requested)
 ENTRY=""
 if [ -z "$CONFIGURE_ONLY" ]
 then
-
+	
 	#copy kernel to memory card (gzipped if requested)
 	if [ -f "/mnt/mc00/${OUTFILE}" ]
 	then
@@ -589,30 +603,52 @@ then
 		rm -f /tmp/p2lboot.opt
 		chmod 700 /mnt/mc00/p2lboot.opt
 	fi
-
-	#if -k option is not set: set /boot/System.map and /boot/vmlinux links if on PS2 Linux Release 1.0
-	if [ -z "$INSTALL_ONLY" ]
-	then
-		if [ "$LINUXVER" != "Beta" ]
-		then
-			if [ -L "/boot/vmlinux" ]
-			then
-				rm -f /boot/vmlinux
-			fi
-			if [ -L "/boot/System.map" ]
-			then
-				rm -f /boot/System.map
-			fi
-			
-			ln -s "$KERNEL" /boot/vmlinux
-			ln -s "System.map-`echo $KERNEL | cut -d'-' -f 2-`" /boot/System.map
-		fi
-	fi
 fi
 
 #if -k option is not set: perform configuration operations
 if [ -z "$INSTALL_ONLY" ]
 then
+	
+	#for Release 1.0: set /boot/vmlinux and /boot/System.map symlinks
+	if [ "$LINUXVER" != "Beta" ]
+	then
+		if [ -L "/boot/vmlinux" ]
+		then
+			rm -f /boot/vmlinux
+		fi
+		if [ -L "/boot/System.map" ]
+		then
+			rm -f /boot/System.map
+		fi
+		
+		if [ -z $KERNEL ]
+		then
+			select_kernel_in_boot
+			RES=$?
+			if [ $RES -eq 5 ]
+			then
+				echo "Kernel $VERSION not found in /boot! Ensure Kernel file is in /boot directory before attempting to configure system!"
+				unset KERNEL
+				exit 5
+			elif [ $RES -eq 6 ]
+			then
+				echo "!"
+				unset KERNEL
+				exit 6
+			fi
+		fi
+		
+		ln -s "`echo $KERNEL | rev | cut -d"/" -f 1 | rev`" /boot/vmlinux
+		SYSTEM_MAP="System.map`echo $KERNEL | rev | cut -d"/" -f 1 | rev | cut -d"x" -f 2`"
+		if [ ! -f "/boot/$SYSTEM_MAP" ]
+		then
+			echo -e "\nWarning: expected $SYSTEM_MAP file not found in /boot, so not setting /boot/System.map symbolic link!"
+		else
+			ln -s "$SYSTEM_MAP" /boot/System.map
+		fi
+		unset SYSTEM_MAP
+	fi
+	
 	#set kernel source link
 	SRC_LN=$(ls -d /usr/src/linux-`echo $VERSION | cut -d"_" -f 1`_ps2 2>/dev/null | rev | cut -d"/" -f 1 | rev)
 	if [ ! -z "$SRC_LN" ]

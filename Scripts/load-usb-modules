@@ -73,8 +73,10 @@ case $1 in
 		then
 			echo -n "(including CD-RW Drives) "
 		fi
-		echo "should now be recognized, most likely as device /dev/scd0 (check dmesg output for certain)"
-		echo -e "Recommend mounting device via: mount /dev/scd0 /mnt/usbcd\n";;
+		echo "should now be recognized, most likely as device /dev/sr0 (check dmesg output for certain)."
+		echo "If not already created, this device can be created with the following commmand (as root or via sudo):"
+		echo -e "\tmknod /dev/sr0 b 11 0\n"
+		echo -e "Recommend mounting device via: mount /dev/sr0 /mnt/usbcd\n";;
 	"modem")
 		/sbin/insmod acm
 		echo -e "\nUSB 56K Modems should now be recognized, most likely as device /dev/ttyACM0 (check dmesg output for certain)\n";;
