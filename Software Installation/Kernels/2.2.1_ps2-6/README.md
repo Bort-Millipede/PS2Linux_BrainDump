@@ -121,7 +121,6 @@ mv 2.2.1 2.2.1_ps2.cc
 tar czvf /path/to/new/kernel-modules-2.2.1_ps2-6.tar.gz 2.2.1_ps2.cc
 ```
 
-
 ## Installing on PS2 Linux Beta (as root)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.tar.gz** files to PS2 Linux.
@@ -175,8 +174,15 @@ chmod 755 /mnt/mc00/vmlinux.gz
 Alternatively: install raw uncompressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
-cp /path/to/vmlinux /mnt/mc00/vmlinux.gz
+cp /path/to/vmlinux /mnt/mc00/vmlinux
 chmod 755 /mnt/mc00/vmlinux
+```
+
+&nbsp;  
+Create new boot entry in ```p2lboot.cnf``` file. **Note:** If a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used and this can be skipped.
+Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
+```
+"2.2.1"	vmlinux-2.2.1.gz ""	203 /dev/hda1 "" 2.2.1
 ```
 
 &nbsp;  
