@@ -179,7 +179,7 @@ chmod 755 /mnt/mc00/vmlinux
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** If a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used and this can be skipped.
+Create new boot entry in ```p2lboot.cnf``` file. **Note:** The original boot entry created by the PS2 Linux installer can be edited to replace ```vmlinux``` with ```vmlinux.gz```. Alternatively if a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used as-is and this can be skipped.
 Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
 ```
 "2.2.1"	vmlinux-2.2.1.gz ""	203 /dev/hda1 "" 2.2.1

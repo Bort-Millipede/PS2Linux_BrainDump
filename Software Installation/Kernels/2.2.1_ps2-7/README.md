@@ -1,6 +1,6 @@
 # Kernel 2.2.1 (for PS2 Linux Release 1.0)
 
-![](2.2.1_beta_login.png?raw=true)
+![](2.2.1_release_login.png?raw=true)
 
 Required RPM files below are present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.  
 * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
@@ -198,7 +198,7 @@ chmod 755 /mnt/mc00/vmlinux
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** If a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used and this can be skipped.
+Create new boot entry in ```p2lboot.cnf``` file. **Note:** The original boot entry created by the PS2 Linux installer can be edited to replace ```vmlinux``` with ```vmlinux.gz```. Alternatively if a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used as-is and this can be skipped.
 Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
 ```
 "2.2.1"	vmlinux-2.2.1.gz ""	203 /dev/hda1 "" 2.2.1
