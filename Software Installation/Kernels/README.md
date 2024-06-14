@@ -3,6 +3,7 @@
 ## Available Kernels
 
 * [2.2.1_ps2-6](2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
+* [2.2.1_ps2-7](2.2.1_ps2-7) (for PS2 Linux Release 1.0)
 * [2.2.19_ps2-5](2.2.19_ps2-5) (for PS2 Linux Beta Release 1 and PS2 Linux Release 1.0)
 * [2.4.17_ps2-22](2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
 
