@@ -750,6 +750,7 @@ fi
 if [ ! -z "$CONFIGURE_ONLY" ]
 then
 	echo -e "\nSystem configured for Kernel $VERSION. Recommend immediate reboot into newly configured Kernel $VERSION.\n"
+	echo -e "Alternatively, boot the newly configured kernel via AKMem.\n"
 elif [ ! -z "$INSTALL_ONLY" ]
 then
 	echo -e "\nKernel $VERSION installed. Recommend reconfiguring system for newly installed Kernel before rebooting into Kernel."
