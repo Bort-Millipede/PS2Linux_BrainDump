@@ -13,7 +13,7 @@ Some software that is built natively on PS2 Linux requires being built against n
 * [kernel-headers-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-26.mipsel.rpm)
 * [kernel-source-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-26.mipsel.rpm)
 
-**Build type:** N/A
+**Build type:** None
 
 ## Installing on PS2 Linux (as root)
 
@@ -255,6 +255,6 @@ The kernel source directory that PS2 Linux will build software against is refere
 Configuring PS2 Linux to build against the 2.2.19 Kernel.
 ```bash
 rm /usr/src/linux
-ln -s linux-2.2.19_ps2-5 /usr/src/linux
+ln -s linux-2.2.19_ps2 /usr/src/linux
 ```
 
