@@ -59,7 +59,7 @@ cd ../..
 ```
 
 &nbsp;  
-Add APA partitioning support kernel.
+Add APA partitioning support to kernel.
 ```bash
 cd drivers/block
 mv genhd.c genhd.c.orig

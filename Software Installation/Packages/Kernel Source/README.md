@@ -2,6 +2,16 @@
 
 Some software that is built natively on PS2 Linux requires being built against newer kernel versions, rather than the stock 2.2.1 Kernel. Therefore, the kernel source for these newer versions must first be installed to PS2 Linux.
 
+2.2.1 (PS2 Linux Beta Release 1) required files:
+* ```kernel-headers-2.2.1_ps2-6.mipsel.rpm```: present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.
+  * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
+* ```kernel-source-2.2.1_ps2-6.mipsel.rpm```: present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.
+  * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
+
+2.2.1 (PS2 Linux Release 1.0) required files:
+* ```kernel-headers-2.2.1_ps2-7.mipsel.rpm```: 
+* ```kernel-source-2.2.1_ps2-7.mipsel.rpm```: 
+
 2.2.19 required file:
 * ```kernel-2.2.19_ps2-5.src.rpm```: present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip), within ```source.tgz``` file under ```source/kernel```.
 
@@ -16,6 +26,109 @@ Some software that is built natively on PS2 Linux requires being built against n
 **Build type:** None
 
 ## Installing on PS2 Linux (as root)
+
+### 2.2.1 Kernel (PS2 Linux Beta Release 1)
+
+This kernel source should be installed on PS2 Linux Beta Release 1 by default. But if it is not: install RPMs.
+```bash
+rpm -i /path/to/kernel-headers-2.2.1_ps2-6.mipsel.rpm
+rpm -i /path/to/kernel-source-2.2.1_ps2-6.mipsel.rpm
+cd /usr/src
+cd linux-2.2.1_ps2
+```
+
+&nbsp;  
+Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
+```bash
+cd /usr/src/linux-2.2.1_ps2
+perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" config_ps2
+perl -i -pe "s/^# CONFIG_EXPERIMENTAL is not set/CONFIG_EXPERIMENTAL=y/" config_ps2
+perl -i -pe "s/^# CONFIG_USB_STORAGE is not set/CONFIG_USB_STORAGE=m/" config_ps2
+```
+
+&nbsp;  
+Clear all previous builds and build information
+```bash
+make mrproper
+```
+
+&nbsp;  
+Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-6/config-2.2.1_ps2-6)) into correct location in kernel source directory.
+```bash
+cp /path/to/working/kernel/config/file config
+cp config .config
+```
+
+&nbsp;  
+Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+```
+make oldconfig
+make menuconfig
+```
+
+### 2.2.1 Kernel (PS2 Linux Release 1.0)
+
+This kernel source should be installed on PS2 Linux Release 1.0 by default. But if it is not: install RPMs.
+
+```bash
+rpm -i /path/to/kernel-headers-2.2.1_ps2-7.mipsel.rpm
+rpm -i /path/to/kernel-source-2.2.1_ps2-7.mipsel.rpm
+cd /usr/src
+cd linux-2.2.1_ps2
+```
+
+&nbsp;  
+Install updated [SMAP driver](../../Kernels/2.2.1_ps2-7/smap.c.us) to kernel source directory.
+```bash
+cd /usr/src/linux-2.2.1_ps2
+cd drivers/ps2
+mv smap.c smap.c.orig
+cp /path/to/smap.c.us smap.c
+cd ../..
+```
+
+&nbsp;  
+Add [APA partitioning support](../../Kernels/2.2.1_ps2-7/apa_2.2.1_src.tar.gz) to kernel.
+```bash
+cd drivers/block
+mv genhd.c genhd.c.orig
+cd ../../fs
+mv Config.in Config.in.orig
+cd ..
+tar xzf /path/to/apa_2.2.1_src.tar.gz
+```
+
+&nbsp;  
+Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
+```bash
+perl -i.bak -pe "s/^# CONFIG_BSD_DISKLABEL is not set/CONFIG_PS2_PARTITION=y\n# CONFIG_BSD_DISKLABEL is not set/" arch/mips/defconfig
+perl -i -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" arch/mips/defconfig
+perl -i -pe "s/^# CONFIG_EXPERIMENTAL is not set/CONFIG_EXPERIMENTAL=y/" arch/mips/defconfig
+perl -i -pe "s/^# CONFIG_USB_STORAGE is not set/CONFIG_USB_STORAGE=m/" arch/mips/defconfig
+cp arch/mips/defconfig config_ps2
+```
+
+&nbsp;  
+Clear all previous builds and build information
+```bash
+make mrproper
+```
+
+&nbsp;  
+Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-7/config-2.2.1_ps2-7)) into correct location in kernel source directory.
+```bash
+cp /path/to/working/kernel/config/file config
+cp config .config
+```
+
+&nbsp;  
+Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+```
+make oldconfig
+make menuconfig
+```
 
 ### 2.2.19 Kernel
 
