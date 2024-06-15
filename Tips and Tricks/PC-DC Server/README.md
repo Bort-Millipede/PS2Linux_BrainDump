@@ -1,24 +1,45 @@
 # PC-DC Server on PS2 Linux
 
-A PC-DC Server for connecting a Sega Dreamcast console to the internet can be setup on PS2 Linux with relative ease. Luckily, the software required to set this up (mgetty and pppd) comes pre-installed on PS2 Linux.
+A PC-DC Server for connecting a Sega Dreamcast console to the internet can be setup on PS2 Linux with relative ease. Luckily, the software required (mgetty and pppd) to set this up comes pre-installed on PS2 Linux.
 
 ## References
 
 * [https://www.dreamcast-talk.com/forum/app.php/page/ryochanpart0](https://www.dreamcast-talk.com/forum/app.php/page/ryochanpart0)
+* [http://playstation2-linux.com/project/showfilesbf55.html?group_id=1](http://ps2linux.no-ip.info/playstation2-linux.com/project/showfilesbf55.html?group_id=1)
+* [http://playstation2-linux.com/project/shownotes365a.html?release_id=90](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotes365a.html?release_id=90)
+
 
 ## Preliminary Considerations
 
 This page only describes how to set up the PC-DC Server on PS2 Linux. It does NOT describe how to configure the Dreamcast console to use the PC-DC Server, how to construct or use a voltage line inducer, or any other procedures that may be required to get all of this work. The original PC-DC Server tutorial cited above should be consulted before performing any of the operations outlined on this page. The original tutorial can be followed mostly as-is to get the server working on PS2 Linux. This page should serve as an equivalency to Part 1 and a partial equivalency to Part 3 of the original tutorial.
 
-Getting this server properly setup requires the use of a [USB Dial-Up Modem](../../USB&#32;Devices/Modems). This tutorial assumes that the modem device is registered as ```/dev/ttyACM0``` (this should be confirmed via ```dmesg``` output). As such, a configuration file leveraged by pppd is created with the filename ```options.ttyACM0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyACM0``` references in commands below should be changed to the correct device.
+### Modem Devices
 
-In the author's experience, the PC-DC Server only works on Kernels 2.2.1 and 2.2.19. This does not seem to work properly on Kernel 2.4.17_mvl21. The suspected root causes of this are
+Getting this server setup properly requires the use of a dial-up modem:
+* For PS2 Linux Beta Release 1 installations, this requires a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) (as the Japanese Playstatoin 2 Network Adapters only contain an ethernet adapter). 
+* For PS2 Linux Release 1.0 installations, this can be accomplished using a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) or the modem included in the North American Playstation 2 Network Adapter.
+
+#### USB Modems
+
+This tutorial assumes that these modem devices are registered as ```/dev/ttyACM0``` (this should be confirmed via ```dmesg``` output). A configuration file leveraged by pppd is created with the filename ```options.ttyACM0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyACM0``` references in commands below should be changed to the correct device.
+
+#### Network Adapter Modems
+
+To use this device, a customized serial.o kernel distributed through the playstation2-linux.com community (originally available on [this page](http://ps2linux.no-ip.info/playstation2-linux.com/download/ps2linux/serial.o)). This module is compiled for Kernel 2.2.1, and therefore will only work with this kernel version. The module can be loaded as follows (as root or via sudo):
+```bash
+/sbin/insmod /path/to/serial.o
+```
+
+&nbsp;  
+This tutorial assumes that these modem devices are registered as ```/dev/ttyS0``` (this should be confirmed via ```dmesg``` output, in which the ```ttyS00``` should be displayed including the extra ```0``` character). A configuration file leveraged by pppd is created with the filename ```options.ttyS0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyS0``` references in commands below should be changed to the correct device.
+
+### Kernel Support
+
+In the author's experience, the PC-DC Server does NOT work with Kernel 2.4.17_mvl21. The suspected root causes of this are (the author did not perform any additional analysis to confirm and/or resolve the issues):
 * mgetty and/or pppd must be compiled against a 2.4.x kernel in order to properly support a PC-DC Server.
 * More fine-tuning of mgetty and/or pppd is required to setup a working PC-DC Server on a 2.4.x kernel.
 
-Regardless of the actual root cause(s), the author did not perform any additional analysis to confirm and/or resolve the issues.
-
-On PS2 Linux Release 1.0, it may be possible to use the dial-up modem included in the North American Playstation 2 Network Adapter. But this has not been fully researched by the author.
+A PC-DC Server setup with a USB modem should work under Kernel 2.2.1 or Kernel 2.2.19. A Server setup with the Network Adapter modem will only work under Kernel 2.2.1.
 
 ## Configuring PS2 Linux for a PC-DC Server (as root)
 
@@ -51,7 +72,7 @@ passwd dream
 &nbsp;  
 Install [dialin.config](dialin.config), [login.config](login.config), and [mgetty.config](mgetty.config) configuration files for mgetty.
 ```bash
-cp /path/to/dialin.config /path/to/login.config /path/to/mgetty.config /etc/mgetty+sendfax/.
+cp -f /path/to/dialin.config /path/to/login.config /path/to/mgetty.config /etc/mgetty+sendfax/.
 chmod 600 /etc/mgetty+sendfax/dialin.config
 chmod 600 /etc/mgetty+sendfax/login.config
 chmod 600 /etc/mgetty+sendfax/mgetty.config
@@ -64,14 +85,16 @@ Edit the pppd [options](options) configuration file and replace ```X.X.X.X``` wi
 Edit the pppd [pap-secrets](pap-secrets) configuration file. Replace ```USERHERE``` with the name of the user created earlier. Replace ```PASSWORDHERE``` with the password for the user.
 
 &nbsp;  
-Edit the [options.ttyACM0](options.ttyACM0) configuration file. Replace ```M.M.M.M``` with the subnet mask used by the network that PS2 Linux is connected to (usually ```255.255.255.0```). Replace ```X.X.X.X``` with the start of the range of IP addresses to be allocated by the PC-DC Server (such as ```192.168.1.100```), and replace ```Y.Y.Y.Y``` with the end of the range (such as ```192.168.1.101```).
+Edit the [options.ttyACM0](options.ttyACM0) configuration file (for USB modems) and/or the [options.ttyS0](options.ttyS0) configuration file (for Network Adapter modems). Replace ```M.M.M.M``` with the subnet mask used by the network that PS2 Linux is connected to (usually ```255.255.255.0```). Replace ```X.X.X.X``` with the start of the range of IP addresses to be allocated by the PC-DC Server (such as ```192.168.1.100```), and replace ```Y.Y.Y.Y``` with the end of the range (such as ```192.168.1.101```).
+**NOTE** If setting up files for both types of modem devices, it is completely acceptable and expected if the two configuration files are identical.
 
 &nbsp;  
 Install the edited configuration files for pppd
 ```bash
-cp /path/to/options /path/to/options.ttyACM0 /path/to/pap-secrets /etc/ppp/.
+cp -f /path/to/options /path/to/options.ttyACM0 /path/to/options.ttyS0 /path/to/pap-secrets /etc/ppp/.
 chmod 600 /etc/ppp/options
 chmod 600 /etc/ppp/options.ttyACM0
+chmod 600 /etc/ppp/options.ttyS0
 chmod 600 /etc/ppp/pap-secrets
 ```
 
@@ -83,19 +106,29 @@ This procedure requires either two or three open terminal sessions open:
 * The third session (which is optional, but can be leveraged to diagnose issues) monitors the log file from the mgetty session and displays information indicating the state of the Dreamcast and PS2 Linux connection. This session can be established either locally on PS2 Linux or via SSH.
 
 &nbsp;  
-Power on the Dreamcast console, load the game/software that will be connecting to the internet, and navigate to the menu/etc. to initiate the dialing sequence. But do NOT initiate the dialing sequence yet!
+Power on the Dreamcast console, load the game/software that will be connecting to the internet, and navigate to the menu/screen to initiate the dialing sequence. But do NOT initiate the dialing sequence yet!
 
 &nbsp;  
+**For USB modem devices:**   
 If not done already: On PS2 Linux, load the kernel driver for the USB modem device using the command below, then plug the device in and connect the Dreamcast modem to it.
 ```bash
 /sbin/insmod acm
 ```
 
-### Setting up connection between Dreamcast and PS2 Linux
+&nbsp;  
+**Alternatively: for Network Adapter modem devices:**
+If not done already: On PS2 Linux, load the kernel driver for the USB modem device using the command below, then plug the device in and connect the Dreamcast modem to it.
+```bash
+/sbin/insmod /path/to/serial.o
+```
+
+### Setting up connection between Dreamcast and PS2 Linux (as root or via sudo)
+
+**NOTE:** For the commands below, the ```DEVICE``` value should be replaced with ```ttyACM0``` for USB modems and ```ttyS0``` for Network Adapter modems.
 
 In the first session on PS2 Linux: execute mgetty.
 ```bash
-/sbin/mgetty -D /dev/ttyACM0 -m '"" ATM0'
+/sbin/mgetty -D /dev/DEVICE -m '"" ATM0'
 ```
 
 &nbsp;  
@@ -107,14 +140,13 @@ killall -USR1 mgetty
 &nbsp;  
 **(OPTIONAL)** In the third session on PS2 Linux: Execute the following command to display the log file for the mgetty process.
 ```bash
-tail -f /var/log/mgetty.log.ttyACM0
+tail -f /var/log/mgetty.log.DEVICE
 ```
 
 &nbsp;  
 On the Dreamcast console: initiate the dialing sequence.  
 In the second session on PS2 Linux: wait about 5 seconds, then execute the ```killall``` command typed out earlier.
 
-&nbsp;  
 &nbsp;  
 As long as the above procedure was followed correctly, the Dreamcast console should successfully connect to the PC-DC Server and should receive an internet connection. If the connection is ever closed for any reason, it can be re-established be re-following the steps above.
 
