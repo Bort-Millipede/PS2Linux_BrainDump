@@ -42,20 +42,10 @@ umount /mnt/cdrom
 If the 2.2.1_ps2-7 kernel source is NOT already present on the cross-compiling environment: extract the 2.2.1_ps2-7 kernel source into the cross-compiling environment
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
-rpm2cpio /path/to/kernel-headers-2.2.1_ps2-7.mipsel.rpm | cpio -ivd
-rpm2cpio /path/to/kernel-source-2.2.1_ps2-7.mipsel.rpm | cpio -ivd
+rpm2cpio /path/to/kernel-headers-2.2.1_ps2-7.mipsel.rpm | cpio -id
+rpm2cpio /path/to/kernel-source-2.2.1_ps2-7.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.2.1_ps2 linux-2.2.1_ps2-7
-cd linux-2.2.1_ps2-7
-```
-
-&nbsp;  
-Rename kernel source directory to ```linux-2.2.1_ps2-7```:
-```bash
-cd /usr/mipsEEel-linux/mipsEEel-linux/usr/src
-linux
-mv linux-2.2.1_ps2 linux-2.2.1_ps2-7
-ln -s linux-2.2.1_ps2-7 linux
 cd linux-2.2.1_ps2-7
 ```
 
@@ -71,8 +61,11 @@ cd ../..
 &nbsp;  
 Add APA partitioning support kernel.
 ```bash
-mv drivers/block/genhd.c drivers/block/genhd.c.orig
-mv fs/Config.in fs/Config.in.orig
+cd drivers/block
+mv genhd.c genhd.c.orig
+cd ../../fs
+mv Config.in Config.in.orig
+cd ..
 tar xzf /path/to/apa_2.2.1_src.tar.gz
 ```
 

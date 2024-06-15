@@ -266,6 +266,17 @@ Reboot PS2 Linux and select the ```2.2.19``` boot entry to use the 2.2.19 Kernel
 
 ## Using Kernel 2.2.19
 
+### Initializing PS2 RTC under PS2 Linux Beta Release 1
+
+The ```ps2rtc``` kernel module needs to be loaded under PS2 Linux Beta Release 1 in order to access the Playstation 2 Real Time Clock. To do this automatically at boot time, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod sound``` line with:
+```
+insmod sound
+if [ "`uname -r`" = "2.2.19" ]
+then
+   insmod ps2rtc
+fi
+```
+
 ### Fixing sound
 
 The easiest way to get sound working under kernel 2.2.19 is to force-load the kernel 2.2.1 ps2sd module into the running 2.2.19 kernel. This can be done using the following command:
@@ -273,11 +284,13 @@ The easiest way to get sound working under kernel 2.2.19 is to force-load the ke
 insmod -f /lib/modules/2.2.1/misc/ps2sd.o
 ```
 
-To automatically force-load the 2.2.1 at boot time, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod ps2sd``` line with:  
+&nbsp;  
+**NOTE**: the ```insmod ps2rtc``` line below is only required for PS2 Linux Beta Release 1. It can be omitted for PS2 Linux Release 1.0.
+The 2.2.1 ps2sd module can also be automatically force-loaded at boot time. To configure this, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod ps2sd``` line with:
+To automatically force-load the 2.2.1 ps2sd module at boot time, 
 ```
 if [ "`uname -r`" = "2.2.19" ]
 then
-   insmod ps2rtc
    insmod -q -f /lib/modules/2.2.1/misc/ps2sd.o >/dev/null
    echo "Using /lib/modules/2.2.1/misc/ps2sd.o"
 else
