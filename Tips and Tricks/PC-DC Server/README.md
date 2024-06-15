@@ -150,3 +150,29 @@ In the second session on PS2 Linux: wait about 5 seconds, then execute the ```ki
 &nbsp;  
 As long as the above procedure was followed correctly, the Dreamcast console should successfully connect to the PC-DC Server and should receive an internet connection. If the connection is ever closed for any reason, it can be re-established be re-following the steps above.
 
+## Usage Examples
+
+### USB Modem
+
+![](mgetty USB modem.png?raw=true)  
+*mgetty process executed with USB modem*
+
+![](mgetty_log_USB_modem.png?raw=true)  
+*mgetty process log showing successful PC-DC connection*
+
+### Network Adapter Modem
+
+![](NA_modem_dmesg.png?raw=true)  
+*Network Adapter Modem recognized as ttyS0 device after loading serial kernel module*
+
+![](mgetty_NA_modem.png?raw=true)  
+*mgetty process executed with Network Adapter modem*
+
+![](mgetty_log_NA_modem.png?raw=true)  
+*mgetty process log showing successful PC-DC connection*
+
+### Kernel 2.4.17 (Failed)
+
+![](mgetty_log_2.4.17_kernel.png)  
+*mgetty process log shwoing failed PC-DC connection under Kernel 2.4.17*
+
