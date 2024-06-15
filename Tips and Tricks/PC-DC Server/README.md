@@ -154,7 +154,7 @@ As long as the above procedure was followed correctly, the Dreamcast console sho
 
 ### USB Modem
 
-![](mgetty USB modem.png?raw=true)  
+![](mgetty_USB_modem.png?raw=true)  
 *mgetty process executed with USB modem*
 
 ![](mgetty_log_USB_modem.png?raw=true)  
