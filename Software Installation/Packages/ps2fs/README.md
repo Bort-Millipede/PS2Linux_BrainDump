@@ -7,7 +7,7 @@
 
 ps2fs allows partitions on the PS2 HDD that were NOT created by PS2 Linux to be accessed. The software is compiled as a loadable kernel module. Therefore, it will need to be built separately for every kernel version under which it is intended to be used.
 
-In the author's experience, ps2fs works under all kernel versions EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with the Linux Kit Beta). The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded, which subsequently fails. Conversely, ps2fs works fine under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the Linux Kit Release 1.0).
+In the author's experience, ps2fs works under all kernel versions EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with PS2 Linux Beta Release 1). The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded, which subsequently fails. Conversely, ps2fs works fine under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the PS2 Linux Release 1.0).
 
 ## Dependencies
 
@@ -103,12 +103,17 @@ cp 2.4.17_mvl21/kernel/drivers/ps2/ps2fs.o /lib/modules/2.4.17_mvl21/kernel/driv
 
 Install **[mount-ps2fs script](mount-ps2fs)** to ```/usr/local/bin```.
 ```bash
-cp /path/to/mount-ps2fs /usr/local/sbin
+cp /path/to/mount-ps2fs /usr/local/sbin/mount-ps2fs
 chmod 755 /usr/local/sbin/mount-ps2fs
 chown root.root /usr/local/sbin/mount-ps2fs
 ```
 
 ## Usage Notes
+
+To use ps2fs, the kernel module must be loaded (as root or via sudo):
+```bash
+/sbin/insmod ps2fs
+```
 
 ps2fs can only reliably mount non-PS2 Linux partitions in read-only mode. The provided [helper script](mount-ps2fs) can assist in doing this a little more easily. The original Japanese-language ps2fs README can be found [here](http://achurch.org/ps2/ps2fs.README.txt). This can be semi-reliably translated using Google Translate.
 

@@ -38,10 +38,10 @@ cd linux-2.2.1_ps2
 ```
 
 &nbsp;  
-Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
+Modify included kernel configuration file to specify that the kernel is NOT being cross-compiled. Also add support for experimental features and for USB mass storage devices.
 ```bash
 cd /usr/src/linux-2.2.1_ps2
-perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" config_ps2
+perl -i.bak -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config_ps2
 perl -i -pe "s/^# CONFIG_EXPERIMENTAL is not set/CONFIG_EXPERIMENTAL=y/" config_ps2
 perl -i -pe "s/^# CONFIG_USB_STORAGE is not set/CONFIG_USB_STORAGE=m/" config_ps2
 ```
@@ -53,9 +53,10 @@ make mrproper
 ```
 
 &nbsp;  
-Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-6/config-2.2.1_ps2-6)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-6/config-2.2.1_ps2-6)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config
 cp config .config
 ```
 
@@ -103,7 +104,7 @@ tar xzf /path/to/apa_2.2.1_src.tar.gz
 Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
 ```bash
 perl -i.bak -pe "s/^# CONFIG_BSD_DISKLABEL is not set/CONFIG_PS2_PARTITION=y\n# CONFIG_BSD_DISKLABEL is not set/" arch/mips/defconfig
-perl -i -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" arch/mips/defconfig
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" arch/mips/defconfig
 perl -i -pe "s/^# CONFIG_EXPERIMENTAL is not set/CONFIG_EXPERIMENTAL=y/" arch/mips/defconfig
 perl -i -pe "s/^# CONFIG_USB_STORAGE is not set/CONFIG_USB_STORAGE=m/" arch/mips/defconfig
 cp arch/mips/defconfig config_ps2
@@ -116,9 +117,10 @@ make mrproper
 ```
 
 &nbsp;  
-Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-7/config-2.2.1_ps2-7)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as [this one](../../Kernels/2.2.1_ps2-7/config-2.2.1_ps2-7)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config
 cp config .config
 ```
 
@@ -217,9 +219,10 @@ cp config_ps2 .config
 ```
 
 &nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one](../../Kernels/2.2.19_ps2-5/config-2.2.19_ps2-5)) into correct location in kernel source directory.
+Alternatively: copy usable kernel configuration file (such as [this one](../../Kernels/2.2.19_ps2-5/config-2.2.19_ps2-5)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config
 cp config .config
 ```
 
@@ -289,9 +292,10 @@ cp config .config
 ```
 
 &nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one](../../Kernels/2.4.17_ps2-22/config-2.4.17_ps2-22)) into correct location in kernel source directory.
+Alternatively: copy usable kernel configuration file (such as [this one](../../Kernels/2.4.17_ps2-22/config-2.4.17_ps2-22)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config
 cp config .config
 ```
 
@@ -345,9 +349,10 @@ cp config .config
 ```
 
 &nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one (FIXME)](../../Kernels/2.4.17_ps2-26/FIXME)) into correct location in kernel source directory.
+Alternatively: copy usable kernel configuration file (such as [this one (FIXME)](../../Kernels/2.4.17_ps2-26/FIXME)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
+perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config
 cp config .config
 ```
 

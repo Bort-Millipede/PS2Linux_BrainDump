@@ -18,10 +18,34 @@ then
 	exit 2
 fi
 
-KV=`uname -r`
-if [ "$KV" = "2.2.1" ]
+LINUXVER=""
+if [ -f /etc/ps2-release ]
 then
-	echo "ps2fs module may not work correctly (or at all) using the $KV kernel."
+	VER=`head -n 1 /etc/ps2-release | perl -pe "s/ $//" | rev | cut -d" " -f 1 | rev`
+	if [ "$VER" = "1.0beta" ]
+	then
+		LINUXVER="Beta"
+	elif [ "$VER" = "1.0" ]
+	then
+		LINUXVER="Release"
+	else
+		LINUXVER="UNKNOWN"
+	fi
+	unset VER
+else
+	LINUXVER="UNKNOWN"
+fi
+
+KV=`uname -r`
+if [ "$KV" = "2.2.1" ] && [ "$LINUXVER" != "Release" ]
+then
+	echo -n "ps2fs module may not work correctly (or at all) using the $KV kernel"
+	if [ "$LINUXVER" = "Beta" ]
+	then
+		echo " under Beta Release 1."
+	else
+		echo "."
+	fi
 	echo -e "For guaranteed results, switch to the 2.2.19 or 2.4.17_mvl21 kernel."
 	echo -n "Would you like to continue? (N/y): "
 	read -r YN
