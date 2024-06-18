@@ -25,7 +25,7 @@ This tutorial assumes that these modem devices are registered as ```/dev/ttyACM0
 
 #### Network Adapter Modems
 
-To use this device, a customized serial.o kernel distributed through the playstation2-linux.com community (originally available on [this page](http://ps2linux.no-ip.info/playstation2-linux.com/download/ps2linux/serial.o)). This module is compiled for Kernel 2.2.1, and therefore will only work with this kernel version. The module can be loaded as follows (as root or via sudo):
+To use this device, a customized [serial.o](serial.o) kernel module distributed through the playstation2-linux.com community (originally available on [this page](http://ps2linux.no-ip.info/playstation2-linux.com/download/ps2linux/serial.o)). This module is compiled for Kernel 2.2.1, and therefore will only work with this kernel version. The module can be loaded as follows (as root or via sudo):
 ```bash
 /sbin/insmod /path/to/serial.o
 ```
@@ -110,14 +110,14 @@ Power on the Dreamcast console, load the game/software that will be connecting t
 
 &nbsp;  
 **For USB modem devices:**   
-If not done already: On PS2 Linux, load the kernel driver for the USB modem device using the command below, then plug the device in and connect the Dreamcast modem to it.
+If not done already: On PS2 Linux, load the kernel module for the USB modem device using the command below, then plug the device in and connect the Dreamcast modem to it.
 ```bash
 /sbin/insmod acm
 ```
 
 &nbsp;  
 **Alternatively: for Network Adapter modem devices:**
-If not done already: On PS2 Linux, load the kernel driver for the USB modem device using the command below, then plug the device in and connect the Dreamcast modem to it.
+If not done already: On PS2 Linux, load the [kernel driver](serial.o) for the Network Adapter modem device using the command below, then connect the Dreamcast modem to the device.
 ```bash
 /sbin/insmod /path/to/serial.o
 ```

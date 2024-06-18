@@ -26,10 +26,10 @@ AKMem is only available under the 2.2.19 and 2.4.17_mvl21 kernels. For these ker
 * ```Character devices``` -> ```AKMem(Another Kernel Memory)``` -> ```Another kernel memory device support```
 
 ![](2.2.19_akmem.png?raw=true)  
-*"AKMem(Another Kernel Memory) menu for Kernel 2.2.19"*
+*AKMem(Another Kernel Memory) menu for Kernel 2.2.19*
 
 ![](2.4.17_akmem.png?raw=true)  
-*"AKMem(Another Kernel Memory) menu for Kernel 2.4.17_mvl21"*
+*AKMem(Another Kernel Memory) menu for Kernel 2.4.17_mvl21*
 
 Alternatively, This can be enabled from within the ```.config``` file by setting the following value:
 ```
@@ -45,34 +45,35 @@ cd akmem_ps2
 ```
 
 &nbsp;  
-Ensure ```/usr/src/linux``` symbolic link is referencing correct kernel source directory.
+Ensure ```/usr/src/linux``` symbolic link is referencing correct kernel source directory (as root or via sudo).  
+**NOTE:** Replace ```linux-2.2.19_ps2``` with ```linux-2.4.17_ps2``` below for Kernel 2.4.17_mvl21.
 ```bash
 rm -f /usr/src/linux
 ln -sf linux-2.2.19_ps2 /usr/src/linux
 ```
 
 &nbsp;  
-Build source and create ```akmem``` device file.
-```
+Build source
+```bash
 make
+```
+
+&nbsp;  
+Create ```akmem``` device file and install ```akload``` executable to ```/usr/local/sbin``` (as root or via sudo).
+```bash
 make mknod
+cp akload /usr/local/sbin/akload
 ```
 
 &nbsp;  
-Install ```akload``` executable to ```/usr/local/sbin```.
+Install **[reboot-akmem script](reboot-akmem)** to ```/usr/local/sbin``` (as root or via sudo).
 ```bash
-cp akload /usr/local/sbin
-```
-
-&nbsp;  
-Install **[reboot-akmem script](reboot-akmem)** to ```/usr/local/sbin```.
-```bash
-cp /path/to/reboot-akmem /usr/local/sbin
+cp /path/to/reboot-akmem /usr/local/sbin/reboot-akmem
 chmod 755 /usr/local/sbin/reboot-akmem
 ```
 
 &nbsp;  
-Create installation archive (for easy installation onto future PS2 Linux installs).
+Create installation archive (for easy installation onto future PS2 Linux or Broadband Navigator installs).
 ```bash
 mkdir akmem_ps2-bin
 cp akload akmem_ps2-bin/
@@ -81,7 +82,7 @@ tar czf akmem_ps2-bin.tar.gz akmem_ps2-bin
 
 ### (RECOMMENDED) Post-Build Cleanup
 
-Recreate ```/usr/src/linux``` symlink to reference current kernel version source directory.
+Recreate ```/usr/src/linux``` symlink to reference current kernel version source directory (as root or via sudo).
 
 ## Usage Notes
 
