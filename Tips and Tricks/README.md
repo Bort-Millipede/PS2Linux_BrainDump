@@ -27,7 +27,7 @@ Although the root password is set during installation of PS2 Linux, the author r
 Although the VGA adapter only officially supports sync-on-green monitors, modern monitors with VGA inputs MAY work with the VGA adapter. The following monitor has been successfully used by the author with PS2 Linux and the VGA adapter:  
 * [ASUS VS247H](https://www.asus.com/us/commercial-monitors/vs247hp/)
 
-To use system audio from commands/processes executed as non-root users, permissions for the default ```/dev/dsp``` sound device may need to be set to world-readable and world-writeable (as root or via sudo):
+To use system audio from commands/processes executed as non-root users, permissions for the default ```/dev/dsp``` sound device may need to be set to world-readable and world-writable (as root or via sudo):
 ```bash
 chmod 666 /dev/dsp
 ```

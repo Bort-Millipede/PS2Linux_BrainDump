@@ -16,7 +16,7 @@ This page only describes how to set up the PC-DC Server on PS2 Linux. It does NO
 ### Modem Devices
 
 Getting this server setup properly requires the use of a dial-up modem:
-* For PS2 Linux Beta Release 1 installations, this requires a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) (as the Japanese Playstatoin 2 Network Adapters only contain an ethernet adapter). 
+* For PS2 Linux Beta Release 1 installations, this requires a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) (as the Japanese Playstation 2 Network Adapters only contain an ethernet adapter). 
 * For PS2 Linux Release 1.0 installations, this can be accomplished using a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) or the modem included in the North American Playstation 2 Network Adapter.
 
 #### USB Modems

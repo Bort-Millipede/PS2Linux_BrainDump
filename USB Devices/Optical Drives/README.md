@@ -70,7 +70,7 @@ The device can then be plugged in. From here, PS2 Linux should recognize the dev
 mknod /dev/sr0 b 11 0
 ```
 
-To avoid access issues later, it is recommended to set the ```/dev/sr0``` device as world-readable and world-writeable. This can be done via the following command (as root or via sudo):
+To avoid access issues later, it is recommended to set the ```/dev/sr0``` device as world-readable and world-writable. This can be done via the following command (as root or via sudo):
 ```bash
 chmod 666 /dev/sr0
 ```
@@ -80,7 +80,7 @@ It is also recommended to add the current user to the ```disk``` group via the f
 usermod -G disk USERNAME
 ```
 
-USB optical drives can also often be used via device ```/dev/scd0```, which should already be created. Just as above, it is recommended that the device be set as world-readable and world-writeable via the following command (as root or via sudo):
+USB optical drives can also often be used via device ```/dev/scd0```, which should already be created. Just as above, it is recommended that the device be set as world-readable and world-writable via the following command (as root or via sudo):
 ```bash
 chmod 666 /dev/scd0
 ```
