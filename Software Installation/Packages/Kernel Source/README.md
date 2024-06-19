@@ -2,26 +2,24 @@
 
 Some software that is built natively on PS2 Linux requires being built against newer kernel versions, rather than the stock 2.2.1 Kernel. Therefore, the kernel source for these newer versions must first be installed to PS2 Linux.
 
-2.2.1 (PS2 Linux Beta Release 1) required files:
-* ```kernel-headers-2.2.1_ps2-6.mipsel.rpm```: present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.
-  * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
-* ```kernel-source-2.2.1_ps2-6.mipsel.rpm```: present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.
-  * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
+2.2.1 (PS2 Linux Beta Release 1) required files (present on [PS2 Linux Beta Release 1 DVD](https://archive.org/download/sony_playstation2_p/PS2%20Linux%20Beta%20Release%201%20%28Japan%29%20%28En%2CJa%29.zip) under ```SCEI/RPMS```):
+* kernel-headers-2.2.1_ps2-6.mipsel.rpm
+* kernel-source-2.2.1_ps2-6.mipsel.rpm
 
-2.2.1 (PS2 Linux Release 1.0) required files:
-* ```kernel-headers-2.2.1_ps2-7.mipsel.rpm```: 
-* ```kernel-source-2.2.1_ps2-7.mipsel.rpm```: 
+2.2.1 (PS2 Linux Release 1.0) required files (present on [Linux (for Playstation 2) Release 1.0 Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip) under ```SCEI/RPMS```):
+* kernel-headers-2.2.1_ps2-7.mipsel.rpm
+* kernel-source-2.2.1_ps2-7.mipsel.rpm
 
-2.2.19 required file:
-* ```kernel-2.2.19_ps2-5.src.rpm```: present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip), within ```source.tgz``` file under ```source/kernel```.
+2.2.19 required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip), within ```source.tgz``` file under ```source/kernel```):
+* kernel-2.2.19_ps2-5.src.rpm
 
-2.4.17_mvl21 (PS2 Linux Beta Release 1) required files:
-* [kernel-headers-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-22.mipsel.rpm)
-* [kernel-source-2.4.17_ps2-22.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net:80/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-22.mipsel.rpm)
+2.4.17_mvl21 (PS2 Linux Beta Release 1) required files (present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip), within ```source.tgz``` file under ```source/kernel```):
+* kernel-headers-2.4.17_ps2-22.mipsel.rpm
+* kernel-source-2.4.17_ps2-22.mipsel.rpm
 
-2.4.17_mvl21 (PS2 Linux Release 1.0) required files:
-* [kernel-headers-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-headers-2.4.17_ps2-26.mipsel.rpm)
-* [kernel-source-2.4.17_ps2-26.mipsel.rpm](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator/kernel-source-2.4.17_ps2-26.mipsel.rpm)
+2.4.17_mvl21 (PS2 Linux Release 1.0) required files (present on [Playstation BB Navigator 0.32 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.32%20%28Japan%29.zip), within ```source.tgz``` file under ```source/kernel```):
+* kernel-headers-2.4.17_ps2-26.mipsel.rpm
+* kernel-source-2.4.17_ps2-26.mipsel.rpm
 
 **Build type:** None
 
@@ -181,14 +179,6 @@ cd ../..
 ```
 
 &nbsp;  
-**Finally: if planning on booting PS2 Linux from BB Navigator:**
-
-Edit ```drivers/char/console.c```: change line 2827 to:
-```
-//graphics_boot = 1;
-```
-
-&nbsp;  
 Modify included kernel configuration file to:
 * Specify that the kernel is NOT being cross-compiled
 * Enable built-in ext2 filesystem support.
@@ -250,14 +240,6 @@ Modify APA partitioning support: enable support for legacy APA partitions using 
 cd fs/partitions
 patch -p1 < /path/to/kernel-2.4.17_ps2-22_partitions.patch
 cd ../..
-```
-
-&nbsp;  
-**If planning on booting PS2 Linux from BB Navigator:**
-
-Edit ```drivers/char/console.c```: Change line 1723 to:
-```
-//graphics_boot = 1;
 ```
 
 &nbsp;  
@@ -349,7 +331,7 @@ cp config .config
 ```
 
 &nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one (FIXME)](../../Kernels/2.4.17_ps2-26/FIXME)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
+Alternatively: copy usable kernel configuration file (such as [this one](../../Kernels/2.4.17_ps2-26/config-2.4.17_ps2-26)) into correct location in kernel source directory. Ensure kernel is configured NOT to be cross-compiled.
 ```bash
 cp /path/to/working/kernel/config/file config
 perl -i -pe "s/^CONFIG_CROSSCOMPILE=y/# CONFIG_CROSSCOMPILE is not set/" config

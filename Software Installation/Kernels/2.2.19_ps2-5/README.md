@@ -6,8 +6,8 @@
 ![](2.2.19_release_login.png?raw=true)  
 *PS2 Linux Release 1.0 running on Kernel 2.2.19*
 
-Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip)):  
-* kernel-2.2.19_ps2-5.src.rpm (within ```source.tgz``` file under ```source/kernel```)
+Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip), within ```source.tgz``` file under ```source/kernel```):  
+* kernel-2.2.19_ps2-5.src.rpm
 
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
@@ -28,7 +28,7 @@ The sound module included with this kernel version does not work. This is a know
 
 It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file. This configuration file should work with both PS2 Linux Beta Release 1 and PS2 Linux Release 1.0.
 
-## Extracting Necessary File From Playstation BB Navigator 0.10 Disc 2
+## Extracting Required File From Playstation BB Navigator 0.10 Disc 2
 
 Attach Playstation BB Navigator 0.10 Disc 2 to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF.
 ```bash

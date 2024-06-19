@@ -1,10 +1,10 @@
 # Kernel 2.4.17_mvl21 (for PS2 Linux Beta Release 1)
 
-![](2.4.17_beta_login.png?raw=true)
+![](2.4.17_release_login.png?raw=true)
 
-Required files (present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip), within ```source.tgz``` file under ```source/kernel```):  
-* kernel-headers-2.4.17_ps2-22.mipsel.rpm
-* kernel-source-2.4.17_ps2-22.mipsel.rpm
+Required files (present on [Playstation BB Navigator 0.32 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.32%20%28Japan%29.zip), within ```source.tgz``` file under ```source/kernel```):  
+* kernel-headers-2.4.17_ps2-26.mipsel.rpm
+* kernel-source-2.4.17_ps2-26.mipsel.rpm
 
 **NOTE:** These files may also be available for download [HERE](https://web.archive.org/web/20031207191309/http://www.sony.net/Products/Linux/Download/PlayStation_BB_Navigator.html)
 
@@ -12,7 +12,6 @@ Required files (present on [Playstation BB Navigator 0.30 Disc](https://archive.
 
 ## References
 
-* [http://www.geocities.jp/ps2linux_net/make_install/kernel-2.4.17.html](https://web.archive.org/web/20181105102754/http://www.geocities.jp/ps2linux_net/make_install/kernel-2.4.17.html)
 * [http://playstation2-linux.com/download/mozilla-ps2/kernel-2.4.17-mini-howto.html](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/kernel-2.4.17-mini-howto.html)
 
 ## Preliminary Considerations
@@ -23,18 +22,18 @@ While this kernel provides many improved functionalities absent from the 2.2.x k
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-22). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-26). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
 
-## Extracting Required Files From Playstation BB Navigator 0.30 Disc
+## Extracting Required Files From Playstation BB Navigator 0.32 Disc
 
-Attach Playstation BB Navigator 0.30 Disc to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
+Attach Playstation BB Navigator 0.32 Disc to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
 ```bash
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
 
-Extract the **kernel-headers-2.4.17_ps2-22.mipsel.rpm** and **kernel-source-2.4.17_ps2-22.mipsel.rpm** files from the source.tgz file on the DVD.
+Extract the **kernel-headers-2.4.17_ps2-26.mipsel.rpm** and **kernel-source-2.4.17_ps2-26.mipsel.rpm** files from the source.tgz file on the DVD.
 ```bash
-tar xzf /mnt/cdrom/source.tgz source/kernel/kernel-headers-2.4.17_ps2-22.mipsel.rpm source/kernel/kernel-source-2.4.17_ps2-22.mipsel.rpm
+tar xzf /mnt/cdrom/source.tgz source/kernel/kernel-headers-2.4.17_ps2-26.mipsel.rpm source/kernel/kernel-source-2.4.17_ps2-26.mipsel.rpm
 mv source/kernel/* .
 rm -rf source
 ```
@@ -44,32 +43,16 @@ Unmount the DVD (as root or via sudo).
 umount /mnt/cdrom
 ```
 
-## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.4.17_ps2-26 Kernel Source to Cross-Compiling Environment (as root)
 
 Extract RPMs into cross-compiling environment.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
-rpm2cpio /path/to/kernel-headers-2.4.17_ps2-22.mipsel.rpm | cpio -id
-rpm2cpio /path/to/kernel-source-2.4.17_ps2-22.mipsel.rpm | cpio -id
+rpm2cpio /path/to/kernel-headers-2.4.17_ps2-26.mipsel.rpm | cpio -id
+rpm2cpio /path/to/kernel-source-2.4.17_ps2-26.mipsel.rpm | cpio -id
 cd usr/src
-mv linux-2.4.17_ps2 linux-2.4.17_ps2-22
-cd linux-2.4.17_ps2-22
-```
-
-&nbsp;  
-Modify APA partitioning support: enable support for legacy APA partitions using [this patch](kernel-2.4.17_ps2-22_partitions.patch).
-```bash
-cd fs/partitions
-patch -p1 < /path/to/kernel-2.4.17_ps2-22_partitions.patch
-cd ../..
-```
-
-&nbsp;  
-(OPTIONAL) **If planning on booting PS2 Linux from BB Navigator:**
-
-Edit ```drivers/char/console.c```: Change line 1723 to:
-```
-//graphics_boot = 1;
+mv linux-2.4.17_ps2 linux-2.4.17_ps2-26
+cd linux-2.4.17_ps2-26
 ```
 
 &nbsp;  
@@ -81,6 +64,7 @@ Run ```setup-ps2``` script and modify included kernel configuration file to:
 * Enable built-in SCSI device support.
 ```bash
 ./setup-ps2
+perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" .config
 perl -i -pe "s/CONFIG_EXT2_FS=m/CONFIG_EXT2_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_DEVPTS_FS\ is\ not\ set/CONFIG_DEVPTS_FS=y/" .config
 perl -i -pe "s/#\ CONFIG_UNIX98_PTYS\ is\ not\ set/CONFIG_UNIX98_PTYS=y/" .config
@@ -116,7 +100,7 @@ make oldconfig
 make menuconfig
 ```
 
-## Building for PS2 Linux Beta
+## Building for PS2 Linux
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
 * If building in the above directory, building must be done as root.
@@ -151,18 +135,18 @@ make modules_install
 Create installation archive for kernel modules.
 ```
 cd /lib/modules
-tar czvf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
+tar czvf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
 ```
 
 ## Installing on PS2 Linux Beta (as root)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-22.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-26.tar.gz** files to PS2 Linux.
 
 &nbsp;  
 Install kernel modules
 ```bash
 cd /lib/modules
-tar xzf /path/to/kernel-modules-2.4.17_ps2-22.tar.gz
+tar xzf /path/to/kernel-modules-2.4.17_ps2-26.tar.gz
 ```
 
 &nbsp;  
@@ -171,6 +155,9 @@ Install kernel files to ```/boot```.
 cp /path/to/vmlinux /boot/vmlinux-2.4.17_mvl21
 cp /path/to/System.map /boot/System.map-2.4.17_mvl21
 ```
+
+&nbsp;  
+/boot/vmlinux and /boot/System.map
 
 &nbsp;  
 Install compressed kernel to first Memory Card (recommended).
@@ -218,9 +205,5 @@ Recreate the ```/dev/usbmouse``` symbolic link to reference the correct USB mous
 ln -s input/mice /dev/usbmouse
 ```
 
-## Booting Kernel 2.4.17_mvl21
-
-The PS2 Linux Beta Release 1 DVD does not appear to boot the 2.4.17_mvl21 kernel correctly (the kernel boots to a blank screen). Therefore, this kernel can only be booted via the following means:
-* via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem))
-* via BB Navigator (not currently outlined in this repository)
+Reboot PS2 Linux and select the ```2.4.17_mvl21``` boot entry to use the 2.4.17_mvl21 Kernel.
 
