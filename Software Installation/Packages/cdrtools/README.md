@@ -22,7 +22,7 @@ In general for any operations requiring the use of an optical drive, the built-i
 /sbin/insmod usb-storage
 ```
 
-**NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded.
+**NOTE:** The ```cdrom``` module is usually built into Kernel 2.4.17_mvl21 by default, and therefore does not need to be loaded. However, even in this case the ```/sbin/insmod cdrom``` command above will not cause any sort of harm.
 
 For burning CDs/DVDs via ```cdrecord```, this appears to only be available under kernel 2.4.17_mvl21 with specific sub-modules of the usb-storage module enabled (outlined on the [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) page).
 
@@ -118,4 +118,15 @@ smake INS_BASE=/usr/local install
 ### (RECOMMENDED) Post-Build
 
 If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the build directory be retained in case cdrtools needs to be re-installed later (example: if [star](../star) is installed after first installing cdrtools). If this is not available, the installation archive created above can be used for re-installation instead.
+
+## Usage Notes
+
+![](mkisofs_versions.png?raw=true)  
+*Multiple mkisofs versions installed*
+
+PS2 Linux ships with mkisofs-1.12b5 installed. In order to use the exact ```mkisofs``` command installed with cdrtools above:
+* Execute the command via an absolute path: ```/usr/local/bin/mkisofs```
+* Uninstall mkisofs-1.12b5:
+  * PS2 Linux Beta Release 1: ```rpm -vv -e mkisofs-1.12b5-7```
+  * PS2 Linux  Release 1.0: ```rpm -vv -e mkisofs-1.12b5-8```
 
