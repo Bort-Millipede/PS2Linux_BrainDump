@@ -6,6 +6,8 @@ A vast amount of tips and tricks beyond the scope of this repository can be foun
 
 **Ethernet Driver Update:** If the ethernet connection on PS2 Linux is very unstable and drops very easily (this is more likely to be experienced with newer Playstation 2 consoles), the likely issue is the buggy stock SMAP (ethernet) driver. An updated driver that fixes these issues is available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/ps2linux.html), with directions for installation available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotesaca2.html?release_id=68).
 
+**Enable USB Mouse Wheel:** The scrolling wheel on USB mouse devices is disabled in PS2 Linux by default. The procedure for enabling the wheel for X Windows sessions is [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/ps2mousewheel.html).
+
 **Kernel Source Installation:** Numerous procedures outlined in this repository require the 2.2.19 Kernel source and/or the 2.4.17_mvl21 Kernel source to be installed on PS2 Linux. Installing these is outlined [HERE](../Software&#32;Installation/Packages/Kernel&#32;Source).
 
 **RPM Upgrade:** The required packages needed for the upgrade can be found [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/apt.html). The actual upgrade procedure is [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apt/rpm-upgrade.pdf), with some revisions being outlined in bug reports [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/bug/apt.html).
