@@ -57,6 +57,7 @@ Digest and use this at your own risk!!!
     * [2.2.1_ps2-7](Software&#32;Installation/Kernels/2.2.1_ps2-7) (for PS2 Linux Release 1.0)
     * [2.2.19_ps2-5](Software&#32;Installation/Kernels/2.2.19_ps2-5) (for PS2 Linux Beta Release 1 and PS2 Linux Release 1.0)
     * [2.4.17_ps2-22](Software&#32;Installation/Kernels/2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
+    * [2.4.17_ps2-26](Software&#32;Installation/Kernels/2.4.17_ps2-26) (for PS2 Linux Release 1.0)
 * [USB Devices](USB&#32;Devices)
   * [Floppy and Zip Drives](USB&#32;Devices/Floppy-Zip&#32;Drives)
   * [Flash Drives](USB&#32;Devices/Flash&#32;Drives)
