@@ -67,7 +67,7 @@ cd ../..
 &nbsp;  
 (OPTIONAL) **If planning on booting PS2 Linux from BB Navigator:**
 
-Edit ```drivers/char/console.c```: Change line 1723 to:
+Edit ```drivers/video/ps2con.c```: Change line 1723 to:
 ```
 //graphics_boot = 1;
 ```
