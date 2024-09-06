@@ -17,7 +17,9 @@ This page only describes how to set up the PC-DC Server on PS2 Linux. It does NO
 
 Getting this server setup properly requires the use of a dial-up modem:
 * For PS2 Linux Beta Release 1 installations, this requires a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) (as the Japanese Playstation 2 Network Adapters only contain an ethernet adapter). 
-* For PS2 Linux Release 1.0 installations, this can be accomplished using a [USB Dial-Up Modem](../../USB&#32;Devices/Modems) or the modem included in the North American Playstation 2 Network Adapter.
+* For PS2 Linux Release 1.0 installations, this can be accomplished using:
+  * A [USB Dial-Up Modem](../../USB&#32;Devices/Modems); or
+  * The modem included in the North American Playstation 2 Network Adapter.
 
 #### USB Modems
 
@@ -85,7 +87,7 @@ Edit the pppd [options](options) configuration file and replace ```X.X.X.X``` wi
 Edit the pppd [pap-secrets](pap-secrets) configuration file. Replace ```USERHERE``` with the name of the user created earlier. Replace ```PASSWORDHERE``` with the password for the user.
 
 &nbsp;  
-Edit the [options.ttyACM0](options.ttyACM0) configuration file (for USB modems) and/or the [options.ttyS0](options.ttyS0) configuration file (for Network Adapter modems). Replace ```M.M.M.M``` with the subnet mask used by the network that PS2 Linux is connected to (usually ```255.255.255.0```). Replace ```X.X.X.X``` with the start of the range of IP addresses to be allocated by the PC-DC Server (such as ```192.168.1.100```), and replace ```Y.Y.Y.Y``` with the end of the range (such as ```192.168.1.101```).
+Edit the [options.ttyACM0](options.ttyACM0) configuration file (for USB modems) and/or the [options.ttyS0](options.ttyS0) configuration file (for Network Adapter modems). Replace ```M.M.M.M``` with the subnet mask used by the network that PS2 Linux is connected to (usually ```255.255.255.0```). Replace ```X.X.X.X``` with the start of the range of IP addresses to be allocated by the PC-DC Server (such as ```192.168.1.100```), and replace ```Y.Y.Y.Y``` with the end of the range (such as ```192.168.1.101```).  
 **NOTE** If setting up files for both types of modem devices, it is completely acceptable and expected if the two configuration files are identical.
 
 &nbsp;  
@@ -138,7 +140,7 @@ killall -USR1 mgetty
 ```
 
 &nbsp;  
-**(OPTIONAL)** In the third session on PS2 Linux: Execute the following command to display the log file for the mgetty process.
+**(OPTIONAL)** In the third session on PS2 Linux: Execute the following command to display the log file for the mgetty process (the ```DEVICE``` value should be replaced with ```ttyACM0``` for USB modems and ```ttyS0``` for Network Adapter modems).
 ```bash
 tail -f /var/log/mgetty.log.DEVICE
 ```
