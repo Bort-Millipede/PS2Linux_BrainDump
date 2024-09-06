@@ -50,7 +50,7 @@ tar czf firefox-0.8-nossl.mipsEEel-linux.tar.gz usr
 
 ### With SSL/TLS Support (on PS2 Linux)
 
-**IMPORTANT NOTE:** It is HIGHLY recommended that the commands below be executed in a local session directly on PS2 Linux, and NOT within an SSH remote session. This is because the build below will take a VERY Long time to complete, and all progress will be lost if the SSH session disconnects prematurely.
+**IMPORTANT NOTE:** It is HIGHLY recommended that the commands below be executed in a local session directly on PS2 Linux, and NOT within an SSH remote session. This is because the build below will take a VERY long time to complete, and all progress will be lost if the SSH session disconnects prematurely.
 
 Save [mozconfig file with SSL/TLS enabled](mozconfig-ssl) to home directory of current user as ```.mozconfig```
 
@@ -61,7 +61,7 @@ cd mozilla
 ```
 
 &nbsp;  
-Configure and build source. The ```configure``` script will automatically parse the ```.mozconfig``` file saved to the user's home directory.
+Configure and build source. The ```configure``` script will automatically parse the ```.mozconfig``` file saved to the user's home directory. This will take a VERY Long time to complete.
 ```bash
 ./configure
 make

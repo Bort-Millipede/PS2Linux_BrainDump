@@ -27,7 +27,7 @@ perl -i -pe "s/\`sdl-config/\`\/usr\/mipsEEel-linux\/mipsEEel-linux\/usr\/bin\/s
 
 &nbsp;  
 Patch Makefiles to:  
-* Include ```DESTDIR``` argument support.
+* Add ```DESTDIR``` argument support.
 * Prevent binary stripping by incorrect ```strip``` command.
 * Ensure libpostproc is built.
 * Reference correct ```freetype-config``` script.
