@@ -73,6 +73,8 @@ The section describes setting up a dedicated system for cross-compiling software
 * [cdrtools 1.10/2.0/2.01.01a36](Packages/cdrtools)
 * [Firefox 0.8](Packages/Firefox)
 * [FreeType 2.1.2](Packages/FreeType)
+* [GCC 2.95.2](Packages/GCC)
+* [libgcj 2.95.1](Packages/libgcj)
 * [Libtool 1.4.2](Packages/Libtool)
 * [Maelstrom 3.0.6](Packages/Maelstrom)
 * [mpg123 0.66](Packages/mpg123)

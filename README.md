@@ -21,6 +21,8 @@ Digest and use this at your own risk!!!
     * [cdrtools 1.10/2.0/2.01.01a36](Software&#32;Installation/Packages/cdrtools)
     * [Firefox 0.8](Software&#32;Installation/Packages/Firefox)
     * [FreeType 2.1.2](Software&#32;Installation/Packages/FreeType)
+    * [GCC 2.95.2](Software&#32;Installation/Packages/GCC)
+    * [libgcj 2.95.1](Software&#32;Installation/Packages/libgcj)
     * [Libtool 1.4.2](Software&#32;Installation/Packages/Libtool)
     * [Maelstrom 3.0.6](Software&#32;Installation/Packages/Maelstrom)
     * [mpg123 0.66](Software&#32;Installation/Packages/mpg123)
