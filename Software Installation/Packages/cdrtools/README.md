@@ -124,9 +124,17 @@ If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the build direc
 ![](mkisofs_versions.png?raw=true)  
 *Multiple mkisofs versions installed*
 
-PS2 Linux ships with mkisofs-1.12b5 installed. In order to use the exact ```mkisofs``` command installed with cdrtools above:
-* Execute the command via an absolute path: ```/usr/local/bin/mkisofs```
-* Uninstall mkisofs-1.12b5:
-  * PS2 Linux Beta Release 1: ```rpm -vv -e mkisofs-1.12b5-7```
-  * PS2 Linux  Release 1.0: ```rpm -vv -e mkisofs-1.12b5-8```
+PS2 Linux ships with mkisofs-1.12b5 installed. In order to use the exact ```mkisofs``` command installed with cdrtools above, either:
+1. Execute the command via an absolute path: ```/usr/local/bin/mkisofs```; or
+2. Uninstall mkisofs-1.12b5:
+    * PS2 Linux Beta Release 1: ```rpm -vv -e mkisofs-1.12b5-7```
+    * PS2 Linux Release 1.0: ```rpm -vv -e mkisofs-1.12b5-8```
+
+## Usage Examples
+
+![](cdrecord_dc_first_session_1.png?raw=true)  
+*Burning first session of Dreamcast backup disc with cdrecord from PS2 Linux*
+
+![](cdrecord_dc_first_session_2.png?raw=true)  
+*First session of Dreamcast backup disc burned successfully*
 
