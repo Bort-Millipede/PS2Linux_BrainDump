@@ -11,6 +11,9 @@ libgcj is required for compiling Java code into native binaries. At time of writ
 
 To directly leverage this library to compile Java binaries, a native version of ```gcj``` must be built and installed directly on PS2 Linux. However, preliminary testing by the author showed issues with compiled binaries resulting in an "Illegal Instruction" error.
 
+![](gcj_illegal_instruction_error.png?raw=true)  
+*Illegal Instruction error when executing Java binary compiled with gcj*
+
 ### Dependencies
 
 * gcj 2.95.2: via [manually-built gcc 2.95.2](../gcc) installed alongside pre-installed version. Full source/build directory from this should be available on PS2 Linux when building libgcj.

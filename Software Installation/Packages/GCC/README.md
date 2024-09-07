@@ -15,9 +15,14 @@ PS2 Linux ships with GCC pre-installed. This pre-installed version supports comp
 
 Beyond the programming languages listed prior, GCC 2.95.2 also supports compiling binaries from Java and [CHILL](https://en.wikipedia.org/wiki/CHILL) code. The procedure outlined here will install GCC onto PS2 Linux with support for these languages enabled. The GCC version installed here will be installed alongside the pre-installed version. It will NOT replace the pre-installed GCC version.
 
+For compiling Java binaries (see Limitations), [libgcj](../libgcj) will also need to be built and installed on PS2 Linux.
+
 ### Limitations
 
 At time of writing, the author has been unable to successfully compile and execute Java-based binaries on PS2 Linux. Preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" error.
+
+![](../libgcj/gcj_illegal_instruction_error.png?raw=true)  
+*Illegal Instruction error when executing Java binary compiled with gcj*
 
 Additionally, at time of writing the author has been unable to create an installation archive for GCC 2.95.2. Therefore, this will need to be built separately on every individual PS2 Linux installation to which it will be installed.
 

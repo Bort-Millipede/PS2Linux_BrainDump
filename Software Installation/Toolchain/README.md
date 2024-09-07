@@ -71,6 +71,9 @@ Besides C and C++, additional cross-compilers can be built and installed with re
 
 A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```, but this compiler does not actually work due to a ```libgcj.spec: No such file or directory``` error. The compiler relies on libgcj, and building this for successful cross-compiling has not been completed at time of writing. A native version of ```gcj``` can be built and installed directly on PS2 Linux, as well as a native version of libgcj-2.95.1. However, preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" error.
 
+![](../Packages/libgcj/gcj_illegal_instruction_error.png?raw=true)  
+*Illegal Instruction error when executing Java binary compiled with gcj*
+
 Objective-C support can be included in ```mipsEEel-linux-gcc``` using ```make LANGUAGES="objc" install```. Preliminary testing showed issues with linking cross-compiled Objective-C based binaries. The ```gcc``` version pre-installed on PS2 Linux appears to include working Objective-C support (see below).
 
 ### Test Binaries
