@@ -171,6 +171,6 @@ cd /mnt/hd
 gzip -dc /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz | /mnt/backup/bin/star -x -p -f -
 ```
 
-&nbsp; 
+&nbsp;  
 Ensure that the ```/mnt/hd/etc/fstab``` file references the correct partitions for the PS2 Linux partition and for the swap partition.
 

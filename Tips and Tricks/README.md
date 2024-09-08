@@ -14,7 +14,7 @@ A vast amount of tips and tricks beyond the scope of this repository can be foun
 
 **Create Backup Partition:** If PS2 Linux was not installed using the full PS2 HDD (hopefully not), the author recommends creating a 5GB backup partition for backing up files.
 
-**Create Full Backup of PS2 Linux installation:** A full backup of the PS2 Linux installation should be created. This backup can be leveraged at a later time to restore a working PS2 Linux installation without the need to re-run the original PS2 Linux installer.
+**Create Full Backup of PS2 Linux installation:** A full backup of the PS2 Linux installation should be created. This backup can be leveraged at a later time to restore a working PS2 Linux installation without the need to re-run the original PS2 Linux installer. A procedure to accomplish this is outlined in this repository [HERE](Backup-Restore).
 
 ## General Tips
 
