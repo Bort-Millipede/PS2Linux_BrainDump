@@ -92,7 +92,7 @@ eject /dev/sr0
 
 ## Specific Devices Tested
 
-* [Kingwin EZ-Connect USI-2535 (USB 2.0 to IDE/SATA Adapter)](http://www.kingwin.com/adapters/usi-2535-2/) and [Pioneer DVR-111D (IDE DVD-RW Drive)](https://www.pioneerelectronics.com/PUSA/Computer/Computer+Drives/DVR-111D) used together
+* [Kingwin EZ-Connect USI-2535 (USB 2.0 to IDE/SATA Adapter)](http://www.kingwin.com/adapters/usi-2535-2/) and [Pioneer DVR-111D (IDE DVD-RW Drive)](https://web.archive.org/web/20120619082625/https://www.pioneerelectronics.com/PUSA/Computer/Computer+Drives/DVR-111D) used together
 
 ## Usage Examples
 
