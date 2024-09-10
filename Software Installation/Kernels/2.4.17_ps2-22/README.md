@@ -21,6 +21,8 @@ Required files (present on [Playstation BB Navigator 0.30 Disc](https://archive.
 
 While this kernel provides many improved functionalities absent from the 2.2.x kernels, not all software that comes pre-installed with PS2 Linux seems to work with this kernel (as the pre-installed software was originally built against the 2.2.1 kernel). Therefore, certain software and features that work seamlessly under 2.2.x kernels does not work under the 2.4.17 kernel.
 
+The 2.4.17_mvl21 kernel cannot be properly booted from the PS2 Linux Beta Release 1 DVD. Options for booting this kernel (AKMem and BB Navigator) are listed in the "Booting Kernel 2.4.17_mvl21" section below.
+
 ### Kernel Configuration File
 
 It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.4.17_ps2-22). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
@@ -221,6 +223,6 @@ ln -s input/mice /dev/usbmouse
 ## Booting Kernel 2.4.17_mvl21
 
 The PS2 Linux Beta Release 1 DVD does not appear to boot the 2.4.17_mvl21 kernel correctly (the kernel boots to a blank screen). Therefore, this kernel can only be booted via the following means:
-* via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem))
-* via BB Navigator (not currently outlined in this repository)
+* via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem)).
+* via BB Navigator 0.30 or newer (not currently outlined in this repository).
 
