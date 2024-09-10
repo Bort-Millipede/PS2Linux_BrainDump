@@ -69,15 +69,32 @@ Besides C and C++, additional cross-compilers can be built and installed with re
 * **Fortran 77**: ```make LANGUAGES="f77" install```
 * **[CHILL](https://en.wikipedia.org/wiki/CHILL)**: ```make LANGUAGES="CHILL" install```
 
-A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```, but this compiler does not actually work due to a ```libgcj.spec: No such file or directory``` error. The compiler relies on libgcj, and building this for successful cross-compiling has not been completed at time of writing. A native version of ```gcj``` can be built and installed directly on PS2 Linux, as well as a native version of libgcj-2.95.1. However, preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" error.
+### Objective-C
+
+Objective-C support can be included in ```mipsEEel-linux-gcc``` using ```make LANGUAGES="objc" install```. Preliminary testing showed issues with linking cross-compiled Objective-C based binaries. The ```gcc``` version pre-installed on PS2 Linux appears to include working Objective-C support.
+
+![](objc_linker_failure.png?raw=true)  
+*Linker errors when compiling Objective-C code with mipsEEel-linux-gcc*
+
+### Java
+
+A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```. Initially, this compiler does not work due to a ```libgcj.spec: No such file or directory``` error. This is due to the compiler relying on [libgcj](../Packages/libgcj), which will need to be built on PS2 Linux and installed into the cross-compiling environment in two locations. ```mipsEEel-linux-gcj``` still appears to display the same ```libgcj.spec: No such file or directory``` error unless the libgcj.spec file is copied to the same directory as the Java program being compiled.
+
+While binaries can be successfully created using ```mipsEEel-linux-gcj```, preliminary testing demonstrated that the binaries themselves would not execute properly on PS2 Linux. The binaries immediately produce an "Illegal Instruction" (SIGILL) error.
+
+![](mipsEEel-linux-gcj_libgcj.spec-error_compile.png?raw=true)  
+*mipsEEel-linux-gcj libgcj.spec error before generating binary successfully*
+
+![](mipsEEel-linux-gcj_illegal_instruction_error.png?raw=true)  
+*Illegal Instruction error when executing Java binary compiled with mipsEEel-linux-gcj*
+
+a native version of ```gcj``` can be built and installed directly on PS2 Linux. However, preliminary testing by the author showed the same "Illegal Instruction" (SIGILL) error occurring when attempting to execute compiles binaries. Executing these through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
 
 ![](../Packages/libgcj/gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
 
-Objective-C support can be included in ```mipsEEel-linux-gcc``` using ```make LANGUAGES="objc" install```. Preliminary testing showed issues with linking cross-compiled Objective-C based binaries. The ```gcc``` version pre-installed on PS2 Linux appears to include working Objective-C support (see below).
-
-![](objc_linker_failure.png?raw=true)  
-*Linker errors when compiling Objective-C code with mipsEEel-linux-gcc*
+![](../Packages/libgcj/gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
+*Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*
 
 ### Test Binaries
 

@@ -15,16 +15,19 @@ PS2 Linux ships with GCC pre-installed. This pre-installed version supports comp
 
 Beyond the programming languages listed prior, GCC 2.95.2 also supports compiling binaries from Java and [CHILL](https://en.wikipedia.org/wiki/CHILL) code. The procedure outlined here will install GCC onto PS2 Linux with support for these languages enabled. The GCC version installed here will be installed alongside the pre-installed version. It will NOT replace the pre-installed GCC version.
 
-For compiling Java binaries (see Limitations), [libgcj](../libgcj) will also need to be built and installed on PS2 Linux.
+For compiling Java binaries (see Limitations), [libgcj](../libgcj) will also need to be built and installed on PS2 Linux. If planning to build and install libgcj later, the author recommends keeping the gcc-2.95.2 source/build directory tree created by the build below.
 
 ### Limitations
 
-At time of writing, the author has been unable to successfully compile and execute Java-based binaries on PS2 Linux. Preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" error.
+At time of writing, the author has been unable to successfully compile and execute Java-based binaries on PS2 Linux. Preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
 
 ![](../libgcj/gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
 
-Additionally, at time of writing the author has been unable to create an installation archive for GCC 2.95.2. Therefore, this will need to be built separately on every individual PS2 Linux installation to which it will be installed.
+![](../libgcj/gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
+*Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*
+
+Additionally, at time of writing the author has been unable to create an installation archive for GCC 2.95.2. This is due to the Makefile(s) for GCC 2.95.2 not supporting the DESTDIR parameter. Therefore, this will need to be built separately on every individual PS2 Linux installation to which it will be installed.
 
 ## Extracting Required File From PS2 Linux Beta Release 1 DVD or Linux (for Playstation 2) Release 1.0 Disc 2 (directly on PS2 Linux or in Cross-Compiling Environment)
 
