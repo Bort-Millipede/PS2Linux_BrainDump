@@ -71,10 +71,12 @@ Besides C and C++, additional cross-compilers can be built and installed with re
 
 ### Objective-C
 
-Objective-C support can be included in ```mipsEEel-linux-gcc``` using ```make LANGUAGES="objc" install```. Preliminary testing showed issues with linking cross-compiled Objective-C based binaries. The ```gcc``` version pre-installed on PS2 Linux appears to include working Objective-C support.
+Objective-C support can be included in ```mipsEEel-linux-gcc``` using ```make LANGUAGES="objc" install```. Preliminary testing showed issues with linking cross-compiled Objective-C based binaries.
 
 ![](objc_linker_failure.png?raw=true)  
 *Linker errors when compiling Objective-C code with mipsEEel-linux-gcc*
+
+The ```gcc``` version pre-installed on PS2 Linux appears to include working Objective-C support (See "Test Binaries" below).
 
 ### Java
 

@@ -8,6 +8,18 @@
 * [2.4.17_ps2-22](2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
 * [2.4.17_ps2-26](2.4.17_ps2-26) (for PS2 Linux Release 1.0)
 
+The source for kernel 2.2.19_ps2-23 can be found on the Playstation Broadband Navigator 0.20 DVD. However, the kernel headers are not included on the DVD. Therefore, this kernel version cannot be successfully compiled and used with PS2 Linux.
+
+## Tip for New/Updated Kernels
+
+It is highly recommended that kernels be installed to the PS2 Memory Card using compression (specifically GZIP). Because space on Memory Cards is extremely limited (8MB maximum), installing kernels with compression allows multiple kernels to be installed to the Memory Card simultaneously.
+
+In the author's experience, the only noticeable drawback to installing kernels onto the Memory Cards with compression is a very slight increase in initial system boot time:
+* When booting an uncompressed kernel from the PS2 Linux DVD, the progress indicator immediately starts counting up to 100%.
+* When booting a compressed kernel, the progress indicator stays at 0% for about 5-10 seconds before counting up to 100%.
+
+Instructions for installing both compressed and raw uncompressed kernels are available in the separate kernel pages linked above.
+
 ## Switching Between Installed Kernels
 
 Besides simply booting from different kernels in the PS2 Linux Boot menu, certain system configuration changes should be made prior to booting a different kernel version. While switching kernels seems to be possible without performing some (or all) of these configuration changes, they are recommended to prevent certain issues later.
