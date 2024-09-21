@@ -8,7 +8,9 @@
 * [2.4.17_ps2-22](2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
 * [2.4.17_ps2-26](2.4.17_ps2-26) (for PS2 Linux Release 1.0)
 
-The source for kernel 2.2.19_ps2-23 can be found on the Playstation Broadband Navigator 0.20 DVD. However, the kernel headers are not included on the DVD. Therefore, this kernel version cannot be successfully compiled and used with PS2 Linux.
+Other kernel versions (such as 2.2.21-pre1-xr7 and others) are available via the unofficial BlackRhino PS2 Linux distribution (more info [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/blackrhino.html)). However, the author did not explore this mainly due to the reality that the distribution's package manager servers are long gone, and therefore using this distribution in modern times is deemed unrealistic.
+
+Additionally, the source for kernel 2.2.19_ps2-23 can be found on the Playstation Broadband Navigator 0.20 DVD (```kernel-source-2.2.19_ps2-23.mipsel.rpm``` within ```SOURCE.TGZ``` under ```source/kernel```). However, the kernel headers (presumably ```kernel-headers-2.2.19_ps2-23.mipsel.rpm```) are not included on the DVD and are not available anywhere else to the author's knowledge. Therefore, this kernel version cannot be successfully compiled and used with PS2 Linux.
 
 ## Tip for New/Updated Kernels
 
