@@ -1,6 +1,6 @@
 # PS2 Linux Brain Dump
 
-A compilation of info, notes, and scripts put together during recent stints tinkering with the official (Beta and Release) Playstation 2 Linux Kit.
+A compilation of info, notes, and scripts put together during recent stints tinkering with the official (Beta and Release) Playstation 2 Linux Kit and Playstation Broadband Navigator (PSBBN).
 
 ## Disclaimer
 
@@ -74,6 +74,8 @@ Digest and use this at your own risk!!!
   * [PC-DC Server for Sega Dreamcast](Tips&#32;and&#32;Tricks/PC-DC&#32;Server)
 * [PS2 Linux Kit Comparison (Beta Release 1 and Release 1.0)](Kit&#32;Comparisons)
   * [Full Installed Packages Comparison](Kit&#32;Comparisons/Installed&#32;Packages)
+* [Playstation Broadband Navigator](Broadband&#32;Navigator)
+  * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
 
 ## PS2 Linux References
 
