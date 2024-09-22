@@ -15,6 +15,7 @@ Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive
 
 * [http://www.geocities.jp/ps2linux_net/make_install/kernel-2.2.19.html](https://web.archive.org/web/20181105102816/http://www.geocities.jp/ps2linux_net/make_install/kernel-2.2.19.html)
 * [http://www.geocities.jp/ps2linux_net/bn/mount.html](https://web.archive.org/web/20181105102759/http://www.geocities.jp/ps2linux_net/bn/mount.html)
+* [http://hp.vector.co.jp/authors/VA008536/ps2linux/kernel2.html](http://hp.vector.co.jp/authors/VA008536/ps2linux/kernel2.html)
 
 ## Preliminary Considerations
 
