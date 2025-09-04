@@ -1,6 +1,8 @@
 # libcdio 0.71
 
-[Source link](https://ftp.gnu.org/gnu/libcdio/libcdio-0.71.tar.gz)  
+**Note:** Precompiled Binaries ([libcdio-0.71.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [libcdio-0.71.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
+[Source link](https://ftp.gnu.org/gnu/libcdio/libcdio-0.71.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
 
 ## Preliminary Considerations
@@ -172,7 +174,7 @@ cd /
 tar xzf /path/to/libcdio-0.71.mipsEEel-linux.cross-pc.tar.gz
 ```
 
-### Building/Installing for PS2 Linux (Without vcdimager)
+### Building/Installing for PS2 Linux (With vcdimager)
 
 Extract source archive. (if using the same extracted directory as above, this should be skipped)
 ```bash

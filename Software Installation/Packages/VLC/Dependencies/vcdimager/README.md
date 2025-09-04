@@ -1,6 +1,8 @@
 # vcdimager 0.7.21
 
-[Source link](https://ftp.gnu.org/gnu/vcdimager/vcdimager-0.7.21.tar.gz)  
+**Note:** Precompiled Binaries ([vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [vcdimager-0.7.21.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
+[Source link](https://ftp.gnu.org/gnu/vcdimager/vcdimager-0.7.21.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
 
 ## Preliminary Considerations

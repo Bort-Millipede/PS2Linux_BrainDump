@@ -2,9 +2,11 @@
 
 ![](VLC_version.png?raw=true)
 
+**Note:** Precompiled Binaries ([vlc-0.7.2.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [vlc-0.7.2.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! All [dependencies](Dependencies) must be installed prior to installing VLC. Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
 Source links:  
-* 0.7.2: [http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz)
-* 0.8.0 (required for working VCD player): [http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz)
+* 0.7.2: [http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz) (available under GPL v2)
+* 0.8.0 (required for working VCD player): [http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.8.0/vlc-0.8.0.tar.gz) (available under GPL v2)
 
 **Build type (VLC only, not dependencies):** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
@@ -155,7 +157,7 @@ tar czf vlc-0.7.2.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
-Ensure that all dependencies listed above have already been installed to PS2 Linux.
+Ensure that all [dependencies](Dependencies) listed above have already been installed to PS2 Linux.
 
 Transfer **vlc-0.7.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
@@ -168,9 +170,9 @@ tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.tar.gz
 
 ### Audio CDs, VCDs, and DVDs
 
-These seem to work best under kernel 2.4.17_mvl21. They may work fine under kernel 2.2.19, but in the author's experience there is a much higher likelihood of stability issues. For unknown reasons, VLC seems to work better overall with PS2 Linux Beta Release 1 (example: 2.2.19 kernel seems to work for these media types fine) than with PS2 Linux Release 1.0 (example: 2.2.19 kernel does not seem to work for these media types). Results may vary.
+These seem to work best under kernel 2.4.17_mvl21. They may work fine under kernel 2.2.19, but in the author's experience there is a much higher likelihood of stability issues. For unknown reasons, VLC seems to work better overall with kernel 2.2.19 on PS2 Linux Beta Release 1 (example: 2.2.19 kernel seems to work for these media types fine), rather than on PS2 Linux Release 1.0 (example: 2.2.19 kernel does not seem to work for these media types). Results may vary.
 
-The "Device Name" option will need to be changed to either ```/dev/sr0``` or ```/dev/scd0```. This will instruct VLC to use the USB optical drive, rather than the built-in DVD-ROM drive.
+The "Device Name" option will need to be changed to either ```/dev/sr0``` or ```/dev/scd0```. This will instruct VLC to use the USB optical drive, rather than the built-in DVD-ROM drive (which cannot be used for VLC).
 
 ## Usage Examples
 

@@ -1,7 +1,11 @@
 # Abuse
 
-[Source link](https://web.archive.org/web/20011218172815/http://www.labyrinth.net.au/~trandor/abuse/files/abuse_sdl-0.5.0.tar.gz)  
-[Abuse data files link](https://web.archive.org/web/20011218172815/http://www.labyrinth.net.au/~trandor/abuse/files/abuse_datafiles.tar.gz)  
+**Note:** Precompiled Binaries ([abuse_sdl-0.5.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/abuse_sdl-0.5.0.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+Download links:  
+* [Source link](https://web.archive.org/web/20011218172815/http://www.labyrinth.net.au/~trandor/abuse/files/abuse_sdl-0.5.0.tar.gz) (available under GPL v2)
+* [Abuse data files link](https://web.archive.org/web/20011218172815/http://www.labyrinth.net.au/~trandor/abuse/files/abuse_datafiles.tar.gz)
+
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## References

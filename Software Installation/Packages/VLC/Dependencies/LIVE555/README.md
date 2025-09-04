@@ -1,6 +1,8 @@
 # LIVE555 (2004.04.23)
 
-[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/live.2004.04.23.tar.gz)  
+**Note:** Precompiled Binaries ([live.2004.04.23.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/live.2004.04.23.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+
+[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/live.2004.04.23.tar.gz) (available under LGPL v2.1)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Building/Installing for Cross-Compiling Environment

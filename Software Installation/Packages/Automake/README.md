@@ -1,8 +1,10 @@
 # Automake
 
+**Note:** Precompiled Binaries ([automake-1.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.5.mipsEEel-linux.tar.gz) and [automake-1.6.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.6.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage notes](#usage-notes) ([1.5](#15) and [1.6.3](#163)) for installation and usage instructions.
+
 Source links:  
-* [automake-1.5.tar.gz](https://ftp.gnu.org/gnu/automake/automake-1.5.tar.gz)
-* [automake-1.6.3.tar.gz](https://ftp.gnu.org/gnu/automake/automake-1.6.3.tar.gz)
+* [automake-1.5.tar.gz](https://ftp.gnu.org/gnu/automake/automake-1.5.tar.gz) (available under GPL v2)
+* [automake-1.6.3.tar.gz](https://ftp.gnu.org/gnu/automake/automake-1.6.3.tar.gz) (available under GPL v2)
 
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 

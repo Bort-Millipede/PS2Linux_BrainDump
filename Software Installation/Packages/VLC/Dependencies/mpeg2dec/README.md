@@ -1,6 +1,8 @@
 # mpeg2dec 0.4.0
 
-[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/mpeg2dec-0.4.0.tar.gz)  
+**Note:** Precompiled Binaries ([mpeg2dec-0.4.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/mpeg2dec-0.4.0.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+
+[Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/mpeg2dec-0.4.0.tar.gz) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Building/Installing for Cross-Compiling Environment

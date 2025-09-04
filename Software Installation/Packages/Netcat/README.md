@@ -1,5 +1,7 @@
 # Netcat 1.10
 
+**Note:** Precompiled Binaries ([nc](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/nc)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+
 [Source link](https://sourceforge.net/code-snapshots/git/n/nc/nc110/git.git/nc110-git-607401678236b608280b291ad849a109b8d9a8f2.zip) (downloaded file renamed to nc110.zip)  
 **Build type**: cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 

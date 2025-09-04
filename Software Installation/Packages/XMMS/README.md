@@ -1,6 +1,8 @@
 # XMMS (X Multimedia System) 1.2.7
 
-[Source link](https://web.archive.org/web/20070802011520/http://www.xmms.org/files/1.2.x/xmms-1.2.7.tar.bz2)  
+**Note:** Precompiled Binaries ([xmms-1.2.7.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/xmms-1.2.7.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
+[Source link](https://web.archive.org/web/20070802011520/http://www.xmms.org/files/1.2.x/xmms-1.2.7.tar.bz2) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
 
 ## Preliminary Considerations

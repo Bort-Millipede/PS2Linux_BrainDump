@@ -1,6 +1,8 @@
 # Reiserfsprogs 3.x.0j
 
-[Source link](http://kernel.nic.funet.fi/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.x.0j/reiserfsprogs-3.x.0j.tar.gz)  
+**Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+[Source link](http://kernel.nic.funet.fi/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.x.0j/reiserfsprogs-3.x.0j.tar.gz) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Preliminary Considerations

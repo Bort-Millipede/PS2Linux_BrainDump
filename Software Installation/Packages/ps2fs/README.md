@@ -1,6 +1,8 @@
 # ps2fs
 
-[Source link](http://achurch.org/ps2/ps2fs.tar.gz)
+**Note:** Precompiled Binaries ([ps2fs.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [ps2fs.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+[Source link](http://achurch.org/ps2/ps2fs.tar.gz) (available under GPLish)
 **Build type:** native (directly on PS2 Linux)
 
 ## Preliminary Considerations

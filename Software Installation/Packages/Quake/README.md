@@ -1,6 +1,8 @@
 # Quake
 
-[Source link](https://web.archive.org/web/20050626135551/http://quakeforge.net/files/nuq-current.tar.gz)  
+**Note:** Precompiled Binaries ([nuq-current.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/nuq-current.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+[Source link](https://web.archive.org/web/20050626135551/http://quakeforge.net/files/nuq-current.tar.gz) (available under GPL v2)  
 [Game Data files link](https://web.archive.org/web/20020604062310/www.quakeforge.net/files/quake-shareware-1.06.tar.gz)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
@@ -8,9 +10,7 @@
 
 * [http://www.geocities.jp/ps2linux_net/SDL/nuq.html](https://web.archive.org/web/20181105102815/http://www.geocities.jp/ps2linux_net/SDL/nuq.html)
 
-## Prerequisites
-
-### Dependencies
+## Dependencies
 
 [SDL/SDL_net](../SDL)
 

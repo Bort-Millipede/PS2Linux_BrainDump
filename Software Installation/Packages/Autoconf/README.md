@@ -1,6 +1,8 @@
 # Autoconf 2.53
 
-[Source link](https://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.bz2)  
+**Note:** Precompiled Binaries ([autoconf-2.53.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/autoconf-2.53.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+[Source link](https://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.bz2) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Prerequisites

@@ -1,6 +1,8 @@
 # pkg-config 0.12.0
 
-[Source link](https://pkgconfig.freedesktop.org/releases/pkgconfig-0.12.0.tar.gz)  
+**Note:** Precompiled Binaries ([pkgconfig-0.12.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/pkgconfig-0.12.0.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
+[Source link](https://pkgconfig.freedesktop.org/releases/pkgconfig-0.12.0.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
 
 ## Building/Installing on PS2 Linux

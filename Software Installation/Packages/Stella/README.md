@@ -1,7 +1,9 @@
 # Stella 1.2
 
+**Note:** Precompiled Binaries ([stella-ps2-1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/stella-ps2-1.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux](#installing-on-ps2-linux) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
 Source links:
-* [stella-1.2-src.tar.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-1.2-src.tar.gz)
+* [stella-1.2-src.tar.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-1.2-src.tar.gz) (available under GPL v2)
 * [stella-ps2-1.2-src.tar.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/stella-ps2-1.2-src.tar.gz)
 
 [stella.pro file](http://ps2linux.no-ip.info/playstation2-linux.com/download/stella-ps2/.stella.pro)

@@ -63,9 +63,7 @@ The section describes setting up a dedicated system for cross-compiling software
 
 ## Building Specific Software
 
-**NOTE:** To avoid any possible headaches conforming to specific license agreements and/or dealing with conflicting licensing agreements, prebuilt binaries for those listed below will not be distributed by the author at this time. Thankfully the documentation SHOULD be detailed enough to allow readers to build their own binaries.
-
-The author may release prebuilt binaries for some (or all) of the software packages listed below at a later date.
+**NOTE:** While the documentation provided SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
 
 ### Software Packages
 

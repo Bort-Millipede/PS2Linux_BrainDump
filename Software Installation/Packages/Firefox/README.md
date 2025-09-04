@@ -1,6 +1,8 @@
 # Firefox 0.8
 
-[Source link](https://ftp.mozilla.org/pub/firefox/releases/0.8/firefox-source-0.8.tar.bz2)  
+**Note:** Precompiled Binaries ([firefox-0.8-nossl.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/firefox-0.8-nossl.mipsEEel-linux.tar.gz) without SSL/TLS support; [firefox-0.8.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/firefox-0.8.mipsEEel-linux.tar.gz) with SSL/TLS support) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [From Installation Archive](#from-installation-archive) and [Usage Notes](#usage-notes) for installation and usage instructions.
+
+[Source link](https://ftp.mozilla.org/pub/firefox/releases/0.8/firefox-source-0.8.tar.bz2) (available under MPL v1.1)  
 
 **Build types:**
 * Without SSL/TLS support: cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)

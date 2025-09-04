@@ -1,5 +1,7 @@
 # libgcj 2.95.1
 
+**Note:** Precompiled Binaries ([libgcj-2.95.1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libgcj-2.95.1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
 Source: libgcj-2.95.1.tar.gz present on [PS2 Linux Beta Release 1 DVD](https://archive.org/download/sony_playstation2_p/PS2%20Linux%20Beta%20Release%201%20%28Japan%29%20%28En%2CJa%29.zip) and [Linux (for Playstation 2) Release 1.0 Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip) under ```SOURCES``` (the files present on both discs are identical).  
 **Build type:** native (directly on PS2 Linux)
 
@@ -72,13 +74,24 @@ make
 ```
 
 &nbsp;  
-Edit generated Makefiles to enable DESTDIR support. Then install to current directory and create installation archive (for easy installation onto future PS2 Linux installs).
+Edit generated Makefiles to enable DESTDIR support.
 ```bash
 perl -i.bak -pe "s/\t\\$\(prefix\) \\\\/\t\\$\(DESTDIR\)\\$\(prefix\) \\\\/" Makefile
 perl -i -pe "s/\t\\$\(exec_prefix\)/\t\\$\(DESTDIR\)\\$\(exec_prefix\)/" Makefile
 for f in `find . -name Makefile`; do perl -i.bak -pe "s/^DESTDIR =$/# DESTDIR =/" "$f"; done
+```
+
+&nbsp;  
+Install to current directory (as root or via sudo)  
+**Note:** this process fails if not executed as root or via sudo. It seems that an actual system installation takes place, as well as an installation to the current directory. This is why an additional "unmodified" installation is executed again later.
+```bash
 rm -rf usr/
 make DESTDIR=`pwd` install
+```
+
+&nbsp;  
+Create installation archive (for easy installation onto future PS2 Linux installs).
+```bash
 tar czf libgcj-2.95.1.mipsEEel-linux.tar.gz usr
 ```
 

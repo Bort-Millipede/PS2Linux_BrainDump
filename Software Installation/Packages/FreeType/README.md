@@ -1,8 +1,10 @@
 # FreeType and FreeType Demos
 
+**Note:** Precompiled Binaries ([freetype-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/freetype-2.1.2.mipsEEel-linux.tar.gz) and [ft2demos-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ft2demos-2.1.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+
 Source links:  
-* [freetype-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/freetype-2.1.2.tar.gz/download)
-* [ft2demos-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/ft2demos-2.1.2.tar.gz/download) **(OPTIONAL)**
+* [freetype-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/freetype-2.1.2.tar.gz/download) (available under GPL v2)
+* [ft2demos-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/ft2demos-2.1.2.tar.gz/download) (available under GPL v2; **OPTIONAL**)
 
 [Free Kochi Mincho TrueType fonts link](https://web.archive.org/web/20020802093141/http://www.on.cs.keio.ac.jp/~yasu/linux/fonts/kochi-mincho-0.2.20020727.tar.bz2) **(OPTIONAL)**
 
@@ -158,7 +160,7 @@ tar xzf /path/to/freetype-2.1.2.mipsEEel-linux.tar.gz
 &nbsp;  
 ### **OPTIONAL:** Install FreeType Demos and Free Kochi Mincho TrueType fonts.
 
-Transfer **ft2demos-2.1.2.mipsEEel-linux.tar.gz** and **kochi-mincho-0.2.20020727.tar.bz2** archives to PS2 Linux and install.
+Transfer **ft2demos-2.1.2.mipsEEel-linux.tar.gz** and **kochi-mincho-0.2.20020727.tar.bz2** archives to PS2 Linux and install (replace `/path/to/` with the actual path to each file).
 ```bash
 cd /usr/local/share
 tar xzf /path/to/ft2demos-2.1.2.mipsEEel-linux.tar.gz

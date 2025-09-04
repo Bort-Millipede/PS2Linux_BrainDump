@@ -1,8 +1,10 @@
 # SDL and SDL_net
 
+**Note:** Precompiled Binaries ([SDL-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-1.2.5.mipsEEel-linux.tar.gz), [SDL_net-1.2.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL_net-1.2.2.mipsEEel-linux.tar.gz), and [SDL-tests-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-tests-1.2.5.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+
 Source links:  
-* [SDL-1.2.5.tar.gz](https://www.libsdl.org/release/SDL-1.2.5.tar.gz)
-* [SDL_net-1.2.2.tar.gz](https://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.2.tar.gz)
+* [SDL-1.2.5.tar.gz](https://www.libsdl.org/release/SDL-1.2.5.tar.gz) (available under GPL v2)
+* [SDL_net-1.2.2.tar.gz](https://www.libsdl.org/projects/SDL_net/release/SDL_net-1.2.2.tar.gz) (available under GPL v2)
 
 **Build types:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 

@@ -1,6 +1,8 @@
 # star (schily-tar) 1.4.3
 
-[Source link](https://mirrors.dotsrc.org/schilytools/OLD/star/star-1.4.3.tar.gz)  
+**Note:** Precompiled Binaries ([star-1.4.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
+[Source link](https://mirrors.dotsrc.org/schilytools/OLD/star/star-1.4.3.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
 
 ## Prerequisites

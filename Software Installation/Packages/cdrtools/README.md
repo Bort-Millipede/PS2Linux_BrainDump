@@ -1,9 +1,11 @@
 # cdrtools
 
+**Note:** Precompiled Binaries ([cdrtools-1.10.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-1.10.mipsEEel-linux.tar.gz), [cdrtools-2.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.0.mipsEEel-linux.tar.gz), and [cdrtools-2.01.01a36.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.01.01a36.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
 Source links:  
-* [cdrtools-1.10.tar.gz](https://mirrors.dotsrc.org/schilytools/OLD/cdrecord/cdrtools-1.10.tar.gz)
-* [cdrtools-2.0.tar.gz](https://src.fedoraproject.org/repo/pkgs/cdrtools/cdrtools-2.0.tar.gz/2e94010d6f746c187352223b8ea50d64/cdrtools-2.0.tar.gz)
-* [cdrtools-2.01.01a36.tar.gz](https://mirror.sobukus.de/files/src/cdrtools/cdrtools-2.01.01a36.tar.gz)
+* [cdrtools-1.10.tar.gz](https://mirrors.dotsrc.org/schilytools/OLD/cdrecord/cdrtools-1.10.tar.gz) (available under GPL v2)
+* [cdrtools-2.0.tar.gz](https://src.fedoraproject.org/repo/pkgs/cdrtools/cdrtools-2.0.tar.gz/2e94010d6f746c187352223b8ea50d64/cdrtools-2.0.tar.gz) (available under GPL v2)
+* [cdrtools-2.01.01a36.tar.gz](https://mirror.sobukus.de/files/src/cdrtools/cdrtools-2.01.01a36.tar.gz) (available under GPL v2, LGPL v2.1, CDDL 1.0)
 
 **Build type:** native (directly on PS2 Linux)
 
@@ -33,6 +35,8 @@ Because of the reason outlined above, cdrtools can only be used under kernel 2.4
 
 
 ## Building/Installing on PS2 Linux
+
+Only a single cdrtools version may be installed to the system at one time.
 
 ### cdrtools 1.10
 
