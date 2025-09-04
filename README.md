@@ -91,5 +91,5 @@ Digest and use this at your own risk!!!
 
 ## Precompiled Binaries
 
-**NOTE:** While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
+While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
 
