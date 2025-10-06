@@ -22,6 +22,7 @@ Digest and use this at your own risk!!!
     * [Firefox 0.8](Software&#32;Installation/Packages/Firefox)
     * [FreeType 2.1.2](Software&#32;Installation/Packages/FreeType)
     * [GCC 2.95.2](Software&#32;Installation/Packages/GCC)
+    * [heme 0.4.2](Software&#32;Installation/Packages/heme)
     * [libgcj 2.95.1](Software&#32;Installation/Packages/libgcj)
     * [Libtool 1.4.2](Software&#32;Installation/Packages/Libtool)
     * [Maelstrom 3.0.6](Software&#32;Installation/Packages/Maelstrom)

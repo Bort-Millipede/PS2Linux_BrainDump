@@ -19,6 +19,13 @@ Set necessary environment variables
 export PREFIX=/usr/local
 ```
 
+&nbsp;  
+Modify autoconf files to include mipsEEel-linux host.
+```bash
+for f in `find . -name config.sub`; do perl -i.bak -pe "s/\| mipsel /\| mipsel \| mipsEEel /" "$f"; done
+for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\* | mipsEEel-\* /" "$f"; done
+```
+
 &nbsp;
 Configure and build source.
 ```bash

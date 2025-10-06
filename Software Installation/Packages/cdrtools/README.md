@@ -142,3 +142,9 @@ PS2 Linux ships with mkisofs-1.12b5 installed. In order to use the exact ```mkis
 ![](cdrecord_dc_first_session_2.png?raw=true)  
 *First session of Dreamcast backup disc burned successfully*
 
+![](cdrecord_dc_second_session_1.png?raw=true)  
+*Burning second session of Dreamcast backup disc with cdrecord from PS2 Linux*
+
+![](cdrecord_dc_second_session_2.png?raw=true)  
+*Second session of Dreamcast backup disc burned successfully*
+

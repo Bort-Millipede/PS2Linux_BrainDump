@@ -1,6 +1,6 @@
 # Automake
 
-**Note:** Precompiled Binaries ([automake-1.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.5.mipsEEel-linux.tar.gz) and [automake-1.6.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.6.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage notes](#usage-notes) ([1.5](#15) and [1.6.3](#163)) for installation and usage instructions.
+**Note:** Precompiled Binaries ([automake-1.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.5.mipsEEel-linux.tar.gz) and [automake-1.6.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/automake-1.6.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) ([1.5](#15) and [1.6.3](#163)) and [Usage notes](#usage-notes) for installation and usage instructions.
 
 Source links:  
 * [automake-1.5.tar.gz](https://ftp.gnu.org/gnu/automake/automake-1.5.tar.gz) (available under GPL v2)
@@ -10,7 +10,7 @@ Source links:
 
 ## Prerequisites
 
-PS2 Linux comes with Automake 1.4 pre-installed, but building certain software natively on PS2 Linux requires a newer Autoconf version. The procedure below will not replace the pre-installed Automake 1.4 on PS2 Linux, but will instead install alongside it.
+PS2 Linux comes with Automake 1.4 pre-installed, but building certain software natively on PS2 Linux requires a newer Automake version. The procedure below will not replace the pre-installed Automake 1.4 on PS2 Linux, but will instead install alongside it.
 
 ## Building for PS2 Linux
 
