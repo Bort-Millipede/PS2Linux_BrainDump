@@ -116,7 +116,7 @@ cat ps2linuxbeta-full-image.tar.gz | nc -nv 192.168.1.10 4444
 This method is a little more complicated, but transfers files very quickly. The method outlined below leverages the [Python3-based](https://www.python.org/) FTP server [pyftpdlib](https://pypi.org/project/pyftpdlib/).
 
 &nbsp;  
-Setup FTP Server on PC (192.168.1.11) on port 21 with login credentials PS2LINUX/PS2LINUX:
+Setup FTP Server on PC (192.168.1.11) on port 21 with login credentials ```PS2LINUX```/```PS2LINUX```:
 ```
 python -m pyftpdlib -p 21 -w -u PS2LINUX -P PS2LINUX
 ```

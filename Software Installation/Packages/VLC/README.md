@@ -157,13 +157,80 @@ tar czf vlc-0.7.2.mipsEEel-linux.tar.gz usr
 
 ## Installing on PS2 Linux (as root)
 
-Ensure that all [dependencies](Dependencies) listed above have already been installed to PS2 Linux.
+Depending on which installation archive is being used to install VLC, the installation procedure varies slightly.
 
-Transfer **vlc-0.7.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+### Full Installation Archive (Generic and Specific Dependencies)
+
+Transfer full VLC installation archive (available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)) to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.full.tar.gz 
+/sbin/ldconfig
+```
+
+&nbsp;  
+**OPTIONAL:** Create symbolic links for devices for different physical media types (DVD, VCD, Audio CD):
+```bash
+ln -s scd0 /dev/dvd
+ln -s scd0 /dev/vcd
+ln -s scd0 /dev/audiocd
+```
+
+### Full Installation Archive (Specific Dependencies Only)
+
+Install [SDL/SDL_net](../SDL), [Popt](../Popt), and [FreeType](../FreeType) dependencies.
+
+Transfer full (minus generic dependencies) VLC installation archive (available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)) to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.full-without-generic-deps.tar.gz 
+/sbin/ldconfig
+```
+
+&nbsp;  
+**OPTIONAL:** Create symbolic links for devices for different physical media types (DVD, VCD, Audio CD):
+```bash
+ln -s scd0 /dev/dvd
+ln -s scd0 /dev/vcd
+ln -s scd0 /dev/audiocd
+```
+
+### Individual Archives for VLC and Dependencies
+
+Install [SDL/SDL_net](../SDL), [Popt](../Popt), and [FreeType](../FreeType) dependencies.
+
+Install all [VLC-specific dependencies](Dependencies) listed above. Transfer all dependency installation archives to PS2 Linux and install.
+```bash
+tar xzf /path/to/libdvbpsi3-0.1.4.mipsEEel-linux.tar.gz
+tar xzf /path/to/mpeg2dec-0.4.0.mipsEEel-linux.tar.gz
+tar xzf /path/to/a52dec-0.7.4.mipsEEel-linux.tar.gz
+tar xzf /path/to/faad2-2.0.mipsEEel-linux.tar.gz
+tar xzf /path/to/lame-3.96.mipsEEel-linux.tar.gz
+tar xzf /path/to/ffmpeg-20040520.mipsEEel-linux.tar.gz
+tar xzf /path/to/libmad-0.15.1b.mipsEEel-linux.tar.gz
+tar xzf /path/to/live.2004.04.23.mipsEEel-linux.tar.gz
+tar xzf /path/to/libxml2-2.6.4.mipsEEel-linux.tar.gz
+tar xzf /path/to/libdvdread-20030812.mipsEEel-linux.tar.gz
+tar xzf /path/to/libdvdplay-1.0.1.mipsEEel-linux.tar.gz
+tar xzf /path/to/libdvdcss-1.2.8.mipsEEel-linux.tar.gz
+tar xzf /path/to/libdvdnav-0.1.10.mipsEEel-linux.tar.gz usr
+tar xzf /path/to/popt-1.7.mipsEEel-linux.tar.gz
+/sbin/ldconfig
+```
+
+Transfer VLC installation archive to PS2 Linux and install.
 ```bash
 cd /
 tar xzf /path/to/vlc-0.7.2.mipsEEel-linux.tar.gz
 /sbin/ldconfig
+```
+
+&nbsp;  
+**OPTIONAL:** Create symbolic links for devices for different physical media types (DVD, VCD, Audio CD):
+```bash
+ln -s scd0 /dev/dvd
+ln -s scd0 /dev/vcd
+ln -s scd0 /dev/audiocd
 ```
 
 ## Usage Notes
