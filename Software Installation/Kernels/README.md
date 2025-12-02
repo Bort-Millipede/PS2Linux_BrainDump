@@ -56,19 +56,19 @@ Just like the ```/dev/usbmouse``` symlink must reference the correct mouse devic
 
 The entries for each are as follows:
 
-Kernel 2.2.1:
+**Kernel 2.2.1:**
 ```
 alias	char-major-10-32	mousedev
 ```
 
 &nbsp;  
-Kernel 2.2.19:
+**Kernel 2.2.19:**
 ```
 alias	char-major-13-32	mousedev
 ```
 
 &nbsp;  
-Kernel 2.4.17_mvl21:
+**Kernel 2.4.17_mvl21:**
 ```
 alias	char-major-13-63	mousedev
 ```

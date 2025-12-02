@@ -32,8 +32,10 @@ To use this device, a customized [serial.o](serial.o) kernel module distributed 
 /sbin/insmod /path/to/serial.o
 ```
 
+After loading, the module loading should be confirmed via ```dmesg``` output, in which ```ttyS00``` should be displayed including the extra ```0``` character.
+
 &nbsp;  
-This tutorial assumes that these modem devices are registered as ```/dev/ttyS0``` (this should be confirmed via ```dmesg``` output, in which the ```ttyS00``` should be displayed including the extra ```0``` character). A configuration file leveraged by pppd is created with the filename ```options.ttyS0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyS0``` references in commands below should be changed to the correct device.
+This tutorial assumes that these modem devices are registered as ```/dev/ttyS0```. A configuration file leveraged by pppd is created with the filename ```options.ttyS0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyS0``` references in commands below should be changed to the correct device.
 
 ### Kernel Support
 
@@ -176,5 +178,5 @@ As long as the above procedure was followed correctly, the Dreamcast console sho
 ### Kernel 2.4.17 (Failed)
 
 ![](mgetty_log_2.4.17_kernel.png)  
-*mgetty process log shwoing failed PC-DC connection under Kernel 2.4.17*
+*mgetty process log showing failed PC-DC connection under Kernel 2.4.17*
 

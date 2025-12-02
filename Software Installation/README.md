@@ -75,6 +75,7 @@ The section describes setting up a dedicated system for cross-compiling software
 * [FreeType 2.1.2](Packages/FreeType)
 * [GCC 2.95.2](Packages/GCC)
 * [heme 0.4.2](Packages/heme)
+* [Kernel Source](Packages/Kernel&#32;Source)
 * [libgcj 2.95.1](Packages/libgcj)
 * [Libtool 1.4.2](Packages/Libtool)
 * [Maelstrom 3.0.6](Packages/Maelstrom)

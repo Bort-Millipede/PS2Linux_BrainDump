@@ -23,6 +23,7 @@ Digest and use this at your own risk!!!
     * [FreeType 2.1.2](Software&#32;Installation/Packages/FreeType)
     * [GCC 2.95.2](Software&#32;Installation/Packages/GCC)
     * [heme 0.4.2](Software&#32;Installation/Packages/heme)
+    * [Kernel Source](Software&#32;Installation/Packages/Kernel&#32;Source)
     * [libgcj 2.95.1](Software&#32;Installation/Packages/libgcj)
     * [Libtool 1.4.2](Software&#32;Installation/Packages/Libtool)
     * [Maelstrom 3.0.6](Software&#32;Installation/Packages/Maelstrom)
