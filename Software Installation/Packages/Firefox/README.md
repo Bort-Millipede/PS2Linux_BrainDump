@@ -11,12 +11,14 @@
 ## References
 
 * **Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO**
-  * Local backup [here](moz_cross_1.0.1.html) or rendered [here](https://html-preview.github.io/?url=https://github.com/Bort-Millipede/PS2Linux_BrainDump/blob/main/Software%20Installation/Toolchain/moz_cross_1.0.1.html)
+  * Local backup [here](../../Toolchain/moz_cross_1.0.1.html) or rendered [here](https://html-preview.github.io/?url=https://github.com/Bort-Millipede/PS2Linux_BrainDump/blob/main/Software%20Installation/Toolchain/moz_cross_1.0.1.html)
   * [Backup site](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/moz_cross_1.0.1.html)
 
 ## Preliminary Considerations
 
-Successfully building Firefox for PS2 Linux can be a very complicated task and can take very long time (especially if building with SSL/TLS support enabled, which requires building directly on PS2 Linux). Luckily, prebuilt Firefox binary packages (including new versions than what is described here, as well as various configurations) are [available on this page](https://ps2linux.no-ip.info/playstation2-linux.com/projects/mozilla-ps2.html).
+Successfully building Firefox for PS2 Linux can be a very complicated task and can take very long time (especially if building with SSL/TLS support enabled, which requires building directly on PS2 Linux). 
+
+Luckily, Precompiled Binaries ([firefox-0.8-nossl.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/firefox-0.8-nossl.mipsEEel-linux.tar.gz) without SSL/TLS support; [firefox-0.8.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/firefox-0.8.mipsEEel-linux.tar.gz) with SSL/TLS support) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Additionall, prebuilt Firefox binary packages (including newer versions than what is described here, as well as various configurations) are [available on this page](https://ps2linux.no-ip.info/playstation2-linux.com/projects/mozilla-ps2.html).
 
 ### Dependencies
 

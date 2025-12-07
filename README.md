@@ -79,6 +79,10 @@ Digest and use this at your own risk!!!
 * [Playstation Broadband Navigator](Broadband&#32;Navigator)
   * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
 
+## Precompiled Binaries
+
+While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
+
 ## PS2 Linux References
 
 * [playstation2-linux.com](http://ps2linux.no-ip.info/playstation2-linux.com/) (site backup)
@@ -90,8 +94,4 @@ Digest and use this at your own risk!!!
 ## Linux References
 
 * [https://linuxconfig.org/in-depth-howto-on-linux-kernel-configuration](https://linuxconfig.org/in-depth-howto-on-linux-kernel-configuration): Linux Kernel Configuration Tutorial
-
-## Precompiled Binaries
-
-While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
 

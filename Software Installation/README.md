@@ -21,6 +21,8 @@ On top of those included in the Linux kits, some prebuilt software packages for 
 * Advantage: Software is already built and ready to install
 * Disadvantage: Software may not be configured in the way that is desired by the current user (some features may be enabled, others disabled)
 
+Additionally, Precompiled Binaries created by the author for all software packages described in this repository are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases).
+
 ## [Setting Up Cross-Compiling Environment](Toolchain)
 
 The section describes setting up a dedicated system for cross-compiling software to be installed and run on PS2 Linux.
