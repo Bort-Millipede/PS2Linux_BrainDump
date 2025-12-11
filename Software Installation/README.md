@@ -110,6 +110,7 @@ The section describes setting up a dedicated system for cross-compiling software
   * [mpeg2dec 0.4.0](Packages/VLC/Dependencies/mpeg2dec)
   * [vcdimager 0.7.21](Packages/VLC/Dependencies/vcdimager)
 * [wxWindows 2.5.1 (20031222)](Packages/wxWindows)
+* [XMMS 1.2.7](Packages/XMMS)
 
 ### [Linux Kernels](Kernels)
 

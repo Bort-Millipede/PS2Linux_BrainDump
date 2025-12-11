@@ -56,6 +56,7 @@ Digest and use this at your own risk!!!
       * [mpeg2dec 0.4.0](Software&#32;Installation/Packages/VLC/Dependencies/mpeg2dec)
       * [vcdimager 0.7.21](Software&#32;Installation/Packages/VLC/Dependencies/vcdimager)
     * [wxWindows 2.5.1 (20031222)](Software&#32;Installation/Packages/wxWindows)
+    * [XMMS 1.2.7](Software&#32;Installation/Packages/XMMS)
   * [Linux Kernels](Software&#32;Installation/Kernels):
     * [2.2.1_ps2-6](Software&#32;Installation/Kernels/2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
     * [2.2.1_ps2-7](Software&#32;Installation/Kernels/2.2.1_ps2-7) (for PS2 Linux Release 1.0)
