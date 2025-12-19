@@ -28,9 +28,9 @@ The following directories should be created on the root of the backup partition:
 * ```install-images```: For storing PS2 Linux installation backup archives.
 
 It is recommended that the following executables be copied to the ```bin``` directory on the backup partition:
-* ```md5sum```: ```cp /usr/bin/md5sum /mnt/backup/bin/md5sum```
-* ```pv```: ```cp /usr/local/bin/pv /mnt/backup/bin/pv```
-* ```star```: ```cp /usr/local/bin/star /mnt/backup/bin/pv```
+* ```md5sum```: For calculating file checksums to ensure transferred were not corrupted during transmission. ```cp /usr/bin/md5sum /mnt/backup/bin/md5sum```
+* ```pv```: For providing progress information when sending files using netcat. ```cp /usr/local/bin/pv /mnt/backup/bin/pv```
+* ```star```: For creating tar archives. ```cp /usr/local/bin/star /mnt/backup/bin/pv```
 * ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz)
 * ```ps2fdisk_scei```: (For PS2 Linux Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
 
@@ -64,7 +64,7 @@ mount /dev/hda3 /mnt/backup
 Create a full backup of the PS2 Linux installation (this will take a while).
 ```bash
 cd /mnt/hd
-/mnt/backup/bin/star -c -H=gnutar * | gzip -1 -c > /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz
+/mnt/backup/bin/star -c -H=gnutar * | gzip -1 -c > /mnt/backup/install-images/ps2linux-full-image.tar.gz
 ```
 
 &nbsp;  
@@ -79,37 +79,38 @@ cd /mnt/mc00
 
 The ramdisk does establish the network connection by default. Additionally, the ramdisk cannot establish a network connection via DHCP. Therefore, the network connection must be manually setup. It is recommended that the most recent leased DHCP-leased IP address be used for this.
 
-If the most recent IP address leased to PS2 Linux was 192.168.1.10 with a subnet mask of 255.255.255.0, then the network connection can be manually setup using the following command:
+**Example:** If the most recent IP address leased to PS2 Linux was 192.168.1.10 with a subnet mask of 255.255.255.0, then the network connection can be manually setup using the following command:
 ```bash
 ifconfig eth0 192.168.1.10 netmask 255.255.255.0 bcast 192.168.1.255
 ```
 
 ### Netcat
 
-The ramdisk comes with netcat installed. The most straightforward way for transferring files via netcat is outlined below. However, this method may not be preferred as transfer speeds are very slow.
+The ramdisk comes with netcat installed. The most straightforward way for transferring files via netcat is outlined below. However this method is less preferable, as transfer speeds are very slow.
 
 Send file from PS2 Linux to Linux PC:  
-On Linux PC (receive file ```ps2linuxbeta-full-image.tar.gz``` on TCP port 4444):
+On Linux PC (receive ```ps2linux-full-image.tar.gz``` file on TCP port 4444):
 ```bash
-nc -nvlp 4444 > ps2linuxbeta-full-image.tar.gz
+nc -nvlp 4444 > ps2linux-full-image.tar.gz
 ```
-On PS2 Linux ramdisk (send file ```ps2linuxbeta-full-image.tar.gz``` to 192.168.1.11 on TCP port 4444, with progress information displayed by ```pv```):
+On PS2 Linux ramdisk (send ```ps2linuxbeta-full-image.tar.gz``` file to 192.168.1.11 on TCP port 4444, with progress information displayed by ```pv```):
 ```bash
 cat /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz | /mnt/backup/bin/pv | nc -nv 192.168.1.11 4444
 ```
 
 &nbsp;  
 Send file from PC to PS2 Linux:  
-On PS2 Linux ramdisk (receive file ```ps2linuxbeta-full-image.tar.gz``` on TCP port 4444, with progress information displayed by ```pv```):
+On PS2 Linux ramdisk (receive ```ps2linux-full-image.tar.gz``` file on TCP port 4444, with progress information displayed by ```pv```):
 ```bash
-nc -nvlp 4444 | /mnt/backup/bin/pv > ps2linuxbeta-full-image.tar.gz
+nc -nvlp 4444 | /mnt/backup/bin/pv > ps2linux-full-image.tar.gz
 ```
-On Linux PC (send file ```ps2linuxbeta-full-image.tar.gz``` to 192.168.1.10 on TCP port 4444):
+On Linux PC (send ```ps2linux-full-image.tar.gz``` file to 192.168.1.10 on TCP port 4444):
 ```bash
-cat ps2linuxbeta-full-image.tar.gz | nc -nv 192.168.1.10 4444
+cat ps2linux-full-image.tar.gz | nc -nv 192.168.1.10 4444
 ```
 
 **NOTE:** On a Windows-based PC, the ```cat``` command above can be replaced by the ```type``` command.
+
 
 ### FTP
 
@@ -132,14 +133,27 @@ PS2LINUX
 &nbsp;  
 Download file from FTP server to PS2 Linux:
 ```
-get ps2linuxbeta-full-image.tar.gz
+get ps2linux-full-image.tar.gz
 ```
 
 &nbsp;  
 Upload file to FTP server from PS2 Linux:
 ```
-put ps2linuxbeta-full-image.tar.gz
+put ps2linux-full-image.tar.gz
 ```
+
+&nbsp;  
+To close the connection to the FTP server:
+```
+quit
+```
+
+&nbsp;  
+**OPTIONAL:** On PS2 Linux, calculate the checksum for the transferred file:
+```bash
+/mnt/backup/bin/md5sum /path/to/ps2linux-full-image.tar.gz
+```
+
 
 ## Restoring a Backup of a PS2 Linux Installation
 

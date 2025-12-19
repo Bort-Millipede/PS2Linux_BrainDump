@@ -32,7 +32,7 @@ To use this device, a customized [serial.o](serial.o) kernel module distributed 
 /sbin/insmod /path/to/serial.o
 ```
 
-After loading, the module loading should be confirmed via ```dmesg``` output, in which ```ttyS00``` should be displayed including the extra ```0``` character.
+After loading, the module loading should be confirmed via ```dmesg``` output, in which ```ttyS00``` should be displayed (including the extra ```0``` character).
 
 &nbsp;  
 This tutorial assumes that these modem devices are registered as ```/dev/ttyS0```. A configuration file leveraged by pppd is created with the filename ```options.ttyS0```. If the modem device is registered as something else, the file extension should be changed to match the device. Additionally, any ```/dev/ttyS0``` references in commands below should be changed to the correct device.
