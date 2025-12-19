@@ -15,24 +15,24 @@ Required files:
 
 ## Preliminary Considerations
 
-This page assumes that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/). Therefore, the 2.2.1_ps2-7 kernel source is already present on the cross-compiling environment at ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux-2.2.1_ps2```. However, additional configuration is required which is covered below.
+This page assumes that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/). Therefore, the 2.2.1_ps2-7 kernel source is already present on the cross-compiling environment at ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux-2.2.1_ps2```. However, additional configuration is required, which is covered below.
 
 If the 2.2.1_ps2-7 kernel source is NOT already present in the cross-compiling environment, commands are provided below to extract it to the environment.
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-7). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-7). All appropriate kernel options outlined throughout this repository are enabled in this configuration file.
 
-## Extracting Necessary Files From Linux (for Playstation 2) Release 1.0 Disc 2
+## Extracting Necessary Files From Linux (for Playstation 2) Release 1.0 Disc 2 (as root or via sudo)
 
-Attach **Linux (for Playstation 2) Release 1.0 Disc 2** to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
+Attach **Linux (for Playstation 2) Release 1.0 Disc 2** to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF.
 ```bash
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
 
 Copy the **kernel-headers-2.2.1_ps2-7.mipsel.rpm** and **kernel-source-2.2.1_ps2-7.mipsel.rpm** files from the ```/mnt/cdrom/SCEI/RPMS/``` directory onto the system.
 
-Unmount the DVD (as root or via sudo)
+Unmount the DVD.
 ```bash
 umount /mnt/cdrom
 ```
@@ -50,7 +50,7 @@ cd linux-2.2.1_ps2-7
 ```
 
 &nbsp;  
-Install updated SMAP driver to kernel source directory.
+Install updated SMAP driver to kernel source directory (requires [smap.c.us](smap.c.us) file).
 ```bash
 cd drivers/ps2
 mv smap.c smap.c.orig
@@ -59,7 +59,7 @@ cd ../..
 ```
 
 &nbsp;  
-Add APA partitioning support to kernel.
+Add APA partitioning support to kernel (requires [apa_2.2.1_src.tar.gz](apa_2.2.1_src.tar.gz) file).
 ```bash
 cd drivers/block
 mv genhd.c genhd.c.orig
@@ -70,7 +70,11 @@ tar xzf /path/to/apa_2.2.1_src.tar.gz
 ```
 
 &nbsp;  
-Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
+Modify included kernel configuration file to:
+* Enable APA partitioning support
+* Specify that the kernel is being cross-compiled
+* Add support for experimental features
+* Add support for for USB mass storage devices.
 ```bash
 perl -i.bak -pe "s/^# CONFIG_BSD_DISKLABEL is not set/CONFIG_PS2_PARTITION=y\n# CONFIG_BSD_DISKLABEL is not set/" arch/mips/defconfig
 perl -i -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" arch/mips/defconfig
@@ -80,13 +84,13 @@ cp arch/mips/defconfig config_ps2
 ```
 
 &nbsp;  
-Clear all previous builds and build information
+Clear all previous builds and build metadata.
 ```bash
 make mrproper
 ```
 
 &nbsp;  
-Copy usable kernel configuration file (such as [this one](config-2.2.1_ps2-7)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as the included ```config_ps2``` file, or [the author's configuration file](config-2.2.1_ps2-7)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -94,13 +98,13 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
 ```
 
-## Building for PS2 Linux
+## Building for PS2 Linux Release 1.0
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
 * If building in the above directory, building must be done as root.
@@ -135,15 +139,15 @@ make modules_install
 Create installation archive for "installed" kernel modules.
 ```
 cd /lib/modules
-tar czf /home/cross/ps2-cross/kernel/builds/2.2.1_ps2-7/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
+tar czf /path/to/new/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
 ```
 
-## Installing on PS2 Linux Release (as root)
+## Installing on PS2 Linux Release 1.0 (as root)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-7.cc.tar.gz** files to PS2 Linux.
 
 **Only do this the first ever time a new build of kernel modules is installed; skip on all subsequent installs:**  
-Backup original kernel module directory (to ```/lib/modules/2.2.1_.orig```) on PS2 Linux Release.
+Backup original kernel module directory (to ```/lib/modules/2.2.1.orig```) on PS2 Linux Release 1.0.
 ```bash
 cd /lib/modules
 mv 2.2.1 2.2.1.orig
@@ -161,7 +165,7 @@ cp /boot/vmlinux-2.2.1_ps2 /boot/vmlinux-2.2.1_ps2.orig
 Install kernel modules.
 ```bash
 cd /lib/modules
-tar czf /home/cross/ps2-cross/kernel/builds/2.2.1_ps2-7/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
+tar czf /path/to/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
 ```
 
 &nbsp;  
@@ -175,7 +179,7 @@ ln -s System.map-2.2.1_ps2 /boot/System.map
 ```
 
 &nbsp;  
-Install compressed kernel to first Memory Card (recommended).
+**Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
 gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux.gz
@@ -191,8 +195,7 @@ chmod 755 /mnt/mc00/vmlinux
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** The original boot entry created by the PS2 Linux installer can be edited to replace ```vmlinux``` with ```vmlinux.gz```. Alternatively if a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used as-is and this can be skipped.
-Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
+**If compressed kernel was installed above (if uncompressed kernel was installed, skip this):** Edit original boot entry in ```/mnt/mc00/p2lboot.cnf``` created by the PS2 Linux Release installer and replace ```vmlinux``` with ```vmlinux.gz```.
 ```
 "2.2.1"	vmlinux-2.2.1.gz ""	203 /dev/hda1 "" 2.2.1
 ```

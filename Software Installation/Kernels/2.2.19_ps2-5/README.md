@@ -23,15 +23,15 @@ This kernel version can be built for either PS2 Linux Beta Release 1 or PS2 Linu
 
 ### Limitations
 
-The sound module included with this kernel version does not work. This is a known longstanding issue. To mitigate this, the 2.2.1 sound module can be forcefully loaded into the 2.2.19 kernel module at runtime. Accomplishing this is outlined further below.
+The sound module included with this kernel version does not work. This is a known longstanding issue. To mitigate this, the 2.2.1 sound module can be forcefully loaded into the 2.2.19 kernel module at runtime, after which audio output should function correctly. Accomplishing this is outlined further below.
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file. This configuration file should work with both PS2 Linux Beta Release 1 and PS2 Linux Release 1.0.
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.19_ps2-5). All appropriate kernel options outlined throughout this repository are enabled in this configuration file. This configuration file should work with both PS2 Linux Beta Release 1 and PS2 Linux Release 1.0.
 
 ## Extracting Required File From Playstation BB Navigator 0.10 Disc 2
 
-Attach Playstation BB Navigator 0.10 Disc 2 to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF.
+Attach Playstation BB Navigator 0.10 Disc 2 to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
 ```bash
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
@@ -43,12 +43,12 @@ mv source/kernel/kernel-2.2.19_ps2-5.src.rpm .
 rm -rf source
 ```
 
-Unmount the DVD
+Unmount the DVD (as root or via sudo).
 ```bash
 umount /mnt/cdrom
 ```
 
-## Installing 2.2.19 Kernel Source to Cross-Compiling Environment (as root)
+## Installing/Configuring 2.2.19 Kernel Source to Cross-Compiling Environment (as root)
 
 Extract RPM into cross-compiling environment.
 ```bash
@@ -74,8 +74,8 @@ cd ..
 
 &nbsp;  
 **Do this ONLY FOR PS2 Linux Beta Release 1 installations (NOT for PS2 Linux Release 1.0 installations) that:**  
-* **are not installed alongside BB Navigator, or**
-* **do not need to mount BB Navigator partitions**
+* **are NOT installed alongside BB Navigator, or**
+* **do NOT need to mount BB Navigator partitions**
 
 Modify APA partitioning support: use APA partitioning support from 2.2.1 Beta Kernel.
 ```bash
@@ -97,11 +97,9 @@ cd ../..
 ```
 
 &nbsp;  
-**Finally: if planning on booting PS2 Linux from BB Navigator:**
-
-Edit ```drivers/char/console.c```: change line 2827 to:
-```
-//graphics_boot = 1;
+**Finally: if planning on booting PS2 Linux from BB Navigator:** Edit character device driver to prevent picture from freezing on boot.
+```bash
+perl -i -pe "s/^\tgraphics_boot = 1;/\t\/\/graphics_boot = 1;/" drivers/char/console.c
 ```
 
 &nbsp;  
@@ -123,19 +121,13 @@ cp -f config_ps2 arch/mips/defconfig
 ```
 
 &nbsp;  
-Clear all previous builds and build information
+Clear all previous builds and build metadata.
 ```bash
 make mrproper
 ```
 
 &nbsp;  
-Copy included kernel configuration into correct location in kernel source directory.
-```bash
-cp config_ps2 .config
-```
-
-&nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one](config-2.2.19_ps2-5)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as the included ```config_ps2``` file, or [the author's configuration file](config-2.2.19_ps2-5)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -143,13 +135,13 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
 ```
 
-## Building for PS2 Linux (Beta or Release)
+## Building for PS2 Linux (Beta Release 1 or Release 1.0)
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
 * If building in the above directory, building must be done as root.
@@ -189,7 +181,7 @@ mv 2.2.19 2.2.19_ps2
 tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19_ps2
 ```
 
-## Installing Kernel on PS2 Linux (as root)
+## Installing Kernel on PS2 Linux (Beta Release 1 or Release 1.0) (as root)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
 
@@ -218,7 +210,7 @@ ln -s System.map-2.2.19_ps2 /boot/System.map
 ```
 
 &nbsp;  
-Install compressed kernel to first Memory Card (recommended).
+**Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
 gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux-2.2.19.gz
@@ -234,7 +226,7 @@ chmod 755 /mnt/mc00/vmlinux-2.2.19
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** If a raw uncompressed kernel was installed to the Memory Card, replace ```vmlinux-2.2.19.gz``` with ```vmlinux-2.2.19``` in the boot entry.  
+**Note:** If a raw uncompressed kernel was installed to the Memory Card above, replace ```vmlinux-2.2.19.gz``` with ```vmlinux-2.2.19``` in the below boot entry.  
 Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
 ```
 "2.2.19"	vmlinux-2.2.19.gz ""	203 /dev/hda1 "" 2.2.19
@@ -254,7 +246,11 @@ alias	char-major-13-32	mousedev
 ```
 
 &nbsp;  
-(Recommended) With the exception of the entry above, disable all ```mousedev``` entries by prepending them with ```#``` characters.
+**Recommended:** With the exception of the entry above, disable all ```mousedev``` entries.
+```bash
+perl -i -pe "s/^alias[ \t]{1,}char-major-10-32[ \t]{1,}mousedev$/#alias\tchar-major-10-32\tmousedev/" /etc/modules.conf
+perl -i -pe "s/^alias[ \t]{1,}char-major-13-63[ \t]{1,}mousedev$/#alias\tchar-major-13-63\tmousedev/" /etc/modules.conf
+```
 
 &nbsp;  
 Recreate the ```/dev/usbmouse``` symbolic link to reference the correct USB mouse node.
@@ -267,28 +263,15 @@ Reboot PS2 Linux and select the ```2.2.19``` boot entry to use the 2.2.19 Kernel
 
 ## Using Kernel 2.2.19
 
-### Initializing PS2 RTC under PS2 Linux Beta Release 1
+### Fixing Sound
 
-The ```ps2rtc``` kernel module needs to be loaded under PS2 Linux Beta Release 1 in order to access the Playstation 2 Real Time Clock. To do this automatically at boot time, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod sound``` line with:
-```
-insmod sound
-if [ "`uname -r`" = "2.2.19" ]
-then
-   insmod ps2rtc
-fi
-```
-
-### Fixing sound
-
-The easiest way to get sound working under kernel 2.2.19 is to force-load the kernel 2.2.1 ps2sd module into the running 2.2.19 kernel. This can be done using the following command:
+The easiest way to get sound working under kernel 2.2.19 is to force-load the kernel 2.2.1 ```ps2sd``` module into the running 2.2.19 kernel. This can be done using the following command:
 ```bash
 insmod -f /lib/modules/2.2.1/misc/ps2sd.o
 ```
 
 &nbsp;  
-**NOTE**: the ```insmod ps2rtc``` line below is only required for PS2 Linux Beta Release 1. It can be omitted for PS2 Linux Release 1.0.
-The 2.2.1 ps2sd module can also be automatically force-loaded at boot time. To configure this, edit the ```/etc/rc.d/rc.sysinit``` file and replace the ```insmod ps2sd``` line with:
-To automatically force-load the 2.2.1 ps2sd module at boot time, 
+The 2.2.1 ```ps2sd``` module can also be automatically force-loaded at boot time. To configure this, edit the ```/etc/rc.d/rc.sysinit``` file and replace ```insmod ps2sd``` (around line 50) with:
 ```
 if [ "`uname -r`" = "2.2.19" ]
 then
@@ -296,6 +279,18 @@ then
    echo "Using /lib/modules/2.2.1/misc/ps2sd.o"
 else
    insmod ps2sd
+fi
+```
+
+### Initializing PS2 RTC Under PS2 Linux Beta Release 1
+
+The ```ps2rtc``` kernel module needs to be loaded under PS2 Linux Beta Release 1 in order to access the Playstation 2 Real Time Clock. To do this automatically at boot time, edit the ```/etc/rc.d/rc.sysinit``` file:
+* If the "Fixing Sound" changes above were committed, append the following after the above changes.
+* Otherwise, append the following after ```insmod sound``` line (should be around line 50):
+```bash
+if [ "`uname -r`" = "2.2.19" ]
+then
+   insmod ps2rtc
 fi
 ```
 

@@ -18,25 +18,25 @@ This kernel version expects an HDD partitioned with the proprietary APA format. 
 
 ### Kernel Configuration File
 
-It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-6). All appropriate kernel options outlined throughout this repository should be enabled in this configuration file.
+It is recommended that a known-working kernel configuration file be used when building the kernel below. The author's latest kernel configuration file is [available here](config-2.2.1_ps2-6). All appropriate kernel options outlined throughout this repository are enabled in the configuration file.
 
-## Extracting Necessary Files From PS2 Linux Beta Release 1 DVD
+## Extracting Necessary Files From PS2 Linux Beta Release 1 DVD (as root or via sudo)
 
-Attach **PS2 Linux Beta Release 1 DVD** to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF (as root or via sudo).
+Attach **PS2 Linux Beta Release 1 DVD** to the system with the ```mipsEEel-linux-*``` toolchain installed. Mount the DVD as UDF.
 ```bash
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
 
 Copy the **kernel-headers-2.2.1_ps2-6.mipsel.rpm** and **kernel-source-2.2.1_ps2-6.mipsel.rpm** files from the ```/mnt/cdrom/SCEI/RPMS/``` directory onto the system.
 
-Unmount the DVD (as root or via sudo)
+Unmount the DVD.
 ```bash
 umount /mnt/cdrom
 ```
 
 ## Installing 2.2.1_ps2-6 Kernel Source to Cross-Compiling Environment (as root)
 
-Rename directory where Linux Kit Release 1.0 kernel source code is currently stored. (This assumes that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/))
+Rename directory where Linux Kit Release 1.0 kernel source code is currently stored. (Note: The commands below assume that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/))
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
 mv usr/src/linux-2.2.1_ps2 usr/src/linux-2.2.1_ps2-7
@@ -62,13 +62,13 @@ perl -i -pe "s/^# CONFIG_USB_STORAGE is not set/CONFIG_USB_STORAGE=m/" config_ps
 ```
 
 &nbsp;  
-Clear all previous builds and build information
+Clear all previous builds and build metadata.
 ```bash
 make mrproper
 ```
 
 &nbsp;  
-Copy usable kernel configuration file (such as [this one](config-2.2.1_ps2-6)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as the included ```config_ps2``` file, or [the author's configuration file](config-2.2.1_ps2-6)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -76,13 +76,13 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
 ```
 
-## Building for PS2 Linux Beta
+## Building for PS2 Linux Beta Release 1
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
 * If building in the above directory, building must be done as root.
@@ -118,12 +118,12 @@ Create installation archive for "installed" kernel modules.
 ```
 cd /lib/modules
 mv 2.2.1 2.2.1_ps2.cc
-tar czvf /path/to/new/kernel-modules-2.2.1_ps2-6.tar.gz 2.2.1_ps2.cc
+tar czvf /path/to/new/kernel-modules-2.2.1_ps2-6.cc.tar.gz 2.2.1_ps2.cc
 ```
 
-## Installing on PS2 Linux Beta (as root)
+## Installing on PS2 Linux Beta Release 1 (as root)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.cc.tar.gz** files to PS2 Linux.
 
 **Only do this the first ever time a new build of kernel modules is installed; skip on all subsequent installs:**  
 Backup original kernel module directory (to ```/lib/modules/2.2.1_ps2.orig```) on PS2 Linux Beta. This backup will be needed every time a new build of the kernel modules is installed.
@@ -148,7 +148,7 @@ Copy kernel module backup directory into new kernel module directory, then insta
 cd /lib/modules
 mkdir 2.2.1_ps2.cc
 cp 2.2.1_ps2.orig/* 2.2.1_ps2.cc/.
-tar xzf /path/to/kernel-modules-2.2.1_ps2-6.tar.gz
+tar xzf /path/to/kernel-modules-2.2.1_ps2-6.cc.tar.gz
 rm 2.2.1
 ln -s 2.2.1_ps2.cc 2.2.1
 ```
@@ -163,7 +163,7 @@ ln -s System.map-2.2.1_ps2.cc /boot/System.map-2.2.1_ps2
 ```
 
 &nbsp;  
-Install compressed kernel to first Memory Card (recommended).
+**Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
 gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux.gz
@@ -179,8 +179,7 @@ chmod 755 /mnt/mc00/vmlinux
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** The original boot entry created by the PS2 Linux installer can be edited to replace ```vmlinux``` with ```vmlinux.gz```. Alternatively if a raw uncompressed kernel was installed to the Memory Card, the original boot entry created by the PS2 Linux installer can be used as-is and this can be skipped.
-Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
+**If compressed kernel was installed above (if uncompressed kernel was installed, skip this):** Edit original boot entry in ```/mnt/mc00/p2lboot.cnf``` created by the PS2 Linux Beta installer and replace ```vmlinux``` with ```vmlinux.gz```.
 ```
 "2.2.1"	vmlinux-2.2.1.gz ""	203 /dev/hda1 "" 2.2.1
 ```
@@ -190,5 +189,5 @@ Reboot to use newly-installed kernel.
 
 ### (RECOMMENDED) Post-Build "cleanup"
 
-If [ps2fs](../../Packages/ps2fs) was installed prior to building and installing the kernel above, ps2fs must be re-installed to the /lib/modules/2.2.1_ps2 directory.
+If [ps2fs](../../Packages/ps2fs) was installed prior to building and installing the kernel above, ps2fs must be re-installed to the ```/lib/modules/2.2.1_ps2``` directory.
 

@@ -1,4 +1,4 @@
-# Kernel 2.4.17_mvl21 (for PS2 Linux Beta Release 1)
+# Kernel 2.4.17_mvl21 (for PS2 Linux Release 1.0)
 
 ![](2.4.17_release_login.png?raw=true)
 
@@ -18,7 +18,7 @@ Required files (present on [Playstation BB Navigator 0.32 Disc](https://archive.
 
 ### Limitations
 
-While this kernel provides many improved functionalities absent from the 2.2.x kernels, not all software that comes pre-installed with PS2 Linux seems to work with this kernel (as the pre-installed software was originally built against the 2.2.1 kernel). Therefore, certain software and features that work seamlessly under 2.2.x kernels does not work under the 2.4.17 kernel.
+While this kernel provides many improved functionalities absent from the 2.2.x kernels, not all software that comes pre-installed with PS2 Linux seems to work with this kernel (as the pre-installed software was originally built against the 2.2.1 kernel). Therefore, certain software and features that work seamlessly under 2.2.x kernels may not work under the 2.4.17 kernel.
 
 ### Kernel Configuration File
 
@@ -73,20 +73,14 @@ perl -i -pe "s/CONFIG_SCSI=m/CONFIG_SCSI=y/" .config
 ```
 
 &nbsp;  
-Clear all previous builds and build information
+Clear all previous builds and build metadata.
 ```bash
 cp .config config
 make mrproper
 ```
 
 &nbsp;  
-Copy included kernel configuration into correct location in kernel source directory.
-```bash
-cp config .config
-```
-
-&nbsp;  
-Alternatively: copy usable kernel configuration file (such as [this one](config-2.4.17_ps2-22)) into correct location in kernel source directory.
+Copy usable kernel configuration file (such as the included ```config``` file, or [the author's configuration file](config-2.4.17_ps2-26)) into correct location in kernel source directory.
 ```bash
 cp /path/to/working/kernel/config/file config
 cp config .config
@@ -100,7 +94,7 @@ make oldconfig
 make menuconfig
 ```
 
-## Building for PS2 Linux
+## Building for PS2 Linux Release 1.0
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
 * If building in the above directory, building must be done as root.
@@ -138,7 +132,7 @@ cd /lib/modules
 tar czvf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
 ```
 
-## Installing on PS2 Linux Beta (as root)
+## Installing on PS2 Linux Release 1.0 (as root)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-26.tar.gz** files to PS2 Linux.
 
@@ -157,10 +151,15 @@ cp /path/to/System.map /boot/System.map-2.4.17_mvl21
 ```
 
 &nbsp;  
-/boot/vmlinux and /boot/System.map
+Recreate the ```/boot/vmlinux``` and ```/boot/System.map``` symbolic links to reference the 2.4.17 Kernel.
+```bash
+rm -f /boot/vmlinux /boot/System.map
+ln -s vmlinux-2.4.17_mvl21 /boot/vmlinux
+ln -s System.map-2.4.17_mvl21 /boot/System.map
+```
 
 &nbsp;  
-Install compressed kernel to first Memory Card (recommended).
+**Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
 gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux-2.4.17_mvl21.gz
@@ -176,7 +175,7 @@ chmod 755 /mnt/mc00/vmlinux-2.4.17_mvl21
 ```
 
 &nbsp;  
-Create new boot entry in ```p2lboot.cnf``` file. **Note:** If a raw uncompressed kernel was installed to the Memory Card, replace ```vmlinux-2.4.17_mvl21.gz``` with ```vmlinux-2.4.17_mvl21``` in the boot entry.  
+**Note:** If a raw uncompressed kernel was installed to the Memory Card above, replace ```vmlinux-2.4.17_mvl21.gz``` with ```vmlinux-2.4.17_mvl21``` in the below boot entry.  
 Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
 ```
 "2.4.17_mvl21"	vmlinux-2.4.17_mvl21.gz ""	203 /dev/hda1 "" 2.4.17_mvl21
@@ -197,7 +196,11 @@ alias	char-major-13-63	mousedev
 ```
 
 &nbsp;  
-(Recommended) With the exception of the entry above, disable all ```mousedev``` entries by prepending them with ```#``` characters.
+**Recommended:** With the exception of the entry above, disable all ```mousedev``` entries.
+```bash
+perl -i -pe "s/^alias[ \t]{1,}char-major-10-32[ \t]{1,}mousedev$/#alias\tchar-major-10-32\tmousedev/" /etc/modules.conf
+perl -i -pe "s/^alias[ \t]{1,}char-major-13-32[ \t]{1,}mousedev$/#alias\tchar-major-13-32\tmousedev/" /etc/modules.conf
+```
 
 &nbsp;  
 Recreate the ```/dev/usbmouse``` symbolic link to reference the correct USB mouse node.

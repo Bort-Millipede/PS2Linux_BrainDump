@@ -8,7 +8,7 @@
 * [2.4.17_ps2-22](2.4.17_ps2-22) (for PS2 Linux Beta Release 1)
 * [2.4.17_ps2-26](2.4.17_ps2-26) (for PS2 Linux Release 1.0)
 
-Other kernel versions (such as 2.2.21-pre1-xr7 and others) are available via the unofficial BlackRhino PS2 Linux distribution (more info [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/blackrhino.html)). However, the author did not explore this mainly due to the reality that the distribution's package manager servers are long gone, and therefore using this distribution in modern times is deemed unrealistic.
+Other kernel versions (such as 2.2.21-pre1-xr7 and others) are available via the unofficial BlackRhino PS2 Linux distribution (more info [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/blackrhino.html)). However, the author did not explore this mainly due to the reality that the distribution's package manager servers are long gone, and therefore the author considers using this distribution in modern times as being unrealistic.
 
 Additionally, the source for kernel 2.2.19_ps2-23 can be found on the Playstation Broadband Navigator 0.20 DVD (```kernel-source-2.2.19_ps2-23.mipsel.rpm``` within ```SOURCE.TGZ``` under ```source/kernel```). However, the kernel headers (presumably ```kernel-headers-2.2.19_ps2-23.mipsel.rpm```) are not included on the DVD and are not available anywhere else to the author's knowledge. Therefore, this kernel version cannot be successfully compiled and used with PS2 Linux.
 
@@ -17,8 +17,8 @@ Additionally, the source for kernel 2.2.19_ps2-23 can be found on the Playstatio
 It is highly recommended that kernels be installed to the PS2 Memory Card using compression (specifically GZIP). Because space on Memory Cards is extremely limited (8MB maximum), installing kernels with compression allows multiple kernels to be installed to the Memory Card simultaneously.
 
 In the author's experience, the only noticeable drawback to installing kernels onto the Memory Cards with compression is a very slight increase in initial system boot time:
-* When booting an uncompressed kernel from the PS2 Linux DVD, the progress indicator immediately starts counting up to 100%.
-* When booting a compressed kernel, the progress indicator stays at 0% for about 5-10 seconds before counting up to 100%.
+* When booting an uncompressed kernel from the PS2 Linux DVD, the progress indicator immediately starts counting and reaches 100% quickly.
+* When booting a compressed kernel, the progress indicator stays at 0% for about 5-10 seconds before quickly counting up to 100%.
 
 Instructions for installing both compressed and raw uncompressed kernels are available in the separate kernel pages linked above.
 
@@ -52,7 +52,7 @@ Most likely values the ```/dev/usbmouse``` link can be set to (for both PS2 Linu
 
 ### ```/etc/modules.conf``` File
 
-Just like the ```/dev/usbmouse``` symlink must reference the correct mouse device, the ```/etc/modules.conf``` file must also reference the correct mouse device. Separate entries are needed for each kernel mouse device, and the entries not referencing the correct device should be disabling by prepending them with a ```#``` character.
+Just like the ```/dev/usbmouse``` symlink must reference the correct mouse device, the ```/etc/modules.conf``` file must also reference the correct mouse device. Separate entries are needed for each kernel mouse device, and the entries not referencing the correct device should be disabled by prepending them with a ```#``` character.
 
 The entries for each are as follows:
 
