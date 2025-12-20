@@ -102,5 +102,10 @@ eject /dev/sr0
 ![](ubuntu_livedvd_mounted.png?raw=true)  
 *Ubuntu LiveDVD inserted into USB DVD-RW Drive and mounted in PS2 Linux*
 
-USB Optical drives can be used to play audio CDs using VLC, XMMS, or the pre-installed kscd (```/usr/kde1x/bin/kscd```) application. However, kscd and XMMS only output audio via the analog audio port and/or the headphone jack located on the drive itself. This may require custom cables and additional troubleshooting, none of which is currently covered anywhere in this repository.
+USB Optical drives can be used to play audio CDs using VLC, XMMS, or the pre-installed kscd (```/usr/kde1x/bin/kscd```) application. However, kscd and XMMS only output audio via the analog audio port on the back of the drive. Some drives also include a headphone jack on the drive itself, which should also output the audio. This may require custom cables, such as this one hacked together by the author.
+
+![](cd_analog_audio_cable.jpg?raw=true)  
+*Custom analog audio cable*
+
+Constructing such a cable and additional troubleshooting are not covered anywhere in this repository.
 

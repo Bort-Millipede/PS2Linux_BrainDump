@@ -110,7 +110,7 @@ This procedure requires either two or three open terminal sessions open:
 * The third session (which is optional, but can be leveraged to diagnose issues) monitors the log file from the mgetty session and displays information indicating the state of the Dreamcast and PS2 Linux connection. This session can be established either locally on PS2 Linux or via SSH.
 
 &nbsp;  
-Power on the Dreamcast console, load the game/software that will be connecting to the internet, and navigate to the menu/screen to initiate the dialing sequence. But do NOT initiate the dialing sequence yet!
+Power on the Dreamcast console, load the game/software that will be connecting to the internet, and navigate to the menu/screen to initiate the dialing sequence. DO NOT initiate the dialing sequence yet!
 
 &nbsp;  
 **For USB modem devices:**   
@@ -148,8 +148,9 @@ tail -f /var/log/mgetty.log.DEVICE
 ```
 
 &nbsp;  
-On the Dreamcast console: initiate the dialing sequence.  
-In the second session on PS2 Linux: wait about 5 seconds, then execute the ```killall``` command typed out earlier.
+On the Dreamcast console: initiate the dialing sequence.
+
+After waiting about 5 seconds: In the second session on PS2 Linux, execute the ```killall``` command typed out earlier.
 
 &nbsp;  
 As long as the above procedure was followed correctly, the Dreamcast console should successfully connect to the PC-DC Server and should receive an internet connection. If the connection is ever closed for any reason, it can be re-established be re-following the steps above.
