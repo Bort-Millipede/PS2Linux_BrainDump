@@ -14,8 +14,10 @@ Source links:
 
 ## Preliminary Notes
 
+Stella only displays via the PS2 VGA cable, NOT via the normal A/V cable.
+
 Per the instructions below:
-* The Stella files (minus the main executable) will be placed in the ```/usr/local/games/stella``` directory.
+* The Stella files (minus the main executable and minus the ```stella.pro``` file) will be placed in the ```/usr/local/games/stella``` directory.
 * Atari 2600 ROMs should be placed in the ```/usr/local/games/roms/2600``` directory.
 
 ## Building for PS2 Linux
@@ -85,5 +87,5 @@ Place Atari 2600 ROMs in ```/usr/local/games/roms/2600``` directory.
 
 ## Usage Notes
 
-Stella only displays via the PS2 VGA cable, NOT via the normal A/V cable.
+As noted above: Stella only displays via the PS2 VGA cable, NOT via the normal A/V cable.
 

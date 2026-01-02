@@ -235,6 +235,22 @@ ln -s scd0 /dev/audiocd
 
 ## Usage Notes
 
+VLC must be launched from within a window manager, either via a "Run" prompt or via a terminal.
+
+To launch VLC, execute the following command:
+```bash
+vlc
+```
+
+Additionally, GNOME-specfic links are created during building. These can be used to launch VLC by executing either of the following commands:
+```bash
+gvlc
+```
+
+```bash
+gnome-vlc
+```
+
 ### Audio CDs, VCDs, and DVDs
 
 These seem to work best under kernel 2.4.17_mvl21. They may work fine under kernel 2.2.19, but in the author's experience there is a much higher likelihood of stability issues. For unknown reasons, VLC seems to work better overall with kernel 2.2.19 on PS2 Linux Beta Release 1 (example: 2.2.19 kernel seems to work for these media types fine), rather than on PS2 Linux Release 1.0 (example: 2.2.19 kernel does not seem to work for these media types). Results may vary.
