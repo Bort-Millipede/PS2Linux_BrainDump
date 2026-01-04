@@ -157,6 +157,8 @@ As long as the above procedure was followed correctly, the Dreamcast console sho
 
 ## Usage Examples
 
+A demonstration of the author using the PC-DC server setup on PS2 Linux to connect Sega Dreamcast to the internet can be viewed [on YouTube](https://www.youtube.com/watch?v=NQZ-Ut8_40Q).
+
 ### USB Modem
 
 ![](mgetty_USB_modem.png?raw=true)  

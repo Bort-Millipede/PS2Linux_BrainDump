@@ -2,9 +2,19 @@
 
 A vast amount of tips and tricks beyond the scope of this repository can be found [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/faq.html).
 
+## Hardware-Specific Tips
+
+**USB Keyboard and Mouse:** The official Playstation 2 Keyboard (SCPH-10240) and Mouse (SCPH-10230) are not required to use PS2 Linux. However, the author recommends obtaining an official Playstation 2 Keyboard if possible, as the device contains an onboard USB port for a USB mouse. This leaves one USB port on the Playstation 2 console free for use with other devices (such as those described [HERE](../USB&#32;Devices)).
+
+## Install-Specific Tips
+
+It is recommended that all packages available in the PS2 Linux installer be installed, which will ultimately provide the most possible functionality of PS2 Linux from the start. This is accomplished by selecting "Install Custom System" and selecting all available packages during installation.
+
+It is recommended the entire harddrive installed in the Playstation 2 console NOT be used for PS2 Linux. At the least, this will allow a backup partition to be created for easier [backing up and restoring of a PS2 Linux installation](Backup-Restore).
+
 ## Recommended Items To Be Completed Immediately After Installation
 
-**Ethernet Driver Update:** If the ethernet connection on PS2 Linux is very unstable and drops very easily (this is more likely to be experienced with newer Playstation 2 consoles), the likely issue is the buggy stock SMAP (ethernet) driver. An updated driver that fixes these issues is available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/ps2linux.html), with directions for installation available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotesaca2.html?release_id=68).
+**Ethernet Driver Update:** If the ethernet connection on PS2 Linux is very unstable and drops very easily, the likely issue is the buggy stock SMAP (ethernet) driver. An updated driver that fixes these issues is available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/ps2linux.html), with directions for installation available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/project/shownotesaca2.html?release_id=68). In the author's experience, this is more likely to be experienced with newer Playstation 2 consoles used in conjunction with the official Linux Kit network adapter (SCPH-10350, ethernet only), whereas using the official Playstation 2 Network adapter (SCPH-10281, ethernet and dial-up) does not appear to exhibit the behavior.
 
 **Enable USB Mouse Wheel:** The scrolling wheel on USB mouse devices is disabled in PS2 Linux by default. The procedure for enabling the wheel for X Windows sessions is [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/ps2mousewheel.html).
 

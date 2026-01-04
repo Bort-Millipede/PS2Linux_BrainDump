@@ -259,6 +259,8 @@ The "Device Name" option will need to be changed to either ```/dev/sr0``` or ```
 
 ## Usage Examples
 
+A demonstration of the author using VLC on PS2 Linux can be viewed [on YouTube](https://www.youtube.com/watch?v=Tutsa2Xg5lM).
+
 ![](MP3.png?raw=true)
 *VLC playing MP3 file on PS2 Linux*
 

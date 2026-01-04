@@ -136,6 +136,8 @@ PS2 Linux ships with mkisofs-1.12b5 installed. In order to use the exact ```mkis
 
 ## Usage Examples
 
+A demonstration of the author using cdrtools on PS2 Linux to burn a CD can be viewed [on YouTube](https://www.youtube.com/watch?v=nevKiHUmwVw).
+
 ![](cdrecord_dc_first_session_1.png?raw=true)  
 *Burning first session of Dreamcast backup disc with cdrecord 2.01.01a36 from PS2 Linux*
 
