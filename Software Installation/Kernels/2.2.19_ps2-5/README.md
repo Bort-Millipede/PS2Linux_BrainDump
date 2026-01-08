@@ -77,7 +77,7 @@ cd ..
 * **are NOT installed alongside BB Navigator, or**
 * **do NOT need to mount BB Navigator partitions**
 
-Modify APA partitioning support: use APA partitioning support from 2.2.1 Beta Kernel.
+Modify APA partitioning support: use legacy APA partitioning support from 2.2.1 Beta Kernel.
 ```bash
 cd drivers/block
 mv genhd.c genhd-2.2.19_ps2.c
