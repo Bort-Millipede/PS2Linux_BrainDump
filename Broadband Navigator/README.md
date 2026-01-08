@@ -43,8 +43,8 @@ PSBBN also has some exclusive packages that are not installed on any version of 
 ## Additional PSBBN Information
 
 * PSBBN-specific Tips and Tricks:
-  * [Mounting PSBBN Partitions From PS2 Linux (WIP)](Tips&#32;and&#32;Tricks/Mounting&#32;PSBBN&#32;Partitions)
-  * [chrooting Into PSBBN From PS2 Linux (WIP)](Tips&#32;and&#32;Tricks/chrooting&#32;Into&#32;PSBBN)
+  * [Mounting PSBBN Partitions From PS2 Linux](Tips&#32;and&#32;Tricks/Mounting&#32;PSBBN&#32;Partitions)
+  * [Chrooting Into PSBBN From PS2 Linux (WIP)](Tips&#32;and&#32;Tricks/Chrooting&#32;Into&#32;PSBBN)
   * [Adding System Users to PSBBN (WIP)](Tips&#32;and&#32;Tricks/Adding&#32;System&#32;Users)
   * [Installing Additional Software in PSBBN (WIP)](Tips&#32;and&#32;Tricks/Software&#32;Installation)
   * [Booting PS2 Linux From PSBBN (Without PS2 Linux DVD) (WIP)](Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)
