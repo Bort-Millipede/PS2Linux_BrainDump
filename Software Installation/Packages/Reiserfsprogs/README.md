@@ -7,7 +7,7 @@
 
 ## Preliminary Considerations
 
-Reiserfsprogs should build successfully against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, the 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions.
+Reiserfsprogs should build successfully against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, using Reiserfsprogs with the 2.2.1 Kernel may not be feasible, as the kernel lacks ReiserFS partition support and therefore cannot actually mount or interact with ReiserFS partitions after they have been created.
 
 ## Building for PS2 Linux
 
@@ -82,5 +82,5 @@ tar xzf reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz
 
 ## Usage Notes
 
-The 2.2.1 Kernel likely cannot actually mount or interact with ReiserFS partitions. Therefore it is recommended to only use this package with Kernels 2.2.19 or 2.4.17_mvl21.
+Using Reiserfsprogs with the 2.2.1 Kernel may not be feasible, as the kernel lacks ReiserFS partition support and therefore cannot actually mount or interact with ReiserFS partitions after they have been created. Therefore, it is recommended to only use this package with Kernels 2.2.19 or 2.4.17_mvl21.
 

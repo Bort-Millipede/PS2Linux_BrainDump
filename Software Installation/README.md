@@ -3,7 +3,8 @@
 In order to install new software (such as shared libraries or newer Linux kernel versions) on PS2 Linux, these must first be built from source code. This can be accomplished one of the following ways:  
 * [Cross-Compile](https://en.wikipedia.org/wiki/Cross_compiler) software on another system containing the required tools (such as mipsEEel-linux-gcc and mipsEEel-linux-g++) and then install onto PS2 Linux afterwards.
 * Compile and install directly on PS2 Linux itself using included tools (such as gcc and g++).
-* Install prebuilt binaries from the defunct playstation2-linux.com community
+* Install prebuilt binaries (RPMs or installation archives) from the defunct playstation2-linux.com community.
+* Install prebuilt binaries (installation archives) from the author.
 
 ### Advantages/Disadvantages of Cross-Compiling Software
 
