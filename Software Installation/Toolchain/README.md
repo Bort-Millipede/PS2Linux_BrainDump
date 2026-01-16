@@ -27,9 +27,9 @@ A full list of packages installed by the author on their VM during this most rec
 
 ### Building Toolchain
 
-A detailed and straightforward tutorial for building the toolchain was published by the playstation2-linux.com community in 2004. Links:
-* Local backup [here](moz_cross_1.0.1.html) or rendered [here](https://html-preview.github.io/?url=https://github.com/Bort-Millipede/PS2Linux_BrainDump/blob/main/Software%20Installation/Toolchain/moz_cross_1.0.1.html)
+A detailed and straightforward tutorial for building the toolchain (using gcc-2.95.2) was published by the playstation2-linux.com community in 2004. Links:
 * [Backup site](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/moz_cross_1.0.1.html)
+* Local backup [here](moz_cross_1.0.1.html)
 
 The tutorial relies on the availability of Disc 2 of the PS2 Linux Kit Release 1.0. ISOs of these for each region can be found here:
 * [Japan](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28Japan%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
@@ -37,6 +37,20 @@ The tutorial relies on the availability of Disc 2 of the PS2 Linux Kit Release 1
 * [Europe](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28Europe%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
 
 After completing the tutorial, various ```mipsEEel-linux-*``` binaries (namely the C cross-compiler ```mipsEEel-linux-gcc``` and the C++ cross-compiler ```mipsEEel-linux-g++```) will be installed to the /usr/mipsEEel-linux/bin directory. This directory should be added to the user's PATH variable.
+
+#### gcc-3.0.3
+
+In general, the gcc-2.95.2 cross-compiler is preferred for building packages for PS2 Linux. However, some software may only build with gcc-3.x. As such, a tutorial was also publiced on the playstation2-linux.com community for [building gcc-3.0.3 as a cross-compiler for PS2 Linux](https://web.archive.org/web/20080223232414/http://ps2stuff.playstation2-linux.com:80/gcc_build.html).
+
+The author has successfully built and installed the gcc-3.0.3 cross-compiler on the same system as the gcc-2.95.2 cross-compiler, but within a different directory tree as as ```mipsEEel-linux-gcc3-*``` commands.
+
+![](gcc2_compile_failed.png?raw=true)  
+*Cross-compilation of C program with gcc-2.95.2 failed*
+
+![](gcc3_compile_success.png?raw=true)  
+*Cross-compilation of C program with gcc-3.0.3 succeeded*
+
+The additional cross-compilers outlined further down do NOT apply to the gcc-3.0.3 cross-compiler.
 
 ## Additional Recommended Steps For Setting Up Usable Environment
 
