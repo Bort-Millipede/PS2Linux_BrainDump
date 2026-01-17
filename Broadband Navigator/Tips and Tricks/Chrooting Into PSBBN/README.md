@@ -4,13 +4,11 @@ This page outlines chrooting into an underlying PSBBN installation from PS2 Linu
 
 ## Preliminary Considerations
 
-The PSBBN partitions use the ReiserFS filesystem, which is not supported by the 2.2.1 kernel. As such, either the 2.2.19 or 2.4.17_mvl21 kernel must be used to mount PSBBN partitions. If attempting to mount PSBBN partitions from a PS2 Linux Beta Release 1 installation: ensure that the kernel was patched to support both APA and legacy APA partitions.
+Prior to the procedure outlined below, the first PSBBN partition must be mounted from PS2 Linux (outlined [HERE](../Mounting&#32;PSBBN&#32;Partitions)). The PSBBN partitions use the ReiserFS filesystem, which is not supported by the 2.2.1 kernel. As such, either the 2.2.19 or 2.4.17_mvl21 kernel must be used to mount PSBBN partitions. If attempting to mount PSBBN partitions from a PS2 Linux Beta Release 1 installation: ensure that the kernel was patched to support both APA and legacy APA partitions.
 
 ## Initial Setup (as root or via sudo)
 
-The first PSBBN partition must first be mounted from PS2 Linux. The procedure for this is outlined [HERE](../Mounting&#32;PSBBN&#32;Partitions)
-
-Once the partition is mounted, some additional filesystems should be mounted within the partition.
+Mount the first PSBBN partition from PS2 Linux. Once the partition is mounted, some additional filesystems should be mounted within the partition.
 
 Mount the proc filesystem.
 ```bash

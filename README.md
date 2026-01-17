@@ -78,10 +78,13 @@ Digest and use this at your own risk!!!
 * [PS2 Linux Kit Comparison (Beta Release 1 and Release 1.0)](Kit&#32;Comparisons)
   * [Full Installed Packages Comparison](Kit&#32;Comparisons/Installed&#32;Packages)
 * [Playstation Broadband Navigator](Broadband&#32;Navigator)
-  * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
   * Tips and Tricks for Playstation Broadband Navigator:
     * [Mounting PSBBN Partitions From PS2 Linux](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Mounting&#32;PSBBN&#32;Partitions)
     * [Chrooting Into PSBBN From PS2 Linux](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Chrooting&#32;Into&#32;PSBBN)
+    * [Installing Additional Software in PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Software&#32;Installation)
+    * [Adding System Users to PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Adding&#32;System&#32;Users)
+    * [Enabling Telnet on PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Enabling&#32;Telnet)
+  * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
 
 ## Precompiled Binaries
 
