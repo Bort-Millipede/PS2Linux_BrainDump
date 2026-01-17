@@ -84,6 +84,7 @@ Digest and use this at your own risk!!!
     * [Installing Additional Software in PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Software&#32;Installation)
     * [Adding System Users to PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Adding&#32;System&#32;Users)
     * [Enabling Telnet on PSBBN](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Enabling&#32;Telnet)
+    * [Booting PS2 Linux From PSBBN (Without PS2 Linux DVD)](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)
   * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
 
 ## Precompiled Binaries

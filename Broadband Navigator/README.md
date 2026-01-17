@@ -48,10 +48,5 @@ PSBBN also has some exclusive packages that are not installed on any version of 
   * [Installing Additional Software in PSBBN](Tips&#32;and&#32;Tricks/Software&#32;Installation)
   * [Adding System Users to PSBBN](Tips&#32;and&#32;Tricks/Adding&#32;System&#32;Users)
   * [Enabling Telnet on PSBBN](Tips&#32;and&#32;Tricks/Enabling&#32;Telnet)
-  * [Booting PS2 Linux From PSBBN (Without PS2 Linux DVD) (WIP)](Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)
-
-
-
-
-
+  * [Booting PS2 Linux From PSBBN (Without PS2 Linux DVD)](Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)
 

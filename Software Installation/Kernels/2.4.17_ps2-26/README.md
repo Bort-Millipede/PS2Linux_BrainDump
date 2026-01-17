@@ -56,6 +56,12 @@ cd linux-2.4.17_ps2-26
 ```
 
 &nbsp;  
+**If planning on booting PS2 Linux from BB Navigator:** Edit PS2 Graphics Synthesizer console driver to prevent picture from freezing on boot.
+```bash
+perl -i -pe "s/^    graphics_boot = 1;/    \/\/graphics_boot = 1;/" drivers/video/ps2con.c
+```
+
+&nbsp;  
 Run ```setup-ps2``` script and modify included kernel configuration file to:
 * Enable built-in ext2 filesystem support.
 * Enable devpts filesystem support.

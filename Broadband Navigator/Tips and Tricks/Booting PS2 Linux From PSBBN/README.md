@@ -12,7 +12,7 @@ the 2.2.19 or 2.4.17_mvl21 kernel must be used for this setup for various reason
 
 This page assumes that PS2 Linux and PSBBN are installed side by side on the same harddrive, and therefore PS2 Linux is installed on APA partitions. In the case of a PS2 Linux Beta Release 1 installation, PS2 Linux is likely installed to legacy APA partitions and PSBBN is installed to APA partitions. The setup outlined below requires first mounting the first PSBBN partition from PS2 Linux (outlined [HERE](../Mounting&#32;PSBBN&#32;Partitions)).
 
-The setup instructions could also be adapted to accomplish the same thing while logged into PSBBN via SSH or Telnet, but doing so that way is not provided by the author.
+The setup instructions could also be adapted to accomplish the same thing while logged into PSBBN via SSH or Telnet, but doing so that way is not provided by the author here or anywhere else.
 
 ### Usage Considerations
 
