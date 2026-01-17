@@ -41,7 +41,7 @@ Reboot into PSBBN and confirm access via telnet.
 ![](telnet_bbn.png?raw=true)  
 *PSBBN successfully accessed via Telnet*
 
-## Disabling Telnet
+## Disabling Telnet (as root or via sudo)
 
 ### From PSBBN
 

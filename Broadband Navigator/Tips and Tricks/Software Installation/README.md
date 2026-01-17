@@ -24,7 +24,7 @@ rpm -i PACKAGE.rpm
 
 ### Sudo & Vim
 
-**Note:** These will need to be installed via Chroot.
+**NOTE:** These will need to be installed via Chroot.
 
 The author recommends installing the following RPM packages from PS2 Linux Release 1.0 onto PSBBN:
 * sudo-1.6.3p3-5.mipsel.rpm
@@ -35,11 +35,22 @@ This allows non-admin users to execute commands via ```sudo```. Granting sudoer 
 
 ### SSH
 
+**NOTE:** It is recommended to install SSH using Telnet, as installing via Chroot may result in errors during host key generation (issues with ```/dev/urandom```).
+
 To install SSH on PSBBN, the following RPM packages from PS2 Linux Release 1.0 must be installed:
 * openssl-0.9.6b-2.mipsel.rpm
 * openssh-2.9p1-7.mipsel.rpm
 * openssh-server-2.9p1-7.mipsel.rpm
 * openssh-clients-2.9p1-7.mipsel.rpm
 
-It is recommended to install SSH using Telnet, as installing via Chroot may result in errors during host key generation (issues with ```/dev/urandom```).
+To start SSH on PSBBN, execute the following command (as root or via sudo).
+```bash
+/sbin/service sshd start
+```
+
+&nbsp;  
+To ensure SSH starts when PSBBN boots, modify the ```/etc/rc.d/rc.sysinit``` file (as root or via sudo).
+```bash
+bash -c "echo /usr/sbin/inetd >> /etc/rc.d/rc.sysinit"
+```
 
