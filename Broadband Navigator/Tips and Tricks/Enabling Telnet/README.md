@@ -10,7 +10,7 @@ Enabling Telnet on PSBBN allows remote access to a running PSBBN installation.
 
 Prior to the procedure outlined below, the first PSBBN partition must be mounted from PS2 Linux (outlined [HERE](../Mounting&#32;PSBBN&#32;Partitions)). The PSBBN partitions use the ReiserFS filesystem, which is not supported by the 2.2.1 kernel. As such, either the 2.2.19 or 2.4.17_mvl21 kernel must be used to mount PSBBN partitions. If attempting to mount PSBBN partitions from a PS2 Linux Beta Release 1 installation: ensure that the kernel was patched to support both APA and legacy APA partitions.
 
-Additionally, Telnet communications do not utilize encryption and therefore all information (including usernames/passwords) are transmitted in cleartext. As such, the author recommends enabling Telnet temporarily in order to install SSH (outlined [HERE](../Software&#32;Installation)).
+Additionally, Telnet communications do not utilize encryption and therefore all information (including usernames/passwords) are transmitted in cleartext. As such, the author recommends enabling Telnet temporarily in order to install SSH (outlined [HERE](../Software&#32;Installation)). Instructions for disabling Telnet are also included below.
 
 ## Enable Telnet (as root or via sudo)
 
@@ -40,4 +40,40 @@ Reboot into PSBBN and confirm access via telnet.
 
 ![](telnet_bbn.png?raw=true)  
 *PSBBN successfully accessed via Telnet*
+
+## Disabling Telnet
+
+### From PSBBN
+
+&nbsp;  
+Modify the PSBBN ```/etc/inetd.conf``` file to disable (comment) telnet.
+```bash
+perl -i -pe "s/^telnet/#telnet/" /etc/inetd.conf
+```
+
+&nbsp;  
+Modify the PSBBN ```/etc/rc.d/rc.sysinit``` file to disable launching telnet at boot.
+```bash
+perl -i -pe "s/^\/usr\/sbin\/inetd/#\/usr\/sbin\/inetd/" /etc/rc.d/rc.sysinit
+```
+
+&nbsp;  
+Reboot PSBBN and confirm access via telnet is no longer available.
+
+### From PS2 Linux
+
+&nbsp;  
+Modify the PSBBN ```/etc/inetd.conf``` file to disable (comment) telnet.
+```bash
+perl -i -pe "s/^telnet/#telnet/" /mnt/bbn/etc/inetd.conf
+```
+
+&nbsp;  
+Modify the PSBBN ```/etc/rc.d/rc.sysinit``` file to disable launching telnet at boot.
+```bash
+perl -i -pe "s/^\/usr\/sbin\/inetd/#\/usr\/sbin\/inetd/" /mnt/bbn/etc/rc.d/rc.sysinit
+```
+
+&nbsp;  
+Reboot to PSBBN and confirm access via telnet is no longer available.
 

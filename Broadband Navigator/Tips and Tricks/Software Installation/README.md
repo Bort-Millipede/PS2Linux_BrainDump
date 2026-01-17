@@ -7,8 +7,8 @@ Software can also likely be installed to PSBBN after first being built from sour
 ## Prerequisites
 
 Installing new software requires accessing PSBBN in one of the following ways:
-* By accessing SSH or Telnet on a running PSBBN installation (if accessing as a non-root user, requires sudoer rights on PSBBN).
 * By [Chrooting into PSBBN from PS2 Linux](../Chrooting&#32;Into&#32;PSBBN).
+* By accessing SSH or Telnet on a running PSBBN installation (if accessing as a non-root user, requires sudoer rights on PSBBN).
 
 ## Installation
 
@@ -23,6 +23,8 @@ rpm -i PACKAGE.rpm
 ## Recommended Packages to Install
 
 ### Sudo & Vim
+
+**Note:** These will need to be installed via Chroot.
 
 The author recommends installing the following RPM packages from PS2 Linux Release 1.0 onto PSBBN:
 * sudo-1.6.3p3-5.mipsel.rpm
