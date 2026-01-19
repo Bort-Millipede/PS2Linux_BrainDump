@@ -1,6 +1,6 @@
 # FreeType and FreeType Demos
 
-**Note:** Precompiled Binaries ([freetype-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/freetype-2.1.2.mipsEEel-linux.tar.gz) and [ft2demos-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ft2demos-2.1.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([freetype-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/freetype-2.1.2.mipsEEel-linux.tar.gz) and [ft2demos-2.1.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ft2demos-2.1.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 Source links:  
 * [freetype-2.1.2.tar.gz](https://sourceforge.net/projects/freetype/files/OldFiles/freetype-2.1.2.tar.gz/download) (available under GPL v2)
@@ -41,7 +41,7 @@ for f in `find . -name config.sub`; do perl -i -pe "s/\| mipsel-\* /\| mipsel-\*
 &nbsp;  
 Configure and build source.
 ```bash
-./configure --host=mipsEEel-linux --prefix=/usr/mipsEEel-linux/mipsEEel-linux/usr
+./configure --host=mipsEEel-linux --prefix=$PREFIX
 make
 ```
 
@@ -143,12 +143,12 @@ make X11_PATH="/usr/mipsEEel-linux/mipsEEel-linux/usr/X11R6"
 &nbsp;  
 Create symbolic links for invoking test binaries directly, then create installation archive.
 ```bash
-for f in `ls -l | grep "\-rwx" | rev | cut -d" " -f 1 | rev`; do cp "$f" ${f}.bak; rm "$f"; ln -s .libs/$f $f; done #skips over wrapper scripts and sets up binaries to be called directly via symlinks
+for f in `ls -l | grep "\-rwx" | rev | cut -d" " -f 1 | rev`; do cp "$f" ${f}.bak; rm "$f"; ln -s .libs/$f $f; done
 cd ..
 tar czf ft2demos-2.1.2.mipsEEel-linux.tar.gz ft2demos-2.1.2
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **freetype-2.1.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
@@ -158,7 +158,7 @@ tar xzf /path/to/freetype-2.1.2.mipsEEel-linux.tar.gz
 ```
 
 &nbsp;  
-### **OPTIONAL:** Install FreeType Demos and Free Kochi Mincho TrueType fonts.
+### **OPTIONAL:** Install FreeType Demos and Free Kochi Mincho TrueType fonts (as root or via sudo)
 
 Transfer **ft2demos-2.1.2.mipsEEel-linux.tar.gz** and **kochi-mincho-0.2.20020727.tar.bz2** archives to PS2 Linux and install (replace `/path/to/` with the actual path to each file).
 ```bash

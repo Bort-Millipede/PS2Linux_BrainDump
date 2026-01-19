@@ -48,7 +48,7 @@ Unmount the DVD (as root or via sudo).
 umount /mnt/cdrom
 ```
 
-## Installing/Configuring 2.2.19 Kernel Source to Cross-Compiling Environment (as root)
+## Installing/Configuring 2.2.19 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
 Extract RPM into cross-compiling environment.
 ```bash
@@ -91,8 +91,8 @@ cd ../..
 
 Modify APA partitioning support: enable support for legacy APA partitions using [this patch](kernel-2.2.19_ps2-5_bbn-partitions.patch).
 ```bash
-drivers/block
-patch -p1 < /path/to/kernel-2.2.19_ps2-5_bbn-partitions.patch
+cd drivers/block
+patch -p0 < /path/to/kernel-2.2.19_ps2-5_bbn-partitions.patch
 cd ../..
 ```
 
@@ -168,7 +168,7 @@ make modules
 ```
 
 &nbsp;  
-"Install" kernel modules to current system (as root). These will not actually run on the current system.
+"Install" kernel modules to current system (as root or via sudo). These will not actually run on the current system.
 ```bash
 make modules_install
 ```
@@ -181,7 +181,7 @@ mv 2.2.19 2.2.19_ps2
 tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19_ps2
 ```
 
-## Installing Kernel on PS2 Linux (Beta Release 1 or Release 1.0) (as root)
+## Installing Kernel on PS2 Linux (Beta Release 1 or Release 1.0) (as root or via sudo)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
 

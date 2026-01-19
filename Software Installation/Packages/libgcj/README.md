@@ -1,6 +1,6 @@
 # libgcj 2.95.1
 
-**Note:** Precompiled Binaries ([libgcj-2.95.1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libgcj-2.95.1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries ([libgcj-2.95.1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libgcj-2.95.1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 Source: libgcj-2.95.1.tar.gz present on [PS2 Linux Beta Release 1 DVD](https://archive.org/download/sony_playstation2_p/PS2%20Linux%20Beta%20Release%201%20%28Japan%29%20%28En%2CJa%29.zip) and [Linux (for Playstation 2) Release 1.0 Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip) under ```SOURCES``` (the files present on both discs are identical).  
 **Build type:** native (directly on PS2 Linux)
@@ -13,7 +13,7 @@ libgcj is the Java runtime that goes along with the ```gcj``` front end to GCC. 
 
 Beyond this, libgcj is required for compiling Java code into native binaries via ```gcj```. At time of writing, the author has not been able to do this successfully for PS2 Linux, both via native compiling and cross-compiling. As such, building and installing this library onto PS2 Linux and into the cross-compiling environment for the purpose of compiling/cross-compiling Java binaries is purely optional.
 
-To directly leverage this library to compile Java binaries, a native version of ```gcj``` must be built and installed directly on PS2 Linux. However, preliminary testing by the author showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
+To directly leverage this library to compile Java binaries, a native version of ```gcj``` must be built and installed directly on PS2 Linux (outlined [HERE](../GCC)). However, preliminary testing by the author showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
 
 ![](gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
@@ -23,7 +23,7 @@ To directly leverage this library to compile Java binaries, a native version of 
 
 ### Dependencies
 
-* gcj 2.95.2: via [manually-built gcc 2.95.2](../gcc) installed alongside pre-installed version. Full source/build directory from this should be available on PS2 Linux when building libgcj (see "Troubleshooting" below).
+* gcj 2.95.2: via [manually-built gcc 2.95.2](../GCC) installed alongside pre-installed version. Full source/build directory from this should be available on PS2 Linux when building libgcj (see "Troubleshooting" below).
 
 ## Extracting Required File From PS2 Linux Beta Release 1 DVD or Linux (for Playstation 2) Release 1.0 Disc 2 (directly on PS2 Linux or in Cross-Compiling Environment)
 
@@ -39,7 +39,7 @@ Unmount the DVD
 umount /mnt/cdrom
 ```
 
-## Building/Installing on PS2 Linux
+## Building on PS2 Linux
 
 Extract source archive.
 ```bash
@@ -101,10 +101,21 @@ Revert Makefile edits.
 for f in `find . -name "Makefile.bak"`; do cp "$f" "`echo $f | rev | cut -d"." -f 2- | rev`"; done
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo).
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Source Above
+
+Install to PS2 Linux.
 ```bash
 make install
+```
+
+### From Installation Archive
+
+Transfer **libgcj-2.95.1.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/libgcj-2.95.1.mipsEEel-linux.tar.gz
 ```
 
 ## Building for Cross-Compiling Environment as Software Dependency
@@ -153,7 +164,7 @@ make DESTDIR=`pwd` install
 tar czf libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz usr
 ```
 
-### Installing on Cross-Compiling Environment as Software Dependency (as root)
+### Installing on Cross-Compiling Environment as Software Dependency (as root or via sudo)
 
 Transfer **libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
@@ -207,7 +218,7 @@ make DESTDIR=`pwd` install
 tar czf libgcj-2.95.1.mipsEEel-linux.cross-pc_um.tar.gz usr
 ```
 
-### Installing on Cross-Compiling Environment for Cross-Compiling (as root)
+### Installing on Cross-Compiling Environment for Cross-Compiling (as root or via sudo)
 
 Transfer **libgcj-2.95.1.mipsEEel-linux.cross-pc_um.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash

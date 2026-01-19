@@ -45,7 +45,7 @@ In the author's experience, the PC-DC Server does NOT work with Kernel 2.4.17_mv
 
 A PC-DC Server setup with a USB modem should work under Kernel 2.2.1 or Kernel 2.2.19. A Server setup with the Network Adapter modem will only work under Kernel 2.2.1.
 
-## Configuring PS2 Linux for a PC-DC Server (as root)
+## Configuring PS2 Linux for a PC-DC Server (as root or via sudo)
 
 Backup stock configuration files for mgetty
 ```bash

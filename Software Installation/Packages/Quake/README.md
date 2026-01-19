@@ -1,6 +1,6 @@
 # Quake
 
-**Note:** Precompiled Binaries ([nuq-current.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/nuq-current.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([nuq-current.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/nuq-current.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 [Source link](https://web.archive.org/web/20050626135551/http://quakeforge.net/files/nuq-current.tar.gz) (available under GPL v2)  
 [Game Data files link](https://web.archive.org/web/20020604062310/www.quakeforge.net/files/quake-shareware-1.06.tar.gz)  
@@ -80,7 +80,7 @@ unset SDL_CONFIG
 unset CONFIG_SUB
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **nuq-current.mipsEEel-linux.tar.gz** and **quake-shareware-1.06.tar.gz** to PS2 Linux and install.
 ```bash

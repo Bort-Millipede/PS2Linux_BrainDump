@@ -1,6 +1,6 @@
 # Autoconf 2.53
 
-**Note:** Precompiled Binaries ([autoconf-2.53.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/autoconf-2.53.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([autoconf-2.53.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/autoconf-2.53.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 [Source link](https://ftp.gnu.org/gnu/autoconf/autoconf-2.53.tar.bz2) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -48,7 +48,7 @@ cd ../../..
 tar czf autoconf-2.53.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **autoconf-2.53.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

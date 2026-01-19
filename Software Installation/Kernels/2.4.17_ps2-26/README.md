@@ -43,7 +43,7 @@ Unmount the DVD (as root or via sudo).
 umount /mnt/cdrom
 ```
 
-## Installing 2.4.17_ps2-26 Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.4.17_ps2-26 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
 Extract RPMs into cross-compiling environment.
 ```bash
@@ -94,7 +94,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -138,7 +138,7 @@ cd /lib/modules
 tar czvf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
 ```
 
-## Installing on PS2 Linux Release 1.0 (as root)
+## Installing on PS2 Linux Release 1.0 (as root or via sudo)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-26.tar.gz** files to PS2 Linux.
 

@@ -1,6 +1,6 @@
 # Automake
 
-**Note:** Precompiled Binaries ([heme-0.4.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/heme-0.4.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([heme-0.4.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/heme-0.4.2.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://github.com/UplinkCoder/heme/archive/refs/heads/master.zip) (available under GPL v2; renamed to heme-0.4.2.zip)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -31,7 +31,7 @@ mipsEEel-linux-strip usr/local/bin/heme
 tar czf heme-0.4.2.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **heme-0.4.2.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

@@ -23,7 +23,7 @@ Some software that is built natively on PS2 Linux requires being built against n
 
 **Build type:** None
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 ### 2.2.1 Kernel (PS2 Linux Beta Release 1)
 
@@ -60,7 +60,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -124,7 +124,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -218,7 +218,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -283,7 +283,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -340,7 +340,7 @@ cp config .config
 
 &nbsp;  
 Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ESC ESC; then select "No".
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
 ```
 make oldconfig
 make menuconfig
@@ -350,7 +350,7 @@ make menuconfig
 
 The kernel source directory that PS2 Linux will build software against is referenced by the ```/usr/src/linux``` symlink. To reconfigure this, the symlink must be recreated to reference a different source directory.
 
-### Example (as root)
+### Example (as root or via sudo)
 
 Configuring PS2 Linux to build against the 2.2.19 Kernel.
 ```bash

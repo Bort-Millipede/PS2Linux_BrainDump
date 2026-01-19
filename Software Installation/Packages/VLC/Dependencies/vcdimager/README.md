@@ -1,6 +1,10 @@
 # vcdimager 0.7.21
 
-**Note:** Precompiled Binaries ([vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [vcdimager-0.7.21.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz) for Beta Release 1
+* [vcdimager-0.7.21.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vcdimager-0.7.21.mipsEEel-linux.release.tar.gz) for Release 1.0
+
+Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://ftp.gnu.org/gnu/vcdimager/vcdimager-0.7.21.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
@@ -61,7 +65,7 @@ make DESTDIR=`pwd` install
 tar czf vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz usr
 ```
 
-## Installing on Cross-Compiling Environment (as root)
+## Installing on Cross-Compiling Environment (as root or via sudo)
 
 Transfer **vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
@@ -69,7 +73,7 @@ cd /
 tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz usr
 ```
 
-## Building/Installing for PS2 Linux
+## Building for PS2 Linux
 
 Extract source archive. (if using the same extracted directory as above, this should be skipped)
 ```bash
@@ -110,10 +114,33 @@ make DESTDIR=`pwd` install
 tar czf vcdimager-0.7.21.mipsEEel-linux.tar.gz usr
 ```
 
-&nbsp;  
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Built Source Above
+
 Install to PS2 Linux (as root or via sudo)
 ```bash
 make install
+/sbin/ldconfig
+```
+
+### From Installation Archive
+
+#### Beta Release 1
+
+Transfer **vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.beta.tar.gz
+/sbin/ldconfig
+```
+
+#### Release 1.0
+
+Transfer **vcdimager-0.7.21.mipsEEel-linux.release.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.release.tar.gz
 /sbin/ldconfig
 ```
 

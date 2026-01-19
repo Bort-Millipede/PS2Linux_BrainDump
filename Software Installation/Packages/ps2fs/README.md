@@ -1,9 +1,17 @@
 # ps2fs
 
-**Note:** Precompiled Binaries ([ps2fs.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [ps2fs.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [ps2fs.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.beta.tar.gz) for Beta Release 1
+* [ps2fs.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ps2fs.mipsEEel-linux.release.tar.gz) for Release 1.0
+
+Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 [Source link](http://achurch.org/ps2/ps2fs.tar.gz) (available under GPLish)
 **Build type:** native (directly on PS2 Linux)
+
+## References
+
+* [http://achurch.org/ps2/ps2fs.README.txt](http://achurch.org/ps2/ps2fs.README.txt)
 
 ## Preliminary Considerations
 
@@ -92,7 +100,9 @@ cp ps2fs.o 2.4.17_mvl21/kernel/drivers/ps2/ps2fs.o
 tar czf ps2fs-2.4.17_mvl21.mipsEEel-linux.tar.gz 2.4.17_mvl21
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Source Above
 
 Copy built kernel module(s) to ```/lib/modules```:
 ```
@@ -101,7 +111,25 @@ cp 2.2.19/misc/ps2fs.o /lib/modules/2.2.19/misc/ps2fs.o
 cp 2.4.17_mvl21/kernel/drivers/ps2/ps2fs.o /lib/modules/2.4.17_mvl21/kernel/drivers/ps2/ps2fs.o
 ```
 
-### (OPTIONAL) Install [helper script](mount-ps2fs) for easily mounting partitions with ps2fs (as root)
+### From Installation Archive
+
+#### Beta Release 1
+
+Transfer **ps2fs.mipsEEel-linux.beta.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /lib/modules
+tar xzf /path/to/ps2fs.mipsEEel-linux.beta.tar.gz
+```
+
+#### Release 1.0
+
+Transfer **ps2fs.mipsEEel-linux.release.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /lib/modules
+tar xzf /path/to/ps2fs.mipsEEel-linux.release.tar.gz
+```
+
+### (OPTIONAL) Install [helper script](mount-ps2fs) for easily mounting partitions with ps2fs (as root or via sudo)
 
 Install **[mount-ps2fs script](mount-ps2fs)** to ```/usr/local/bin```.
 ```bash
@@ -117,5 +145,28 @@ To use ps2fs, the kernel module must be loaded (as root or via sudo):
 /sbin/insmod ps2fs
 ```
 
-ps2fs can only reliably mount non-PS2 Linux partitions in read-only mode. The provided [helper script](mount-ps2fs) can assist in doing this a little more easily. The original Japanese-language ps2fs README can be found [here](http://achurch.org/ps2/ps2fs.README.txt). This can be semi-reliably translated using Google Translate.
+ps2fs can only reliably mount non-PS2 Linux partitions in read-only mode. The provided [helper script](mount-ps2fs) can assist in doing this a little more easily. 
+
+### Common Partitions
+
+Common non-PS2 Linux partitions are:
+* __common
+* __net
+* __sysconf
+* __system
+
+### Helper Script
+
+Mounting non-PS2 Linux partitions can be accomplished via the helper script as follows (replace **PARTITION** with the partition name).
+```bash
+/usr/local/sbin/mount-ps2fs PARTITION
+```
+
+### Manual Partition Mounting
+
+To mount a non-PS2 Linux partition to ```/mnt/ps2fs```, execute the following commands (as root or via sudo; replace **PARTITION** with the partition name).
+```bash
+mkdir -p /mnt/ps2fs
+mount -t ps2fs -o ro,partition=PARTITION /dev/hda /mnt/ps2fs
+```
 

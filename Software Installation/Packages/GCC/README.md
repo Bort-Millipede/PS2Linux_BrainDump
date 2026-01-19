@@ -1,6 +1,6 @@
 # GCC 2.95.2
 
-Source: gcc-2.95.2-3a.src.rpm present on [Linux (for Playstation 2) Release 1.0 Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip) under ```SRPMS```.  
+Source: **gcc-2.95.2-3a.src.rpm** present on [Linux (for Playstation 2) Release 1.0 Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip) under ```SRPMS```.  
 **Build type:** native (directly on PS2 Linux)
 
 ## References

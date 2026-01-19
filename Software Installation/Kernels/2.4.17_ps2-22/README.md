@@ -46,7 +46,7 @@ Unmount the DVD (as root or via sudo).
 umount /mnt/cdrom
 ```
 
-## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.4.17_ps2-22 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
 Extract RPMs into cross-compiling environment.
 ```bash
@@ -148,7 +148,7 @@ cd /lib/modules
 tar czvf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
 ```
 
-## Installing on PS2 Linux Beta Release 1 (as root)
+## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-22.tar.gz** files to PS2 Linux.
 

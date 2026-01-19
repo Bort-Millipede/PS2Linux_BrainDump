@@ -34,7 +34,7 @@ Unmount the DVD.
 umount /mnt/cdrom
 ```
 
-## Installing 2.2.1_ps2-6 Kernel Source to Cross-Compiling Environment (as root)
+## Installing 2.2.1_ps2-6 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
 Rename directory where Linux Kit Release 1.0 kernel source code is currently stored. (Note: The commands below assume that the cross-compiling environment was installed via the [procedure outlined here](../../Toolchain/))
 ```bash
@@ -85,7 +85,7 @@ make menuconfig
 ## Building for PS2 Linux Beta Release 1
 
 The kernel can be built in the directory that was created/prepared above, or it can be built in a separate directory (this is recommended by the author).
-* If building in the above directory, building must be done as root.
+* If building in the above directory, building must be done as root or via sudo.
 * If building in a separate directory, building should be done as a non-root user. To create this directory, follow the directions in the previous section but substitute the ```cd /usr/mipsEEel-linux/mipsEEel-linux``` commands for a different base directory where the source directory should be created.
 
 If needed, reconfigure the kernel (if not needed, this should be skipped).
@@ -108,7 +108,7 @@ make modules
 ```
 
 &nbsp;  
-"Install" kernel modules to current system (as root). These will not actually run on the current system.
+"Install" kernel modules to current system (as root or via sudo). These will not actually run on the current system.
 ```bash
 make modules_install
 ```
@@ -121,7 +121,7 @@ mv 2.2.1 2.2.1_ps2.cc
 tar czvf /path/to/new/kernel-modules-2.2.1_ps2-6.cc.tar.gz 2.2.1_ps2.cc
 ```
 
-## Installing on PS2 Linux Beta Release 1 (as root)
+## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.cc.tar.gz** files to PS2 Linux.
 

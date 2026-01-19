@@ -1,6 +1,6 @@
 # star (schily-tar) 1.4.3
 
-**Note:** Precompiled Binaries ([star-1.4.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries ([star-1.4.3.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://mirrors.dotsrc.org/schilytools/OLD/star/star-1.4.3.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
@@ -13,7 +13,7 @@ It is recommended to set the ```/usr/src/linux``` symbolic link to reference the
 
 * [smake](../smake)
 
-## Building/Installing on PS2 Linux
+## Building on PS2 Linux
 
 Extract source archive
 ```bash
@@ -35,13 +35,24 @@ smake INS_BASE=`pwd`/usr/local install
 tar czf star-1.4.3.mipsEEel-linux.tar.gz usr
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo)
-```bash
-smake INS_BASE=/usr/local install
-```
-
 ### (RECOMMENDED) Post-Build "cleanup"
 
 If [cdrtools-2.0 or cdrtools-2.01.01a36](../cdrtools) was installed prior to building/installing star, it is recommended that cdrtools be re-installed from source (if the original source archive is still available) or via installation archive.
+
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Built Source Above
+
+From the source directory above, install to PS2 Linux.
+```bash
+make INS_BASE=/usr/local install
+```
+
+### From Installation Archive
+
+Transfer **star-1.4.3.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/star-1.4.3.mipsEEel-linux.tar.gz
+```
 

@@ -1,6 +1,6 @@
 # Abuse
 
-**Note:** Precompiled Binaries ([abuse_sdl-0.5.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/abuse_sdl-0.5.0.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([abuse_sdl-0.5.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/abuse_sdl-0.5.0.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 Download links:  
 * [Source link](https://web.archive.org/web/20011218172815/http://www.labyrinth.net.au/~trandor/abuse/files/abuse_sdl-0.5.0.tar.gz) (available under GPL v2)
@@ -43,7 +43,7 @@ for f in `find . -name Makefile.in`; do perl -i.bak -pe "s/\\$\(AUTOMAKE\) --gnu
 ```
 
 &nbsp;  
-Recreate cross-compiling ```linux``` symbolic link to reference 2.2.1 kernel source directory (as root).
+Recreate cross-compiling ```linux``` symbolic link to reference 2.2.1 kernel source directory (as root or via sudo).
 ```bash
 rm /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
 ln -s linux-2.2.1_ps2 /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
@@ -64,7 +64,7 @@ mv usr/local/bin/abuse.sdl usr/local/bin/abuse-2.2.1.sdl
 ```
 
 &nbsp;  
-Recreate cross-compiling ```linux``` symbolic link to reference 2.2.19 kernel source directory (as root).
+Recreate cross-compiling ```linux``` symbolic link to reference 2.2.19 kernel source directory (as root or via sudo).
 ```bash
 rm /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
 ln -s linux-2.2.19_ps2 /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
@@ -86,7 +86,7 @@ mv usr/local/bin/abuse.sdl usr/local/bin/abuse-2.2.19.sdl
 ```
 
 &nbsp;  
-Recreate cross-compiling ```linux``` symbolic link to reference 2.4.17_mvl21 kernel source directory (as root).
+Recreate cross-compiling ```linux``` symbolic link to reference 2.4.17_mvl21 kernel source directory (as root or via sudo).
 ```bash
 rm /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
 ln -s linux-2.4.17_ps2 /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
@@ -110,13 +110,13 @@ tar czf abuse_sdl-0.5.0.mipsEEel-linux.tar.gz usr
 
 ### (RECOMMENDED) Post-Build Cleanup
 
-Recreate cross-compiling ```linux``` symbolic link to reference 2.2.1 kernel source directory (as root).
+Recreate cross-compiling ```linux``` symbolic link to reference 2.2.1 kernel source directory (as root or via sudo).
 ```bash
 rm /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
 ln -s linux-2.2.1_ps2 /usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **abuse_sdl-0.5.0.mipsEEel-linux.tar.gz** and **abuse_datafiles.tar.gz** archives to PS2 Linux and install.
 ```bash

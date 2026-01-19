@@ -2,7 +2,7 @@
 
 ![](VLC_version.png?raw=true)
 
-**Note:** Precompiled Binaries ([vlc-0.7.2.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [vlc-0.7.2.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! All [dependencies](Dependencies) must be installed prior to installing VLC. Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([vlc-0.7.2.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [vlc-0.7.2.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/vlc-0.7.2.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! All [dependencies](Dependencies) must be installed prior to installing VLC. Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 Source links:  
 * 0.7.2: [http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz](http://download.videolan.org/pub/videolan/vlc/0.7.2/vlc-0.7.2.tar.gz) (available under GPL v2)
@@ -155,7 +155,7 @@ Create installation archive.
 tar czf vlc-0.7.2.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Depending on which installation archive is being used to install VLC, the installation procedure varies slightly.
 

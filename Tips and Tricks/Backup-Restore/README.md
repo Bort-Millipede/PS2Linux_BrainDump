@@ -34,7 +34,7 @@ It is recommended that the following executables be copied to the ```bin``` dire
 * ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz)
 * ```ps2fdisk_scei```: (For PS2 Linux Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
 
-## Installing the Ramdisk (as root).
+## Installing the Ramdisk (as root or via sudo).
 
 Mount the memory card and copy the ramdisk file to the memory card.
 ```bash

@@ -1,6 +1,6 @@
 # Reiserfsprogs 3.x.0j
 
-**Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 [Source link](http://kernel.nic.funet.fi/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.x.0j/reiserfsprogs-3.x.0j.tar.gz) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -72,7 +72,7 @@ unset AS
 unset OBJDUMP
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

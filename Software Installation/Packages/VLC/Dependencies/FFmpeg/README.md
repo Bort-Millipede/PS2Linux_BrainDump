@@ -1,6 +1,6 @@
 ## FFmpeg 20040520
 
-**Note:** Precompiled Binaries ([ffmpeg-20040520.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ffmpeg-20040520.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([ffmpeg-20040520.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/ffmpeg-20040520.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/ffmpeg-20040520.tar.bz2) (available under LGPL v2.1)
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -160,7 +160,7 @@ make DESTDIR=`pwd` -C libavcodec/libpostproc install
 tar czf ffmpeg-20040520.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **ffmpeg-20040520.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

@@ -1,6 +1,6 @@
 # Maelstrom 3.0.6
 
-**Note:** Precompiled Binaries ([Maelstrom-3.0.6.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/Maelstrom-3.0.6.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([Maelstrom-3.0.6.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/Maelstrom-3.0.6.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
 [Source link](https://web.archive.org/web/20030803041759/http://www.devolution.com/~slouken/Maelstrom/src/Maelstrom-3.0.6.tar.gz) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -61,7 +61,7 @@ unset PREFIX
 unset SDL_CONFIG
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **Maelstrom-3.0.6.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

@@ -1,6 +1,6 @@
 # LIVE555 (2004.04.23)
 
-**Note:** Precompiled Binaries ([live.2004.04.23.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/live.2004.04.23.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([live.2004.04.23.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/live.2004.04.23.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/live.2004.04.23.tar.gz) (available under LGPL v2.1)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -30,7 +30,7 @@ make
 ```
 
 &nbsp;  
-Install to cross-compiling environment (as root).
+Install to cross-compiling environment (as root or via sudo).
 ```bash
 mkdir /usr/mipsEEel-linux/mipsEEel-linux/usr/lib/live
 cp -rf * /usr/mipsEEel-linux/mipsEEel-linux/usr/lib/live/.
@@ -82,7 +82,7 @@ cd ../../..
 tar czf live.2004.04.23.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **live.2004.04.23.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

@@ -1,6 +1,6 @@
 # libdvdplay 1.0.1
 
-**Note:** Precompiled Binaries ([libdvdplay-1.0.1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libdvdplay-1.0.1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([libdvdplay-1.0.1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libdvdplay-1.0.1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](http://download.videolan.org/pub/videolan/vlc/0.7.2/contrib/libdvdplay-1.0.1.tar.gz) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -85,7 +85,7 @@ make DESTDIR=`pwd` install
 tar czf libdvdplay-1.0.1.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **libdvdplay-1.0.1.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

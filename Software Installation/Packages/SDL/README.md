@@ -1,6 +1,6 @@
 # SDL and SDL_net
 
-**Note:** Precompiled Binaries ([SDL-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-1.2.5.mipsEEel-linux.tar.gz), [SDL_net-1.2.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL_net-1.2.2.mipsEEel-linux.tar.gz), and [SDL-tests-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-tests-1.2.5.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([SDL-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-1.2.5.mipsEEel-linux.tar.gz), [SDL_net-1.2.2.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL_net-1.2.2.mipsEEel-linux.tar.gz), and [SDL-tests-1.2.5.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/SDL-tests-1.2.5.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 Source links:  
 * [SDL-1.2.5.tar.gz](https://www.libsdl.org/release/SDL-1.2.5.tar.gz) (available under GPL v2)
@@ -312,7 +312,7 @@ unset ESD_CONFIG
 unset SDL_CONFIG
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **SDL-1.2.5.mipsEEel-linux.tar.gz** and **SDL_net-1.2.2.mipsEEel-linux.tar.gz** archives to PS2 Linux and install.
 ```bash
@@ -323,7 +323,7 @@ tar xzf /path/to/SDL_net-1.2.2.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
 
-### **OPTIONAL:** Install SDL tests (as root)
+### **OPTIONAL:** Install SDL tests (as root or via sudo)
 
 Transfer **SDL-tests-1.2.5.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

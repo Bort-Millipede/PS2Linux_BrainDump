@@ -37,7 +37,7 @@ Unmount the DVD.
 umount /mnt/cdrom
 ```
 
-## Installing/Configuring 2.2.1_ps2-7 Kernel Source in Cross-Compiling Environment (as root)
+## Installing/Configuring 2.2.1_ps2-7 Kernel Source in Cross-Compiling Environment (as root or via sudo)
 
 If the 2.2.1_ps2-7 kernel source is NOT already present on the cross-compiling environment: extract the 2.2.1_ps2-7 kernel source into the cross-compiling environment
 ```bash
@@ -130,7 +130,7 @@ make modules
 ```
 
 &nbsp;  
-"Install" kernel modules to current system (as root). These will not actually run on the current system.
+"Install" kernel modules to current system (as root or via sudo). These will not actually run on the current system.
 ```bash
 make modules_install
 ```
@@ -142,7 +142,7 @@ cd /lib/modules
 tar czf /path/to/new/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
 ```
 
-## Installing on PS2 Linux Release 1.0 (as root)
+## Installing on PS2 Linux Release 1.0 (as root or via sudo)
 
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-7.cc.tar.gz** files to PS2 Linux.
 

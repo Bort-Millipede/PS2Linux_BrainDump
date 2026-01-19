@@ -59,12 +59,12 @@ cp background.bmp courier8.bmp usr/local/games/stella/.
 tar czf stella-ps2-1.2.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **stella-ps2-1.2.mipsEEel-linux.tar.gz** archive and **.stella.pro** file to PS2 Linux.
 
 &nbsp;  
-Install Stella (as root)
+Install Stella (as root or via sudo)
 ```bash
 cd /
 tar xzf /path/to/stella-ps2-1.2.mipsEEel-linux.tar.gz

@@ -1,6 +1,10 @@
 # libcdio 0.71
 
-**Note:** Precompiled Binaries ([libcdio-0.71.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.beta.tar.gz) for Beta Release 1; [libcdio-0.71.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.release.tar.gz) for Release 1.0) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [libcdio-0.71.mipsEEel-linux.beta.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.beta.tar.gz) for Beta Release 1
+* [libcdio-0.71.mipsEEel-linux.release.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libcdio-0.71.mipsEEel-linux.release.tar.gz) for Release 1.0
+
+Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://ftp.gnu.org/gnu/libcdio/libcdio-0.71.tar.gz) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
@@ -63,7 +67,7 @@ make DESTDIR=`pwd` install
 tar czf libcdio-0.71-nolibvcd.mipsEEel-linux.cross-pc.tar.gz usr
 ```
 
-### Installing on Cross-Compiling Environment (Without vcdimager; as root)
+### Installing on Cross-Compiling Environment (Without vcdimager; as root or via sudo)
 
 Transfer **libcdio-0.71-nolibvcd.mipsEEel-linux.cross-pc.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
@@ -166,7 +170,7 @@ make DESTDIR=`pwd` install
 tar czf libcdio-0.71.mipsEEel-linux.cross-pc.tar.gz usr
 ```
 
-### Installing on Cross-Compiling Environment (With vcdimager; as root)
+### Installing on Cross-Compiling Environment (With vcdimager; as root or via sudo)
 
 Transfer **libcdio-0.71.mipsEEel-linux.cross-pc.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
@@ -216,10 +220,33 @@ make DESTDIR=`pwd` install
 tar czf libcdio-0.71.mipsEEel-linux.tar.gz usr
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo)
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Built Source Above
+
+From the source directory above, install to PS2 Linux.
 ```bash
 make install
+/sbin/ldconfig
+```
+
+### From Installation Archive
+
+#### Beta Release 1
+
+Transfer **libcdio-0.71.mipsEEel-linux.beta.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/libcdio-0.71.mipsEEel-linux.beta.tar.gz
+/sbin/ldconfig
+```
+
+#### Release 1.0
+
+Transfer **libcdio-0.71.mipsEEel-linux.release.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/libcdio-0.71.mipsEEel-linux.release.tar.gz
 /sbin/ldconfig
 ```
 

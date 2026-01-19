@@ -1,6 +1,11 @@
 # cdrtools
 
-**Note:** Precompiled Binaries ([cdrtools-1.10.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-1.10.mipsEEel-linux.tar.gz), [cdrtools-2.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.0.mipsEEel-linux.tar.gz), and [cdrtools-2.01.01a36.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.01.01a36.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [cdrtools-1.10.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-1.10.mipsEEel-linux.tar.gz)
+* [cdrtools-2.0.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.0.mipsEEel-linux.tar.gz)
+* [cdrtools-2.01.01a36.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/cdrtools-2.01.01a36.mipsEEel-linux.tar.gz)
+
+Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 Source links:  
 * [cdrtools-1.10.tar.gz](https://mirrors.dotsrc.org/schilytools/OLD/cdrecord/cdrtools-1.10.tar.gz) (available under GPL v2)
@@ -9,12 +14,7 @@ Source links:
 
 **Build type:** native (directly on PS2 Linux)
 
-### Dependencies
-
-* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../Kernel&#32;Source)
-* [smake](../smake)
-
-## Prerequisites
+## Preliminary Considerations
 
 In general for any operations requiring the use of an optical drive, the built-in PS2 drive will not work (due to the "locked down" state of the drive in PS2 Linux). Therefore, a [USB optical drive](../../../USB&#32;Devices/Optical&#32;Drives) will be required. These devices only work under the 2.2.19 and 2.4.17_mvl21 kernels with the necessary kernel modules loaded (as root or via sudo): 
 ```bash
@@ -32,9 +32,12 @@ Because of the reason outlined above, cdrtools can only be used under kernel 2.4
 * ```2.4.17_ps2```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1; or 2.4.17_mvl21 from Broadband Navigator 0.31 and 0.32, for Release 1.0
 * ```2.2.19_ps2```: 2.2.19 kernel from Broadband Navigator 0.10
 
+### Dependencies
 
+* [2.2.19 and/or 2.4.17_mvl21 Kernel Source](../Kernel&#32;Source)
+* [smake](../smake)
 
-## Building/Installing on PS2 Linux
+## Building on PS2 Linux
 
 Only a single cdrtools version may be installed to the system at one time.
 
@@ -59,12 +62,6 @@ smake INS_BASE=`pwd`/usr/local install
 tar czf cdrtools-1.10.mipsEEel-linux.tar.gz usr
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo)
-```bash
-smake INS_BASE=/usr/local install
-```
-
 ### cdrtools 2.0
 
 Extract source archive
@@ -84,12 +81,6 @@ Install to current directory and create installation archive (for easy installat
 ```bash
 smake INS_BASE=`pwd`/usr/local install
 tar czf cdrtools-2.0.mipsEEel-linux.tar.gz usr
-```
-
-&nbsp;  
-Install to PS2 Linux (as root or via sudo)
-```bash
-smake INS_BASE=/usr/local install
 ```
 
 ### cdrtools 2.01.01a36
@@ -113,17 +104,50 @@ smake INS_BASE=`pwd`/usr/local install
 tar czf cdrtools-2.01.01a36.mipsEEel-linux.tar.gz usr
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo)
-```bash
-smake INS_BASE=/usr/local install
-```
-
 ### (RECOMMENDED) Post-Build
 
 If installing cdrtools 2.0 or 2.01.01a36, it is recommended that the build directory be retained in case cdrtools needs to be re-installed later (example: if [star](../star) is installed after first installing cdrtools). If this is not available, the installation archive created above can be used for re-installation instead.
 
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Built Source Above
+
+From any of the source directories above, install to PS2 Linux.
+```bash
+make INS_BASE=/usr/local install
+```
+
+### From Installation Archive
+
+#### 1.10
+
+Transfer **cdrtools-1.10.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/cdrtools-1.10.mipsEEel-linux.tar.gz
+```
+
+#### 2.0
+
+Transfer **cdrtools-2.0.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/cdrtools-2.0.mipsEEel-linux.tar.gz
+```
+
+#### 2.01.01a36
+
+Transfer **cdrtools-2.01.01a36.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/cdrtools-2.01.01a36.mipsEEel-linux.tar.gz
+```
+
 ## Usage Notes
+
+Please consult [Preliminary Considerations](#preliminary-considerations) for various tips surrounding cdrtools usage.
+
+### Mkisofs
 
 ![](mkisofs_versions.png?raw=true)  
 *Multiple mkisofs versions installed*

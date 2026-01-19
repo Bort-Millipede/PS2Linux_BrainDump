@@ -1,6 +1,6 @@
 # libdvdnav 0.1.10
 
-**Note:** Precompiled Binaries ([libdvdnav-0.1.10.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libdvdnav-0.1.10.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root)](#installing-on-ps2-linux-as-root) for installation instructions.
+**Note:** Precompiled Binaries ([libdvdnav-0.1.10.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/libdvdnav-0.1.10.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://sourceforge.net/projects/dvd/files/libdvdnav/0.1.10/libdvdnav-0.1.10.tar.gz/download) (available under GPL v2)  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
@@ -85,7 +85,7 @@ make DESTDIR=`pwd` install
 tar czf libdvdnav-0.1.10.mipsEEel-linux.tar.gz usr
 ```
 
-## Installing on PS2 Linux (as root)
+## Installing on PS2 Linux (as root or via sudo)
 
 Transfer **libdvdnav-0.1.10.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash

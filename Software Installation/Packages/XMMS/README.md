@@ -1,6 +1,6 @@
 # XMMS (X Multimedia System) 1.2.7
 
-**Note:** Precompiled Binaries ([xmms-1.2.7.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/xmms-1.2.7.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+**Note:** Precompiled Binaries ([xmms-1.2.7.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/xmms-1.2.7.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) for installation instructions.
 
 [Source link](https://web.archive.org/web/20070802011520/http://www.xmms.org/files/1.2.x/xmms-1.2.7.tar.bz2) (available under GPL v2)  
 **Build type:** native (directly on PS2 Linux)
@@ -9,7 +9,7 @@
 
 Another option for getting XMMS on PS2 Linux is to use the prebuilt XMMS binary packages [available on this page](http://ps2linux.no-ip.info/playstation2-linux.com/projects/cfyc.html).
 
-## Building/Installing on PS2 Linux
+## Building on PS2 Linux
 
 Extract source archive.
 ```bash
@@ -44,9 +44,20 @@ make DESTDIR=`pwd` install
 tar czf xmms-1.2.7.mipsEEel-linux.tar.gz usr/
 ```
 
-&nbsp;  
-Install to PS2 Linux (as root or via sudo).
+## Installing on PS2 Linux (as root or via sudo)
+
+### From Built Source Above
+
+Install to PS2 Linux.
 ```bash
 make install
+```
+
+### From Installation Archive
+
+Transfer **xmms-1.2.7.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+```bash
+cd /
+tar xzf /path/to/xmms-1.2.7.mipsEEel-linux.tar.gz
 ```
 
