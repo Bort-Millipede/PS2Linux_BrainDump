@@ -16,8 +16,8 @@ Required file: [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/dow
 
 ### Dependencies
 
-* [star](../../Software&#32;Installation/Packages/star): This seems to perform faster than the standard ```tar``` executable available on PS2 Linux.
-* [pv](../../Software&#32;Installation/Packages/pv): This is optional but recommended. This should be used in conjunction with file transfers using netcat, as the netcat version available in the PS2 Linux ramdisk does not output progress information.
+* [star](../../Software&#32;Installation/Packages/star): This seems to perform faster than the standard ```tar``` executable available on PS2 Linux. The precompiled ```star``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz).
+* [pv](../../Software&#32;Installation/Packages/pv): This is technically optional, but is highly recommended and is included in commands provided below. This should be used in conjunction with file transfers using netcat, as the netcat version available in the PS2 Linux ramdisk does not output progress information. The precompiled ```pv``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/pv-0.6.4.mipsEEel-linux.tar.gz).
 
 ### Backup Partition Setup
 
