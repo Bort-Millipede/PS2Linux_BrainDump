@@ -1,20 +1,28 @@
 # Reiserfsprogs 3.x.0j
 
-**Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
+**Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
-[Source link](http://kernel.nic.funet.fi/pub/linux/kernel/people/jeffm/reiserfsprogs/v3.x.0j/reiserfsprogs-3.x.0j.tar.gz) (available under GPL v2)  
+Source: reiserfsprogs-3.x.0j-1.src.rpm present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip (within ```source.tgz``` file under ```source/kernel```):  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Preliminary Considerations
 
-Reiserfsprogs should build successfully against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, using Reiserfsprogs with the 2.2.1 Kernel may not be feasible, as the kernel lacks ReiserFS partition support and therefore cannot actually mount or interact with ReiserFS partitions after they have been created.
+The publicly-available Reiserfsprogs builds and executes successfully on PS2 Linux. However, partitions formatted with ReiserFS (via ```mkreiserfs```) are not correctly recognized by PS2 Linux. Therefore, the Reiserfsprogs source archive available via PSBBN must be used for building.
+
+Reiserfsprogs will build successfully against all available kernels (2.2.1, 2.2.19, 2.4.17_mvl21). However, using Reiserfsprogs with the 2.2.1 Kernel is not feasible, as the kernel lacks ReiserFS partition support. Therefore, Reiserfs should be built against the 2.2.19 (recommended) or the 2.4.17_mvl21 kernel. As such, the ```/usr/mipsEEel-linux/mipsEEel-linux/usr/src/linux``` symbolic link must be recreated to reference one of the following:
+* ```linux-2.2.19_ps2-5```: 2.2.19 kernel from Broadband Navigator 0.10
+* ```linux-2.4.17_ps2-22```: 2.4.17_mvl21 from Broadband Navigator 0.30, for Beta Release 1
+* ```linux-2.4.17_ps2-26``` from Broadband Navigator 0.31 and 0.32, for Release 1.0
 
 ## Building for PS2 Linux
 
-Extract source archive
+Extract and patch source, and remove all previous build information
 ```bash
+rpm2cpio reiserfsprogs-3.x.0j-1.src.rpm | cpio -id
 tar xzf reiserfsprogs-3.x.0j.tar.gz
 cd reiserfsprogs-3.x.0j
+patch -p1 < ../reiserfs.patch
+make distclean
 ```
 
 &nbsp;  
@@ -52,7 +60,7 @@ Install to current directory and create installation archive
 ```bash
 rm -rf usr
 make DESTDIR=`pwd` install
-tar czf reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz usr
+tar czf reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz usr
 ```
 
 ### (RECOMMENDED) Post-Build Cleanup
@@ -74,13 +82,15 @@ unset OBJDUMP
 
 ## Installing on PS2 Linux (as root or via sudo)
 
-Transfer **reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
+Transfer **reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz** archive to PS2 Linux and install.
 ```bash
 cd /
-tar xzf reiserfsprogs-3.x.0j.mipsEEel-linux.tar.gz
+tar xzf /path/to/reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz
 ```
 
 ## Usage Notes
+
+Under the 2.2.1 Kernel, Reiserfsprogs can be used to perform actions against ReiserFS partitions (formatting, etc.). However, the kernel lacks ReiserFS partition support and therefore 
 
 Using Reiserfsprogs with the 2.2.1 Kernel may not be feasible, as the kernel lacks ReiserFS partition support and therefore cannot actually mount or interact with ReiserFS partitions after they have been created. Therefore, it is recommended to only use this package with Kernels 2.2.19 or 2.4.17_mvl21.
 

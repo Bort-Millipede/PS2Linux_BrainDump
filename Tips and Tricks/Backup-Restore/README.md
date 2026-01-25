@@ -61,14 +61,14 @@ mount /dev/hda3 /mnt/backup
 ```
 
 &nbsp;  
-Create a full backup of the PS2 Linux installation (this will take a while).
+Create a full backup of the PS2 Linux installation (**ps2linux-full-image.tar.gz**; this will take a while).
 ```bash
 cd /mnt/hd
 /mnt/backup/bin/star -c -H=gnutar * | gzip -1 -c > /mnt/backup/install-images/ps2linux-full-image.tar.gz
 ```
 
 &nbsp;  
-Mount the Memory Card and create a backup of the PS2 Linux save file.
+Mount the Memory Card and create a backup of the PS2 Linux save file (**mc00.tar.gz**).
 ```bash
 mount /mnt/mc00
 cd /mnt/mc00
@@ -86,10 +86,12 @@ ifconfig eth0 192.168.1.10 netmask 255.255.255.0 bcast 192.168.1.255
 
 ### Netcat
 
+**Note:** One viable option for using netcat on a Windows PC is to use the ```ncat``` utility included as part of [Nmap](https://nmap.org/dist/). If using this, replace all ```nc``` references in the "On PC" commands below with ```ncat```.
+
 The ramdisk comes with netcat installed. The most straightforward way for transferring files via netcat is outlined below. However this method is less preferable, as transfer speeds are very slow.
 
-Send file from PS2 Linux to Linux PC:  
-On Linux PC (receive ```ps2linux-full-image.tar.gz``` file on TCP port 4444):
+Send file from PS2 Linux to PC (Linux or Windows):  
+On PC (receive ```ps2linux-full-image.tar.gz``` file on TCP port 4444):
 ```bash
 nc -nvlp 4444 > ps2linux-full-image.tar.gz
 ```
@@ -104,13 +106,18 @@ On PS2 Linux ramdisk (receive ```ps2linux-full-image.tar.gz``` file on TCP port 
 ```bash
 nc -nvlp 4444 | /mnt/backup/bin/pv > ps2linux-full-image.tar.gz
 ```
-On Linux PC (send ```ps2linux-full-image.tar.gz``` file to 192.168.1.10 on TCP port 4444):
+On PC (send ```ps2linux-full-image.tar.gz``` file to 192.168.1.10 on TCP port 4444):
 ```bash
 cat ps2linux-full-image.tar.gz | nc -nv 192.168.1.10 4444
 ```
 
 **NOTE:** On a Windows-based PC, the ```cat``` command above can be replaced by the ```type``` command.
 
+&nbsp;  
+**OPTIONAL:** On PS2 Linux, calculate the checksum for the transferred file:
+```bash
+/mnt/backup/bin/md5sum /path/to/ps2linux-full-image.tar.gz
+```
 
 ### FTP
 
@@ -154,7 +161,6 @@ quit
 /mnt/backup/bin/md5sum /path/to/ps2linux-full-image.tar.gz
 ```
 
-
 ## Restoring a Backup of a PS2 Linux Installation
 
 Load the PS2 Linux DVD and select the ```initfs``` boot option. When the login prompt appears, enter root for the username.
@@ -179,10 +185,10 @@ mount /dev/hda1 /mnt/hd
 ```
 
 &nbsp;  
-Restore the PS2 Linux installation. This will take a while.
+Restore the PS2 Linux installation (**ps2linux-full-image.tar.gz**). This will take a while.
 ```bash
 cd /mnt/hd
-gzip -dc /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz | /mnt/backup/bin/star -x -p -f -
+gzip -dc /mnt/backup/install-images/ps2linux-full-image.tar.gz | /mnt/backup/bin/star -x -p -f -
 ```
 
 &nbsp;  
