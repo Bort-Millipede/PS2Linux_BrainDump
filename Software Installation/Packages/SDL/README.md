@@ -183,7 +183,7 @@ make
 Create installation archive
 ```bash
 cd ..
-tar czvf SDL-tests-1.2.5.mipsEEel-linux.tar.gz `file SDL-tests/* | grep "executable, MIPS R3000_LE" | cut -d":" -f 1` SDL-tests/README SDL-tests/COPYING SDL-tests/*.bmp SDL-tests/picture.xbm SDL-tests/sample.wav
+tar czf SDL-tests-1.2.5.mipsEEel-linux.tar.gz `file SDL-tests/* | grep "executable, MIPS R3000_LE" | cut -d":" -f 1` SDL-tests/README SDL-tests/COPYING SDL-tests/*.bmp SDL-tests/picture.xbm SDL-tests/sample.wav
 ```
 
 ## SDL_net 1.2.2

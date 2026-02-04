@@ -2,7 +2,7 @@
 
 **Note:** Precompiled Binaries ([reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/reiserfsprogs-3.x.0j-1.mipsEEel-linux.tar.gz)) are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)! Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux-as-root-or-via-sudo) and [Usage Notes](#usage-notes) for installation and usage instructions.
 
-Source: reiserfsprogs-3.x.0j-1.src.rpm present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip (within ```source.tgz``` file under ```source/kernel```):  
+Source: reiserfsprogs-3.x.0j-1.src.rpm present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip (within ```source.tgz``` file under ```source/reiserfsprogs```):  
 **Build type:** cross-compiling (on system with ```mipsEEel-linux-*``` toolchain installed)
 
 ## Preliminary Considerations
