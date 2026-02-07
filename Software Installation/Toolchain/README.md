@@ -104,10 +104,16 @@ While binaries can be successfully created using ```mipsEEel-linux-gcj```, preli
 ![](mipsEEel-linux-gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with mipsEEel-linux-gcj*
 
+![](mipsEEel-linux-gcj_illegal_instruction_error_console.png?raw=true)  
+*Illegal Instruction error printed to console when executing Java binary compiled with mipsEEel-linux-gcj*
+
 a native version of ```gcj``` can be built and installed directly on PS2 Linux. However, preliminary testing by the author showed the same "Illegal Instruction" (SIGILL) error occurring when attempting to execute compiles binaries. Executing these through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
 
 ![](../Packages/libgcj/gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
+
+![](../Packages/libgcj/gcj_illegal_instruction_error_console.png?raw=true)  
+*Illegal Instruction error printed to console when executing Java binary compiled with gcj*
 
 ![](../Packages/libgcj/gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
 *Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*

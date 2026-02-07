@@ -18,6 +18,9 @@ To directly leverage this library to compile Java binaries, a native version of 
 ![](gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
 
+![](gcj_illegal_instruction_error_console.png?raw=true)  
+*Illegal Instruction error printed to console when executing Java binary compiled with gcj*
+
 ![](gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
 *Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*
 

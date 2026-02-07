@@ -24,6 +24,9 @@ At time of writing, the author has been unable to successfully compile and execu
 ![](../libgcj/gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
 
+![](../libgcj/gcj_illegal_instruction_error_console.png?raw=true)  
+*Illegal Instruction error printed to console when executing Java binary compiled with gcj*
+
 ![](../libgcj/gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
 *Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*
 
