@@ -70,7 +70,7 @@ tar czf vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz usr
 Transfer **vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
 cd /
-tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz usr
+tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.cross-pc.tar.gz
 ```
 
 ## Building for PS2 Linux

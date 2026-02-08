@@ -213,7 +213,7 @@ tar xzf /path/to/libxml2-2.6.4.mipsEEel-linux.tar.gz
 tar xzf /path/to/libdvdread-20030812.mipsEEel-linux.tar.gz
 tar xzf /path/to/libdvdplay-1.0.1.mipsEEel-linux.tar.gz
 tar xzf /path/to/libdvdcss-1.2.8.mipsEEel-linux.tar.gz
-tar xzf /path/to/libdvdnav-0.1.10.mipsEEel-linux.tar.gz usr
+tar xzf /path/to/libdvdnav-0.1.10.mipsEEel-linux.tar.gz
 tar xzf /path/to/popt-1.7.mipsEEel-linux.tar.gz
 /sbin/ldconfig
 ```
