@@ -42,7 +42,7 @@ After completing the tutorial, various ```mipsEEel-linux-*``` binaries (namely t
 
 In general, the gcc-2.95.2 cross-compiler is preferred for building packages for PS2 Linux. However, some software may only build with gcc-3.x. As such, a tutorial was also publiced on the playstation2-linux.com community for [building gcc-3.0.3 as a cross-compiler for PS2 Linux](https://web.archive.org/web/20080223232414/http://ps2stuff.playstation2-linux.com:80/gcc_build.html).
 
-The author has successfully built and installed the gcc-3.0.3 cross-compiler on the same system as the gcc-2.95.2 cross-compiler, but within a different directory tree as as ```mipsEEel-linux-gcc3-*``` commands.
+The author of this repository has successfully built and installed the gcc-3.0.3 cross-compiler on the same system as the gcc-2.95.2 cross-compiler, but within a different directory tree as as ```mipsEEel-linux-gcc3-*``` commands.
 
 ![](gcc2_compile_failed.png?raw=true)  
 *Cross-compilation of C program with gcc-2.95.2 failed*
@@ -94,11 +94,17 @@ The ```gcc``` version pre-installed on PS2 Linux appears to include working Obje
 
 ### Java
 
-A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```. Initially, this compiler does not work due to a ```libgcj.spec: No such file or directory``` error. This is due to the compiler relying on [libgcj](../Packages/libgcj), which will need to be built on PS2 Linux and installed into the cross-compiling environment in two locations. ```mipsEEel-linux-gcj``` still appears to display the same ```libgcj.spec: No such file or directory``` error unless the libgcj.spec file is copied to the same directory as the Java program being compiled.
+**Fair Warning:** The author put considerable effort from multiple angles into getting this working on PS2 Linux, and has ultimately determined that it is **VERY UNLIKELY** to ever work realistically. The information presented below is still included for reference.
 
-While binaries can be successfully created using ```mipsEEel-linux-gcj```, preliminary testing demonstrated that the binaries themselves would not execute properly on PS2 Linux. The binaries immediately produce an "Illegal Instruction" (SIGILL) error.
+A Java binary compiler ```mipsEEel-linux-gcj``` can be successfully built and installed using ```make LANGUAGES="java" install```. Initially, this compiler does not work due to a ```libgcj.spec: No such file or directory``` error. This is due to the compiler relying on [libgcj](../Packages/libgcj), which will need to be built on PS2 Linux and installed into the cross-compiling environment (possibly in multiple locations). The ```libgcj.spec``` file also needs to be installed to the following directory to prevent the ```libgcj.spec: No such file or directory``` error.
+```
+/usr/mipsEEel-linux/lib/gcc-lib/mipsEEel-linux/2.95.2
+```
 
-![](mipsEEel-linux-gcj_libgcj.spec-error_compile.png?raw=true)  
+&nbsp;  
+Java programs can then be successfully compiled using ```mipsEEel-linux-gcj```. However, the binaries themselves will not execute properly on PS2 Linux, and instead immediately produce an "Illegal Instruction" (SIGILL) error.
+
+![](mipsEEel-linux-gcj_compile.png?raw=true)  
 *mipsEEel-linux-gcj libgcj.spec error before generating binary successfully*
 
 ![](mipsEEel-linux-gcj_illegal_instruction_error.png?raw=true)  

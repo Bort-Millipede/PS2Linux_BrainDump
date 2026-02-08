@@ -7,11 +7,13 @@ Source: libgcj-2.95.1.tar.gz present on [PS2 Linux Beta Release 1 DVD](https://a
 
 ## Prerequisites
 
+**Fair Warning:** The author put considerable effort from multiple angles into getting Java-based binaries executing successfully on PS2 Linux. The author has ultimately determined that this is **VERY UNLIKELY** to ever work realistically. The information presented on this page is still included for reference.
+
 ### Preliminary Considerations
 
 libgcj is the Java runtime that goes along with the ```gcj``` front end to GCC. Other software may also require this as a dependency.
 
-Beyond this, libgcj is required for compiling Java code into native binaries via ```gcj```. At time of writing, the author has not been able to do this successfully for PS2 Linux, both via native compiling and cross-compiling. As such, building and installing this library onto PS2 Linux and into the cross-compiling environment for the purpose of compiling/cross-compiling Java binaries is purely optional.
+Beyond this, libgcj is required for compiling Java code into native binaries via ```gcj```. At time of writing, the author has not been able to do this successfully for PS2 Linux, both via native compiling and cross-compiling. As such, building and installing this library onto PS2 Linux and into the cross-compiling environment for the purpose of compiling/cross-compiling Java binaries is purely optional and should be considered a novelty.
 
 To directly leverage this library to compile Java binaries, a native version of ```gcj``` must be built and installed directly on PS2 Linux (outlined [HERE](../GCC)). However, preliminary testing by the author showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
 
@@ -35,7 +37,7 @@ Mount the DVD as UDF.
 mount -t udf /dev/cdrom /mnt/cdrom
 ```
 
-Copy the **libgcj-2.95.1.tar.gz** file from the ```/mnt/cdrom/SOURCES/``` directory onto the system.
+Copy the **libgcj-2.95.1.tar.gz** file from the ```/mnt/cdrom/SOURCES/``` directory onto PS2 Linux.
 
 Unmount the DVD
 ```bash
@@ -72,7 +74,7 @@ cd build
 &nbsp;  
 Configure and build source.
 ```bash
-../configure --prefix=$PREFIX
+CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make
 ```
 
@@ -152,12 +154,12 @@ cd build
 &nbsp;  
 Configure and build source
 ```bash
-../configure --prefix=$PREFIX
+CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make
 ```
 
 &nbsp;  
-Edit generated Makefiles to enable DESTDIR support. Then install to current directory and create installation archive (for easy installation onto future PS2 Linux installs).
+Edit generated Makefiles to enable DESTDIR support. Then install to current directory and create installation archive.
 ```bash
 perl -i.bak -pe "s/\t\\$\(prefix\) \\\\/\t\\$\(DESTDIR\)\\$\(prefix\) \\\\/" Makefile
 perl -i -pe "s/\t\\$\(exec_prefix\)/\t\\$\(DESTDIR\)\\$\(exec_prefix\)/" Makefile
@@ -172,10 +174,10 @@ tar czf libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz usr
 Transfer **libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
 cd /
-tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.cross-pc_ummu.tar.gz usr
+tar xzf /path/to/libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz
 ```
 
-## Building for Cross-Compiling Environment for Cross-Compiling
+## Building for Cross-Compiling Environment Toolchain
 
 Extract source archive. Do NOT use the same extracted directory as was used above.
 ```bash
@@ -191,42 +193,44 @@ export PREFIX=/usr/mipsEEel-linux
 ```
 
 &nbsp;  
-Edit **mach_dep.c** file to prevent build failure
+Edit **mach_dep.c** file to prevent build failure.
 ```
 perl -i.bak -pe "s/--> bad news <--/\/\/--> bad news <--/" boehm-gc/mach_dep.c
 ```
 
 &nbsp;  
-Create build directory
+Create build directory.
 ```
 mkdir build
 cd build
 ```
 
 &nbsp;  
-Configure and build source
+Configure and build source.
 ```bash
-../configure --prefix=$PREFIX
+CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make
 ```
 
 &nbsp;  
-Edit generated Makefiles to enable DESTDIR support. Then install to current directory and create installation archive (for easy installation onto future PS2 Linux installs).
+Edit generated Makefiles to enable DESTDIR support. Then install to current directory and create installation archive.
 ```bash
 perl -i.bak -pe "s/\t\\$\(prefix\) \\\\/\t\\$\(DESTDIR\)\\$\(prefix\) \\\\/" Makefile
 perl -i -pe "s/\t\\$\(exec_prefix\)/\t\\$\(DESTDIR\)\\$\(exec_prefix\)/" Makefile
 for f in `find . -name Makefile`; do perl -i.bak -pe "s/^DESTDIR =$/# DESTDIR =/" "$f"; done
 rm -rf usr/
 make DESTDIR=`pwd` install
+mkdir -p usr/mipsEEel-linux/lib/gcc-lib/mipsEEel-linux/2.95.2
+cp usr/mipsEEel-linux/lib/libgcj.spec usr/mipsEEel-linux/lib/gcc-lib/mipsEEel-linux/2.95.2/libgcj.spec
 tar czf libgcj-2.95.1.mipsEEel-linux.cross-pc_um.tar.gz usr
 ```
 
-### Installing on Cross-Compiling Environment for Cross-Compiling (as root or via sudo)
+### Installing on Cross-Compiling Environment for Cross-Compiling Toolchain (as root or via sudo)
 
 Transfer **libgcj-2.95.1.mipsEEel-linux.cross-pc_um.tar.gz** archive to system with ```mipsEEel-linux-*``` toolchain installed, and install.
 ```bash
 cd /
-tar xzf /path/to/vcdimager-0.7.21.mipsEEel-linux.cross-pc_um.tar.gz usr
+tar xzf /path/to/libgcj-2.95.1.mipsEEel-linux.cross-pc_um.tar.gz
 ```
 
 ## Troubleshooting

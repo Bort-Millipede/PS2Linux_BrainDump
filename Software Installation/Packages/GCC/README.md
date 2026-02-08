@@ -6,7 +6,7 @@ Source: **gcc-2.95.2-3a.src.rpm** present on [Linux (for Playstation 2) Release 
 ## References
 
 * **Mozilla for PlayStation 2 Cross Compiling Mini-HOWTO**
-  * Local backup [here](moz_cross_1.0.1.html) or rendered [here](https://html-preview.github.io/?url=https://github.com/Bort-Millipede/PS2Linux_BrainDump/blob/main/Software%20Installation/Toolchain/moz_cross_1.0.1.html)
+  * Local backup [here](moz_cross_1.0.1.html)
   * [Backup site](http://ps2linux.no-ip.info/playstation2-linux.com/download/mozilla-ps2/moz_cross_1.0.1.html)
 
 ## Preliminary Considerations
@@ -19,7 +19,9 @@ For compiling Java binaries (see Limitations), [libgcj](../libgcj) will also nee
 
 ### Limitations
 
-At time of writing, the author has been unable to successfully compile and execute Java-based binaries on PS2 Linux. Preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
+At time of writing, the author has been unable to execute Java-based binaries successfully on PS2 Linux. Preliminary testing showed issues with compiled binaries resulting in an "Illegal Instruction" (SIGILL) error. Executing the compiled binaries through a debugger showed "Segmentation Fault" (SIGSEGV) and "Bus Error" (SIGBUS) errors preceding the "Illegal Instruction" (SIGILL) error.
+
+The author has ultimately determined that getting Java-based binaries to execute successfully on PS2 Linux is **VERY UNLIKELY** to ever work realistically.
 
 ![](../libgcj/gcj_illegal_instruction_error.png?raw=true)  
 *Illegal Instruction error when executing Java binary compiled with gcj*
@@ -30,7 +32,7 @@ At time of writing, the author has been unable to successfully compile and execu
 ![](../libgcj/gcj_strace_SIGSEGV_SIGBUS_SIGILL.png?raw=true)  
 *Debugger showing SIGSEGV and SIGBUS errors preceding SIGILL error*
 
-Additionally, at time of writing the author has been unable to create an installation archive for GCC 2.95.2. This is due to the Makefile(s) for GCC 2.95.2 not supporting the DESTDIR parameter. Therefore, this will need to be built separately on every individual PS2 Linux installation to which it will be installed.
+Additionally, at time of writing the author has been unable to create an installation archive for GCC 2.95.2. This is due to the Makefile(s) for GCC 2.95.2 not supporting the DESTDIR parameter. Therefore, this will need to be built separately on every individual PS2 Linux installation to which it will be installed. Additionally, the author cannot currently provide precompiled binaries for this.
 
 ## Extracting Required File From PS2 Linux Beta Release 1 DVD or Linux (for Playstation 2) Release 1.0 Disc 2 (directly on PS2 Linux or in Cross-Compiling Environment)
 
