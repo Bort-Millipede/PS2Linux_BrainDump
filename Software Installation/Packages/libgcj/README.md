@@ -72,7 +72,19 @@ cd build
 ```
 
 &nbsp;  
-Configure and build source.
+Configure source for a stripped-down Java library, then build. Notes about passed options.  
+* CFLAGS/CXXFLAGS: C and C++ compiler flags:
+  * -O0: disable all optimization.
+  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mno-mips16: do not generate MIPS16 code.
+* --disable-nls: Disable native language support.
+* --disable-awt: Do not include Java AWT classes.
+* --disable-swing: Do not include Java Swing classes.
+* --disable-rmi: Do not include Java RMI classes.
+* --disable-corba: Do not include Java CORBA classes.
+* --without-x: Do not include X Windows support.
+* --enable-shared: Build shared libraries.
+* --disable-static: Do not build static libraries.
 ```bash
 CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make
@@ -152,7 +164,19 @@ cd build
 ```
 
 &nbsp;  
-Configure and build source
+Configure source for a stripped-down Java library, then build. Notes about passed options.  
+* CFLAGS/CXXFLAGS: C and C++ compiler flags:
+  * -O0: disable all optimization.
+  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mno-mips16: do not generate MIPS16 code.
+* --disable-nls: Disable native language support.
+* --disable-awt: Do not include Java AWT classes.
+* --disable-swing: Do not include Java Swing classes.
+* --disable-rmi: Do not include Java RMI classes.
+* --disable-corba: Do not include Java CORBA classes.
+* --without-x: Do not include X Windows support.
+* --enable-shared: Build shared libraries.
+* --disable-static: Do not build static libraries.
 ```bash
 CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make
@@ -206,7 +230,19 @@ cd build
 ```
 
 &nbsp;  
-Configure and build source.
+Configure source for a stripped-down Java library, then build. Notes about passed options.  
+* CFLAGS/CXXFLAGS: C and C++ compiler flags:
+  * -O0: disable all optimization.
+  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mno-mips16: do not generate MIPS16 code.
+* --disable-nls: Disable native language support.
+* --disable-awt: Do not include Java AWT classes.
+* --disable-swing: Do not include Java Swing classes.
+* --disable-rmi: Do not include Java RMI classes.
+* --disable-corba: Do not include Java CORBA classes.
+* --without-x: Do not include X Windows support.
+* --enable-shared: Build shared libraries.
+* --disable-static: Do not build static libraries.
 ```bash
 CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
 make

@@ -96,9 +96,9 @@ As indicated above, this newly-installed GCC will NOT replace the GCC pre-instal
 
 ### Test Binaries
 
-* [C](../../Toolchain/Testbin/hello.c): ```gcc -o hello-c hello.c```
-* [C++](../../Toolchain/Testbin/hello.cpp): ```g++ -o hello-cpp hello.cpp```
-* [Fortran 77](../../Toolchain/Testbin/hello.f): ```g77 -o hello-g77 hello.f```
-* [CHILL](../../Toolchain/Testbin/hello.ch): ```chill -o hello-chill hello.ch```
-* [Objective-C](../../Toolchain/Testbin/hello.m): ```gcc -o hello-objc hello.m -lobjc```
+* [C](../../Toolchain/Testbin/hello.c): ```/usr/local/bin/gcc -o hello-c hello.c```
+* [C++](../../Toolchain/Testbin/hello.cpp): ```/usr/local/bin/g++ -o hello-cpp hello.cpp```
+* [Fortran 77](../../Toolchain/Testbin/hello.f): ```/usr/local/bin/g77 -o hello-g77 hello.f```
+* [CHILL](../../Toolchain/Testbin/hello.ch): ```/usr/local/bin/chill -o hello-chill hello.ch```
+* [Objective-C](../../Toolchain/Testbin/hello.m): ```/usr/local/bin/gcc -o hello-objc hello.m -lobjc```
 
