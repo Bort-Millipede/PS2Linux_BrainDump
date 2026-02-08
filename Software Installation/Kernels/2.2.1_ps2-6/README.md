@@ -118,7 +118,7 @@ Create installation archive for "installed" kernel modules.
 ```
 cd /lib/modules
 mv 2.2.1 2.2.1_ps2.cc
-tar czvf /path/to/new/kernel-modules-2.2.1_ps2-6.cc.tar.gz 2.2.1_ps2.cc
+tar czf /path/to/new/kernel-modules-2.2.1_ps2-6.cc.tar.gz 2.2.1_ps2.cc
 ```
 
 ## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
@@ -151,6 +151,7 @@ cp 2.2.1_ps2.orig/* 2.2.1_ps2.cc/.
 tar xzf /path/to/kernel-modules-2.2.1_ps2-6.cc.tar.gz
 rm 2.2.1
 ln -s 2.2.1_ps2.cc 2.2.1
+depmod -a
 ```
 
 &nbsp;  

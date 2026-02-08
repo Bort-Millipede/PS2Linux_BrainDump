@@ -191,6 +191,7 @@ Install kernel modules and create necessary ```/lib/modules/2.2.19``` symbolic l
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.2.19_ps2-5.tar.gz
 ln -sf 2.2.19_ps2 2.2.19
+depmod -a
 ```
 
 &nbsp;  

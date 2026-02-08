@@ -165,7 +165,8 @@ cp /boot/vmlinux-2.2.1_ps2 /boot/vmlinux-2.2.1_ps2.orig
 Install kernel modules.
 ```bash
 cd /lib/modules
-tar czf /path/to/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
+tar xzf /path/to/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
+depmod -a
 ```
 
 &nbsp;  
