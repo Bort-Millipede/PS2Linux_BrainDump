@@ -75,18 +75,15 @@ cd build
 Configure source for a stripped-down Java library, then build. Notes about passed options.  
 * CFLAGS/CXXFLAGS: C and C++ compiler flags:
   * -O0: disable all optimization.
-  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mips2: generate MIPS-II code.
   * -mno-mips16: do not generate MIPS16 code.
+  * -fPIC: generate Position-Independent Code.
+  * -fno-strict-aliasing: Disable strict aliasing optimizations.
 * --disable-nls: Disable native language support.
-* --disable-awt: Do not include Java AWT classes.
-* --disable-swing: Do not include Java Swing classes.
-* --disable-rmi: Do not include Java RMI classes.
-* --disable-corba: Do not include Java CORBA classes.
-* --without-x: Do not include X Windows support.
 * --enable-shared: Build shared libraries.
 * --disable-static: Do not build static libraries.
 ```bash
-CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
+CFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" CXXFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" ../configure --prefix=$PREFIX --disable-nls --enable-shared --disable-static
 make
 ```
 
@@ -99,8 +96,8 @@ for f in `find . -name Makefile`; do perl -i.bak -pe "s/^DESTDIR =$/# DESTDIR =/
 ```
 
 &nbsp;  
-Install to current directory (as root or via sudo)  
-**Note:** this process fails if not executed as root or via sudo. It seems that an actual system installation takes place, as well as an installation to the current directory. This is why an additional "unmodified" installation is executed again later.
+Install to current directory (may require root or sudo)
+**Note:** this process may fail if not executed as root or via sudo. It seems that an actual system installation might takes place first, as well as an installation to the current directory. This is why an additional "unmodified" installation is executed again later.
 ```bash
 rm -rf usr/
 make DESTDIR=`pwd` install
@@ -133,16 +130,10 @@ Transfer **libgcj-2.95.1.mipsEEel-linux.tar.gz** archive to PS2 Linux and instal
 ```bash
 cd /
 tar xzf /path/to/libgcj-2.95.1.mipsEEel-linux.tar.gz
+/sbin/ldconfig
 ```
 
 ## Building for Cross-Compiling Environment as Software Dependency
-
-Extract source archive. Do NOT use the same extracted directory as was used above.
-```bash
-tar xzf /path/to/libgcj-2.95.1.tar.gz
-mv libgcj-2.95.1_ummu
-cd libgcj-2.95.1_ummu
-```
 
 &nbsp;  
 Set necessary environment variables.
@@ -150,9 +141,12 @@ Set necessary environment variables.
 export PREFIX=/usr/mipsEEel-linux/mipsEEel-linux/usr
 ```
 
-&nbsp;  
-Edit **mach_dep.c** file to prevent build failure
-```
+Extract source archive (Do NOT use the same extracted directory as was used above), and edit **mach_dep.c** file to prevent build failure.
+```bash
+mv libgcj-2.95.1 libgcj-2.95.1.bak
+tar xzf /path/to/libgcj-2.95.1.tar.gz
+mv libgcj-2.95.1 libgcj-2.95.1_ummu
+cd libgcj-2.95.1_ummu
 perl -i.bak -pe "s/--> bad news <--/\/\/--> bad news <--/" boehm-gc/mach_dep.c
 ```
 
@@ -167,18 +161,15 @@ cd build
 Configure source for a stripped-down Java library, then build. Notes about passed options.  
 * CFLAGS/CXXFLAGS: C and C++ compiler flags:
   * -O0: disable all optimization.
-  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mips2: generate MIPS-II code.
   * -mno-mips16: do not generate MIPS16 code.
+  * -fPIC: generate Position-Independent Code.
+  * -fno-strict-aliasing: Disable strict aliasing optimizations.
 * --disable-nls: Disable native language support.
-* --disable-awt: Do not include Java AWT classes.
-* --disable-swing: Do not include Java Swing classes.
-* --disable-rmi: Do not include Java RMI classes.
-* --disable-corba: Do not include Java CORBA classes.
-* --without-x: Do not include X Windows support.
 * --enable-shared: Build shared libraries.
 * --disable-static: Do not build static libraries.
 ```bash
-CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
+CFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" CXXFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" ../configure --prefix=$PREFIX --disable-nls --enable-shared --disable-static
 make
 ```
 
@@ -203,22 +194,18 @@ tar xzf /path/to/libgcj-2.95.1.mipsEEel-linux.cross-pc_ummu.tar.gz
 
 ## Building for Cross-Compiling Environment Toolchain
 
-Extract source archive. Do NOT use the same extracted directory as was used above.
-```bash
-tar xzf /path/to/libgcj-2.95.1.tar.gz
-mv libgcj-2.95.1_um
-cd libgcj-2.95.1_um
-```
-
 &nbsp;  
 Set necessary environment variables.
 ```bash
 export PREFIX=/usr/mipsEEel-linux
 ```
 
-&nbsp;  
-Edit **mach_dep.c** file to prevent build failure.
-```
+Extract source archive (Do NOT use the same extracted directory as was used above), and edit **mach_dep.c** file to prevent build failure.
+```bash
+mv libgcj-2.95.1 libgcj-2.95.1.bak
+tar xzf /path/to/libgcj-2.95.1.tar.gz
+mv libgcj-2.95.1 libgcj-2.95.1_um
+cd libgcj-2.95.1_um
 perl -i.bak -pe "s/--> bad news <--/\/\/--> bad news <--/" boehm-gc/mach_dep.c
 ```
 
@@ -233,18 +220,15 @@ cd build
 Configure source for a stripped-down Java library, then build. Notes about passed options.  
 * CFLAGS/CXXFLAGS: C and C++ compiler flags:
   * -O0: disable all optimization.
-  * -msoft-float: generate code for floating point calculations using emulation rather than hardware instructions.
+  * -mips2: generate MIPS-II code.
   * -mno-mips16: do not generate MIPS16 code.
+  * -fPIC: generate Position-Independent Code.
+  * -fno-strict-aliasing: Disable strict aliasing optimizations.
 * --disable-nls: Disable native language support.
-* --disable-awt: Do not include Java AWT classes.
-* --disable-swing: Do not include Java Swing classes.
-* --disable-rmi: Do not include Java RMI classes.
-* --disable-corba: Do not include Java CORBA classes.
-* --without-x: Do not include X Windows support.
 * --enable-shared: Build shared libraries.
 * --disable-static: Do not build static libraries.
 ```bash
-CFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" CXXFLAGS="-g -O0 -mgp32 -msoft-float -mno-mips16" ../configure --prefix=$PREFIX --disable-nls --disable-awt --disable-swing --disable-rmi --disable-corba --without-x --enable-shared --disable-static
+CFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" CXXFLAGS="-g -O0 -mips2 -mno-mips16 -fPIC -fno-strict-aliasing" ../configure --prefix=$PREFIX --disable-nls --enable-shared --disable-static
 make
 ```
 
