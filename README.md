@@ -91,6 +91,14 @@ Digest and use this at your own risk!!!
 
 While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
 
+## Demonstration Videos
+
+The author put together video demonstrations for several topics contained in this repository. These can be found on YouTube at the links below.
+
+* [Using VLC on PS2 Linux](https://www.youtube.com/watch?v=Tutsa2Xg5lM)
+* [Using cdrtools on PS2 Linux to Burn a CD](https://www.youtube.com/watch?v=nevKiHUmwVw)
+* [Using the PC-DC Server on PS2 Linux to Connect Sega Dreamcast To the Internet](https://www.youtube.com/watch?v=NQZ-Ut8_40Q)
+
 ## PS2 Linux References
 
 * [playstation2-linux.com](http://ps2linux.no-ip.info/playstation2-linux.com/) (site backup)
