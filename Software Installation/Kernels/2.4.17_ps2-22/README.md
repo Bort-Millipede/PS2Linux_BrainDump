@@ -67,6 +67,12 @@ cd ../..
 ```
 
 &nbsp;  
+Fix ramdisk Makefile: prevent requiring embedded ramdisk (unless ```CONFIG_EMBEDDED_RAMDISK=y``` is set) using [this patch](../kernel-2.4.17_ps2_ramdisk.patch).
+```bash
+patch -p1 < /path/to/kernel-2.4.17_ps2_ramdisk.patch
+```
+
+&nbsp;  
 **If planning on booting PS2 Linux from BB Navigator:** Edit PS2 Graphics Synthesizer console driver to prevent picture from freezing on boot.
 ```bash
 perl -i -pe "s/^    graphics_boot = 1;/    \/\/graphics_boot = 1;/" drivers/video/ps2con.c
@@ -74,11 +80,11 @@ perl -i -pe "s/^    graphics_boot = 1;/    \/\/graphics_boot = 1;/" drivers/vide
 
 &nbsp;  
 Run ```setup-ps2``` script and modify included kernel configuration file to:
-* Enable built-in ext2 filesystem support.
+* Enable built-in (not kernel module) ext2 filesystem support.
 * Enable devpts filesystem support.
 * Enable UNIX 98 PTY support.
 * Enable PS2 debug log facility.
-* Enable built-in SCSI device support.
+* Enable built-in (not kernel module) SCSI device support.
 ```bash
 ./setup-ps2
 perl -i -pe "s/CONFIG_EXT2_FS=m/CONFIG_EXT2_FS=y/" .config
@@ -103,11 +109,15 @@ cp config .config
 ```
 
 &nbsp;  
-Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
+Prepare kernel source directory for building, and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).  
+If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.  
+
 ```
 make oldconfig
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 ## Building for PS2 Linux Beta Release 1
@@ -117,9 +127,11 @@ The kernel can be built in the directory that was created/prepared above, or it 
 * If building in a separate directory, building should be done as a non-root user. To create this directory, follow the directions in the previous section but substitute the ```cd /usr/mipsEEel-linux/mipsEEel-linux``` command for a different base directory where the source directory should be created.
 
 &nbsp;  
-If needed, reconfigure the kernel (if not needed, this should be skipped).
+If needed, reconfigure the kernel (if not needed, this should be skipped) and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).
 ```bash
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 &nbsp;  
@@ -145,7 +157,7 @@ make modules_install
 Create installation archive for kernel modules.
 ```
 cd /lib/modules
-tar czvf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
+tar czf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
 ```
 
 ## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
@@ -157,6 +169,7 @@ Install kernel modules
 ```bash
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.4.17_ps2-22.tar.gz
+depmod -a
 ```
 
 &nbsp;  
@@ -220,5 +233,5 @@ ln -s input/mice /dev/usbmouse
 
 The PS2 Linux Beta Release 1 DVD cannot boot the 2.4.17_mvl21 kernel correctly (the kernel boots to a blank screen). Therefore, this kernel can only be booted via the following means:
 * via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem)).
-* via BB Navigator 0.30 or newer (not currently outlined in this repository, but planned for future updates).
+* via BB Navigator 0.30 or newer (outlines [HERE](../../../Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)).
 

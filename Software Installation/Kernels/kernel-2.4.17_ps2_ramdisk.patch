@@ -1,0 +1,13 @@
+--- linux-2.4.17_ps2-26.orig/arch/mips/Makefile	2026-02-03 22:37:03.000000000 -0600
++++ linux-2.4.17_ps2-26/arch/mips/Makefile	2026-02-01 21:32:03.000000000 -0600
+@@ -114,8 +114,8 @@
+ # arch/mips/ramdisk
+ #
+ ifdef CONFIG_BLK_DEV_INITRD 
+-CORE_FILES      += arch/mips/ramdisk/ramdisk.o
+-SUBDIRS		+= arch/mips/ramdisk
++#CORE_FILES      += arch/mips/ramdisk/ramdisk.o
++#SUBDIRS		+= arch/mips/ramdisk
+ endif
+ 
+ 

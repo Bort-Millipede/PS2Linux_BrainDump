@@ -56,6 +56,12 @@ cd linux-2.4.17_ps2-26
 ```
 
 &nbsp;  
+Fix ramdisk Makefile: prevent requiring embedded ramdisk (unless ```CONFIG_EMBEDDED_RAMDISK=y``` is set) using [this patch](../kernel-2.4.17_ps2_ramdisk.patch).
+```bash
+patch -p1 < /path/to/kernel-2.4.17_ps2_ramdisk.patch
+```
+
+&nbsp;  
 **If planning on booting PS2 Linux from BB Navigator:** Edit PS2 Graphics Synthesizer console driver to prevent picture from freezing on boot.
 ```bash
 perl -i -pe "s/^    graphics_boot = 1;/    \/\/graphics_boot = 1;/" drivers/video/ps2con.c
@@ -63,11 +69,11 @@ perl -i -pe "s/^    graphics_boot = 1;/    \/\/graphics_boot = 1;/" drivers/vide
 
 &nbsp;  
 Run ```setup-ps2``` script and modify included kernel configuration file to:
-* Enable built-in ext2 filesystem support.
+* Enable built-in (not kernel module) ext2 filesystem support.
 * Enable devpts filesystem support.
 * Enable UNIX 98 PTY support.
 * Enable PS2 debug log facility.
-* Enable built-in SCSI device support.
+* Enable built-in (not kernel module) SCSI device support.
 ```bash
 ./setup-ps2
 perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" .config
@@ -93,11 +99,15 @@ cp config .config
 ```
 
 &nbsp;  
-Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
+Prepare kernel source directory for building, and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).  
+If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.  
+
 ```
 make oldconfig
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 ## Building for PS2 Linux Release 1.0
@@ -107,9 +117,11 @@ The kernel can be built in the directory that was created/prepared above, or it 
 * If building in a separate directory, building should be done as a non-root user. To create this directory, follow the directions in the previous section but substitute the ```cd /usr/mipsEEel-linux/mipsEEel-linux``` command for a different base directory where the source directory should be created.
 
 &nbsp;  
-If needed, reconfigure the kernel (if not needed, this should be skipped).
+If needed, reconfigure the kernel (if not needed, this should be skipped) and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).
 ```bash
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 &nbsp;  
@@ -135,7 +147,7 @@ make modules_install
 Create installation archive for kernel modules.
 ```
 cd /lib/modules
-tar czvf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
+tar czf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
 ```
 
 ## Installing on PS2 Linux Release 1.0 (as root or via sudo)
@@ -143,10 +155,11 @@ tar czvf /path/to/new/kernel-modules-2.4.17_ps2-26.tar.gz 2.4.17_mvl21
 Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-26.tar.gz** files to PS2 Linux.
 
 &nbsp;  
-Install kernel modules
+Install kernel modules.
 ```bash
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.4.17_ps2-26.tar.gz
+depmod -a
 ```
 
 &nbsp;  
