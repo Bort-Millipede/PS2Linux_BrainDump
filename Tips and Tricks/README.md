@@ -4,6 +4,8 @@ A vast amount of tips and tricks beyond the scope of this repository can be foun
 
 ## Hardware-Specific Tips
 
+**Dedicated PS2 Memory Card:** PS2 Linux requires a memory card for storing the kernel(s). If using an official 8MB memory card, the author recommends using a dedicated memory card just for PS2 Linux. This is because PS2 Linux will rapidly use up all space on the memory card (for kernels, ramdisks, etc.).
+
 **USB Keyboard and Mouse:** The official Playstation 2 Keyboard (SCPH-10240) and Mouse (SCPH-10230) are not required to use PS2 Linux. However, the author recommends obtaining an official Playstation 2 Keyboard if possible, as the device contains an onboard USB port for a USB mouse. This leaves one USB port on the Playstation 2 console free for use with other devices (such as those described [HERE](../USB&#32;Devices)).
 
 ## Install-Specific Tips

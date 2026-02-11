@@ -6,8 +6,6 @@ Partitioning/re-partitioning the HDD is not covered here or anywhere else in thi
 
 The directions below assume that PS2 Linux is installed to ```/dev/hda1``` and the backup partition is installed to ```/dev/hda3```. If this does not match the PS2 Linux installation being backed up or restored, the appropriate steps below must be modified accordingly.
 
-Required file: [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/initfs.gz)
-
 ## References
 
 * [http://playstation2-linux.com/download/apa/apa_2.2.1.html](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/apa_2.2.1.html)
@@ -15,6 +13,13 @@ Required file: [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/dow
 ## Prerequisites
 
 ### Dependencies
+
+A ramdisk is required for the directions below. The options for this are:
+* Original ramdisk (from the playstation2-linux.com community) for Beta Release 1 and Release 1.0 (supports kernel 2.2.1 only): [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/initfs.gz)
+* Author's ramdisk for Beta Release 1 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_beta.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_beta.gz)
+* Author's ramdisk for Release 1.0 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_release.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_release.gz)
+
+Additionally, the follow packages are required for the tutorial below (these are already included in the author's ramdisks linked above):
 
 * [star](../../Software&#32;Installation/Packages/star): This seems to perform faster than the standard ```tar``` executable available on PS2 Linux. The precompiled ```star``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz).
 * [pv](../../Software&#32;Installation/Packages/pv): This is technically optional, but is highly recommended and is included in commands provided below. This should be used in conjunction with file transfers using netcat, as the netcat version available in the PS2 Linux ramdisk does not output progress information. The precompiled ```pv``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/pv-0.6.4.mipsEEel-linux.tar.gz).
@@ -31,8 +36,8 @@ It is recommended that the following executables be copied to the ```bin``` dire
 * ```md5sum```: For calculating file checksums to ensure transferred were not corrupted during transmission. ```cp /usr/bin/md5sum /mnt/backup/bin/md5sum```
 * ```pv```: For providing progress information when sending files using netcat. ```cp /usr/local/bin/pv /mnt/backup/bin/pv```
 * ```star```: For creating tar archives. ```cp /usr/local/bin/star /mnt/backup/bin/pv```
-* ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz)
-* ```ps2fdisk_scei```: (For PS2 Linux Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
+* ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz). On Beta Release 1 installations, the author recommends renaming this binary to ```ps2fdisk_ac``` to differentiate it from the ```ps2fdisk_scei``` binary below.
+* ```ps2fdisk_scei```: (For Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
 
 ## Installing the Ramdisk (as root or via sudo).
 
@@ -42,15 +47,37 @@ mount /mnt/mc00
 cp /path/to/initfs.gz /mnt/mc00/initfs.gz
 ```
 
-&nbsp;  
+### Adding Boot entries
+
+#### Compressed Kernels
+
 Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
 ```
-"initfs"  vmlinux initfs.gz 203 /dev/ram0 "" initfs
+"initfs2.2.1"	vmlinux.gz initfs.gz	203 /dev/ram0 ""	initfs 2.2.1
+```
+
+If using one of the author's ramdisks, also add the following entries:
+```
+"initfs2.2.19"	vmlinux-2.2.19.gz initfs.gz	203 /dev/ram0 ""	initfs 2.2.19
+"initfs2.4.17"	vmlinux-2.4.17_mvl21.gz initfs.gz	203 /dev/ram0 "ramdisk_size=10240"	initfs 2.4.17
+```
+
+#### Uncompressed Kernels
+
+Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
+```
+"initfs2.2.1"	vmlinux initfs.gz	203 /dev/ram0 ""	initfs 2.2.1
+```
+
+If using one of the author's ramdisks, also add the following entries:
+```
+"initfs2.2.19"	vmlinux-2.2.19 initfs.gz	203 /dev/ram0 ""	initfs 2.2.19
+"initfs2.4.17"	vmlinux-2.4.17_mvl21 initfs.gz	203 /dev/ram0 "ramdisk_size=10240"	initfs 2.4.17
 ```
 
 ## Creating a Backup of a PS2 Linux Installation
 
-Load the PS2 Linux DVD and select the ```initfs``` boot option. When the login prompt appears, enter root for the username.
+Load the PS2 Linux DVD and select the appropriate ```initfs*``` boot option. When the login prompt appears, enter root for the username.
 
 &nbsp;  
 Mount the PS2 Linux and backup partitions.
@@ -163,7 +190,7 @@ quit
 
 ## Restoring a Backup of a PS2 Linux Installation
 
-Load the PS2 Linux DVD and select the ```initfs``` boot option. When the login prompt appears, enter root for the username.
+Load the PS2 Linux DVD and select the appropriate ```initfs*``` boot option. When the login prompt appears, enter root for the username.
 
 &nbsp;  
 Mount the backup partition.
