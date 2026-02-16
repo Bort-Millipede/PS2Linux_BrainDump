@@ -1,5 +1,7 @@
 # Linux Kernels
 
+**Note:** Precompiled Kernels are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+
 ## Available Kernels
 
 * [2.2.1_ps2-6](2.2.1_ps2-6) (for PS2 Linux Beta Release 1)
