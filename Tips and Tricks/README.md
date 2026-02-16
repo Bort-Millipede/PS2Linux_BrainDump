@@ -24,6 +24,8 @@ It is recommended the entire harddrive installed in the Playstation 2 console NO
 
 **RPM Upgrade:** The required packages needed for the upgrade can be found [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/projects/apt.html). The actual upgrade procedure is [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apt/rpm-upgrade.pdf), with some revisions being outlined in bug reports [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/bug/apt.html).
 
+**(For Release 1.0 installations) Convert HD partitioning scheme to APA:** The user would most likely prefer that the HDD device NOT be dedicated solely to using PS2 Linux (ie. PS2 Linux be installed alongside other Playstation 2 game data). Getting this setup initially and only for the 2.2.1 kernel is described [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/apa_2.2.1.html).
+
 **Create Backup Partition:** If PS2 Linux was not installed using the full PS2 HDD (hopefully not), the author recommends creating a 5GB backup partition for backing up files.
 
 **Create Full Backup of PS2 Linux installation:** A full backup of the PS2 Linux installation should be created. This backup can be leveraged at a later time to restore a working PS2 Linux installation without the need to re-run the original PS2 Linux installer. A procedure to accomplish this is outlined in this repository [HERE](Backup-Restore).

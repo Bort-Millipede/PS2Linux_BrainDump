@@ -282,11 +282,15 @@ cp config .config
 ```
 
 &nbsp;  
-Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
+Prepare kernel source directory for building, and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).  
+If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.  
+
 ```
 make oldconfig
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 ### 2.4.17_mvl21 (PS2 Linux Release 1.0)
@@ -339,11 +343,15 @@ cp config .config
 ```
 
 &nbsp;  
-Prepare kernel source directory for building. If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
-To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.
+Prepare kernel source directory for building, and ensure that IDE DMA is enabled in kernel configuration file (because ```make menuconfig``` may incorrectly disable it).  
+If prompted by ```make oldconfig``` command to make choices, pressing ENTER will choose the default choice.  
+To immediately exit out of ```make menuconfig``` command, press: ```ESC ESC```; then select ```No```.  
+
 ```
 make oldconfig
 make menuconfig
+perl -i -pe "s/# CONFIG_BLK_DEV_PS2_IDEDMA is not set/CONFIG_BLK_DEV_PS2_IDEDMA=y/" .config
+perl -i -pe "s/# CONFIG_BLK_DEV_IDEDMA is not set/CONFIG_BLK_DEV_IDEDMA=y/" .config
 ```
 
 ## Configuring PS2 Linux to Build Software Against Different Kernel Version
