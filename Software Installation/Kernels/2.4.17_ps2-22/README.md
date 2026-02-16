@@ -2,6 +2,9 @@
 
 ![](2.4.17_beta_login.png?raw=true)
 
+**Note:** Precompiled Kernel is available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [ps2linuxbeta_kernel-2.4.17_ps2-22.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linuxbeta_kernel-2.4.17_ps2-22.tar.gz): with legacy APA partition and BBN APA partition support.
+
 Required files (present on [Playstation BB Navigator 0.30 Disc](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.30%20%28Japan%29.zip), within ```source.tgz``` file under ```source/kernel```):  
 * kernel-headers-2.4.17_ps2-22.mipsel.rpm
 * kernel-source-2.4.17_ps2-22.mipsel.rpm
@@ -139,6 +142,7 @@ Build dependencies, then build kernel
 ```bash
 make dep
 make
+mv vmlinux vmlinux-2.4.17_mvl21
 ```
 
 &nbsp;  
@@ -162,10 +166,10 @@ tar czf /path/to/new/kernel-modules-2.4.17_ps2-22.tar.gz 2.4.17_mvl21
 
 ## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.4.17_ps2-22.tar.gz** files to PS2 Linux.
+Transfer **vmlinux-2.4.17_mvl21**, **System.map**, and **kernel-modules-2.4.17_ps2-22.tar.gz** files to PS2 Linux. If installing a [precompiled kernel from the author](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel), these files will be contained within the kernel archive.
 
 &nbsp;  
-Install kernel modules
+Install kernel modules and generate dependency list for newly installed kernel modules.
 ```bash
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.4.17_ps2-22.tar.gz
@@ -175,7 +179,7 @@ depmod -a
 &nbsp;  
 Install kernel files to ```/boot```.
 ```bash
-cp /path/to/vmlinux /boot/vmlinux-2.4.17_mvl21
+cp /path/to/vmlinux-2.4.17_mvl21 /boot/vmlinux-2.4.17_mvl21
 cp /path/to/System.map /boot/System.map-2.4.17_mvl21
 ```
 
@@ -183,7 +187,7 @@ cp /path/to/System.map /boot/System.map-2.4.17_mvl21
 **Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
-gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux-2.4.17_mvl21.gz
+gzip -9c /path/to/vmlinux-2.4.17_mvl21 > /mnt/mc00/vmlinux-2.4.17_mvl21.gz
 chmod 755 /mnt/mc00/vmlinux-2.4.17_mvl21.gz
 ```
 
@@ -191,7 +195,7 @@ chmod 755 /mnt/mc00/vmlinux-2.4.17_mvl21.gz
 Alternatively: install raw uncompressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
-cp /path/to/vmlinux /mnt/mc00/vmlinux-2.4.17_mvl21
+cp /path/to/vmlinux-2.4.17_mvl21 /mnt/mc00/vmlinux-2.4.17_mvl21
 chmod 755 /mnt/mc00/vmlinux-2.4.17_mvl21
 ```
 
@@ -231,7 +235,7 @@ ln -s input/mice /dev/usbmouse
 
 ## Booting Kernel 2.4.17_mvl21
 
-The PS2 Linux Beta Release 1 DVD cannot boot the 2.4.17_mvl21 kernel correctly (the kernel boots to a blank screen). Therefore, this kernel can only be booted via the following means:
+The PS2 Linux Beta Release 1 DVD cannot boot the 2.4.17_mvl21 kernel correctly (the kernel loading dialog completes, after which a blank screen appears and nothing further happens). Therefore, this kernel can only be booted via the following means:
 * via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem)).
-* via BB Navigator 0.30 or newer (outlines [HERE](../../../Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)).
+* via BB Navigator 0.30 or newer (outlined [HERE](../../../Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)).
 

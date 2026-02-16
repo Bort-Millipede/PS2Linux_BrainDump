@@ -6,6 +6,11 @@
 ![](2.2.19_release_login.png?raw=true)  
 *PS2 Linux Release 1.0 running on Kernel 2.2.19*
 
+**Note:** Precompiled Kernels are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [ps2linuxbeta_kernel-2.2.19_ps2-5.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linuxbeta_kernel-2.2.19_ps2-5.tar.gz): for Beta Release 1 with legacy APA partition support only.
+* [ps2linuxbeta_kernel-2.2.19_ps2-5.bbnapa.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linuxbeta_kernel-2.2.19_ps2-5.bbnapa.tar.gz): for Beta Release 1 with legacy APA partition and BBN APA partition support.
+* [ps2linux_kernel-2.2.19_ps2-5.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linux_kernel-2.2.19_ps2-5.tar.gz): for Release 1.0.
+
 Required file (present on [Playstation BB Navigator 0.10 Disc 2](https://archive.org/download/sony_playstation2_p/PlayStation%20BB%20Navigator%20-%20Version%200.10%20%28Prerelease%29%20%28Japan%29%20%28Disc%202%29%20%28SCPN-60103%29.zip), within ```source.tgz``` file under ```source/kernel```):  
 * kernel-2.2.19_ps2-5.src.rpm
 
@@ -80,7 +85,7 @@ cd ..
 Modify APA partitioning support: use legacy APA partitioning support from 2.2.1 Beta Kernel.
 ```bash
 cd drivers/block
-mv genhd.c genhd-2.2.19_ps2.c
+mv genhd.c genhd-2.2.19_ps2-5.c
 cp /path/to/linux-2.2.1_ps2-6/drivers/block/genhd.c .
 cd ../..
 ```
@@ -159,6 +164,7 @@ Build dependencies, then build kernel
 make dep
 make clean
 make
+mv vmlinux vmlinux-2.2.19
 ```
 
 &nbsp;  
@@ -174,30 +180,42 @@ make modules_install
 ```
 
 &nbsp;  
-Create installation archive for kernel modules.
+Create installation archive for kernel modules (as root or via sudo).
 ```
 cd /lib/modules
-mv 2.2.19 2.2.19_ps2
-tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19_ps2
+
+tar czf /path/to/new/kernel-modules-2.2.19_ps2-5.tar.gz 2.2.19
 ```
 
 ## Installing Kernel on PS2 Linux (Beta Release 1 or Release 1.0) (as root or via sudo)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux.
+Transfer **vmlinux-2.2.19**, **System.map**, and **kernel-modules-2.2.19_ps2-5.tar.gz** files to PS2 Linux. If installing a [precompiled kernel from the author](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel), these files will be contained within the kernel archive.
 
 &nbsp;  
-Install kernel modules and create necessary ```/lib/modules/2.2.19``` symbolic link.
+Install kernel modules.
 ```bash
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.2.19_ps2-5.tar.gz
+```
+
+&nbsp;  
+**Do this ONLY FOR PS2 Linux Beta Release 1 installations and only the first ever time a new build of kernel modules is installed; skip on all subsequent installs:**  
+Rename modules directory and create necessary ```/lib/modules/2.2.19``` symbolic link.
+```bash
+mv 2.2.19 2.2.19_ps2
 ln -sf 2.2.19_ps2 2.2.19
+```
+
+&nbsp;  
+Generate dependency list for newly installed kernel modules.
+```bash
 depmod -a
 ```
 
 &nbsp;  
 Install kernel files to ```/boot```.
 ```bash
-cp /path/to/vmlinux /boot/vmlinux-2.2.19_ps2
+cp /path/to/vmlinux-2.2.19 /boot/vmlinux-2.2.19_ps2
 cp /path/to/System.map /boot/System.map-2.2.19_ps2
 ```
 
@@ -214,7 +232,7 @@ ln -s System.map-2.2.19_ps2 /boot/System.map
 **Recommended:** Install compressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
-gzip -9c /path/to/vmlinux > /mnt/mc00/vmlinux-2.2.19.gz
+gzip -9c /path/to/vmlinux-2.2.19 > /mnt/mc00/vmlinux-2.2.19.gz
 chmod 755 /mnt/mc00/vmlinux-2.2.19.gz
 ```
 
@@ -222,7 +240,7 @@ chmod 755 /mnt/mc00/vmlinux-2.2.19.gz
 Alternatively: install raw uncompressed kernel to first Memory Card.
 ```bash
 mount /mnt/mc00
-cp /path/to/vmlinux /mnt/mc00/vmlinux-2.2.19
+cp /path/to/vmlinux-2.2.19 /mnt/mc00/vmlinux-2.2.19
 chmod 755 /mnt/mc00/vmlinux-2.2.19
 ```
 

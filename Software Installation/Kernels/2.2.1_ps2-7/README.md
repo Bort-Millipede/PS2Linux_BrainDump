@@ -2,6 +2,9 @@
 
 ![](2.2.1_release_login.png?raw=true)
 
+**Note:** Precompiled Kernel is available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [ps2linux_kernel-2.2.1_ps2-7.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linux_kernel-2.2.1_ps2-7.tar.gz)
+
 Required RPM files below are present on **Linux (for Playstation 2) Release 1.0 Disc 2** under ```SCEI/RPMS```.  
 * [USA Disc 2](https://archive.org/download/sony_playstation2_l/Linux%20%28for%20PlayStation%202%29%20Release%201.0%20%28USA%29%20%28Disc%202%29%20%28Software%20Packages%29.zip)
 
@@ -144,7 +147,7 @@ tar czf /path/to/new/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1
 
 ## Installing on PS2 Linux Release 1.0 (as root or via sudo)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-7.cc.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-7.cc.tar.gz** files to PS2 Linux. If installing a [precompiled kernel from the author](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel), these files will be contained within the kernel archive.
 
 **Only do this the first ever time a new build of kernel modules is installed; skip on all subsequent installs:**  
 Backup original kernel module directory (to ```/lib/modules/2.2.1.orig```) on PS2 Linux Release 1.0.
@@ -162,7 +165,7 @@ cp /boot/vmlinux-2.2.1_ps2 /boot/vmlinux-2.2.1_ps2.orig
 ```
 
 &nbsp;  
-Install kernel modules.
+Install kernel modules and generate dependency list for newly installed kernel modules.
 ```bash
 cd /lib/modules
 tar xzf /path/to/kernel-modules-2.2.1_ps2-7.cc.tar.gz 2.2.1

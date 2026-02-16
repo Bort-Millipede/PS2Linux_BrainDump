@@ -87,9 +87,9 @@ Digest and use this at your own risk!!!
     * [Booting PS2 Linux From PSBBN (Without PS2 Linux DVD)](Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)
   * [Full Installed Packages Comparison](Broadband&#32;Navigator/Installed&#32;Packages)
 
-## Precompiled Binaries
+## Precompiled Binaries and Kernels
 
-While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries, precompiled binaries built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package pages for installation and usage instructions.
+While the documentation provided in [Installing Software on PS2 Linux](Software&#32;Installation) SHOULD be detailed enough to allow readers to build their own binaries and kernels, precompiled binaries and kernels built by the author are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases). Consult individual package and kernel pages for installation and usage instructions.
 
 ## Demonstration Videos
 

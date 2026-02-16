@@ -2,6 +2,10 @@
 
 ![](2.2.1_beta_login.png?raw=true)
 
+**Note:** Precompiled Kernels are available in [Releases](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases)!
+* [ps2linuxbeta_kernel-2.2.1_ps2-6.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linuxbeta_kernel-2.2.1_ps2-6.tar.gz): with legacy APA partition support only.
+* [ps2linuxbeta_kernel-2.2.1_ps2-6.bbnapa.tar.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/kernel/ps2linuxbeta_kernel-2.2.1_ps2-6.bbnapa.tar.gz): with BBN APA partition support only; for the uncommon scenario where a Beta Release 1 installation has been transferred to BBN APA partitions from legacy APA partitions.
+
 Required files (present on [PS2 Linux Beta Release 1 DVD](https://archive.org/download/sony_playstation2_p/PS2%20Linux%20Beta%20Release%201%20%28Japan%29%20%28En%2CJa%29.zip) under ```SCEI/RPMS```):  
 * kernel-headers-2.2.1_ps2-6.mipsel.rpm
 * kernel-source-2.2.1_ps2-6.mipsel.rpm
@@ -54,7 +58,7 @@ cd linux-2.2.1_ps2-6
 ```
 
 &nbsp;  
-Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices.
+Modify included kernel configuration file to specify that the kernel is being cross-compiled. Also add support for experimental features and for USB mass storage devices (as a loadable kernel module).
 ```bash
 perl -i.bak -pe "s/^# CONFIG_CROSSCOMPILE is not set/CONFIG_CROSSCOMPILE=y/" config_ps2
 perl -i -pe "s/^# CONFIG_EXPERIMENTAL is not set/CONFIG_EXPERIMENTAL=y/" config_ps2
@@ -114,7 +118,7 @@ make modules_install
 ```
 
 &nbsp;  
-Create installation archive for "installed" kernel modules.
+Create installation archive for "installed" kernel modules (as root or via sudo).
 ```
 cd /lib/modules
 mv 2.2.1 2.2.1_ps2.cc
@@ -123,7 +127,7 @@ tar czf /path/to/new/kernel-modules-2.2.1_ps2-6.cc.tar.gz 2.2.1_ps2.cc
 
 ## Installing on PS2 Linux Beta Release 1 (as root or via sudo)
 
-Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.cc.tar.gz** files to PS2 Linux.
+Transfer **vmlinux**, **System.map**, and **kernel-modules-2.2.1_ps2-6.cc.tar.gz** files to PS2 Linux. If installing a [precompiled kernel from the author](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel), these files will be contained within the kernel archive.
 
 **Only do this the first ever time a new build of kernel modules is installed; skip on all subsequent installs:**  
 Backup original kernel module directory (to ```/lib/modules/2.2.1_ps2.orig```) on PS2 Linux Beta. This backup will be needed every time a new build of the kernel modules is installed.
@@ -143,7 +147,7 @@ cp /boot/vmlinux-2.2.1_ps2 /boot/vmlinux-2.2.1_ps2.orig
 ```
 
 &nbsp;  
-Copy kernel module backup directory into new kernel module directory, then install modules and recreate necessary ```/lib/modules/2.2.1``` symbolic link.
+Copy kernel module backup directory into new kernel module directory, install modules and recreate necessary ```/lib/modules/2.2.1``` symbolic link, and generate dependency list for newly installed kernel modules.
 ```bash
 cd /lib/modules
 mkdir 2.2.1_ps2.cc
