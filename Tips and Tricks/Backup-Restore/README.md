@@ -19,6 +19,8 @@ A ramdisk is required for the directions below. The options for this are:
 * Author's ramdisk for Beta Release 1 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_beta.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_beta.gz)
 * Author's ramdisk for Release 1.0 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_release.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_release.gz)
 
+**Note about 2.4.17_mvl21 support:** Launching the ramdisk with the 2.4.17_mvl21 kernel requires ramdisk support to be compiled into the kernel, which is not done by default. The [author's precompiled 2.4.17_mvl21 kernels](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel) include this necessary support. Alternatively, the 2.4.17_mvl21 kernel can be rebuilt to include this support, such as using the author's kernel configuration files ([Beta Release 1](../../Software&#32;Installation/Kernels/2.4.17_ps2-22/config-2.4.17_ps2-22) and [Release 1.0](../../Software&#32;Installation/Kernels/2.4.17_ps2-26/config-2.4.17_ps2-26)).
+
 Additionally, the follow packages are required for the tutorial below (these are already included in the author's ramdisks linked above):
 
 * [star](../../Software&#32;Installation/Packages/star): This seems to perform faster than the standard ```tar``` executable available on PS2 Linux. The precompiled ```star``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz).
