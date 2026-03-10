@@ -1,0 +1,11 @@
+--- ps2fs.orig/inode.c	2002-12-04 04:54:10.000000000 -0600
++++ ps2fs/inode.c	2026-03-01 17:02:38.000000000 -0600
+@@ -573,7 +573,7 @@
+ 	struct buffer_head tmpbh;  /* to receive block numbers */
+ 	int to_write, secofs;
+ 
+-	block = pos / blocksize;
++	block = pos >> (sb->s_blocksize_bits + PS2FS_SB(sb)->block_shift);
+ 	if (block != lastblock) {
+ 	    error = ps2fs_get_block(inode, block, &tmpbh, 0);
+ 	    if (error)

@@ -42,7 +42,7 @@ umount /mnt/cdrom
 
 ## Installing/Configuring 2.2.1_ps2-7 Kernel Source in Cross-Compiling Environment (as root or via sudo)
 
-If the 2.2.1_ps2-7 kernel source is NOT already present on the cross-compiling environment: extract the 2.2.1_ps2-7 kernel source into the cross-compiling environment
+If the 2.2.1_ps2-7 kernel source is NOT already present on the cross-compiling environment: extract the 2.2.1_ps2-7 kernel source into the cross-compiling environment and perform preliminary setup
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
 rpm2cpio /path/to/kernel-headers-2.2.1_ps2-7.mipsel.rpm | cpio -id
@@ -50,6 +50,7 @@ rpm2cpio /path/to/kernel-source-2.2.1_ps2-7.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.2.1_ps2 linux-2.2.1_ps2-7
 cd linux-2.2.1_ps2-7
+chmod 755 include
 ```
 
 &nbsp;  

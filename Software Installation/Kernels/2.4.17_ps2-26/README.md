@@ -48,7 +48,7 @@ umount /mnt/cdrom
 
 ## Installing 2.4.17_ps2-26 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
-Extract RPMs into cross-compiling environment.
+Extract RPMs into cross-compiling environment and perform preliminary setup.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
 rpm2cpio /path/to/kernel-headers-2.4.17_ps2-26.mipsel.rpm | cpio -id
@@ -56,6 +56,7 @@ rpm2cpio /path/to/kernel-source-2.4.17_ps2-26.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.4.17_ps2 linux-2.4.17_ps2-26
 cd linux-2.4.17_ps2-26
+chmod 755 include
 ```
 
 &nbsp;  

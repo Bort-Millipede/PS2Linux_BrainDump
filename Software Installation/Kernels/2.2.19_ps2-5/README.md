@@ -55,7 +55,7 @@ umount /mnt/cdrom
 
 ## Installing/Configuring 2.2.19 Kernel Source to Cross-Compiling Environment (as root or via sudo)
 
-Extract RPM into cross-compiling environment.
+Extract RPM into cross-compiling environment and perform preliminary setup.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux/usr/src
 mv linux linux.bak
@@ -64,14 +64,10 @@ tar xzf linux-2.2.19.tar.gz
 mv linux linux-2.2.19_ps2-5
 rm -f installkernel linux-2.2.19-5.spec linux-2.2.19.tar.gz module-info
 mv linux.bak linux
-```
-
-&nbsp;  
-Remove unnecessary files and create necessary symbolic link in kernel source directory
-```bash
 cd linux-2.2.19_ps2-5
 rm -rf include/config/t10000.h
 rm -rf drivers/ps2/t10000
+chmod 755 include
 cd include
 ln -sf asm-mips asm
 cd ..

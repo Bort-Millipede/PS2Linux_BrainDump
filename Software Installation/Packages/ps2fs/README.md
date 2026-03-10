@@ -40,6 +40,13 @@ ln -s linux-2.2.1_ps2 /usr/src/linux
 ```
 
 &nbsp;  
+**Only for PS2 Linux Beta Release 1 installations:**
+Patch source to remove dependency on exported ```__divdi3``` symbol.
+```bash
+patch -p1 < /path/to/ps2fs_kernel-2.2.1_ps2-6_remove-divdi3.patch
+```
+
+&nbsp;  
 Build source.
 ```bash
 make clean
@@ -52,6 +59,13 @@ Install to current directory and create installation archive (for easy installat
 mkdir -p 2.2.1/misc
 cp ps2fs.o 2.2.1/misc/ps2fs.o
 tar czf ps2fs-2.2.1.mipsEEel-linux.tar.gz 2.2.1
+```
+
+&nbsp;  
+**Only for PS2 Linux Beta Release 1 installations:**
+Reverse source patch applied earlier.
+```bash
+patch -R -p1 < /path/to/ps2fs_kernel-2.2.1_ps2-6_remove-divdi3.patch
 ```
 
 ### Building for Kernel 2.2.19
@@ -154,6 +168,7 @@ Common non-PS2 Linux partitions are:
 * __net
 * __sysconf
 * __system
+* __contents
 
 ### Helper Script
 

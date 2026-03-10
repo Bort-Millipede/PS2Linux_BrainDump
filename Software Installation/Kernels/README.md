@@ -16,13 +16,22 @@ Additionally, the source for kernel 2.2.19_ps2-23 can be found on the Playstatio
 
 ## Tip for New/Updated Kernels
 
-It is highly recommended that kernels be installed to the PS2 Memory Card using compression (specifically GZIP). Because space on Memory Cards is extremely limited (8MB maximum), installing kernels with compression allows multiple kernels to be installed to the Memory Card simultaneously.
+### Compression
+
+It is highly recommended that kernels be installed to the PS2 Memory Card using compression (specifically gzip). Because space on Memory Cards is extremely limited (8MB maximum), installing kernels with compression allows multiple kernels to be installed to the Memory Card simultaneously.
 
 In the author's experience, the only noticeable drawback to installing kernels onto the Memory Cards with compression is a very slight increase in initial system boot time:
 * When booting an uncompressed kernel from the PS2 Linux DVD, the progress indicator immediately starts counting and reaches 100% quickly.
 * When booting a compressed kernel, the progress indicator stays at 0% for about 5-10 seconds before quickly counting up to 100%.
 
 Instructions for installing both compressed and raw uncompressed kernels are available in the separate kernel pages linked above.
+
+### Stripping Debug Symbols
+
+Unless there is a need for the ability to perform kernel debugging, kernel files can be stripped of debug symbols to reduce their file size. The following command should be executed prior to installing a kernel to the memory card.
+```bash
+strip --strip-debug /path/to/vmlinux
+```
 
 ## Switching Between Installed Kernels
 

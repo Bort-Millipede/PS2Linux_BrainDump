@@ -47,7 +47,7 @@ mv usr/src/linux-2.2.1_ps2 usr/src/linux-2.2.1_ps2-7
 ```
 
 &nbsp;  
-Extract RPMs into cross-compiling environment.
+Extract RPMs into cross-compiling environment and perform preliminary setup.
 ```bash
 cd /usr/mipsEEel-linux/mipsEEel-linux
 rpm2cpio /path/to/kernel-headers-2.2.1_ps2-6.mipsel.rpm | cpio -id
@@ -55,6 +55,7 @@ rpm2cpio /path/to/kernel-source-2.2.1_ps2-6.mipsel.rpm | cpio -id
 cd usr/src
 mv linux-2.2.1_ps2 linux-2.2.1_ps2-6
 cd linux-2.2.1_ps2-6
+chmod 755 include
 ```
 
 &nbsp;  
