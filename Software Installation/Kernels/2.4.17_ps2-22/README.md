@@ -237,6 +237,7 @@ ln -s input/mice /dev/usbmouse
 ## Booting Kernel 2.4.17_mvl21
 
 The PS2 Linux Beta Release 1 DVD cannot boot the 2.4.17_mvl21 kernel correctly (the kernel loading dialog completes, after which a blank screen appears and nothing further happens). Therefore, this kernel can only be booted via the following means:
-* via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem)).
-* via BB Navigator 0.30 or newer (outlined [HERE](../../../Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)).
+* Via AKMem from PS2 Linux Kernel 2.2.19 (outlined [HERE](../../../Tips&#32;and&#32;Tricks/AKMem)).
+* Via BB Navigator 0.30 or newer (outlined [HERE](../../../Broadband&#32;Navigator/Tips&#32;and&#32;Tricks/Booting&#32;PS2&#32;Linux&#32;From&#32;PSBBN)).
+* Using the PS2 Linux Release 1.0 DVD. The NTSC-J DVD or the DVD from another region can be used for this, as long as the PS2 console being used can boot the DVD successfully.
 
