@@ -73,6 +73,7 @@ Digest and use this at your own risk!!!
   * [load-usb-modules](Scripts/load-usb-modules)
 * [Tips and Tricks for PS2 Linux](Tips&#32;and&#32;Tricks)
   * [Soft-Rebooting PS2 Linux with AKMem](Tips&#32;and&#32;Tricks/AKMem)
+  * [Booting To a Ramdisk with PS2 Linux](Tips&#32;and&#32;Tricks/Ramdisk)
   * [Backing Up and Restoring PS2 Linux](Tips&#32;and&#32;Tricks/Backup-Restore)
   * [PC-DC Server for Sega Dreamcast](Tips&#32;and&#32;Tricks/PC-DC&#32;Server)
 * [PS2 Linux Kit Comparison (Beta Release 1 and Release 1.0)](Kit&#32;Comparisons)

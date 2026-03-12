@@ -1,6 +1,6 @@
 # Backing Up and Restoring PS2 Linux
 
-This page outlines how to create a full backup of a PS2 Linux installation, as well as how to restore from a backup at a later time. This involves booting into a ramdisk. The procedure below is preferred by the author, but is by no means the only method for backing up/restoring a PS2 Linux installation. The reference link listed below provides another (and possibly simpler) procedure for this.
+This page outlines how to create a full backup of a PS2 Linux installation, as well as how to restore from a backup at a later time. The procedure below is preferred by the author, but is by no means the only method for backing up/restoring a PS2 Linux installation. The reference link listed below provides another (and possibly simpler) procedure for this.
 
 Partitioning/re-partitioning the HDD is not covered here or anywhere else in this repository. The reference link listed below may provide sufficient information for this.
 
@@ -12,19 +12,14 @@ The directions below assume that PS2 Linux is installed to ```/dev/hda1``` and t
 
 ## Prerequisites
 
+A ramdisk is required for the procedures below. Installing the ramdisk to the memory card and booting into it is outlined [HERE](../Ramdisk).
+
 ### Dependencies
 
-A ramdisk is required for the directions below. The options for this are:
-* Original ramdisk (from the playstation2-linux.com community) for Beta Release 1 and Release 1.0 (supports kernel 2.2.1 only): [initfs.gz](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/initfs.gz)
-* Author's ramdisk for Beta Release 1 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_beta.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_beta.gz)
-* Author's ramdisk for Release 1.0 (supports kernels 2.2.1, 2.2.19, and 2.4.17_mvl21): [initfs_release.gz](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initfs/initfs_release.gz)
+The following packages are required for the tutorial below. The will need to be copied to the ramdisk after boot (via ftp or netcat). If using one of the [author's ramdisks](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/initfs), the dependencies are already included.
 
-**Note about 2.4.17_mvl21 support:** Launching the ramdisk with the 2.4.17_mvl21 kernel requires ramdisk support to be compiled into the kernel, which is not done by default. The [author's precompiled 2.4.17_mvl21 kernels](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/tag/kernel) include this necessary support. Alternatively, the 2.4.17_mvl21 kernel can be rebuilt to include this support, such as using the author's kernel configuration files ([Beta Release 1](../../Software&#32;Installation/Kernels/2.4.17_ps2-22/config-2.4.17_ps2-22) and [Release 1.0](../../Software&#32;Installation/Kernels/2.4.17_ps2-26/config-2.4.17_ps2-26)).
-
-Additionally, the follow packages are required for the tutorial below (these are already included in the author's ramdisks linked above):
-
-* [star](../../Software&#32;Installation/Packages/star): This seems to perform faster than the standard ```tar``` executable available on PS2 Linux. The precompiled ```star``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz).
-* [pv](../../Software&#32;Installation/Packages/pv): This is technically optional, but is highly recommended and is included in commands provided below. This should be used in conjunction with file transfers using netcat, as the netcat version available in the PS2 Linux ramdisk does not output progress information. The precompiled ```pv``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/pv-0.6.4.mipsEEel-linux.tar.gz).
+* [star](../../Software&#32;Installation/Packages/star): This can potentially perform faster than the standard ```tar``` command available on PS2 Linux. The precompiled ```star``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/star-1.4.3.mipsEEel-linux.tar.gz). 
+* [pv](../../Software&#32;Installation/Packages/pv): This is technically optional, but is highly recommended and is included in commands provided below. This should be used in conjunction with file transfers using netcat, as the netcat version available in the PS2 Linux ramdisk does not output progress information and does not terminate when a transfer completes. The precompiled ```pv``` binary is included in the installation archive available [HERE](https://github.com/Bort-Millipede/PS2Linux_BrainDump/releases/download/initial/pv-0.6.4.mipsEEel-linux.tar.gz).
 
 ### Backup Partition Setup
 
@@ -37,45 +32,9 @@ The following directories should be created on the root of the backup partition:
 It is recommended that the following executables be copied to the ```bin``` directory on the backup partition:
 * ```md5sum```: For calculating file checksums to ensure transferred were not corrupted during transmission. ```cp /usr/bin/md5sum /mnt/backup/bin/md5sum```
 * ```pv```: For providing progress information when sending files using netcat. ```cp /usr/local/bin/pv /mnt/backup/bin/pv```
-* ```star```: For creating tar archives. ```cp /usr/local/bin/star /mnt/backup/bin/pv```
+* ```star```: For creating tar archives. ```cp /usr/local/bin/star /mnt/backup/bin/star```
 * ```ps2fdisk```: For partitioning drives using the APA partitioning scheme. Available [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/ps2fdisk_0.9-3.gz). On Beta Release 1 installations, the author recommends renaming this binary to ```ps2fdisk_ac``` to differentiate it from the ```ps2fdisk_scei``` binary below.
 * ```ps2fdisk_scei```: (For Beta Release 1 installations) For partitioning drivers using the legacy APA partitioning scheme. ```cp /sbin/ps2fdisk /mnt/backup/bin/ps2fdisk_scei```
-
-## Installing the Ramdisk (as root or via sudo).
-
-Mount the memory card and copy the ramdisk file to the memory card.
-```bash
-mount /mnt/mc00
-cp /path/to/initfs.gz /mnt/mc00/initfs.gz
-```
-
-### Adding Boot entries
-
-#### Compressed Kernels
-
-Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
-```
-"initfs2.2.1"	vmlinux.gz initfs.gz	203 /dev/ram0 ""	initfs 2.2.1
-```
-
-If using one of the author's ramdisks, also add the following entries:
-```
-"initfs2.2.19"	vmlinux-2.2.19.gz initfs.gz	203 /dev/ram0 ""	initfs 2.2.19
-"initfs2.4.17"	vmlinux-2.4.17_mvl21.gz initfs.gz	203 /dev/ram0 "ramdisk_size=10240"	initfs 2.4.17
-```
-
-#### Uncompressed Kernels
-
-Add the following entry to the ```/mnt/mc00/p2lboot.cnf``` file:
-```
-"initfs2.2.1"	vmlinux initfs.gz	203 /dev/ram0 ""	initfs 2.2.1
-```
-
-If using one of the author's ramdisks, also add the following entries:
-```
-"initfs2.2.19"	vmlinux-2.2.19 initfs.gz	203 /dev/ram0 ""	initfs 2.2.19
-"initfs2.4.17"	vmlinux-2.4.17_mvl21 initfs.gz	203 /dev/ram0 "ramdisk_size=10240"	initfs 2.4.17
-```
 
 ## Creating a Backup of a PS2 Linux Installation
 
@@ -93,7 +52,7 @@ mount /dev/hda3 /mnt/backup
 Create a full backup of the PS2 Linux installation (**ps2linux-full-image.tar.gz**; this will take a while).
 ```bash
 cd /mnt/hd
-/mnt/backup/bin/star -c -H=gnutar * | gzip -1 -c > /mnt/backup/install-images/ps2linux-full-image.tar.gz
+star -c -H=gnutar * | gzip -1 -c > /mnt/backup/install-images/ps2linux-full-image.tar.gz
 ```
 
 &nbsp;  
@@ -101,7 +60,7 @@ Mount the Memory Card and create a backup of the PS2 Linux save file (**mc00.tar
 ```bash
 mount /mnt/mc00
 cd /mnt/mc00
-/mnt/backup/bin/star -c -H=gnutar * | gzip -c > /mnt/backup/install-images/mc00.tar.gz
+star -c -H=gnutar * | gzip -c > /mnt/backup/install-images/mc00.tar.gz
 ```
 
 ## Transferring Files To/From PS2 Linux While in the Ramdisk
@@ -126,26 +85,25 @@ nc -nvlp 4444 > ps2linux-full-image.tar.gz
 ```
 On PS2 Linux ramdisk (send ```ps2linuxbeta-full-image.tar.gz``` file to 192.168.1.11 on TCP port 4444, with progress information displayed by ```pv```):
 ```bash
-cat /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz | /mnt/backup/bin/pv | nc -nv 192.168.1.11 4444
+cat /mnt/backup/install-images/ps2linuxbeta-full-image.tar.gz | pv | nc -nv 192.168.1.11 4444
 ```
 
 &nbsp;  
 Send file from PC to PS2 Linux:  
+**NOTE:** On a Windows-based PC, the ```cat``` command below can be replaced by the ```type``` command.  
 On PS2 Linux ramdisk (receive ```ps2linux-full-image.tar.gz``` file on TCP port 4444, with progress information displayed by ```pv```):
 ```bash
-nc -nvlp 4444 | /mnt/backup/bin/pv > ps2linux-full-image.tar.gz
+nc -nvlp 4444 | pv > ps2linux-full-image.tar.gz
 ```
 On PC (send ```ps2linux-full-image.tar.gz``` file to 192.168.1.10 on TCP port 4444):
 ```bash
 cat ps2linux-full-image.tar.gz | nc -nv 192.168.1.10 4444
 ```
 
-**NOTE:** On a Windows-based PC, the ```cat``` command above can be replaced by the ```type``` command.
-
 &nbsp;  
 **OPTIONAL:** On PS2 Linux, calculate the checksum for the transferred file:
 ```bash
-/mnt/backup/bin/md5sum /path/to/ps2linux-full-image.tar.gz
+md5sum /path/to/ps2linux-full-image.tar.gz
 ```
 
 ### FTP
@@ -187,7 +145,7 @@ quit
 &nbsp;  
 **OPTIONAL:** On PS2 Linux, calculate the checksum for the transferred file:
 ```bash
-/mnt/backup/bin/md5sum /path/to/ps2linux-full-image.tar.gz
+md5sum /path/to/ps2linux-full-image.tar.gz
 ```
 
 ## Restoring a Backup of a PS2 Linux Installation
@@ -217,9 +175,29 @@ mount /dev/hda1 /mnt/hd
 Restore the PS2 Linux installation (**ps2linux-full-image.tar.gz**). This will take a while.
 ```bash
 cd /mnt/hd
-gzip -dc /mnt/backup/install-images/ps2linux-full-image.tar.gz | /mnt/backup/bin/star -x -p -f -
+gzip -dc /mnt/backup/install-images/ps2linux-full-image.tar.gz | star -x -p -f -
 ```
 
 &nbsp;  
 Ensure that the ```/mnt/hd/etc/fstab``` file references the correct partitions for the PS2 Linux partition and for the swap partition.
+
+&nbsp;  
+**Do this only if the PS2 Linux save file is not already present on the memory card**  
+Mount the Memory Card and restore the PS2 Linux save file (**mc00.tar.gz**).  
+```bash
+mount /mnt/mc00
+cd /mnt/mc00
+rm *
+gzip -dc /mnt/backup/install-images/mc00.tar.gz | star -x -p -f -
+```
+
+&nbsp;  
+Unmount the filesystems and reboot into the newly-restored PS2 Linux installation.
+```bash
+cd /
+umount /mnt/hd
+umount /mnt/backup
+umount /mnt/mc00
+reboot
+```
 

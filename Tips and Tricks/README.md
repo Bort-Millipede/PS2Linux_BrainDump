@@ -66,15 +66,16 @@ PS2 Linux ships with various window managers besides the default Window Maker. T
 
 ### APA Partitioning
 
-PS2 Linux Beta Release 1 uses legacy APA partitioning (proprietary partitioning format used by Playstation 2 and other Sony devices) by default. Because of this, PS2 Linux Beta Release 1 can be installed alongside other Playstation 2 data residing on the HDD relatively easily. [Broadband Navigator](https://en.wikipedia.org/wiki/PlayStation_Broadband_Navigator) uses a newer rendition of APA partitioning not supported by PS2 Linux Beta Release 1 by default, but the Linux kernel(s) used by PS2 Linux can be patched (covered in this repository) to support having both PS2 Linux Beta Release 1 and Broadband Navigator installed on the same HDD.
+PS2 Linux Beta Release 1 uses legacy APA partitioning (proprietary partitioning format used by Playstation 2 and other Sony devices) by default. Because of this, PS2 Linux Beta Release 1 can be installed alongside other Playstation 2 data residing on the HDD relatively easily. [Broadband Navigator](https://en.wikipedia.org/wiki/PlayStation_Broadband_Navigator) uses a newer rendition of APA partitioning not supported by PS2 Linux Beta Release 1 by default, but the the Linux kernel ([2.2.19](../Software&#32;Installation/Kernels/2.2.19_ps2-5) and [2.4.17](../Software&#32;Installation/Kernels/2.4.17_ps2-22)) can be patched (covered in this repository in the respective kernel pages) to support having both PS2 Linux Beta Release 1 and Broadband Navigator installed on the same HDD.
 
-PS2 Linux Release 1.0 partitions the HDD like a normal Linux drive, and the included 2.2.1 Kernel does not support APA partitions by default. As such, PS2 Linux Release 1.0 cannot be installed alongside other Playstation 2 data on the HDD in its default setup. However, APA partitioning support can be added to the 2.2.1 Kernel (covered in this repository), which allows PS2 Linux Release 1.0 to be installed alongside other Playstation 2 data on the same HDD.
+By default, the PS2 Linux Release 1.0 installer partitions the HDD like a normal Linux drive and the stock 2.2.1 Kernel does not support APA partitions. As such, PS2 Linux Release 1.0 cannot be installed alongside other Playstation 2 data on the HDD in its default setup. However, APA partitioning support can be added to the 2.2.1 Kernel (covered in this repository [HERE](../Software&#32;Installation/Kernels/2.2.1_ps2-7)), which allows PS2 Linux Release 1.0 to be installed alongside other Playstation 2 data on the same HDD.
 
 The tutorial for converting a default PS2 Linux Release 1.0 installation to an installation installed on an APA-partitioned HDD is covered [HERE](http://ps2linux.no-ip.info/playstation2-linux.com/download/apa/apa_2.2.1.html).
 
 ## Specific Tips and Tricks
 
 * [Soft-Rebooting PS2 Linux with AKMem](AKMem)
+* [Booting To a Ramdisk with PS2 Linux](Ramdisk)
 * [Backing Up and Restoring PS2 Linux](Backup-Restore)
 * [PC-DC Server for Sega Dreamcast](PC-DC&#32;Server)
 
