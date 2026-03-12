@@ -17,7 +17,9 @@ Consult [Installing on PS2 Linux (as root or via sudo)](#installing-on-ps2-linux
 
 ps2fs allows partitions on the PS2 HDD that were NOT created by PS2 Linux to be accessed. The software is compiled as a loadable kernel module. Therefore, it will need to be built separately for every kernel version under which it is intended to be used.
 
-In the author's experience, ps2fs works under all kernel versions EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with PS2 Linux Beta Release 1). The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded, which subsequently fails. Conversely, ps2fs works fine under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the PS2 Linux Release 1.0).
+In the author's experience, ps2fs works under all kernel versions as-is EXCEPT 2.2.1_ps2-6 (the 2.2.1 kernel that ships with PS2 Linux Beta Release 1). This kernel version does not export the ```__divdi3``` symbol, which the module requires. The kernel module builds fine but displays "Unresolved symbol:" errors when being loaded, which subsequently fails. A patch is provided on this page to avoid this error and allow ps2fs to work under kernel 2.2.1_ps2-6.
+
+Conversely, ps2fs works fine as-is under 2.2.1_ps2-7 (the 2.2.1 kernel that ships with the PS2 Linux Release 1.0). 
 
 ## Dependencies
 
